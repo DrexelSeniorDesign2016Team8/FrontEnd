@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="mdl/material.min.css">
+<script src="mdl/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="scripts/collegeSearch.js"></script>
+<link rel="stylesheet" href="css/collegeSearch.css">
+<script src="jQuery/jquery-1.11.3.min.js"></script>
+
+<html>
+
+
+<div id="header"></div>
+  <hr>
+  <div id="title">
+      <span class="mdl-layout-title">Sign In</span>
+      </div>
+
+   <div class="mdl-textfield mdl-js-textfield" id="emailAddress">
+	   <input class="mdl-textfield__input" type="text"/>
+    <label class="mdl-textfield__label" for="username">Email Address</label>
+  </div>
+  <br>
+   <div class="mdl-textfield mdl-js-textfield" id="enterpassword">
+	   <input class="mdl-textfield__input" type="text"/>
+    <label class="mdl-textfield__label" for="username">Password</label>
+  </div>
+ <br>
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="passwordReset" style='float: right'>
+  Reset Password
+</button>
+  <br>
+  <br>
+   <br>
+    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rememberMe">
+  <input type="checkbox" id="rememberMe" class="mdl-checkbox__input" checked>
+  <span class="mdl-checkbox__label">Remember Me</span>
+</label>
+  <br>
+  <br>
+
+  <!-- Flat button with ripple -->
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="Sign In" style='float: right'>
+  Sign In
+</button>
+
+<div id="spinner" class="mdl-spinner mdl-js-spinner">
+</div>
+
+<body onload="loadPage()">
+<script>
+		function loadPage() {
+		createHeader();
+		}
+		</script>
+    
+</html>

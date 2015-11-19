@@ -1,0 +1,21 @@
+#accountCreation {
+	float: right;
+	margin-top: 25px;
+    margin-right: 20px;
+	position: relative;
+}
+#collegeSearchicon {
+	float: left;
+	top: 0px;
+	margin-left: 20px;
+	width: 150px;
+	height: 100px;
+	position: relative;
+}
+#header {
+position:relative;
+height: 100px;
+}
+#title {
+	text-align: center;
+}
