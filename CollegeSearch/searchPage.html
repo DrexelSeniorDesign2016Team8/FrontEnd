@@ -2,14 +2,15 @@
 <script src="mdl/material.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="scripts/collegeSearch.js"></script>
+<script src="scripts/searchPage.js"></script>
 <script src="jQuery/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="css/collegeSearch.css">
-<link rel="stylesheet" href="css/searchPage.css">
 
 
 <script>
 		function loadPage() {
 		createHeader();
+         pageSetup();
 		}
 		</script>
 <html>
@@ -18,27 +19,306 @@
 <title>CollegeSearch</title>
 <div id="header"></div>
 
-<hr>
-<div id="title">
-      <span class="mdl-layout-title">Explore and enter additional information</span>
-      </div>
 
-<div class="mdl-grid">
-  <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
-    <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text" id="textLabelGPA">GPA (Out of 4.0)</h2>
-    <div class="mdl-card__actions">
-  <div class="mdl-textfield mdl-js-textfield">
+
+
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="searchBtn" style='text-align:center' onClick="searchOptions()">
+  Search
+</button>
+<hr>
+<div id="additionalinfoTitle">
+  <span class="mdl-layout-title">Explore and enter Additional Information</span>
+</div>
+
+<div class="mdl-grid" >
+  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+
+    <!-- GPA Box-->
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
     <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="GPANumber">
-    <label class="mdl-textfield__label" for="sample2"></label>
+    <label class="mdl-textfield__label" for="textLabelGPA"></label>
     <span class="mdl-textfield__error">Input is not a number!</span>
+
+
   </div>
-    </div>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="textLabelGPA">GPA (Out of 4.0)</h2>
 	</div>
   </div>
+
+  <!-- ACT Composite Score -->
+  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9]" id="ACTScore">
+      <label class="mdl-textfield__label" for="ACTCompositeScore"></label>
+      <span class="mdl-textfield__error">Not a valid Score</span>
+    </div>
+
+  <div class="mdl-card__label">
+    <h2 class="mdl-card__title-text" id="ACTCompositeScore">ACT Composite Score</h2>
+  </div>
+  </div>
+
+  <!-- High School Percentile Button-->
+  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <button id="hspercentileBtn" class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">more_vert</i>
+
+    </button>
+
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="hspercentileBtn" id="percentiles" onClick="saveHighSchoolPercentile()">
+      <li class="mdl-menu__item">100%</li>
+      <li class="mdl-menu__item">90%</li>
+      <li class="mdl-menu__item">80%</li>
+      <li class="mdl-menu__item">70%%</li>
+      <li class="mdl-menu__item">60%%</li>
+      <li class="mdl-menu__item">50%</li>
+      <li class="mdl-menu__item">40%</li>
+      <li class="mdl-menu__item">30%</li>
+      <li class="mdl-menu__item">20%</li>
+      <li class="mdl-menu__item">10%</li>
+    </ul>
+      <label class="mdl-menu__label" for="highschoolpercentile"></label>
+  <div class="mdl-card__label">
+    <h2 class="mdl-card__title-text" id="highschoolpercentile">High School Percentile</h2>
+  </div>
+    </div>
+
+  <!-- SAT Math Score -->
+    <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+      <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="MathScore">
+      <label class="mdl-textfield__label" for="SATMathScore"></label>
+      <span class="mdl-textfield__error">Not a valid Score</span>
+    </div>
+
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="SATMathScore">SAT Math Score</h2>
+    </div>
+  </div>
+
+  <!-- SAT Reading Score -->
+  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="ReadingScore">
+    <label class="mdl-textfield__label" for="SATReading"></label>
+    <span class="mdl-textfield__error">Not a valid Score</span>
+  </div>
+
+  <div class="mdl-card__label">
+    <h2 class="mdl-card__title-text" id="SATReading">SAT Reading Score</h2>
+  </div>
 </div>
-<div id="spinner" class="mdl-spinner mdl-js-spinner">
+
+  <!-- SAT Writing Number -->
+<div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+<div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
+  <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="WritingScore">
+  <label class="mdl-textfield__label" for="SATWritingScore"></label>
+  <span class="mdl-textfield__error">Not a valid Score</span>
+</div>
+
+<div class="mdl-card__label">
+  <h2 class="mdl-card__title-text" id="SATWritingScore">SAT Writing Score</h2>
+</div>
+</div>
+
+    </div>
+
+<div id="title">
+  <span class="mdl-layout-title">Institution Characteristics</span>
+</div>
+
+<!-- Institution Name-->
+<div class="mdl-grid">
+  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+      <input class="mdl-textfield__input" type="text" pattern="-?[a-z]*([A-Z]+)?" id="InstitutionName">
+      <label class="mdl-textfield__label" for="namelabel"></label>
+      <span class="mdl-textfield__error">Institution cannot have numbers!</span>
+
+
+    </div>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="namelabel">Name</h2>
+    </div>
+  </div>
+
+
+  <!-- State Name -->
+  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+      <input class="mdl-textfield__input" type="text" pattern="[a-zA-z][a-zA-Z]" id="stateName">
+      <label class="mdl-textfield__label" for="stateLabel"></label>
+      <span class="mdl-textfield__error">Please enter the two digit code</span>
+
+
+    </div>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="stateLabel">State</h2>
+    </div>
+  </div>
+
+
+  <!-- Zip Code -->
+  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+      <input class="mdl-textfield__input" type="text" pattern="[0-9]{5}" id="zipCode">
+      <label class="mdl-textfield__label" for="zipLabel"></label>
+      <span class="mdl-textfield__error">Please enter a 5 digit zip code</span>
+
+
+    </div>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="zipLabel">Zip Code</h2>
+    </div>
+  </div>
+
+
+  <!-- Full Address -->
+  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+      <input class="mdl-textfield__input" type="text"  id="FullAddress">
+      <label class="mdl-textfield__label" for="AddressLabel"></label>
+
+    </div>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="AddressLabel">Full Address</h2>
+    </div>
+  </div>
+
+
+  <!-- Acceptance Rate-->
+  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <button id="acceptanceRate" class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">more_vert</i>
+
+    </button>
+
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="acceptanceRate" id="acceptRate" style="y:scroll" onClick="saveAcceptanceRate()">
+      <li class="mdl-menu__item">100%</li>
+      <li class="mdl-menu__item">90%</li>
+      <li class="mdl-menu__item">80%</li>
+      <li class="mdl-menu__item">70%%</li>
+      <li class="mdl-menu__item">60%%</li>
+      <li class="mdl-menu__item">50%</li>
+      <li class="mdl-menu__item">40%</li>
+      <li class="mdl-menu__item">30%</li>
+      <li class="mdl-menu__item">20%</li>
+      <li class="mdl-menu__item">10%</li>
+    </ul>
+    <label class="mdl-menu__label" for="acceptRate"></label>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="acceptRateTitle">Acceptance Rate</h2>
+    </div>
+
+    </div>
+
+  <!-- Retention Rate -->
+  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <button id="retentionRatebtn" class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">more_vert</i>
+
+    </button>
+
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="retentionRatebtn" id="retentionRate" onClick="saveRetentionRate()">
+      <li class="mdl-menu__item">100%</li>
+      <li class="mdl-menu__item">90%</li>
+      <li class="mdl-menu__item">80%</li>
+      <li class="mdl-menu__item">70%%</li>
+      <li class="mdl-menu__item">60%%</li>
+      <li class="mdl-menu__item">50%</li>
+      <li class="mdl-menu__item">40%</li>
+      <li class="mdl-menu__item">30%</li>
+      <li class="mdl-menu__item">20%</li>
+      <li class="mdl-menu__item">10%</li>
+    </ul>
+    <label class="mdl-menu__label" for="rententionRateTitle"></label>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="rententionRateTitle">Retention Rate</h2>
+    </div>
+
+  </div>
+
+
+  <!-- Institution Type -->
+    <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+      <button id="institutionTypeBtn" class="mdl-button mdl-js-button mdl-button--icon" onClick="Openpercentage()">
+        <i class="material-icons">more_vert</i>
+
+      </button>
+
+      <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="institutionTypeBtn" id="institutionType" onClick="saveType()">
+        <li class="mdl-menu__item">Public</li>
+        <li class="mdl-menu__item">Private</li>
+      </ul>
+      <label class="mdl-menu__label" for="institutionTypetitle"></label>
+      <div class="mdl-card__label">
+        <h2 class="mdl-card__title-text" id="institutionTypetitle">Institution Type</h2>
+      </div>
+  </div>
+
+  <!-- Student Population -->
+  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+      <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="populationtxt">
+      <label class="mdl-textfield__label" for="population"></label>
+      <span class="mdl-textfield__error">Please enter a valid number</span>
+
+
+    </div>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="population">Student Population</h2>
+    </div>
+  </div>
+
+  <!-- Class Size -->
+  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+
+    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+      <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="classSizetxt">
+      <label class="mdl-textfield__label" for="classSize"></label>
+      <span class="mdl-textfield__error">Please enter a valid number</span>
+
+
+    </div>
+    <div class="mdl-card__label">
+      <h2 class="mdl-card__title-text" id="classSize">Class Size</h2>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="spinner" class="mdl-spinner mdl-js-spinner"></div>
 </form>
 <body onload="loadPage()">
+</body>
+<div id="percentileOptions" style="display:none">
+<li class="mdl-menu__item">100%</li>
+<li class="mdl-menu__item">90%</li>
+<li class="mdl-menu__item">80%</li>
+<li class="mdl-menu__item">70%%</li>
+<li class="mdl-menu__item">60%%</li>
+<li class="mdl-menu__item">50%</li>
+<li class="mdl-menu__item">40%</li>
+<li class="mdl-menu__item">30%</li>
+<li class="mdl-menu__item">20%</li>
+<li class="mdl-menu__item">10%</li>
+</div>
+
 
 </html>
