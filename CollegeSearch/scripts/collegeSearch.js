@@ -58,8 +58,10 @@ function invokeCollegeSearchAPI(url, data, dataType, success) {
 	if (data=="") {
 		dataType="GET";
 	}
+	var startUrl = "http://searchCollege.me/";
 
 
+	url = startUrl=url;
 	CollegeSearchAPI(url,data,success,dataType);
 }
 /*
@@ -67,16 +69,10 @@ function invokeCollegeSearchAPI(url, data, dataType, success) {
 	data is the data that will be passed into the request
  */
 function CollegeSearchAPI(url, data, success, dataType){
-	$.ajax({
-		url: url,
-		data: data,
-		success: success,
-		dataType: dataType,
 
-		success: function(response) {
-			success(response);
-		}
-	});
+	xmlHttp.open( dataType, url, false);
+	xmlHtpp.send(null);
+	success(xmlHttp.responseText)
 
 }
 

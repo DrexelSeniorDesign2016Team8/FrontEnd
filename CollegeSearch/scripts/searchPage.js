@@ -186,7 +186,7 @@ function constructSearch() {
     var dataType = "GET";
 
 
-    var url = "/Search/"; // construct the url
+    var url = "search.php?"; // construct the url
 
     var jsonString = JSON.stringify(searchParameters);
 
