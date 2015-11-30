@@ -169,7 +169,7 @@ function searchOptions() {
 
     var fullAddress = $("#FullAddress");
 
-    searchParameters.fullAddress = fullAddress.val();
+    searchParameters.fullAddress = encodeURIComponent(fullAddress.val());
 
     var studentPopulation = $("#populationtxt");
 
@@ -206,10 +206,10 @@ function saveHighSchoolPercentile() {
 
     var target = e.target;
 
-    alert("Clicked" + target.textContent);
+    alert("Clicked" + target.textContent.replace("%",""));
 
 
-    searchParameters.HighSchoolPercentile = target.textContent;
+    searchParameters.HighSchoolPercentile = target.textContent.replace("%","");
 }
 
 function saveAcceptanceRate() {
@@ -217,9 +217,9 @@ function saveAcceptanceRate() {
 
     var target = e.target;
 
-    alert("Clicked " + target.textContent);
+    alert("Clicked " + target.textContent.replace("%",""));
 
-    searchParameters.AcceptanceRate = target.textContent;
+    searchParameters.AcceptanceRate = target.textContent.replace("%","");
 }
 
 function saveStateName() {
@@ -227,9 +227,9 @@ function saveStateName() {
 
     var target = e.target;
 
-    alert("Clicked " + target.textContent);
+    alert("Clicked " + target.textContent.replace("%",""));
 
-    searchParameters.StateName = target.textContent;
+    searchParameters.StateName = target.textContent.replace("%","");
 }
 
 function saveRetentionRate() {
@@ -237,9 +237,9 @@ function saveRetentionRate() {
 
     var target = e.target;
 
-    alert("Clicked " + target.textContent);
+    alert("Clicked " + target.textContent.replace("%",""));
 
-    searchParameters.retentionRate = target.textContent;
+    searchParameters.retentionRate = target.textContent.replace("%","");
 }
 
 function saveType() {
@@ -249,6 +249,6 @@ function saveType() {
 
     alert("Clicked " + target.textContent);
 
-    searchParameters.institutionType = target.textContent;
+    searchParameters.institutionType = target.textContent.replace("%","");
 }
 
