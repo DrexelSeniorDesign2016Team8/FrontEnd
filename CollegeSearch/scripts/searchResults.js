@@ -140,33 +140,33 @@ function addSearchResult(collegeItem, resultsDiv, count) {
         name = collegeItem.name;
     }
     else {
-        name="Unavailable";
+        name="Name Unavailable";
     }
 
     if (collegeItem.address) {
         address = collegeItem.address;
     }
     else {
-        address = "Unavailable";
+        address = "Address Unavailable";
     }
 
     if (collegeItem.webSite) {
         website = collegeItem.webSite;
     }
     else {
-        website = "Unavailable";
+        website = "Website Unavailable";
     }
     if (collegeItem.phoneNumber) {
         phoneNumber = collegeItem.phoneNumber;
     }
     else {
-        phoneNumber= "Unavailable"
+        phoneNumber= "PhoneNumber Unavailable"
     }
     if (collegeItem.population) {
          population = collegeItem.population;
     }
     else {
-        population = "Unavailable";
+        population = "Population Unavailable";
     }
 
 
