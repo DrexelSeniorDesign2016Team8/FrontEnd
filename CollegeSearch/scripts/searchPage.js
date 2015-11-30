@@ -50,7 +50,7 @@ function performSearch() {
     constructSearch();
 
     createCookie("searchParameters", searchParameters);
-        window.location.href="www.searchCollege.me/searchResults"
+        window.location.href="searchResults.html"
 
 }
 
@@ -162,9 +162,6 @@ function searchOptions() {
 
     searchParameters.WritingScore = writingScore.val();
 
-    var stateName = $("#stateName");
-
-    searchParameters.StateName = stateName.val();
 
     var zipCode = $("#zipCode");
 
@@ -189,7 +186,7 @@ function constructSearch() {
     var dataType = "GET";
 
 
-    var url = "www.searchCollege.me/Search/"; // consturct the url
+    var url = "/Search/"; // construct the url
 
     var jsonString = JSON.stringify(searchParameters);
 
@@ -225,6 +222,16 @@ function saveAcceptanceRate() {
     searchParameters.AcceptanceRate = target.textContent;
 }
 
+function saveStateName() {
+    var e = event || window.event;
+
+    var target = e.target;
+
+    alert("Clicked " + target.textContent);
+
+    searchParameters.StateName = target.textContent;
+}
+
 function saveRetentionRate() {
     var e = event || window.event;
 
@@ -244,3 +251,4 @@ function saveType() {
 
     searchParameters.institutionType = target.textContent;
 }
+

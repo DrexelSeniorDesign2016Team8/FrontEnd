@@ -170,9 +170,9 @@ function addSearchResult(collegeItem, resultsDiv, count) {
     }
 
 
-    var html = "<h2>" + name + " </h2>";
+    var html = "<h3>" + name + " </h3>";
 
-    html = html + "<br> <br>";
+    html = html + "<br>";
 
     html = html + address;
 

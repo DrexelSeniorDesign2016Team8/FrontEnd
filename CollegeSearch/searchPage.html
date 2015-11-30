@@ -5,6 +5,7 @@
 <script src="scripts/searchPage.js"></script>
 <script src="jQuery/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="css/collegeSearch.css">
+<link rel="stylesheet" href="css/searchPage.css">
 
 
 <script>
@@ -19,11 +20,15 @@
 <title>CollegeSearch</title>
 <div id="header"></div>
 
+<hr>
 
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="searchBtn" style='text-align:center' onClick="performSearch()">
+<br>
+<br>
+<center><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="searchBtn" style='text-align:center' onClick="performSearch()">
   Search
 </button>
-<hr>
+  </center>
+
 <div id="additionalinfoTitle">
   <span class="mdl-layout-title">Explore and enter Additional Information</span>
 </div>
@@ -41,7 +46,7 @@
 
   </div>
     <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text" id="textLabelGPA">GPA (Out of 4.0)</h2>
+      <h2 class="mdl-card__title-text title_searchOption" id="textLabelGPA">GPA (Out of 4.0)</h2>
 	</div>
   </div>
 
@@ -67,7 +72,7 @@
 
     </button>
 
-    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="hspercentileBtn" id="percentiles" onClick="saveHighSchoolPercentile()">
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="hspercentileBtn" id="percentiles" style="overflow:scroll" height="40px" onClick="saveHighSchoolPercentile()">
       <li class="mdl-menu__item">100%</li>
       <li class="mdl-menu__item">90%</li>
       <li class="mdl-menu__item">80%</li>
@@ -152,13 +157,62 @@
   <!-- State Name -->
   <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
 
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
-      <input class="mdl-textfield__input" type="text" pattern="[a-zA-z][a-zA-Z]" id="stateName">
-      <label class="mdl-textfield__label" for="stateLabel"></label>
-      <span class="mdl-textfield__error">Please enter the two digit code</span>
+    <button id="stateLabel" class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">more_vert</i>
+    </button>
+      <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="stateLabel" id="stateMenu" style="y:scroll" onClick="saveStateName()">
 
-
-    </div>
+        <li class="mdl-menu__item"> Alabama </li>
+        <li class="mdl-menu__item">Alaska </li>
+        <li class="mdl-menu__item">Arizona</li>
+        <li class="mdl-menu__item"> Arkansas</li>
+        <li class="mdl-menu__item"> California</li>
+        <li class="mdl-menu__item"> Colorado</li>
+        <li class="mdl-menu__item"> Connecticut</li>
+        <li class="mdl-menu__item">Delaware</li>
+        <li class="mdl-menu__item">Florida</li>
+        <li class="mdl-menu__item">Georgia</li>
+        <li class="mdl-menu__item">Hawaii</li>
+        <li class="mdl-menu__item">Idaho</li>
+        <li class="mdl-menu__item">Illinois </li>
+        <li class="mdl-menu__item">Indiana</li>
+        <li class="mdl-menu__item"> Iowa</li>
+        <li class="mdl-menu__item">Kansas</li>
+        <li class="mdl-menu__item">Kentucky</li>
+        <li class="mdl-menu__item"> Louisiana</li>
+        <li class="mdl-menu__item"> Maine</li>
+        <li class="mdl-menu__item"> Maryland</li>
+        <li class="mdl-menu__item">Massachusetts</li>
+        <li class="mdl-menu__item"> Michigan</li>
+        <li class="mdl-menu__item">Minnesota</li>
+        <li class="mdl-menu__item"> Mississippi</li>
+        <li class="mdl-menu__item"> Missouri</li>
+        <li class="mdl-menu__item"> Montana </li>
+        <li class="mdl-menu__item">Nebraska </li>
+        <li class="mdl-menu__item">Nevada </li>
+        <li class="mdl-menu__item">New Hampshire </li>
+        <li class="mdl-menu__item"> New Jersey </li>
+        <li class="mdl-menu__item">New Mexico </li>
+        <li class="mdl-menu__item">New York </li>
+        <li class="mdl-menu__item">North Carolina </li>
+        <li class="mdl-menu__item">North Dakota </li>
+        <li class="mdl-menu__item">Ohio </li>
+        <li class="mdl-menu__item">Oklahoma </li>
+        <li class="mdl-menu__item">Oregon </li>
+        <li class="mdl-menu__item">Pennsylvania</li>
+        <li class="mdl-menu__item">Rhode Island </li>
+        <li class="mdl-menu__item">South Carolina </li>
+        <li class="mdl-menu__item">South Dakota </li>
+        <li class="mdl-menu__item">Tennessee </li>
+        <li class="mdl-menu__item"> Texas </li>
+        <li class="mdl-menu__item">Utah </li>
+        <li class="mdl-menu__item"> Vermont </li>
+        <li class="mdl-menu__item"> Virginia </li>
+        <li class="mdl-menu__item"> Washington </li>
+        <li class="mdl-menu__item"> West Virginia </li>
+        <li class="mdl-menu__item"> Wisconsin </li>
+        <li class="mdl-menu__item"> Wyoming </li>
+        </ul>
     <div class="mdl-card__label">
       <h2 class="mdl-card__title-text" id="stateLabel">State</h2>
     </div>
@@ -207,8 +261,8 @@
       <li class="mdl-menu__item">100%</li>
       <li class="mdl-menu__item">90%</li>
       <li class="mdl-menu__item">80%</li>
-      <li class="mdl-menu__item">70%%</li>
-      <li class="mdl-menu__item">60%%</li>
+      <li class="mdl-menu__item">70%</li>
+      <li class="mdl-menu__item">60%</li>
       <li class="mdl-menu__item">50%</li>
       <li class="mdl-menu__item">40%</li>
       <li class="mdl-menu__item">30%</li>
@@ -253,7 +307,7 @@
   <!-- Institution Type -->
     <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
 
-      <button id="institutionTypeBtn" class="mdl-button mdl-js-button mdl-button--icon" onClick="Openpercentage()">
+      <button id="institutionTypeBtn" class="mdl-button mdl-js-button mdl-button--icon">
         <i class="material-icons">more_vert</i>
 
       </button>
