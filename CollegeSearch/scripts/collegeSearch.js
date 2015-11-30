@@ -52,3 +52,41 @@ function createHeader() {
 
 }
 
+function invokeCollegeSearchAPI(url, data, dataType, success) {
+
+
+	if (data=="") {
+		dataType="GET";
+	}
+
+
+	CollegeSearchAPI(url,data,success,dataType);
+}
+/*
+	url is the url request
+	data is the data that will be passed into the request
+ */
+function CollegeSearchAPI(url, data, success, dataType){
+	$.ajax({
+		url: url,
+		data: data,
+		success: success,
+		dataType: dataType,
+
+		success: function(response) {
+			success(response);
+		}
+	});
+
+}
+
+
+function getCookie(name) {
+		var regexp = new RegExp("(?:^" + name + "|;\s*"+ name + ")=(.*?)(?:;|$)", "g");
+		var result = regexp.exec(document.cookie);
+		return (result === null) ? null : result[1];
+}
+function createCookie(name, value) {
+	document.cookie = name+"="+value;
+}
+

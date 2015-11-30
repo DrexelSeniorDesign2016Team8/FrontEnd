@@ -45,8 +45,18 @@ function GPASearch() {
 
 function performSearch() {
 
+    searchOptions();
+
+    constructSearch();
+
+    createCookie("searchParameters", searchParameters);
+        window.location.href="www.searchCollege.me/searchResults"
+
 }
 
+function loadResultsPage() {
+
+}
 function createhighSchooldropdown() {
 
     var dropdown = $("#hspercentiles");
@@ -144,7 +154,13 @@ function searchOptions() {
 
     searchParameters.ReadingScore = readingScore.val();
 
-    searchParameters = $("WritingScore");
+    var institutionName = $("#InstitutionName");
+
+    searchParameters.name = institutionName.val();
+
+    var writingScore = $("#WritingScore");
+
+    searchParameters.WritingScore = writingScore.val();
 
     var stateName = $("#stateName");
 
@@ -165,6 +181,28 @@ function searchOptions() {
     var classSize = $("#classSizetxt");
 
     searchParameters.clasSize = classSize.val();
+
+}
+function constructSearch() {
+    // usually just a get request so a simple GET is fine
+
+    var dataType = "GET";
+
+
+    var url = "www.searchCollege.me/Search/"; // consturct the url
+
+    var jsonString = JSON.stringify(searchParameters);
+
+    jsonString = jsonString.replace(/\"\:\"/g,"=");
+
+    jsonString = jsonString.replace("{","");
+    jsonString = jsonString.replace("}","");
+
+    url = url + jsonString;
+
+    alert("The request to be called is " + url);
+
+    return url;
 }
 function saveHighSchoolPercentile() {
     var e = event || window.event

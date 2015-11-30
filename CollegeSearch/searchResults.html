@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="mdl/material.min.css">
+<script src="mdl/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="scripts/collegeSearch.js"></script>
+<script src="scripts/searchResults.js"></script>
+<script src="scripts/searchPage.js"></script>
+<script src="jQuery/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="css/collegeSearch.css">
+
+
+<script>
+    function loadPage() {
+        createHeader();
+        pageSetup();
+    }
+</script>
+<html>
+
+
+<title>CollegeSearch</title>
+<div id="header"></div>
+
+<hr>
+
+
+<!-- Simple Textfield -->
+<center>
+<form action="#">
+    <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="text" id="collegeName">
+        <label class="mdl-textfield__label">ex... Yale University.</label>
+    </div>
+</form>
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="searchBtn" style='text-align:center' onClick="update()">
+        Update
+    </button>
+    </center>
+
+</button>
+
+<hr>
+
+<div id="information"></div>
+
+<body onload="loadPage()"></body>
+<script>
+    function loadPage() {
+        createHeader();
+        loadResults();
+    }
+</script>
+
+
+</html>
