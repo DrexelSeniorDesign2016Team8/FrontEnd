@@ -61,7 +61,7 @@ function invokeCollegeSearchAPI(url, data, dataType, success) {
 	var startUrl = "http://mid.searchcollege.me";
 
 
-	url = startUrl=url;
+	url = startUrl+url;
 	var response = CollegeSearchAPI(url,data,success,dataType);
 
 	return response;
@@ -75,9 +75,10 @@ function CollegeSearchAPI(url, data, success, dataType){
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.open( dataType, url, false);
 	xmlHttp.send(null);
+
 	success(xmlHttp.responseText)
 
-	return xmlHtpp.responseText;
+	return xmlHttp.responseText;
 
 }
 
