@@ -27,7 +27,7 @@ function loadResults() {
     var resultsDiv = $("#information");
 
     var result = invokeCollegeSearchAPI(searchParameters, null, "GET", function (result) {
-        ;
+
         college = {}
 
         college.name = "Drexel University";
@@ -38,11 +38,7 @@ function loadResults() {
 
         college.address = "3141 Chestnut Street Philadelphia 19104";
 
-        //  invokeCollegeSearchAPI(url, null, "GET", function(result) {
 
-        //result = [];
-
-        result.push(college);
         for (var i = 0; i < result.length; i++) {
 
             addSearchResult(result[i], resultsDiv, i)
