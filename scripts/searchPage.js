@@ -92,9 +92,12 @@ function checkFields() {
 
 
 function checkRegExp(elem, regExp) {
-    if (!regExp.test(elem)) {
-        window.id=elem;
-        return false;
+
+    if (!elem.text()=="") {
+        if (!regExp.test(elem.text())) {
+            window.id = elem;
+            return false;
+        }
     }
 }
 function displayPercentileMenu(el,list) {
@@ -248,8 +251,6 @@ function formatSearch() {
     if (searchParameters.zipCode) {
         parameters += "zipCode=" + searchParameters.zipCode + "&";
     }
-
-
     if (searchParameters.fullAddress) {
         parameters += "fullAddress=" + searchParameters.fullAddress + "&";
     }
