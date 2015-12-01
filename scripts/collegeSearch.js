@@ -21,7 +21,8 @@ function createHeader() {
 	var header = $("#header");
 	
 	var imgSrc = "icon/collegeSearch.PNG";
-	
+	var ahref = document.createElement("A")
+	ahref.href="http://searchcollege.me/";
 	var icon = new Image();
 	
 	icon.src=imgSrc;
@@ -30,14 +31,10 @@ function createHeader() {
 	icon.alt="CollegeSearch";
 	
 	icon.id="collegeSearchicon";
-	icon.onclick = function() {
-		window.location.href = 'http://searchcollege.me/frontend/';
-
-	}
+	ahref.appendChild(icon);
+	header.append(ahref);
 	
-	header.append(icon);
-	
-	header.append(icon);
+	header.append(ahref);
 	
 	//if (loggedIn==false) {
 		
