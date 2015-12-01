@@ -24,7 +24,10 @@ function performSearch() {
     return false;
 }
 
+function pageSetup() {
 
+    deleteAllCookies();
+}
 /*
 This function checks each field against a regular expression
 Another function performs the actual logic
