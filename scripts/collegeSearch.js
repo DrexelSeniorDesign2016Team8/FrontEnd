@@ -22,7 +22,7 @@ function createHeader() {
 	
 	var imgSrc = "icon/collegeSearch.PNG";
 	var ahref = document.createElement("A")
-	ahref.href="http://searchcollege.me/";
+	ahref.href="searchPage.html";
 	var icon = new Image();
 	
 	icon.src=imgSrc;
