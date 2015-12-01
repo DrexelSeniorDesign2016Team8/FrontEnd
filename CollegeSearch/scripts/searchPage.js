@@ -47,9 +47,9 @@ function performSearch() {
 
     searchOptions();
 
-    constructSearch();
+    var search = constructSearch();
 
-    createCookie("searchParameters", searchParameters);
+    createCookie("searchParameters", search);
         window.location.href="searchResults.html"
 
 }
@@ -178,6 +178,24 @@ function searchOptions() {
     var classSize = $("#classSizetxt");
 
     searchParameters.classSize = classSize.val();
+
+    if (!searchParameters.HighSchoolPercentile) {
+        searchParameters.HighSchoolPercentile="";
+    }
+
+    if (!searchParameters.AcceptanceRate) {
+        searchParameters.AcceptanceRate="";
+    }
+    if (!searchParameters.StateName) {
+        searchParameters.StateName="";
+    }
+    if (!searchParameters.retentionRate) {
+        searchParameters.retentionRate="";
+    }
+    }
+    if (!searchParameters.institutionType) {
+        searchParameters.institutionType="";
+
 }
 function constructSearch() {
     // usually just a get request so a simple GET is fine
