@@ -58,7 +58,7 @@ function invokeCollegeSearchAPI(url, data, dataType, success) {
 	if (data=="") {
 		dataType="GET";
 	}
-	var startUrl = "http://mid.searchcollege.me";
+	var startUrl = "http://mid.searchcollege.me/";
 
 
 	url = startUrl+url;
