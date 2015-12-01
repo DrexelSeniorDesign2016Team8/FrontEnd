@@ -298,7 +298,7 @@ function saveHighSchoolPercentile() {
 
     var target = e.target;
 
-    alert("Clicked" + target.textContent.replace("%",""));
+    //alert("Clicked" + target.textContent.replace("%",""));
 
 
     searchParameters.HighSchoolPercentile = target.textContent.replace("%","");
@@ -311,7 +311,7 @@ function saveAcceptanceRate() {
 
     var target = e.target;
 
-    alert("Clicked " + target.textContent.replace("%",""));
+   // alert("Clicked " + target.textContent.replace("%",""));
 
     searchParameters.AcceptanceRate = target.textContent.replace("%","");
 }
@@ -325,7 +325,7 @@ function saveStateName() {
 
     var state = this.convert_state(target.textContent, "abbrev")
 
-    alert("Clicked " + state);
+  //  alert("Clicked " + state);
 
     searchParameters.StateName = state;
 }
@@ -338,7 +338,7 @@ function saveRetentionRate() {
 
     var target = e.target;
 
-    alert("Clicked " + target.textContent.replace("%",""));
+   // alert("Clicked " + target.textContent.replace("%",""));
 
     searchParameters.retentionRate = target.textContent.replace("%","");
 }
@@ -350,7 +350,7 @@ function saveType() {
 
     var target = e.target;
 
-    alert("Clicked " + target.textContent);
+  //  alert("Clicked " + target.textContent);
 
     searchParameters.institutionType = target.textContent.replace("%","");
 }
