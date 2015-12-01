@@ -16,7 +16,11 @@ function removeLoadScreen() {
 	spinner.removeClass("is-active")
 }
 
-
+/*
+This function creates the header of the college Search page
+The header contains an icon that links to the home page
+The right side also contains elements depending on if currently logged on
+ */
 function createHeader() {
 	var header = $("#header");
 	
@@ -37,7 +41,7 @@ function createHeader() {
 	header.append(ahref);
 	
 	//if (loggedIn==false) {
-		
+		//TODO enable for logged in user
 		var createAccountbtn = document.createElement("BUTTON");
 	createAccountbtn.className="mdl-button mdl-js-button mdl-js-ripple-effect createAccountbtn";
 	createAccountbtn.id="accountCreation";
@@ -52,7 +56,9 @@ function createHeader() {
 //}
 
 }
-
+/*
+This function invokes the college search api
+ */
 function invokeCollegeSearchAPI(url, data, dataType, success) {
 
 
@@ -83,11 +89,17 @@ function CollegeSearchAPI(url, data, success, dataType){
 }
 
 
+/*
+This function retrieves a cookie based on a name
+ */
 function getCookie(name) {
 		var regexp = new RegExp("(?:^" + name + "|;\s*"+ name + ")=(.*?)(?:;|$)", "g");
 		var result = regexp.exec(document.cookie);
 		return (result === null) ? null : result[1];
 }
+/*
+This function creates a cookie with a name and value taken as arguments
+ */
 function createCookie(name, value) {
 	document.cookie = name+"="+value;
 }

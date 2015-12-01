@@ -5,27 +5,31 @@
 
 var searchParameters = {};
 
-
+/*
+This performs search on the page
+ */
 function performSearch() {
 
 
-    if (!checkFields()) {
+    if (!checkFields()) {       // This checks the fields on the page
         return false;
     }
     searchOptions();
 
     var search = constructSearch();
 
-    createCookie("searchParameters", search);
-        window.location.href="searchResults.html";
+    createCookie("searchParameters", search);           // create a cookie with the search parameters
+        window.location.href="searchResults.html";      // redirect to a new page
 
     return false;
 }
 
-function loadResultsPage() {
 
-}
-
+/*
+This function checks each field against a regular expression
+Another function performs the actual logic
+Returns true or false if one field is invalid
+ */
 function checkFields() {
 
     var GPAfield = $("#GPANumber");
@@ -90,7 +94,11 @@ function checkFields() {
     else return false;
 }
 
-
+/*
+This function checks an element against a regular expression
+If the field is blank it returns true
+If the value contains text that follows the regular expression it returns true, else false
+ */
 function checkRegExp(elem, regExp) {
 
     if (!elem.text()=="") {
@@ -101,6 +109,10 @@ function checkRegExp(elem, regExp) {
     }
     return true;
 }
+/*
+This function is pending further completion
+The menu is displayed incorrectly so this will relocate the div
+ */
 function displayPercentileMenu(el,list) {
 
 
@@ -119,7 +131,10 @@ function displayPercentileMenu(el,list) {
     list.show();
     //TODO relocate div element and add show or hide
 }
-
+/*
+ This function is pending further completion
+ The menu is displayed incorrectly so this will relocate the div
+ */
 function togglePercentile(element, list) {
 
     element = $(element);
@@ -133,9 +148,10 @@ function togglePercentile(element, list) {
 
 }
 
-function pageSetup() {
-}
 
+/*
+This function gets all the searchOptions and saves them to a json object
+ */
 function searchOptions() {
     // Get all options from HTML fields and save them to a variable
 
@@ -162,7 +178,6 @@ function searchOptions() {
     var writingScore = $("#WritingScore");
 
     searchParameters.WritingScore = writingScore.val();
-
 
     var zipCode = $("#zipCode");
 
@@ -198,6 +213,9 @@ function searchOptions() {
         searchParameters.institutionType="";
 
 }
+/*
+This function contructs the search parameters
+ */
 function constructSearch() {
     // usually just a get request so a simple GET is fine
 
@@ -208,20 +226,15 @@ function constructSearch() {
 
     var jsonString = JSON.stringify(searchParameters);
 
-    /*jsonString = jsonString.replace(/\"\:\"/g,"=");
-    jsonString = jsonString.replace(/\"\"\"\"/g,"");
-
-    jsonString = jsonString.replace("{","");
-    jsonString = jsonString.replace("}","");
-
-    url = url + jsonString;
-    */
     url +=formatSearch();
 
 
     return url;
 }
 
+/*
+This function formats the search depending on the values that are filled in and not
+ */
 function formatSearch() {
 
     var parameters="";
@@ -274,6 +287,9 @@ function formatSearch() {
     return parameters;
 
 }
+/*
+This function saves the high school percentile object to the json object
+ */
 function saveHighSchoolPercentile() {
     var e = event || window.event
 
@@ -284,7 +300,9 @@ function saveHighSchoolPercentile() {
 
     searchParameters.HighSchoolPercentile = target.textContent.replace("%","");
 }
-
+/*
+ This function saves the acceptance rate object to the json object
+ */
 function saveAcceptanceRate() {
     var e = event || window.event;
 
@@ -294,7 +312,9 @@ function saveAcceptanceRate() {
 
     searchParameters.AcceptanceRate = target.textContent.replace("%","");
 }
-
+/*
+ This function saves the state name object to the json object
+ */
 function saveStateName() {
     var e = event || window.event;
 
@@ -307,6 +327,9 @@ function saveStateName() {
     searchParameters.StateName = state;
 }
 
+/*
+ This function saves the retention rate object to the json object
+ */
 function saveRetentionRate() {
     var e = event || window.event;
 
@@ -316,7 +339,9 @@ function saveRetentionRate() {
 
     searchParameters.retentionRate = target.textContent.replace("%","");
 }
-
+/*
+ This function saves the college type to the json object
+ */
 function saveType() {
     var e = event || window.event;
 

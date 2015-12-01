@@ -3,14 +3,16 @@
  */
 
 
-var searchResults = {};
+var searchResults = {};     // This array contains the search results
 
 
 
 var collegeArray = [];
 
 
-
+/*
+This function will be used when the update button is used in the page
+ */
 function update() {
 
     searchOptions();
@@ -18,6 +20,11 @@ function update() {
     constructSearch();
 }
 
+/*
+This function loads the results
+This reads the cookie containing the search parameters
+It then makes a call to the college search api to retrieve the results
+ */
 function loadResults() {
 
 
@@ -28,16 +35,6 @@ function loadResults() {
 
     var result = invokeCollegeSearchAPI(searchParameters, null, "GET", function (result) {
 
-        college = {}
-
-        college.name = "Drexel University";
-
-        college.phoneNumber = "555-555-5555";
-
-        college.population = "25000";
-
-        college.address = "3141 Chestnut Street Philadelphia 19104";
-
 
         for (var i = 0; i < result.length; i++) {
 
@@ -47,23 +44,20 @@ function loadResults() {
 
         // TODO set up onclicks
 
-        // var hspercentileBtn = $("#hspercentileBtn");
-        //  var percentiledropDown = $("#percentiles");
-        //  var hslist = $("#hspercentileList");            // the ul list
-        //  hspercentileBtn.click(function() {
-        //       var button = this;
-        //      togglePercentile(button, percentiledropDown, hslist);
-        //   });
 
     });
 }
 
+/*
+This function adds search results to the page
+This currently just displays college information
+ */
 function addSearchResult(collegeItem, resultsDiv, count) {
 
     var item = document.createElement("DIV");       // the div will be the individual college
     var name;
     var address;
-    var website
+    var website;
     var phoneNumber;
     var population;
     item.id=count;
@@ -126,8 +120,6 @@ function addSearchResult(collegeItem, resultsDiv, count) {
     resultsDiv.append(item);
 
 
-   // {name: Drexel University, phoneNumber: 555-555-5555, population: 25,000, address: 3141 Chestnut, Philadelphia, 19104
-
 }
 
 function searchOptions() {
@@ -161,45 +153,4 @@ function constructSearch(searchParameters) {
 
     url = url + jsonString;
 
-    alert("The request to be called is " + url);
-}
-function saveHighSchoolPercentile() {
-    var e = event || window.event
-
-    var target = e.target;
-
-    alert("Clicked" + target.textContent);
-
-
-    searchParameters.HighSchoolPercentile = target.textContent;
-}
-
-function saveAcceptanceRate() {
-    var e = event || window.event;
-
-    var target = e.target;
-
-    alert("Clicked " + target.textContent);
-
-    searchParameters.AcceptanceRate = target.textContent;
-}
-
-function saveRetentionRate() {
-    var e = event || window.event;
-
-    var target = e.target;
-
-    alert("Clicked " + target.textContent);
-
-    searchParameters.retentionRate = target.textContent;
-}
-
-function saveType() {
-    var e = event || window.event;
-
-    var target = e.target;
-
-    alert("Clicked " + target.textContent);
-
-    searchParameters.institutionType = target.textContent;
 }
