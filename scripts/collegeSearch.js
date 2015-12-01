@@ -30,6 +30,9 @@ function createHeader() {
 	icon.alt="CollegeSearch";
 	
 	icon.id="collegeSearchicon";
+	icon.onclick = function() {
+		window.location.href = 'http://searchcollege.me/frontend/';
+	}
 	
 	header.append(icon);
 	
