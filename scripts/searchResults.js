@@ -11,42 +11,6 @@ var collegeArray = [];
 
 
 
-function createButton(label, type, errorMessage, id, pattern, fortext) {
-
-
-
-    // create input element
-    var input = document.createElement("INPUT");
-
-    input.setAttribute("type","text");
-    input.setAttribute("pattern", pattern)
-    input.addClass("mdl-textfield mdl-js-textfield");
-    input.id=id;
-
-    var errorMsg = document.createElement("SPAN");
-
-    var label = document.createElement("label");
-    label.setAttribute("for", fortext);
-
-    errorMsg.addClass("mdl-textfield__label");
-    errorMsg.text=errorMessage;
-}
-
-function separateCollegeFeatures() {
-
-
-}
-function GPASearch() {
-
-    var type = text;
-    var pattern = "-?[0-9]*(\.[0-9]+)?";
-    var id="GPANumber";
-
-    var errorMsg="Input is not a number!"
-    var forId="textLabelGPA";
-    var labelTxt = "GPA (Out of 4.0)";
-}
-
 function update() {
 
     searchOptions();
@@ -54,77 +18,48 @@ function update() {
     constructSearch();
 }
 
-function createhighSchooldropdown() {
-
-    var dropdown = $("#hspercentiles");
-
-
-    var percentiles = $("#percentiles");
-
-    var ul = document.createElement('UL');
-
-    ul.setAttribute('class', 'mdl-menu mdl-js-menu mdl-js-ripple-effect');
-    ul.setAttribute("for", "hspercentiles");
-    var options = ["10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"];
-
-    /*  percentiles.children().each( function(index, value) {
-
-     // add each item to the list
-     var li = document.createElement('LI');
-     li.setAttribute('class', 'mdl-menu__item');
-     li.innerHTML = options[index];
-     li.button = dropdown;
-     //li.onclick = onSelect;
-     ul.appendChild(li);
-     });
-     */
-
-    dropdown.append(ul);
-
-
-}
-
 function loadResults() {
 
 
     searchParameters = getCookie("searchParameters");
 
-  //  var url = constructSearch(searchParameters);
+    //  var url = constructSearch(searchParameters);
     var resultsDiv = $("#information");
 
-    var result = invokeCollegeSearchAPI(searchParameters, null, "GET" ,function() {});
-    college = {}
+    var result = invokeCollegeSearchAPI(searchParameters, null, "GET", function (result) {
+        ;
+        college = {}
 
-    college.name="Drexel University";
+        college.name = "Drexel University";
 
-    college.phoneNumber="555-555-5555";
+        college.phoneNumber = "555-555-5555";
 
-    college.population="25000";
+        college.population = "25000";
 
-    college.address="3141 Chestnut Street Philadelphia 19104";
+        college.address = "3141 Chestnut Street Philadelphia 19104";
 
-  //  invokeCollegeSearchAPI(url, null, "GET", function(result) {
+        //  invokeCollegeSearchAPI(url, null, "GET", function(result) {
 
-    //result = [];
+        //result = [];
 
-    result.push(college);
-        for(var i=0; i<result.length;i++) {
+        result.push(college);
+        for (var i = 0; i < result.length; i++) {
 
             addSearchResult(result[i], resultsDiv, i)
         }
-  //  });
+        //  });
 
         // TODO set up onclicks
 
-    // var hspercentileBtn = $("#hspercentileBtn");
-    //  var percentiledropDown = $("#percentiles");
-    //  var hslist = $("#hspercentileList");            // the ul list
-    //  hspercentileBtn.click(function() {
-    //       var button = this;
-    //      togglePercentile(button, percentiledropDown, hslist);
-    //   });
+        // var hspercentileBtn = $("#hspercentileBtn");
+        //  var percentiledropDown = $("#percentiles");
+        //  var hslist = $("#hspercentileList");            // the ul list
+        //  hspercentileBtn.click(function() {
+        //       var button = this;
+        //      togglePercentile(button, percentiledropDown, hslist);
+        //   });
 
-
+    });
 }
 
 function addSearchResult(collegeItem, resultsDiv, count) {
