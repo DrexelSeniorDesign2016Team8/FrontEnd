@@ -99,6 +99,7 @@ function checkRegExp(elem, regExp) {
             return false;
         }
     }
+    return true;
 }
 function displayPercentileMenu(el,list) {
 
