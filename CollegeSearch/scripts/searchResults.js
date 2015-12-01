@@ -92,7 +92,7 @@ function loadResults() {
   //  var url = constructSearch(searchParameters);
     var resultsDiv = $("#information");
 
-
+    var result = invokeCollegeSearchAPI(searchParameters, null, "GET" ,function() {});
     college = {}
 
     college.name="Drexel University";
@@ -105,7 +105,7 @@ function loadResults() {
 
   //  invokeCollegeSearchAPI(url, null, "GET", function(result) {
 
-    result = [];
+    //result = [];
 
     result.push(college);
         for(var i=0; i<result.length;i++) {

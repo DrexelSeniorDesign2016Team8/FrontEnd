@@ -62,7 +62,9 @@ function invokeCollegeSearchAPI(url, data, dataType, success) {
 
 
 	url = startUrl=url;
-	CollegeSearchAPI(url,data,success,dataType);
+	var response = CollegeSearchAPI(url,data,success,dataType);
+
+	return response;
 }
 /*
 	url is the url request
@@ -73,6 +75,8 @@ function CollegeSearchAPI(url, data, success, dataType){
 	xmlHttp.open( dataType, url, false);
 	xmlHtpp.send(null);
 	success(xmlHttp.responseText)
+
+	return xmlHtpp.responseText;
 
 }
 
