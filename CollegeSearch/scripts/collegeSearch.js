@@ -74,7 +74,7 @@ function CollegeSearchAPI(url, data, success, dataType){
 
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.open( dataType, url, false);
-	xmlHtpp.send(null);
+	xmlHttp.send(null);
 	success(xmlHttp.responseText)
 
 	return xmlHtpp.responseText;
