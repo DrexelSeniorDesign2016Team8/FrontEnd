@@ -214,7 +214,6 @@ function constructSearch() {
     */
     url +=formatSearch();
 
-    alert("The request to be called is " + url);
 
     return url;
 }
