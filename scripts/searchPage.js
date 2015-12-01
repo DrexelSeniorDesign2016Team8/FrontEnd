@@ -221,23 +221,53 @@ function constructSearch() {
 function formatSearch() {
 
     var parameters="";
-    parameters+="GPAvalue="+searchParameters.GPAvalue+"&";
-    parameters+="ACTScore="+searchParameters.ACTScore+"&";
-    parameters+="HighSchoolPercentile="+searchParameters.HighSchoolPercentile+"&";
-    parameters+="MathScore="+searchParameters.MathScore+"&";
-    parameters+="ReadingScore="+searchParameters.ReadingScore+"&";
-    parameters+="WritingScore="+searchParameters.WritingScore+"&";
-    parameters+="name="+searchParameters.name+"&";
-    parameters+="StateName="+searchParameters.StateName+"&";
-    parameters+="zipCode="+searchParameters.zipCode+"&";
+    if (searchParameters.GPAvalue) {
+        parameters += "GPAvalue=" + searchParameters.GPAvalue + "&";
+    }
+    if (searchParameters.ACTScore) {
+        parameters += "ACTScore=" + searchParameters.ACTScore + "&";
+    }
+    if (searchParameters.HighSchoolPercentile) {
+        parameters += "HighSchoolPercentile=" + searchParameters.HighSchoolPercentile + "&";
+    }
+    if (searchParameters.MathScore) {
+        parameters += "MathScore=" + searchParameters.MathScore + "&";
+    }
+    if (searchParameters.ReadingScore) {
+        parameters += "ReadingScore=" + searchParameters.ReadingScore + "&";
+    }
+    if (searchParameters.WritingScore) {
+        parameters += "WritingScore=" + searchParameters.WritingScore + "&";
+    }
+    if (searchParameters.name) {
+        parameters += "name=" + searchParameters.name + "&";
+    }
+    if (searchParameters.StateName) {
+        parameters += "StateName=" + searchParameters.StateName + "&";
+    }
+    if (searchParameters.zipCode) {
+        parameters += "zipCode=" + searchParameters.zipCode + "&";
+    }
 
 
-    parameters+="fullAddress="+searchParameters.fullAddress+"&";
-    parameters+="AcceptanceRate="+searchParameters.AcceptanceRate+"&";
-    parameters+="retentionRate="+searchParameters.retentionRate+"&";
-    parameters+="institutionType="+searchParameters.institutionType+"&";
-    parameters+="studentPopulation="+searchParameters.studentPopulation+"&";
-    parameters+="classSize="+searchParameters.classSize;
+    if (searchParameters.fullAddress) {
+        parameters += "fullAddress=" + searchParameters.fullAddress + "&";
+    }
+    if (searchParameters.AcceptanceRate) {
+        parameters += "AcceptanceRate=" + searchParameters.AcceptanceRate + "&";
+    }
+    if (searchParameters.retentionRate) {
+        parameters += "retentionRate=" + searchParameters.retentionRate + "&";
+    }
+    if (searchParameters.institutionType) {
+        parameters += "institutionType=" + searchParameters.institutionType + "&";
+    }
+    if (searchParameters.studentPopulation) {
+        parameters += "studentPopulation=" + searchParameters.studentPopulation + "&";
+    }
+    if (searchParameters.classSize) {
+        parameters += "classSize=" + searchParameters.classSize;
+    }
 
     return parameters;
 
