@@ -72,6 +72,7 @@ function invokeCollegeSearchAPI(url, data, dataType, success) {
  */
 function CollegeSearchAPI(url, data, success, dataType){
 
+	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.open( dataType, url, false);
 	xmlHtpp.send(null);
 	success(xmlHttp.responseText)
