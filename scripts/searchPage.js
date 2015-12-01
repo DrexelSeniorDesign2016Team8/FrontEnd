@@ -260,7 +260,7 @@ function formatSearch() {
         parameters += "name=" + searchParameters.name + "&";
     }
     if (searchParameters.StateName) {
-        parameters += "StateName=" + searchParameters.StateName + "&";
+        parameters += "stateName=" + searchParameters.StateName + "&";
     }
     if (searchParameters.zipCode) {
         parameters += "zipCode=" + searchParameters.zipCode + "&";
