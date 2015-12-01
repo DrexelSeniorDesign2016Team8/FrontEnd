@@ -87,7 +87,7 @@ function createhighSchooldropdown() {
 function loadResults() {
 
 
-    searchParameters = getCookie(searchParameters);
+    searchParameters = getCookie("searchParameters");
 
   //  var url = constructSearch(searchParameters);
     var resultsDiv = $("#information");
