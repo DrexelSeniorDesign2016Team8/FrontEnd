@@ -6,88 +6,97 @@
 var searchParameters = {};
 
 
-
-
-
-
-
-function createButton(label, type, errorMessage, id, pattern, fortext) {
-
-
-
-    // create input element
-    var input = document.createElement("INPUT");
-
-    input.setAttribute("type","text");
-    input.setAttribute("pattern", pattern)
-    input.addClass("mdl-textfield mdl-js-textfield");
-    input.id=id;
-
-    var errorMsg = document.createElement("SPAN");
-
-    var label = document.createElement("label");
-    label.setAttribute("for", fortext);
-
-    errorMsg.addClass("mdl-textfield__label");
-    errorMsg.text=errorMessage;
-}
-
-function GPASearch() {
-
-    var type = text;
-    var pattern = "-?[0-9]*(\.[0-9]+)?";
-    var id="GPANumber";
-
-    var errorMsg="Input is not a number!"
-    var forId="textLabelGPA";
-    var labelTxt = "GPA (Out of 4.0)";
-}
-
 function performSearch() {
 
+
+    if (!checkFields()) {
+        return false;
+    }
     searchOptions();
 
     var search = constructSearch();
 
     createCookie("searchParameters", search);
-        window.location.href="searchResults.html"
+        window.location.href="searchResults.html";
 
+    return false;
 }
 
 function loadResultsPage() {
 
 }
-function createhighSchooldropdown() {
 
-    var dropdown = $("#hspercentiles");
+function checkFields() {
+
+    var GPAfield = $("#GPANumber");
+
+    var success;
+    searchParameters.GPAvalue = GPAfield.val();
+    if (GPAfield.val()=="-?[0-9]*(\.[0-9]+)?") {
+        alert("Please check error messages");
+        return false;
+    }
+
+    var ACTscore = $("#ACTScore");
+    var reg = new RegExp("[0-9]{2}")
+    success = this.checkRegExp(ACTscore, reg);
+    searchParameters.ACTScore = ACTscore.val();
+
+    var mathScore = $("#MathScore");
+
+    var reg = new RegExp("[0-9]{3}")
+    success = this.checkRegExp(mathScore, reg);
+    searchParameters.MathScore = mathScore.val();
+
+    var readingScore = $("#ReadingScore");
+
+    var reg = new RegExp("[0-9]{3}")
+    success = this.checkRegExp(readingScore, reg);
+    searchParameters.ReadingScore = readingScore.val();
+
+    var institutionName = $("#InstitutionName");
+
+    searchParameters.name = institutionName.val();
+
+    var writingScore = $("#WritingScore");
+
+    var reg = new RegExp("[0-9]{3}")
+    success = this.checkRegExp(writingScore, reg);
+    searchParameters.WritingScore = writingScore.val();
 
 
-    var percentiles = $("#percentiles");
+    var zipCode = $("#zipCode");
 
-    var ul = document.createElement('UL');
+    var reg = new RegExp("[0-9]{5}")
+    success = this.checkRegExp(zipCode, reg);
+    searchParameters.zipCode = zipCode.val();
 
-    ul.setAttribute('class', 'mdl-menu mdl-js-menu mdl-js-ripple-effect');
-    ul.setAttribute("for", "hspercentiles");
-    var options = ["10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"];
+    var fullAddress = $("#FullAddress");
 
-  /*  percentiles.children().each( function(index, value) {
+    searchParameters.fullAddress = encodeURIComponent(fullAddress.val());
 
-        // add each item to the list
-        var li = document.createElement('LI');
-        li.setAttribute('class', 'mdl-menu__item');
-        li.innerHTML = options[index];
-        li.button = dropdown;
-        //li.onclick = onSelect;
-        ul.appendChild(li);
-    });
-*/
+    var studentPopulation = $("#populationtxt");
 
-    dropdown.append(ul);
+    searchParameters.studentPopulation = studentPopulation.val();
+
+    var classSize = $("#classSizetxt");
+
+    searchParameters.classSize = classSize.val();
 
 
+    if (success) {
+        return true;
+    }
+    else return false;
 }
 
 
+function checkRegExp(elem, regExp) {
+    if (!regExp.test(elem)) {
+        window.id=elem;
+        return false;
+    }
+}
 function displayPercentileMenu(el,list) {
 
 
@@ -121,22 +130,10 @@ function togglePercentile(element, list) {
 }
 
 function pageSetup() {
-    // TODO set up onclicks
-
-   // var hspercentileBtn = $("#hspercentileBtn");
-  //  var percentiledropDown = $("#percentiles");
-  //  var hslist = $("#hspercentileList");            // the ul list
-  //  hspercentileBtn.click(function() {
- //       var button = this;
-  //      togglePercentile(button, percentiledropDown, hslist);
- //   });
-
-
 }
 
 function searchOptions() {
     // Get all options from HTML fields and save them to a variable
-
 
     var GPAfield = $("#GPANumber");
 
