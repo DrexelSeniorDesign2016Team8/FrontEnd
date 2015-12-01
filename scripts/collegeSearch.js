@@ -74,7 +74,8 @@ function CollegeSearchAPI(url, data, success, dataType){
 
 	var xmlHttp = new XMLHttpRequest();
 	$.get(url, function(data, status) {
-		success(data);
+		var result = JSON.parse(data)
+		success(result);
 
 	});
 
