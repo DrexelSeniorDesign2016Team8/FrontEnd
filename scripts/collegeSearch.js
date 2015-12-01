@@ -32,6 +32,7 @@ function createHeader() {
 	icon.id="collegeSearchicon";
 	icon.onclick = function() {
 		window.location.href = 'http://searchcollege.me/frontend/';
+
 	}
 	
 	header.append(icon);
@@ -61,7 +62,7 @@ function invokeCollegeSearchAPI(url, data, dataType, success) {
 	if (data=="") {
 		dataType="GET";
 	}
-	var startUrl = "http://searchCollege.me/middleware";
+	var startUrl = "http://mid.searchcollege.me";
 
 
 	url = startUrl+"/"+url;
