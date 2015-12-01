@@ -61,7 +61,7 @@ function invokeCollegeSearchAPI(url, data, dataType, success) {
 	var startUrl = "http://searchCollege.me/middleware";
 
 
-	url = startUrl+url;
+	url = startUrl+"/"+url;
 	var response = CollegeSearchAPI(url,data,success,dataType);
 
 	return response;
