@@ -4087,7 +4087,6 @@ input.mdl-button[type="submit"] {
           flex-direction: column;
   font-size: 16px;
   font-weight: 400;
-  min-height: 200px;
   overflow: hidden;
   width: 330px;
   z-index: 1;

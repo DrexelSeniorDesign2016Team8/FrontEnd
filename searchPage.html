@@ -6,7 +6,9 @@
 <script src="jQuery/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="css/collegeSearch.css">
 <link rel="stylesheet" href="css/searchPage.css">
-
+<!-- Material Design fonts -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script>
 		function loadPage() {
@@ -33,39 +35,28 @@
   <span class="mdl-layout-title">Explore and Enter Additional Information</span>
 </div>
   </center>
-<div class="mdl-grid" >
-  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+<div class="mdl-grid">
+  <!-- GPA Box-->
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-
-    <!-- GPA Box-->
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
-    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="GPANumber">
-    <label class="mdl-textfield__label" for="textLabelGPA"></label>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="GPANumber">
+    <label class="mdl-textfield__label" for="GPANumber">GPA (Out of 4.0)</label>
     <span class="mdl-textfield__error">Input is not a number!</span>
-
-
   </div>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="textLabelGPA">GPA (Out of 4.0)</h2>
-	</div>
   </div>
-
   <!-- ACT Composite Score -->
-  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9]" id="ACTScore">
-      <label class="mdl-textfield__label" for="ACTCompositeScore"></label>
+      <label class="mdl-textfield__label" for="ACTScore">ACT Composite Score</label>
       <span class="mdl-textfield__error">Not a valid Score</span>
     </div>
-
-  <div class="mdl-card__label">
-    <h2 class="mdl-card__title-text title_searchOption" id="ACTCompositeScore">ACT Composite Score</h2>
-  </div>
   </div>
 
   <!-- High School Percentile Button-->
-  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
     <button id="hspercentileBtn" class="mdl-button mdl-js-button mdl-button--icon">
       <i class="material-icons">more_vert</i>
@@ -85,49 +76,39 @@
       <li class="mdl-menu__item">10%</li>
     </ul>
       <label class="mdl-menu__label" for="highschoolpercentile"></label>
-  <div class="mdl-card__label">
+    <div class="mdl-card__title">
     <h2 class="mdl-card__title-text title_searchOption" id="highschoolpercentile">High School Percentile</h2>
   </div>
     </div>
-
+  </div>
+<div class="mdl-grid">
   <!-- SAT Math Score -->
-    <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
-      <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
+<div class="mdl-card mdl-shadow--2dp searchPageBox">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="MathScore">
-      <label class="mdl-textfield__label" for="SATMathScore"></label>
+      <label class="mdl-textfield__label" for="MathScore">SAT Math Score</label>
       <span class="mdl-textfield__error">Not a valid Score</span>
-    </div>
-
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="SATMathScore">SAT Math Score</h2>
     </div>
   </div>
 
   <!-- SAT Reading Score -->
-  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+<div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="ReadingScore">
-    <label class="mdl-textfield__label" for="SATReading"></label>
+    <label class="mdl-textfield__label" for="ReadingScore">SAT Reading Score</label>
     <span class="mdl-textfield__error">Not a valid Score</span>
   </div>
 
-  <div class="mdl-card__label">
-    <h2 class="mdl-card__title-text title_searchOption" id="SATReading">SAT Reading Score</h2>
-  </div>
 </div>
 
   <!-- SAT Writing Number -->
-<div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+<div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-<div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 40px;">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
   <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="WritingScore">
-  <label class="mdl-textfield__label" for="SATWritingScore"></label>
+  <label class="mdl-textfield__label" for="WritingScore">SAT Writing Score</label>
   <span class="mdl-textfield__error">Not a valid Score</span>
-</div>
-
-<div class="mdl-card__label">
-  <h2 class="mdl-card__title-text title_searchOption" id="SATWritingScore">SAT Writing Score</h2>
 </div>
 </div>
 
@@ -139,23 +120,18 @@
 
 <!-- Institution Name-->
 <div class="mdl-grid">
-  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text" pattern="-?[a-z|A-Z|\s]*)?" id="InstitutionName">
-      <label class="mdl-textfield__label" for="namelabel"></label>
+      <label class="mdl-textfield__label" for="InstitutionName">Name</label>
       <span class="mdl-textfield__error">Institution cannot have numbers!</span>
-
-
-    </div>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="namelabel">Name</h2>
     </div>
   </div>
 
 
   <!-- State Name -->
-  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
     <button id="StateButton" class="mdl-button mdl-js-button mdl-button--icon">
       <i class="material-icons">more_vert</i>
@@ -220,37 +196,31 @@
 
 
   <!-- Zip Code -->
-  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text" pattern="[0-9]{5}" id="zipCode">
-      <label class="mdl-textfield__label" for="zipLabel"></label>
+      <label class="mdl-textfield__label" for="zipCode">Zip Code</label>
       <span class="mdl-textfield__error">Please enter a 5 digit zip code</span>
-
-
-    </div>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="zipLabel">Zip Code</h2>
     </div>
   </div>
 
+</div>
 
+<div class="mdl-grid">
   <!-- Full Address -->
-  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text"  id="FullAddress">
-      <label class="mdl-textfield__label" for="AddressLabel"></label>
+      <label class="mdl-textfield__label" for="FullAddress">Full Address</label>
 
-    </div>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="AddressLabel">Full Address</h2>
     </div>
   </div>
 
 
   <!-- Acceptance Rate-->
-  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
     <button id="acceptanceRate" class="mdl-button mdl-js-button mdl-button--icon">
       <i class="material-icons">more_vert</i>
@@ -277,7 +247,7 @@
     </div>
 
   <!-- Retention Rate -->
-  <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
     <button id="retentionRatebtn" class="mdl-button mdl-js-button mdl-button--icon">
       <i class="material-icons">more_vert</i>
@@ -302,10 +272,11 @@
     </div>
 
   </div>
-
+</div>
+<div class="mdl-grid">
 
   <!-- Institution Type -->
-    <div class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
       <button id="institutionTypeBtn" class="mdl-button mdl-js-button mdl-button--icon">
         <i class="material-icons">more_vert</i>
@@ -323,37 +294,29 @@
   </div>
 
   <!-- Student Population -->
-  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
-      <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="populationtxt">
-      <label class="mdl-textfield__label" for="population"></label>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="population">
+      <label class="mdl-textfield__label" for="population">Student Population</label>
       <span class="mdl-textfield__error">Please enter a valid number</span>
 
 
-    </div>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="population">Student Population</h2>
     </div>
   </div>
 
   <!-- Class Size -->
-  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-shadow--2dp" style="height: 30px;">
+  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield" style="height: 44px; width: 150px;">
-      <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="classSizetxt">
-      <label class="mdl-textfield__label" for="classSize"></label>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="classSize">
+      <label class="mdl-textfield__label" for="classSize">Class Size</label>
       <span class="mdl-textfield__error">Please enter a valid number</span>
 
 
     </div>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="classSize">Class Size</h2>
-    </div>
   </div>
 </div>
-
-
 
 <div id="spinner" class="mdl-spinner mdl-js-spinner"></div>
 <body onload="loadPage()">
