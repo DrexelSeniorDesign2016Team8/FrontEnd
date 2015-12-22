@@ -42,12 +42,22 @@ function loadResults() {
         }
         //  });
 
+
+        if (results.length==0) {
+            noResultsAvailable();
+        }
         // TODO set up onclicks
 
 
     });
 }
 
+/*
+This function should show a warning that no search results are available and return the user to the previous page
+ */
+function noResultsAvailable() {
+
+}
 /*
 This function adds search results to the page
 This currently just displays college information

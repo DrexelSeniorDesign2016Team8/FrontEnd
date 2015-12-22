@@ -42,19 +42,32 @@ function createHeader() {
 	
 	//if (loggedIn==false) {
 		//TODO enable for logged in user
-		var createAccountbtn = document.createElement("BUTTON");
-	createAccountbtn.className="mdl-button mdl-js-button mdl-js-ripple-effect createAccountbtn";
-	createAccountbtn.id="accountCreation";
-	var text = document.createTextNode("Create Account");  
-	createAccountbtn.appendChild(text);
+	var buttonLink = document.createElement("A");
+	buttonLink.href="signIn.html";
+    
+    var createAccountbtn = $('<button/>', 
+    {text :'Create Account',
+    Class :'mdl-button mdl-js-button mdl-js-ripple-effect createAccountbtn',
+    id : 'accountCreation',
+    click :function () { openAccountPage() } }
+    );
 
 	header.append(createAccountbtn);
-	
-	
-	
-	//header.append("<hr>");
-//}
 
+	
+
+}
+
+function openAccountPage() {
+    var modal = $("#loginPage");
+    
+    modal.modal({ 
+        remote: 'signIn.html',
+        show: 'false'
+    })
+    modal.modal('show');
+    
+    
 }
 /*
 This function invokes the college search api

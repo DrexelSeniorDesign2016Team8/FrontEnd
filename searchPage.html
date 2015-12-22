@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<!-- Bootstrap -->
+<link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+
+
 <script>
 		function loadPage() {
 		createHeader();
@@ -57,25 +62,23 @@
 
   <!-- High School Percentile Button-->
   <div class="mdl-card mdl-shadow--2dp searchPageBox">
-
-    <button id="hspercentileBtn" class="mdl-button mdl-js-button mdl-button--icon">
+    <button id="highschoolpercentilebtn" class="mdl-button mdl-js-button mdl-button--icon">
       <i class="material-icons">more_vert</i>
 
     </button>
 
-    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="hspercentileBtn" id="percentiles" height="40px" onClick="saveHighSchoolPercentile()">
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="highschoolpercentilebtn" id="highschoolpercentile" style="y:scroll" onClick="saveAcceptanceRate()">
       <li class="mdl-menu__item">100%</li>
       <li class="mdl-menu__item">90%</li>
       <li class="mdl-menu__item">80%</li>
-      <li class="mdl-menu__item">70%%</li>
-      <li class="mdl-menu__item">60%%</li>
+      <li class="mdl-menu__item">70%</li>
+      <li class="mdl-menu__item">60%</li>
       <li class="mdl-menu__item">50%</li>
       <li class="mdl-menu__item">40%</li>
       <li class="mdl-menu__item">30%</li>
       <li class="mdl-menu__item">20%</li>
       <li class="mdl-menu__item">10%</li>
     </ul>
-      <label class="mdl-menu__label" for="highschoolpercentile"></label>
     <div class="mdl-card__title">
     <h2 class="mdl-card__title-text title_searchOption" id="highschoolpercentile">High School Percentile</h2>
   </div>
@@ -320,18 +323,38 @@
 
 <div id="spinner" class="mdl-spinner mdl-js-spinner"></div>
 <body onload="loadPage()">
+  <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" id="percentiles" style="display: none">
+  <li class="mdl-menu__item">100%</li>
+  <li class="mdl-menu__item">90%</li>
+  <li class="mdl-menu__item">80%</li>
+  <li class="mdl-menu__item">70%%</li>
+  <li class="mdl-menu__item">60%%</li>
+  <li class="mdl-menu__item">50%</li>
+  <li class="mdl-menu__item">40%</li>
+  <li class="mdl-menu__item">30%</li>
+  <li class="mdl-menu__item">20%</li>
+  <li class="mdl-menu__item">10%</li>
+  </ul>
 </body>
-<div id="percentileOptions" style="display:none">
-<li class="mdl-menu__item">100%</li>
-<li class="mdl-menu__item">90%</li>
-<li class="mdl-menu__item">80%</li>
-<li class="mdl-menu__item">70%%</li>
-<li class="mdl-menu__item">60%%</li>
-<li class="mdl-menu__item">50%</li>
-<li class="mdl-menu__item">40%</li>
-<li class="mdl-menu__item">30%</li>
-<li class="mdl-menu__item">20%</li>
-<li class="mdl-menu__item">10%</li>
+
+
+<!-- Modal -->
+<div class="modal fade" id="loginPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 </html>

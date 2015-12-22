@@ -112,6 +112,24 @@ function checkRegExp(elem, regExp) {
     }
     return true;
 }
+
+function openHSPercentileMenu() {
+    var e = event.target;
+
+    var location = e.getBoundingClientRect();
+
+    var top = location.top;
+    var right = location.right;
+    var left = location.left;
+    var bottom = location.bottom;
+
+ var percentileDiv = $("#percentiles");
+
+
+    percentileDiv.show();
+
+
+}
 /*
 This function is pending further completion
 The menu is displayed incorrectly so this will relocate the div
@@ -123,7 +141,7 @@ function displayPercentileMenu(el,list) {
   // var y = button.offsetTop - button.scrollTop;
     //el = button.offsetParent;
 
-    var percentileDiv = $("#percentileOptions");
+
 
 
     //el.css("top",y);

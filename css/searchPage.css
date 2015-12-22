@@ -13,3 +13,12 @@
 	font-weight: bold;
 	font-size: 15px;
 }
+.textField {
+	margin-top: -40px;
+}
+.searchPageBox {
+	width: 200px;
+	height: 75px;
+	margin-right: 100px;
+	text-align: center;
+}

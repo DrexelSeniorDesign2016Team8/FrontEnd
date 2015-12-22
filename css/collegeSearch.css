@@ -19,3 +19,7 @@ height: 100px;
 #title {
 	text-align: center;
 }
+.searchCard.mdl-card {
+	width: 150px;
+	height: 40px;
+}
