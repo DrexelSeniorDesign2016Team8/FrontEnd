@@ -38,9 +38,11 @@ function loadResults() {
 
         for (var i = 0; i < result.length; i++) {
 
-            addSearchResult(result[i], resultsDiv, i)
-            if (results.length==0) {
+            if (result.length==0) {
                 noResultsAvailable();
+            }
+            else {
+                addSearchResult(result[i], resultsDiv, i)
             }
         }
         //  });
