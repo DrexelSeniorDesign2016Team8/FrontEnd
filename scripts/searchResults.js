@@ -39,13 +39,14 @@ function loadResults() {
         for (var i = 0; i < result.length; i++) {
 
             addSearchResult(result[i], resultsDiv, i)
+            if (results.length==0) {
+                noResultsAvailable();
+            }
         }
         //  });
 
 
-        if (results.length==0) {
-            noResultsAvailable();
-        }
+
         // TODO set up onclicks
 
 
