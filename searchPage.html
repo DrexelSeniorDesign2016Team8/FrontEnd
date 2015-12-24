@@ -1,360 +1,347 @@
-<link rel="stylesheet" href="mdl/material.min.css">
-<script src="mdl/material.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<script src="scripts/collegeSearch.js"></script>
-<script src="scripts/searchPage.js"></script>
-<script src="jQuery/jquery-1.11.3.min.js"></script>
-<link rel="stylesheet" href="css/collegeSearch.css">
-<link rel="stylesheet" href="css/searchPage.css">
-<!-- Material Design fonts -->
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<!-- Bootstrap -->
-<link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-
-
-<script>
-		function loadPage() {
-		createHeader();
-         pageSetup();
-		}
-		</script>
+<!DOCTYPE html>
 <html>
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+</head>
+<div ng-app="CollegeSearch" ng-controller="searchController">
 
-
-<title>CollegeSearch</title>
 <div id="header"></div>
 
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-aria/angular-aria.js"></script>
+<script src="node_modules/angular-animate/angular-animate.js"></script>
+<script src="node_modules/angular-material/angular-material.js"></script>
+<script src="node_modules/angular-messages/angular-messages.js"></script>
+
+<!-- material design javascript -->
+<script src="mdl/material.min.js"></script>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="jQuery/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="css/searchPage.css">
+    <script src="scripts/collegeSearch.js"></script>
+    <script src="scripts/searchPage.js"></script>
+<script>
+    $("#header").load("header.html");
+</script>
 <hr>
 
 <br>
 <br>
-<center><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="searchBtn" style='text-align:center' onClick="performSearch()">
-  Search
-</button>
-  </center>
+  <div id="searchOptions" layout-align="center center">
+  GPA = {{CollegeInfo.gpa}}
+    ACT Score = {{CollegeInfo.actcomposite}}
+    HighSchool Percentile = {{CollegeInfo.HighSchoolPercentile}}
+    MathScore = {{CollegeInfo.MathScore}}
+    Writing Score = {{CollegeInfo.WritingScore}}
+    Reading Score = {{CollegeInfo.ReadingScore}}
+    Institution Name = {{CollegeInfo.InstitutionName}}
+    State Name = {{CollegeInfo.stateName}}
+    Zip Code = {{CollegeInfo.zipcode}}
+    Full Address = {{CollegeInfo.fullAddress}}
+    Acceptance Rate = {{CollegeInfo.acceptanceRate}}
+    Retention Rate = {{CollegeInfo.retentionRate}}
+    Institution Type = {{CollegeInfo.institutionType}}
+    Student Population = {{CollegeInfo.studentPopulation}}
+    Class Size = {{CollegeInfo.classSize}}
+    CommonApplication = {{CollegeInfo.commonApplication}}
+    FavoritedInstitutions = {{CollegeInfo.favoritedInstitutions}}
+    </div>
+
+<center><md-button class= id="searchBtn" style='text-align:center' onClick="performSearch()">
+    Search
+</md-button>
+</center>
 <br>
-<center><div id="additionalinfoTitle">
-  <span class="mdl-layout-title">Explore and Enter Additional Information</span>
+<div id="additionalinfo">
+<div layout="row" layout-align="center center">
+    Explore and Enter Additional Information
 </div>
-  </center>
-<div class="mdl-grid">
-  <!-- GPA Box-->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
+<div layout="grid1" layout-align="center center">
+    <form name="CollegeInfo"></form>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="GPANumber">
-    <label class="mdl-textfield__label" for="GPANumber">GPA (Out of 4.0)</label>
-    <span class="mdl-textfield__error">Input is not a number!</span>
-  </div>
-  </div>
-  <!-- ACT Composite Score -->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9]" id="ACTScore">
-      <label class="mdl-textfield__label" for="ACTScore">ACT Composite Score</label>
-      <span class="mdl-textfield__error">Not a valid Score</span>
+    <md-card class="searchPageBox">
+
+    <md-input-container class="md-block searchPageBox" flex-gt-sm>
+        <!-- GPA Box-->
+
+
+        <input type="number" id="GPANumber" name="gpa" placeholder="GPA (Out of 4.0)" ng-model="CollegeInfo.gpa" *step="0.01"* required/>
+
+    </md-input-container>
+        </md-card>
+
+    <md-card class="searchPageBox">
+    <!-- ACT Box-->
+    <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+        <label>ACT Composite Score)</label>
+        <input type="number" id="ACTScore" ng-model="CollegeInfo.actcomposite" ng-pattern="/^[0-9]{1,2}$/" *step="1.0"*/>
+        <span ng-show="CollegeInfo.actcomposite.$error.pattern">Not a valid number!</span>
+    </md-input-container>
+</md-card>
+
+    <md-card class="searchPageBox">
+        <!-- High School Percentile Box-->
+        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+            <md-select ng-model="CollegeInfo.HighSchoolPercentile" placeholder="Please Select" id="highschoolPercentile">
+
+                <md-option value="10%">10%</md-option>
+                <md-option value="20%">20%</md-option>
+                <md-option value="30%">30%</md-option>
+                <md-option value="40%">40%</md-option>
+                <md-option value="50%">50%</md-option>
+                <md-option value="60%">60%</md-option>
+                <md-option value="70%">70%</md-option>
+                <md-option value="80%">80%</md-option>
+                <md-option value="90%">90%</md-option>
+                <md-option value="100%">100%</md-option>
+            </md-select>
+            <md-card-title><b>High School Percentile</b></md-card-title>
+        </md-input-container>
+    </md-card>
     </div>
-  </div>
+<div layout="grid2" layout-align="center center">
 
-  <!-- High School Percentile Button-->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
-    <button id="highschoolpercentilebtn" class="mdl-button mdl-js-button mdl-button--icon">
-      <i class="material-icons">more_vert</i>
+    <md-card class="searchPageBox">
+        <!-- ACT Box-->
+        <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-    </button>
+            <label>Math Score</label>
+            <input type="number" id="MathScore" name="MathScore" ng-model="CollegeInfo.MathScore" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+            <div ng-messages="CollegeInfo.MathScore.$error">
+                <span ng-show="CollegeInfo.MathScore.$error.pattern">Not a valid score!</span>
+            </div>
+        </md-input-container>
+    </md-card>
+    <md-card class="searchPageBox">
+        <!-- Math Score -->
+        <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="highschoolpercentilebtn" id="highschoolpercentile" style="y:scroll" onClick="saveAcceptanceRate()">
-      <li class="mdl-menu__item">100%</li>
-      <li class="mdl-menu__item">90%</li>
-      <li class="mdl-menu__item">80%</li>
-      <li class="mdl-menu__item">70%</li>
-      <li class="mdl-menu__item">60%</li>
-      <li class="mdl-menu__item">50%</li>
-      <li class="mdl-menu__item">40%</li>
-      <li class="mdl-menu__item">30%</li>
-      <li class="mdl-menu__item">20%</li>
-      <li class="mdl-menu__item">10%</li>
-    </ul>
-    <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text title_searchOption" id="highschoolpercentile">High School Percentile</h2>
-  </div>
+            <label>Writing Score</label>
+            <input type="number" name="WritingScore" ng-model="CollegeInfo.WritingScore" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+            <span ng-show="CollegeInfo.WritingScore.$error.pattern">Not a valid number!</span>
+        </md-input-container>
+    </md-card>
+
+    <md-card class="searchPageBox">
+        <!-- Reading Score-->
+        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+            <label>Reading Score</label>
+            <input type="number" name="ReadingScore" id="ReadingScore" ng-model="CollegeInfo.ReadingScore" ng-pattern="/-?[0-9][0-9][0-9]/" *step="1.0"*/>
+            <span ng-show="CollegeInfo.ReadingScore.$error.pattern">Not a valid number!</span>
+        </md-input-container>
+    </md-card>
+                </div>
+
+<div id="grid2" layout-align="center center">
+
+    <div layout="title2" layout-align="center center">
+        Institution Characteristics
     </div>
-  </div>
-<div class="mdl-grid">
-  <!-- SAT Math Score -->
-<div class="mdl-card mdl-shadow--2dp searchPageBox">
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="MathScore">
-      <label class="mdl-textfield__label" for="MathScore">SAT Math Score</label>
-      <span class="mdl-textfield__error">Not a valid Score</span>
-    </div>
-  </div>
-
-  <!-- SAT Reading Score -->
-<div class="mdl-card mdl-shadow--2dp searchPageBox">
-
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="ReadingScore">
-    <label class="mdl-textfield__label" for="ReadingScore">SAT Reading Score</label>
-    <span class="mdl-textfield__error">Not a valid Score</span>
-  </div>
-
-</div>
-
-  <!-- SAT Writing Number -->
-<div class="mdl-card mdl-shadow--2dp searchPageBox">
-
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-  <input class="mdl-textfield__input" type="text" pattern="-?[0-9][0-9][0-9]" id="WritingScore">
-  <label class="mdl-textfield__label" for="WritingScore">SAT Writing Score</label>
-  <span class="mdl-textfield__error">Not a valid Score</span>
-</div>
-</div>
-
-    </div>
-
-<div id="title">
-  <span class="mdl-layout-title">Institution Characteristics</span>
-</div>
-
+    <div layout="grid2" layout-align="center center">
 <!-- Institution Name-->
-<div class="mdl-grid">
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
+    <div class="mdl-card mdl-shadow--2dp searchPageBox">
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" pattern="-?[a-z|A-Z|\s]*)?" id="InstitutionName">
-      <label class="mdl-textfield__label" for="InstitutionName">Name</label>
-      <span class="mdl-textfield__error">Institution cannot have numbers!</span>
+        <md-card class="searchPageBox">
+            <!-- Reading Score-->
+            <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                <label>Institution Name</label>
+                <input type="text" id="InstitutionName" name="InstitutionName" ng-model="CollegeInfo.InstitutionName"/>
+
+            </md-input-container>
+        </md-card>
+
     </div>
-  </div>
 
 
-  <!-- State Name -->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
+    <!-- State Name -->
+    <md-card class="searchPageBox">
+        <!-- State Percentile Box-->
+        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+            <md-select ng-model="CollegeInfo.stateName" placeholder="Please Select" id="state">
 
-    <button id="StateButton" class="mdl-button mdl-js-button mdl-button--icon">
-      <i class="material-icons">more_vert</i>
-    </button>
-      <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="StateButton" id="stateMenu" style="y:scroll" onClick="saveStateName()">
-
-        <li class="mdl-menu__item">Alabama</li>
-        <li class="mdl-menu__item">Alaska</li>
-        <li class="mdl-menu__item">Arizona</li>
-        <li class="mdl-menu__item">Arkansas</li>
-        <li class="mdl-menu__item">California</li>
-        <li class="mdl-menu__item">Colorado</li>
-        <li class="mdl-menu__item">Connecticut</li>
-        <li class="mdl-menu__item">Delaware</li>
-        <li class="mdl-menu__item">Florida</li>
-        <li class="mdl-menu__item">Georgia</li>
-        <li class="mdl-menu__item">Hawaii</li>
-        <li class="mdl-menu__item">Idaho</li>
-        <li class="mdl-menu__item">Illinois </li>
-        <li class="mdl-menu__item">Indiana</li>
-        <li class="mdl-menu__item">Iowa</li>
-        <li class="mdl-menu__item">Kansas</li>
-        <li class="mdl-menu__item">Kentucky</li>
-        <li class="mdl-menu__item">Louisiana</li>
-        <li class="mdl-menu__item">Maine</li>
-        <li class="mdl-menu__item">Maryland</li>
-        <li class="mdl-menu__item">Massachusetts</li>
-        <li class="mdl-menu__item">Michigan</li>
-        <li class="mdl-menu__item">Minnesota</li>
-        <li class="mdl-menu__item">Mississippi</li>
-        <li class="mdl-menu__item">Missouri</li>
-        <li class="mdl-menu__item">Montana</li>
-        <li class="mdl-menu__item">Nebraska</li>
-        <li class="mdl-menu__item">Nevada</li>
-        <li class="mdl-menu__item">New Hampshire</li>
-        <li class="mdl-menu__item">New Jersey</li>
-        <li class="mdl-menu__item">New Mexico</li>
-        <li class="mdl-menu__item">New York</li>
-        <li class="mdl-menu__item">North Carolina</li>
-        <li class="mdl-menu__item">North Dakota</li>
-        <li class="mdl-menu__item">Ohio</li>
-        <li class="mdl-menu__item">Oklahoma</li>
-        <li class="mdl-menu__item">Oregon</li>
-        <li class="mdl-menu__item">Pennsylvania</li>
-        <li class="mdl-menu__item">Rhode Island</li>
-        <li class="mdl-menu__item">South Carolina</li>
-        <li class="mdl-menu__item">South Dakota</li>
-        <li class="mdl-menu__item">Tennessee</li>
-        <li class="mdl-menu__item"> Texas</li>
-        <li class="mdl-menu__item">Utah</li>
-        <li class="mdl-menu__item">Vermont</li>
-        <li class="mdl-menu__item">Virginia</li>
-        <li class="mdl-menu__item">Washington</li>
-        <li class="mdl-menu__item">West Virginia</li>
-        <li class="mdl-menu__item">Wisconsin</li>
-        <li class="mdl-menu__item">Wyoming</li>
-        </ul>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="stateLabel">State</h2>
-    </div>
-  </div>
+                <md-option value="Alabama">Alabama</md-option>
+                <md-option value="Alaska">Alaska</md-option>
+                <md-option value="Arizona">Arizona</md-option>
+                <md-option value="Arkansas">Arkansas</md-option>
+                <md-option value="California">California</md-option>
+                <md-option value="Colorado">Colorado</md-option>
+                <md-option value="Connecticut">Connecticut</md-option>
+                <md-option value="Delaware">Delaware</md-option>
+                <md-option value="Florida">Florida</md-option>
+                <md-option value="Georgia">Georgia</md-option>
+                <md-option value="Hawaii">Hawaii</md-option>
+                <md-option value="Idaho">Idaho</md-option>
+                <md-option value="Illinois">Illinois </md-option>
+                <md-option value="Indiana">Indiana</md-option>
+                <md-option value="Iowa">Iowa</md-option>
+                <md-option value="Kansas">Kansas</md-option>
+                <md-option value="Kentucky">Kentucky</md-option>
+                <md-option value="Louisiana">Louisiana</md-option>
+                <md-option value="Maine">Maine</md-option>
+                <md-option value="Maryland">Maryland</md-option>
+                <md-option value="Massachusetts">Massachusetts</md-option>
+                <md-option value="Michigan">Michigan</md-option>
+                <md-option value="Minnesota">Minnesota</md-option>
+                <md-option value="Mississippi">Mississippi</md-option>
+                <md-option value="Missouri">Missouri</md-option>
+                <md-option value="Montana">Montana</md-option>
+                <md-option value="Nebraska">Nebraska</md-option>
+                <md-option value="Nevada">Nevada</md-option>
+                <md-option value="New Hampshire">New Hampshire</md-option>
+                <md-option value="New Jersey">New Jersey</md-option>
+                <md-option value="New Mexico">New Mexico</md-option>
+                <md-option value="New York">New York</md-option>
+                <md-option value="North Carolina">North Carolina</md-option>
+                <md-option value="North Dakota">North Dakota</md-option>
+                <md-option value="Ohio">Ohio</md-option>
+                <md-option value="Oklahoma">Oklahoma</md-option>
+                <md-option value="Oregon">Oregon</md-option>
+                <md-option value="Pennsylvania">Pennsylvania</md-option>
+                <md-option value="Rhode Island">Rhode Island</md-option>
+                <md-option value="South Carolina">South Carolina</md-option>
+                <md-option value="South Dakota">South Dakota</md-option>
+                <md-option value="Tennessee">Tennessee</md-option>
+                <md-option value="Texas">Texas</md-option>
+                <md-option value="Utah">Utah</md-option>
+                <md-option value="Vermont">Vermont</md-option>
+                <md-option value="Virginia">Virginia</md-option>
+                <md-option value="Washington">Washington</md-option>
+                <md-option value="West Virginia">West Virginia</md-option>
+                <md-option value="Wisonsin">Wisconsin</md-option>
+                <md-option value="Wyoming">Wyoming</md-option>
+            </md-select>
+            <md-card-title><b>State Name</b></md-card-title>
+        </md-input-container>
+    </md-card>
 
 
-  <!-- Zip Code -->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
+        <md-card class="searchPageBox">
+            <!-- Zip Code-->
+            <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" pattern="[0-9]{5}" id="zipCode">
-      <label class="mdl-textfield__label" for="zipCode">Zip Code</label>
-      <span class="mdl-textfield__error">Please enter a 5 digit zip code</span>
-    </div>
-  </div>
+                <label>Zip Code</label>
+                <input type="text" name="zipcode" id="zipCode" ng-model="CollegeInfo.zipcode" ng-pattern="/^[0-9]{1,5}$/"/>
+                <span ng-show="CollegeInfo.zipcode.$error.pattern">Not a valid number!</span>
+            </md-input-container>
+        </md-card>
 
 </div>
 
-<div class="mdl-grid">
-  <!-- Full Address -->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text"  id="FullAddress">
-      <label class="mdl-textfield__label" for="FullAddress">Full Address</label>
-
-    </div>
-  </div>
+    <div layout="grid2" layout-align="center center">
 
 
-  <!-- Acceptance Rate-->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
+    <md-card class="searchPageBox">
+        <!-- Full Address-->
+        <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-    <button id="acceptanceRate" class="mdl-button mdl-js-button mdl-button--icon">
-      <i class="material-icons">more_vert</i>
+            <label>Full Address</label>
+            <input type="text" name="fullAddress" ng-model="CollegeInfo.fullAddress" id="FullAddress" ng-model="CollegeInfo.fullAddress"/>
 
-    </button>
+        </md-input-container>
+    </md-card>
 
-    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="acceptanceRate" id="acceptRate" style="y:scroll" onClick="saveAcceptanceRate()">
-      <li class="mdl-menu__item">100%</li>
-      <li class="mdl-menu__item">90%</li>
-      <li class="mdl-menu__item">80%</li>
-      <li class="mdl-menu__item">70%</li>
-      <li class="mdl-menu__item">60%</li>
-      <li class="mdl-menu__item">50%</li>
-      <li class="mdl-menu__item">40%</li>
-      <li class="mdl-menu__item">30%</li>
-      <li class="mdl-menu__item">20%</li>
-      <li class="mdl-menu__item">10%</li>
-    </ul>
-    <label class="mdl-menu__label" for="acceptRate"></label>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="acceptRateTitle">Acceptance Rate</h2>
-    </div>
 
-    </div>
+    <!-- Acceptance Rate-->
+    <md-card class="searchPageBox">
+            <md-select ng-model="CollegeInfo.acceptanceRate" placeholder="Please Select" id=acceptanceRate">
 
-  <!-- Retention Rate -->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
+                <md-option value="10%">10%</md-option>
+                <md-option value="20%">20%</md-option>
+                <md-option value="30%">30%</md-option>
+                <md-option value="40%">40%</md-option>
+                <md-option value="50%">50%</md-option>
+                <md-option value="60%">60%</md-option>
+                <md-option value="70%">70%</md-option>
+                <md-option value="80%">80%</md-option>
+                <md-option value="90%">90%</md-option>
+                <md-option value="100%">100%</md-option>
+            </md-select>
+            <md-card-title><b>Acceptance Rate</b></md-card-title>
+        </md-card>
+        <!-- Retention Rate-->
+        <md-card class="searchPageBox">
+            <md-select ng-model="CollegeInfo.retentionRate" placeholder="Please Select" id="retentionRate">
 
-    <button id="retentionRatebtn" class="mdl-button mdl-js-button mdl-button--icon">
-      <i class="material-icons">more_vert</i>
-
-    </button>
-
-    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="retentionRatebtn" id="retentionRate" onClick="saveRetentionRate()">
-      <li class="mdl-menu__item">100%</li>
-      <li class="mdl-menu__item">90%</li>
-      <li class="mdl-menu__item">80%</li>
-      <li class="mdl-menu__item">70%%</li>
-      <li class="mdl-menu__item">60%%</li>
-      <li class="mdl-menu__item">50%</li>
-      <li class="mdl-menu__item">40%</li>
-      <li class="mdl-menu__item">30%</li>
-      <li class="mdl-menu__item">20%</li>
-      <li class="mdl-menu__item">10%</li>
-    </ul>
-    <label class="mdl-menu__label" for="rententionRateTitle"></label>
-    <div class="mdl-card__label">
-      <h2 class="mdl-card__title-text title_searchOption" id="rententionRateTitle">Retention Rate</h2>
-    </div>
-
-  </div>
-</div>
-<div class="mdl-grid">
-
-  <!-- Institution Type -->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
-
-      <button id="institutionTypeBtn" class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">more_vert</i>
-
-      </button>
-
-      <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="institutionTypeBtn" id="institutionType" onClick="saveType()">
-        <li class="mdl-menu__item">Public</li>
-        <li class="mdl-menu__item">Private</li>
-      </ul>
-      <label class="mdl-menu__label" for="institutionTypetitle"></label>
-      <div class="mdl-card__label">
-        <h2 class="mdl-card__title-text title_searchOption" id="institutionTypetitle">Institution Type</h2>
-      </div>
-  </div>
-
-  <!-- Student Population -->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="population">
-      <label class="mdl-textfield__label" for="population">Student Population</label>
-      <span class="mdl-textfield__error">Please enter a valid number</span>
+                <md-option value="10%">10%</md-option>
+                <md-option value="20%">20%</md-option>
+                <md-option value="30%">30%</md-option>
+                <md-option value="40%">40%</md-option>
+                <md-option value="50%">50%</md-option>
+                <md-option value="60%">60%</md-option>
+                <md-option value="70%">70%</md-option>
+                <md-option value="80%">80%</md-option>
+                <md-option value="90%">90%</md-option>
+                <md-option value="100%">100%</md-option>
+            </md-select>
+            <md-card-title><b>Retention Rate</b></md-card-title>
+        </md-card>
 
 
     </div>
-  </div>
+<    <div layout="grid2" layout-align="center center">
 
-  <!-- Class Size -->
-  <div class="mdl-card mdl-shadow--2dp searchPageBox">
+        <!-- Institution Type Rate -->
+        <md-card class="searchPageBox">
+            <md-select ng-model="CollegeInfo.institutionType" placeholder="Please Select" id="institutionType">
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="classSize">
-      <label class="mdl-textfield__label" for="classSize">Class Size</label>
-      <span class="mdl-textfield__error">Please enter a valid number</span>
+                <md-option value="Public">Public</md-option>
+                <md-option value="Private">Private</md-option>
+            </md-select>
+            <md-card-title><b>Institution Type</b></md-card-title>
+        </md-card>
 
+    <!-- Student Population -->
+    <md-card class="searchPageBox">
+        <!-- Full Address-->
+        <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-    </div>
-  </div>
+            <label>Student Population</label>
+            <input type="text" id="studentpopulation" name="StudentPopulation" ng-model="CollegeInfo.studentPopulation"/>
+
+        </md-input-container>
+    </md-card>
+
+    <!-- Class Size -->
+    <md-card class="searchPageBox">
+        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+            <label>Class Size</label>
+            <input type="text" id="classSize" name="classSize" ng-model="CollegeInfo.classSize"/>
+
+        </md-input-container>
+    </md-card>
 </div>
 
-<div id="spinner" class="mdl-spinner mdl-js-spinner"></div>
-<body onload="loadPage()">
-  <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" id="percentiles" style="display: none">
-  <li class="mdl-menu__item">100%</li>
-  <li class="mdl-menu__item">90%</li>
-  <li class="mdl-menu__item">80%</li>
-  <li class="mdl-menu__item">70%%</li>
-  <li class="mdl-menu__item">60%%</li>
-  <li class="mdl-menu__item">50%</li>
-  <li class="mdl-menu__item">40%</li>
-  <li class="mdl-menu__item">30%</li>
-  <li class="mdl-menu__item">20%</li>
-  <li class="mdl-menu__item">10%</li>
-  </ul>
-</body>
+</div>
+  <div layout="title2" layout-align="center center">
+    Additional Options
+  </div>
+  <div layout="grid2" layout-align="center center">
+  <md-card class="searchPageBox">
+    <md-checkbox ng-model="CollegeInfo.commonApplication" aria-label="Checkbox 1">
+      Common Application Only
+    </md-checkbox>
 
+  </md-card>
+    <md-card class="searchPageBox" style="display:hidden">
+      <md-checkbox ng-model="CollegeInfo.favoritedInstitutions" aria-label="Checkbox 1">
+        Favorited Institutions Only
+      </md-checkbox>
 
-<!-- Modal -->
-<div class="modal fade" id="loginPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    </md-card>
     </div>
   </div>
-</div>
 
+
+    </div>
+    </div>
+<div id="modal-to-open" title="My Title" ui-jq="dialog" ui-options="{width: 350, autoOpen: false, modal: true}">
+  Dialog Text
+</div>
 </html>

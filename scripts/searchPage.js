@@ -1,10 +1,20 @@
 /**
  * Created by ianshinbrot on 11/19/15.
  */
+// Include app dependency on ngMaterial
 
-
+var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages'] )
 var searchParameters = {};
 
+app.controller('searchController', ['$scope', function($scope) {
+    $scope.searchParameters = {};
+
+
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+}]);
 /*
 This performs search on the page
  */
@@ -113,63 +123,6 @@ function checkRegExp(elem, regExp) {
     return true;
 }
 
-function openHSPercentileMenu() {
-    var e = event.target;
-
-    var location = e.getBoundingClientRect();
-
-    var top = location.top;
-    var right = location.right;
-    var left = location.left;
-    var bottom = location.bottom;
-
- var percentileDiv = $("#percentiles");
-
-
-    percentileDiv.show();
-
-
-}
-/*
-This function is pending further completion
-The menu is displayed incorrectly so this will relocate the div
- */
-function displayPercentileMenu(el,list) {
-
-
-  //  var x = button.offsetLeft - button.scrollLeft;
-  // var y = button.offsetTop - button.scrollTop;
-    //el = button.offsetParent;
-
-
-
-
-    //el.css("top",y);
-   // el.css("left",x);
-
-    list.append(percentileDiv);
-    percentileDiv.css("display", "block");
-    list.show();
-    //TODO relocate div element and add show or hide
-}
-/*
- This function is pending further completion
- The menu is displayed incorrectly so this will relocate the div
- */
-function togglePercentile(element, list) {
-
-    element = $(element);
-    list = $(list);
-    if (element.is(":visible")) {
-        element.hide();
-    }
-    else {
-        displayPercentileMenu(element, list);
-    }
-
-}
-
-
 /*
 This function gets all the searchOptions and saves them to a json object
  */
@@ -196,6 +149,14 @@ function searchOptions() {
 
     searchParameters.name = institutionName.val();
 
+    var stateName = $("#stateName");
+
+    searchParameters.StateName = stateName.text();
+
+    var highSchoolPercentile = $("#highschoolPercentile");
+
+    searchParameters.highSchoolPercentile = highSchoolPercentile.text();
+
     var writingScore = $("#WritingScore");
 
     searchParameters.WritingScore = writingScore.val();
@@ -208,11 +169,19 @@ function searchOptions() {
 
     searchParameters.fullAddress = encodeURIComponent(fullAddress.val());
 
-    var studentPopulation = $("#populationtxt");
+    var studentPopulation = $("#studentpopulation");
 
     searchParameters.studentPopulation = studentPopulation.val();
 
-    var classSize = $("#classSizetxt");
+    var retentionRate = $("#retentionRate");
+
+    searchParameters.retentionRate = retentionRate.text();
+
+    var institutionType = $("#institutionType");
+
+    searchParameters = institutionType.text();
+
+    var classSize = $("#classSize");
 
     searchParameters.classSize = classSize.val();
 
@@ -308,105 +277,94 @@ function formatSearch() {
     return parameters;
 
 }
-/*
-This function saves the high school percentile object to the json object
- */
-function saveHighSchoolPercentile() {
-    var e = event || window.event
 
-    var target = e.target;
-
-    //alert("Clicked" + target.textContent.replace("%",""));
-
-
-    searchParameters.HighSchoolPercentile = target.textContent.replace("%","");
-}
-/*
- This function saves the acceptance rate object to the json object
- */
-function saveAcceptanceRate() {
-    var e = event || window.event;
-
-    var target = e.target;
-
-   // alert("Clicked " + target.textContent.replace("%",""));
-
-    searchParameters.AcceptanceRate = target.textContent.replace("%","");
-}
-/*
- This function saves the state name object to the json object
- */
-function saveStateName() {
-    var e = event || window.event;
-
-    var target = e.target;
-
-    var state = this.convert_state(target.textContent, "abbrev")
-
-  //  alert("Clicked " + state);
-
-    searchParameters.StateName = state;
-}
-
-/*
- This function saves the retention rate object to the json object
- */
-function saveRetentionRate() {
-    var e = event || window.event;
-
-    var target = e.target;
-
-   // alert("Clicked " + target.textContent.replace("%",""));
-
-    searchParameters.retentionRate = target.textContent.replace("%","");
-}
-/*
- This function saves the college type to the json object
- */
-function saveType() {
-    var e = event || window.event;
-
-    var target = e.target;
-
-  //  alert("Clicked " + target.textContent);
-
-    searchParameters.institutionType = target.textContent.replace("%","");
-}
-
-function convert_state(name, to) {
-    var name = name.toUpperCase();
-    var states = new Array(                         {'name':'Alabama', 'abbrev':'AL'},          {'name':'Alaska', 'abbrev':'AK'},
-        {'name':'Arizona', 'abbrev':'AZ'},          {'name':'Arkansas', 'abbrev':'AR'},         {'name':'California', 'abbrev':'CA'},
-        {'name':'Colorado', 'abbrev':'CO'},         {'name':'Connecticut', 'abbrev':'CT'},      {'name':'Delaware', 'abbrev':'DE'},
-        {'name':'Florida', 'abbrev':'FL'},          {'name':'Georgia', 'abbrev':'GA'},          {'name':'Hawaii', 'abbrev':'HI'},
-        {'name':'Idaho', 'abbrev':'ID'},            {'name':'Illinois', 'abbrev':'IL'},         {'name':'Indiana', 'abbrev':'IN'},
-        {'name':'Iowa', 'abbrev':'IA'},             {'name':'Kansas', 'abbrev':'KS'},           {'name':'Kentucky', 'abbrev':'KY'},
-        {'name':'Louisiana', 'abbrev':'LA'},        {'name':'Maine', 'abbrev':'ME'},            {'name':'Maryland', 'abbrev':'MD'},
-        {'name':'Massachusetts', 'abbrev':'MA'},    {'name':'Michigan', 'abbrev':'MI'},         {'name':'Minnesota', 'abbrev':'MN'},
-        {'name':'Mississippi', 'abbrev':'MS'},      {'name':'Missouri', 'abbrev':'MO'},         {'name':'Montana', 'abbrev':'MT'},
-        {'name':'Nebraska', 'abbrev':'NE'},         {'name':'Nevada', 'abbrev':'NV'},           {'name':'New Hampshire', 'abbrev':'NH'},
-        {'name':'New Jersey', 'abbrev':'NJ'},       {'name':'New Mexico', 'abbrev':'NM'},       {'name':'New York', 'abbrev':'NY'},
-        {'name':'North Carolina', 'abbrev':'NC'},   {'name':'North Dakota', 'abbrev':'ND'},     {'name':'Ohio', 'abbrev':'OH'},
-        {'name':'Oklahoma', 'abbrev':'OK'},         {'name':'Oregon', 'abbrev':'OR'},           {'name':'Pennsylvania', 'abbrev':'PA'},
-        {'name':'Rhode Island', 'abbrev':'RI'},     {'name':'South Carolina', 'abbrev':'SC'},   {'name':'South Dakota', 'abbrev':'SD'},
-        {'name':'Tennessee', 'abbrev':'TN'},        {'name':'Texas', 'abbrev':'TX'},            {'name':'Utah', 'abbrev':'UT'},
-        {'name':'Vermont', 'abbrev':'VT'},          {'name':'Virginia', 'abbrev':'VA'},         {'name':'Washington', 'abbrev':'WA'},
-        {'name':'West Virginia', 'abbrev':'WV'},    {'name':'Wisconsin', 'abbrev':'WI'},        {'name':'Wyoming', 'abbrev':'WY'}
-    );
-    var returnthis = false;
-    $.each(states, function(index, value){
-        if (to == 'name') {
-            if (value.abbrev == name){
-                returnthis = value.name;
-                return false;
+    function convert_state(name, to) {
+        var name = name.toUpperCase();
+        var states = new Array({'name': 'Alabama', 'abbrev': 'AL'}, {'name': 'Alaska', 'abbrev': 'AK'},
+            {'name': 'Arizona', 'abbrev': 'AZ'}, {'name': 'Arkansas', 'abbrev': 'AR'}, {
+                'name': 'California',
+                'abbrev': 'CA'
+            },
+            {'name': 'Colorado', 'abbrev': 'CO'}, {'name': 'Connecticut', 'abbrev': 'CT'}, {
+                'name': 'Delaware',
+                'abbrev': 'DE'
+            },
+            {'name': 'Florida', 'abbrev': 'FL'}, {'name': 'Georgia', 'abbrev': 'GA'}, {
+                'name': 'Hawaii',
+                'abbrev': 'HI'
+            },
+            {'name': 'Idaho', 'abbrev': 'ID'}, {'name': 'Illinois', 'abbrev': 'IL'}, {
+                'name': 'Indiana',
+                'abbrev': 'IN'
+            },
+            {'name': 'Iowa', 'abbrev': 'IA'}, {'name': 'Kansas', 'abbrev': 'KS'}, {'name': 'Kentucky', 'abbrev': 'KY'},
+            {'name': 'Louisiana', 'abbrev': 'LA'}, {'name': 'Maine', 'abbrev': 'ME'}, {
+                'name': 'Maryland',
+                'abbrev': 'MD'
+            },
+            {'name': 'Massachusetts', 'abbrev': 'MA'}, {'name': 'Michigan', 'abbrev': 'MI'}, {
+                'name': 'Minnesota',
+                'abbrev': 'MN'
+            },
+            {'name': 'Mississippi', 'abbrev': 'MS'}, {'name': 'Missouri', 'abbrev': 'MO'}, {
+                'name': 'Montana',
+                'abbrev': 'MT'
+            },
+            {'name': 'Nebraska', 'abbrev': 'NE'}, {'name': 'Nevada', 'abbrev': 'NV'}, {
+                'name': 'New Hampshire',
+                'abbrev': 'NH'
+            },
+            {'name': 'New Jersey', 'abbrev': 'NJ'}, {'name': 'New Mexico', 'abbrev': 'NM'}, {
+                'name': 'New York',
+                'abbrev': 'NY'
+            },
+            {'name': 'North Carolina', 'abbrev': 'NC'}, {'name': 'North Dakota', 'abbrev': 'ND'}, {
+                'name': 'Ohio',
+                'abbrev': 'OH'
+            },
+            {'name': 'Oklahoma', 'abbrev': 'OK'}, {'name': 'Oregon', 'abbrev': 'OR'}, {
+                'name': 'Pennsylvania',
+                'abbrev': 'PA'
+            },
+            {'name': 'Rhode Island', 'abbrev': 'RI'}, {
+                'name': 'South Carolina',
+                'abbrev': 'SC'
+            }, {'name': 'South Dakota', 'abbrev': 'SD'},
+            {'name': 'Tennessee', 'abbrev': 'TN'}, {'name': 'Texas', 'abbrev': 'TX'}, {'name': 'Utah', 'abbrev': 'UT'},
+            {'name': 'Vermont', 'abbrev': 'VT'}, {'name': 'Virginia', 'abbrev': 'VA'}, {
+                'name': 'Washington',
+                'abbrev': 'WA'
+            },
+            {'name': 'West Virginia', 'abbrev': 'WV'}, {'name': 'Wisconsin', 'abbrev': 'WI'}, {
+                'name': 'Wyoming',
+                'abbrev': 'WY'
             }
-        } else if (to == 'abbrev') {
-            if (value.name.toUpperCase() == name){
-                returnthis = value.abbrev;
-                return false;
+        );
+        var returnthis = false;
+        $.each(states, function (index, value) {
+            if (to == 'name') {
+                if (value.abbrev == name) {
+                    returnthis = value.name;
+                    return false;
+                }
+            } else if (to == 'abbrev') {
+                if (value.name.toUpperCase() == name) {
+                    returnthis = value.abbrev;
+                    return false;
+                }
             }
-        }
+        });
+        return returnthis;
+    }
+function showLogIn() {
+    createDialog('simpleModal.html', {
+        id: 'simpleDialog',
+        title: 'A Simple Modal Dialog',
+        backdrop: true,
+        success: {
+            label: 'Yay', fn: function () {
+                console.log('Successfully closed modal');
+            }
+        },
     });
-    return returnthis;
 }
-
