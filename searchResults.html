@@ -3,36 +3,36 @@
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
-</head>
-
-
-<div ng-app="CollegeSearch">
-
-    <div id="header"></div>
-
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-aria/angular-aria.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
     <script src="node_modules/angular-material/angular-material.js"></script>
     <script src="node_modules/angular-messages/angular-messages.js"></script>
-
     <!-- material design javascript -->
     <script src="mdl/material.min.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="jQuery/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="css/searchResults.css">
+    <link rel="stylesheet" href="css/collegeSearch.css">
     <script src="scripts/collegeSearch.js"></script>
     <script src="scripts/searchResults.js"></script>
-    <script>
-        $("#header").load("header.html");
-    </script>
-    <hr>
+</head>
+<div ng-app="CollegeSearch">
 
+
+    <div id="header" ng-controller="headerController"></div>
+
+    <div ng-controller="resultsController">
+        <script>
+            createHeader();
+            loadResults();
+        </script>
+        <hr>
     <br>
     <br>
-                <div ng-controller="resultsController" class="refineButton">
-                        <md-button ng-click="toggleSearch()"
+
+                        <md-button class="refine button" ng-click="toggleSearch()"
                                    class="md-primary">
                             Refine Search
                         </md-button>
@@ -306,16 +306,6 @@
         </div>
 </html>
 <hr>
-
-
-    </div>
-<body onload="loadPage()"></body>
-<script>
-    function loadPage() {
-            $("#header").load("header.html");
-        loadResults();
-    }
-</script>
 
 
 </html>

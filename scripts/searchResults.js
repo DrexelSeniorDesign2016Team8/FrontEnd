@@ -2,7 +2,6 @@
  * Created by ianshinbrot on 11/19/15.
  */
 
-var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages'] )
 var searchResults = {};     // This array contains the search results
 
 

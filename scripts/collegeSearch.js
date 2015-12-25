@@ -1,6 +1,6 @@
 //var loggedIn = false;
 
-var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages'] )		// initialize the app for all classes
+var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages'] );		// initialize the app for all classes
 
 
 app.controller('headerController', function($scope, $mdDialog, $mdMedia) {
