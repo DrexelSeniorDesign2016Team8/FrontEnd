@@ -76,7 +76,7 @@ function createHeader() {
 
 	var createAccountbtn = $("<md-button id='accountCreation' ng-click='showLoginPage(event)'>");
 		createAccountbtn.addClass("md-button");
-			createAccountbtn.text("Create Account Login");
+			createAccountbtn.text("Login/Create Account");
 
 	header.append(createAccountbtn);
 

@@ -28,3 +28,6 @@
 .dialogSignIn {
 	width: 400px;
 }
+.signInDialog {
+	margin: 2px 0 !important;
+}

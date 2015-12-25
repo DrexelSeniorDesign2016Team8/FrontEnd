@@ -1,6 +1,20 @@
 /**
  * Created by ianshinbrot on 11/18/15.
  */
+
+
+
+app.controller('resetPassword', function ($scope, $timeout, $mdSidenav, $log) {
+    app.controller('resetPassword', function ($scope, $timeout, $mdSidenav, $log) {
+        $scope.showConfirmation = function () {
+            return $mdSidenav('searchBar').isOpen();
+
+        };
+        ;
+    })
+});
+
+
 function sendEmail(emailAddress) {
     //TODO Send API call to send a password to an email address
     alert("This to be implemented in the future for" + emailAddress);
@@ -19,17 +33,6 @@ function enable(element) {
 
 
 
-function pageSetup() {
+function sendEmailResetPassword() {
 
-    var sendEmailbtn = $("#EmailMe");
-    $("#emailAddress").change(function () {
-        if ($(this).val()=="") {
-            disable(sendEmailbtn);
-        }
-        else {
-            enable(sendEmailbtn);
-        }
-    })
-
-    disable(sendEmailbtn)
 }

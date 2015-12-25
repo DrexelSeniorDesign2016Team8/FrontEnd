@@ -14,19 +14,59 @@
         </md-toolbar>
                 <md-dialog-content>
                     <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="Sign In">
+                            <div class="md-dialog-content">
+
+                                <div id="Signin">
+                                    <form>
+                                        <md-input-container flex-gt-sm>
+                                            <!--  Email Address-->
+
+                                            <input type="text" class="signInText" id="emailAddress" name="email" placeholder="Email Address" ng-model="Signin.emailLogin" />
+
+                                        </md-input-container>
+                                        <br>
+                                        <md-input-container flex-gt-sm>
+                                            <!-- GPA Box-->
+
+                                            <input type="text" class="signInText" id="password" name="password" placeholder="Password" ng-model="Signin.password" />
+
+                                        </md-input-container>
+                                        <br>
+                                        <md-button class= id="resetPassword" style='text-align:center' onClick="resetPassword()">
+                                            Reset Password
+                                        </md-button>
+                                        <br>
+                                        <!-- Flat button with ripple -->
+                                        <md-checkbox ng-model="CollegeInfo.RememberMe" aria-label="Remember Me">
+                                            Remember Me
+                                        </md-checkbox>
+                                        <br>
+                                        <!-- Flat button with ripple -->
+                                        <md-button class= id="signIn" style='text-align:center' onClick="signIn()">
+                                            Sign In
+                                        </md-button>
+
+                                    </form>
+
+
+                                </div>
+
+                            </div>
+                        </md-tab>
                         <md-tab label="Create Account ">
                     <div class="md-dialog-content">
 
                             <div id="createAccount">
                                     <form>
-                                        <md-input-container flex-gt-sm>
+                                        <md-input-container flex-gt-sm class="signInDialog">
                                             <!--  Email Address-->
 
                                             <input type="text" class="signInText" id="emailCreation" name="email" placeholder="Enter an email Address" ng-model="createAccount.email" />
 
                                         </md-input-container>
                                     <br>
-                                        <md-input-container flex-gt-sm>
+                                        <md-input-container flex-gt-sm class="signInDialog">
                                             <!-- GPA Box-->
 
                                             <input type="text" class="signInText" id="passwordCreation" name="password" placeholder="Enter a password" ng-model="createAccount.password" />
@@ -53,46 +93,7 @@
 
                                 </div>
                             </md-tab>
-                        <md-tab label="Sign In">
-                            <div class="md-dialog-content">
 
-                                <div id="Signin">
-                                    <form>
-                                        <md-input-container flex-gt-sm>
-                                            <!--  Email Address-->
-
-                                            <input type="text" class="signInText" id="emailAddress" name="email" placeholder="Email Address" ng-model="Signin.emailLogin" />
-
-                                        </md-input-container>
-                                        <br>
-                                        <md-input-container flex-gt-sm>
-                                            <!-- GPA Box-->
-
-                                            <input type="text" class="signInText" id="password" name="password" placeholder="Password" ng-model="Signin.password" />
-
-                                        </md-input-container>
-                                        <br>
-                                        <md-button class= id="resetPassword" style='text-align:center' onClick="resetPassword()">
-                                            Reset Password
-                                        </md-button>
-                                        <br>
-                                        <!-- Flat button with ripple -->
-                                            <md-checkbox ng-model="CollegeInfo.RememberMe" aria-label="Remember Me">
-                                                Remember Me
-                                            </md-checkbox>
-                                        <br>
-                                        <!-- Flat button with ripple -->
-                                        <md-button class= id="signIn" style='text-align:center' onClick="signIn()">
-                                            signIn
-                                        </md-button>
-
-                                    </form>
-
-
-                                </div>
-
-                            </div>
-                        </md-tab>
                     </md-dialog-content>
     </md-dialog>
 </html>
