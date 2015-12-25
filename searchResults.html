@@ -31,7 +31,7 @@
 
     <br>
     <br>
-                <div ng-controller="resultsController">
+                <div ng-controller="resultsController" class="refineButton">
                         <md-button ng-click="toggleSearch()"
                                    class="md-primary">
                             Refine Search
@@ -41,7 +41,7 @@
                         <md-sidenav class="md-sidenav-left md-whiteframe-z2 sideNavResult" md-component-id="searchBar">
                             <md-button ng-click="close()"
                                        class="md-primary">
-                                Refine Results
+                                Search
                                 </md-button>
                                         <div id="additionalinfo">
                                                 <form name="CollegeInfo"></form>
@@ -300,7 +300,7 @@
     </div>
 <md-content flex layout-padding>
     <div layout="column" layout-fill layout-align="top center">
-<div id="information"></div>
+<div id="information" class="searchResults"></div>
 
 <div id="none"></div>
         </div>

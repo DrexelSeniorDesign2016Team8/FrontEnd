@@ -2,12 +2,14 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/header.css">
+    <script src="scripts/header.js"></script>
 </head>
-<body ng-controller="heading">
+<div ng-app="headerApplication" ng-controller="headerController">
 
 <a href="searchPage.html"> <img id="collegeSearchicon" Src="icon/collegeSearch.PNG" atl="CollegeSearch"> </a>
 
-<md-button class="md-button" id="accountCreation" ng-click="showLogIn()">Create Account/Login</md-button>
+<md-button class="md-button" id="accountCreation" ng-click="showLogInPage()">Create Account/Login</md-button>
 
-</body>
+
+    </div>
 </html>

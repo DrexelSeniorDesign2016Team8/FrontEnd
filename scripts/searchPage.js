@@ -3,7 +3,6 @@
  */
 // Include app dependency on ngMaterial
 
-var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages'] )
 var searchParameters = {};
 
 app.controller('searchController', ['$scope', function($scope) {

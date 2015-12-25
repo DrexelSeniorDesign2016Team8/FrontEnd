@@ -3,84 +3,52 @@
 
 
 <html>
-
-<div id="wrapper">
-
-        <div class="group">
-            <input type="email"><span class="highlight"></span><span class="bar"></span>
-            <label>Email</label>
-        </div>
-        <button type="button" class="button buttonBlue">Subscribe
-            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-        </button>
-    </form>
-<div id="createAccount">
-<center> <span class="mdl-layout-title">Create an Account</span></center>
-
-        <form>
-            <div class="group">
-                <input type="text"><span class="highlight"></span><span class="bar"></span>
-                <label>Enter an email Address</label>
-            </div>
-        <br>
-            <div class="group">
-                <input type="text"><span class="highlight" id="password"></span><span class="bar"></span>
-                <label>Password</label>
-            </div>
-        <br>
-            <div class="group">
-                <input type="text"><span class="highlight" id="verifyPassword"></span><span class="bar"></span>
-                <label>Please Verify Password</label>
-            </div>
-        <br>
-        <!-- Flat button with ripple -->
-
-        <br>
-        <!-- Flat button with ripple -->
-            <md-button class= id="searchBtn" style='text-align:center' onClick="createAccount()">
-                Create Account
+<md-dialog aria-label="Sign in/Create Account"  ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Sign in/Create Account</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
             </md-button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="AccountCreation" style='float: right'>
-            Create Account
-        </button>
-    </form>
-</div>
+        </div>
+        </md-toolbar>
+                <md-dialog-content>
+                    <div class="md-dialog-content">
 
-<div class="verticalLine">
-  <div id="signIn">
-      <span class="mdl-layout-title">Sign In</span>
+                            <div id="createAccount">
+                                    <form>
+                                        <md-input-container flex-gt-sm>
+                                            <!--  Email Address-->
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-	   <input class="mdl-textfield__input" type="text" id="username"/>
-    <label class="mdl-textfield__label" for="username">Please enter your username</label>
-  </div>
-  <br>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-	   <input class="mdl-textfield__input" type="text" id="password"/>
-    <label class="mdl-textfield__label" for="password">Please enter your password</label>
-  </div>
- <br>
-  <a href="resetPassword.html"> <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="passwordReset" style='float: right'>
-  Reset Password
-</button></a>
-  <br>
-  <br>
-   <br>
-    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rememberMe">
-  <input type="checkbox" id="rememberMe" class="mdl-checkbox__input" checked>
-  <span class="mdl-checkbox__label">Remember Me</span>
-</label>
-  <br>
-  <br>
+                                            <input type="text" class="signInText" id="email" name="email" placeholder="Enter an email Address" ng-model="signinSection.email" />
 
-  <!-- Flat button with ripple -->
-<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="Sign In" style='float: right'>
-  Sign In
-</button>
+                                        </md-input-container flex-gt-sm>
+                                    <br>
+                                        <md-input-container flex-gt-sm>
+                                            <!-- GPA Box-->
 
-<div id="spinner" class="mdl-spinner mdl-js-spinner">
-</div>
-      </div>
-</div>
-    </div>
+                                            <input type="text" class="signInText" id="password" name="password" placeholder="Enter a password" ng-model="signinSection.password" />
+
+                                        </md-input-container>
+                                    <br>
+                                        <md-input-container class="signInText "flex-gt-sm>
+                                            <!-- GPA Box-->
+
+                                            <input type="text" class="signInText" id="verifyPassword" name="verifyPassword" placeholder="Verify Password" ng-model="signinSection.verifyPassword" required/>
+
+                                        </md-input-container>
+                                    <br>
+                                    <!-- Flat button with ripple -->
+
+                                    <br>
+                                    <!-- Flat button with ripple -->
+                                        <md-button class= id="searchBtn" style='text-align:center' onClick="createAccount()">
+                                            Create Account
+                                        </md-button>
+                                </form>
+
+                        </div>
+                                </div>
+                    </md-dialog-content>
+    </md-dialog>
 </html>
