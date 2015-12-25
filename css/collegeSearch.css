@@ -25,7 +25,6 @@
 	position:relative;
 	height: 100px;
 }
-
-.app-modal-window .modal-dialog {
-	width: 500px;
+.dialogSignIn {
+	width: 400px;
 }
