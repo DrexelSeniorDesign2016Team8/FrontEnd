@@ -4,7 +4,7 @@ var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages'] );		// 
 
 app.config(function($mdIconProvider) {
 	$mdIconProvider
-		.defaultIconSet('icon/materialicons.svg');
+		.defaultIconSet('icon/materialIcons.svg');
 });
 app.controller('headerController', function($scope, $mdDialog, $mdMedia) {
 	$scope.status = '  ';
