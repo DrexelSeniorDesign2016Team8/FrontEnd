@@ -6,3 +6,26 @@
 	width: 150px;
 	height: 40px;
 }
+
+#accountCreation {
+	float: right;
+	margin-top: 25px;
+	margin-right: 20px;
+	position: relative;
+}
+#collegeSearchicon {
+	float: left;
+	top: 0px;
+	margin-left: 20px;
+	width: 150px;
+	height: 100px;
+	position: relative;
+}
+#header {
+	position:relative;
+	height: 100px;
+}
+
+.app-modal-window .modal-dialog {
+	width: 500px;
+}

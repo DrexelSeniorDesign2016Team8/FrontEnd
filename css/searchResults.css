@@ -25,4 +25,12 @@
 
 .sideNavResult {
     width: 225px;
+    margin-top: 110px;
+    position: fixed;
+}
+.searchResults {
+    margin-left: 75px;
+}
+.refineButton {
+    margin-left: 75px;
 }
