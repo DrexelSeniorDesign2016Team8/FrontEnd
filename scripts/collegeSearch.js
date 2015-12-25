@@ -46,6 +46,21 @@ app.controller('headerController', function($scope, $mdDialog, $mdMedia) {
 			});
 	};
 });
+app.factory('searchService', function() {
+	var searchOptions = {}
+	function set(data) {
+		searchOptions = data;
+	}
+	function get() {
+		return savedData;
+	}
+
+	return {
+		set: set,
+		get: get
+	}
+
+});
 function DialogController($scope, $mdDialog) {
 	$scope.hide = function() {
 		$mdDialog.hide();

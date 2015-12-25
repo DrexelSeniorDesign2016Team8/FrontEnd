@@ -13,3 +13,7 @@ function rememberMe() {
     //TODO: implement remember me functionality
 
 }
+
+function createAccount() {
+
+}

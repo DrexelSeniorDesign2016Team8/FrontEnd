@@ -10,6 +10,7 @@ var collegeArray = [];
 
 app.controller('resultsController', function ($scope, $timeout, $mdSidenav, $log) {
     $scope.toggleSearch = buildToggler('searchBar');
+     searchParameters = $scope.searchParameters;
     $scope.isSearchOpen = function(){
         return $mdSidenav('searchBar').isOpen();
 
@@ -51,7 +52,7 @@ It then makes a call to the college search api to retrieve the results
 function loadResults() {
 
 
-    searchParameters = getCookie("searchParameters");
+  //  searchParameters = getCookie("searchParameters");
 
     //  var url = constructSearch(searchParameters);
     var resultsDiv = $("#information");
