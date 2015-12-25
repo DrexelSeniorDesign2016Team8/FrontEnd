@@ -2,7 +2,10 @@
 
 var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages'] );		// initialize the app for all classes
 
-
+app.config(function($mdIconProvider) {
+	$mdIconProvider
+		.defaultIconSet('icon/materialicons.svg');
+});
 app.controller('headerController', function($scope, $mdDialog, $mdMedia) {
 	$scope.status = '  ';
 	var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -54,6 +57,8 @@ function DialogController($scope, $mdDialog) {
 		$mdDialog.hide(answer);
 	};
 }
+
+
 
 function createHeader() {
 	var header = $("#header");
