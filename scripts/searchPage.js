@@ -5,15 +5,49 @@
 
 var searchParameters = {};
 
-app.controller('searchController', ['$scope', function($scope) {
+app.controller('searchController', function ($scope, $timeout, $mdSidenav, $log) {
     $scope.searchParameters = {};
+    $scope.performSearch = function(form){
+        if ($scope.CollegeInfo.$valid) {
+          //TODO add message saying some values are invalid
+        }
+        var config = {
+            params : {
+                // Put required values here
+                'gpa' : $scope.CollegeInfo.gpa,
+                'actcomposite' : $scope.CollegeInfo.actcomposite,
+                'highschoolpercentile' : $scope.CollegeInfo.HighSchoolPercentile,
+                'mathscore' : $scope.CollegeInfo.mathscore,
+                'writingScore' : $scope.CollegeInfo.WritingScore,
+                'readingScore' : $scope.CollegeInfo.ReadingScore,
+                'stateName': $scope.CollegeInfo.stateName,
+                'institutionName': $scope.CollegeInfo.InstitutionName,
+                'zipCode': $scope.CollegeInfo.zipcode,
+                'fullAddress': $scope.CollegeInfo.fullAddress,
+                'acceptanceRate' : $scope.CollegeInfo.acceptanceRate,
+                'retentionRate' : $scope.CollegeInfo.retentionRate,
+                'institutionType': $scope.CollegeInfo.institutionType,
+                'studentPopulation': $scope.CollegeInfo.studentPopulation,
+                'classSize' : $scope.CollegeInfo.classSize,
+                'CommonApplicaiton': $scope.CollegeInfo.commonApplication,
+                'favoritedInstitutions': $scope.CollegeInfo.favoritedInstitutions
+            },
+        };
+        if (!checkFields()) {       // This checks the fields on the page
+            return false;
+        }
+        searchOptions();
 
+        var search = constructSearch();
 
-    $scope.reset = function() {
-        $scope.user = angular.copy($scope.master);
+        createCookie("searchParameters", search);           // create a cookie with the search parameters
+        window.location.href="searchResults.html";      // redirect to a new page
+
+        return false;
+
     };
-    $scope.reset();
-}]);
+});
+
 /*
 This performs search on the page
  */

@@ -4,7 +4,7 @@
 
 
 
-app.controller('resetPassword', function ($scope, $timeout, $mdSidenav, $log) {
+app.controller('resetPasswordController', function ($scope, $timeout, $mdSidenav, $log) {
     app.controller('resetPassword', function ($scope, $timeout, $mdSidenav, $log) {
         $scope.showConfirmation = function () {
             return $mdSidenav('searchBar').isOpen();

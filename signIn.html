@@ -13,17 +13,24 @@
             </md-button>
         </div>
         </md-toolbar>
+
                 <md-dialog-content>
                     <md-tabs md-dynamic-height md-border-bottom>
                         <md-tab label="Sign In">
+
                             <div class="md-dialog-content">
 
-                                <div id="Signin">
+                                <form name="signInForm" id="Signin">
                                     <form>
                                         <md-input-container flex-gt-sm>
-                                            <!--  Email Address-->
+                                            <!-- Email Address-->
 
-                                            <input type="text" class="signInText" id="emailAddress" name="email" placeholder="Email Address" ng-model="Signin.emailLogin" />
+                                            <input type="text" class="signInText" id="emailAddress" name="emailAddress" ng-model="signIn.emailAddress"placeholder="Email Address" ng-model="signIn.email" ng-pattern="/^.+@.+\..+$/" />
+                                            <div ng-messages="signInForm.emailAddress.$error">
+                                                <div ng-message="pattern">
+                                                    Please enter a valid email address
+                                                </div>
+                                            </div>
 
                                         </md-input-container>
                                         <br>
@@ -51,7 +58,7 @@
                                     </form>
 
 
-                                </div>
+                                </form>
 
                             </div>
                         </md-tab>
