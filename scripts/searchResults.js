@@ -8,29 +8,45 @@ var searchResults = {};     // This array contains the search results
 var collegeArray = [];
 
 
-app.controller('resultsController', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.toggleSearch = buildToggler('searchBar');
-     searchParameters = $scope.searchParameters;
-    $scope.isSearchOpen = function(){
-        return $mdSidenav('searchBar').isOpen();
+app.controller('resultsController', function ($scope, apiCall, $http, $timeout, $mdSidenav, $log)
+{
 
-    };
-    $scope.close = function(){
-        return $mdSidenav('searchBar').close()
-            //TODO update results page in real time
-        .then(function () {
-            $log.debug("results pane is closed");
-        });
-    };
-    function buildToggler(navID) {
-        return function() {
-            $mdSidenav(navID)
-                .toggle()
+    searchParameters = getCookie('searchParameters');
+    var jsonString = JSON.stringify(searchParameters);
+    jsonString = jsonString.replace(/\"\:\"/g, "=");
+
+    jsonString = jsonString.replace("{", "");
+    jsonString = jsonString.replace("}", "");
+
+
+    apiCall.setApiDestination(jsonString);
+
+
+
+    var response = apiCall.callCollegeSearchAPI($http);
+        loadResults(response);
+        $scope.toggleSearch = buildToggler('searchBar')
+        searchParameters = $scope.searchParameters;
+        $scope.isSearchOpen = function () {
+            return $mdSidenav('searchBar').isOpen();
+
+        };
+        $scope.close = function () {
+            return $mdSidenav('searchBar').close()
+                //TODO update results page in real time
                 .then(function () {
-                    $log.debug("toggle " + navID + " is done");
+                    $log.debug("results pane is closed");
                 });
+        };
+        function buildToggler(navID) {
+            return function () {
+                $mdSidenav(navID)
+                    .toggle()
+                    .then(function () {
+                        $log.debug("toggle " + navID + " is done");
+                    });
+            }
         }
-    }
 })
 
 
@@ -49,34 +65,25 @@ This function loads the results
 This reads the cookie containing the search parameters
 It then makes a call to the college search api to retrieve the results
  */
-function loadResults() {
+function loadResults(response) {
 
 
-    searchParameters = getCookie("searchParameters");
-
-    //  var url = constructSearch(searchParameters);
     var resultsDiv = $("#information");
 
-    var result = invokeCollegeSearchAPI(searchParameters, null, "GET", function (result) {
 
+    for (var i = 0; i < response.length; i++) {
 
-        for (var i = 0; i < result.length; i++) {
-
-            if (result.length==0) {
-                noResultsAvailable();
-            }
-            else {
-                addSearchResult(result[i], resultsDiv, i)
-            }
+        if (response.length == 0) {
+            noResultsAvailable();
         }
-        //  });
+        else {
+            addSearchResult(response[i], resultsDiv, i)
+        }
+    }
+
+    // TODO set up onclicks
 
 
-
-        // TODO set up onclicks
-
-
-    });
 }
 
 /*
@@ -159,38 +166,5 @@ function addSearchResult(collegeItem, resultsDiv, count) {
 
     resultsDiv.append(item);
 
-
-}
-
-function searchOptions() {
-    // Get all options from HTML fields and save them to a variable
-
-    searchParameters = getCookie(searchParameters);
-
-    var searchParameters = JSON.parse(searchParameters);
-
-    collegeName
-
-    var collegeName = $("#collegeName");
-
-    searchParameters.name = institutionName.val();
-
-}
-function constructSearch(searchParameters) {
-    // usually just a get request so a simple GET is fine
-
-    var dataType = "GET";
-
-
-    var url = "www.searchCollege.me/Search/"; // consturct the url
-
-    var jsonString = JSON.stringify(searchParameters);
-
-    jsonString = jsonString.replace(/\"\:\"/g,"=");
-
-    jsonString = jsonString.replace("{","");
-    jsonString = jsonString.replace("}","");
-
-    url = url + jsonString;
 
 }

@@ -7,239 +7,65 @@ var searchParameters = {};
 
 app.controller('searchController', function ($scope, $timeout, $mdSidenav, $log) {
     $scope.searchParameters = {};
-    $scope.performSearch = function(form){
-        if ($scope.CollegeInfo.$valid) {
+    $scope.currentUserLoggedin = false;
+    pageSetup = function() {
+
+        var loggedIn = getCookie("loggedIn");
+
+
+        if (loggedIn=="true") {
+
+            // remove class for not showing logged in functions
+        }
+        else {
+            // we don't need to modify anything
+        }
+        deleteCookie("searchParameters");
+    }
+    $scope.performSearch = function(){
+        if (!$scope.CollegeInfo.$valid) {
           //TODO add message saying some values are invalid
         }
-        var config = {
-            params : {
-                // Put required values here
-                'gpa' : $scope.CollegeInfo.gpa,
-                'actcomposite' : $scope.CollegeInfo.actcomposite,
-                'highschoolpercentile' : $scope.CollegeInfo.HighSchoolPercentile,
-                'mathscore' : $scope.CollegeInfo.mathscore,
-                'writingScore' : $scope.CollegeInfo.WritingScore,
-                'readingScore' : $scope.CollegeInfo.ReadingScore,
-                'stateName': $scope.CollegeInfo.stateName,
-                'institutionName': $scope.CollegeInfo.InstitutionName,
-                'zipCode': $scope.CollegeInfo.zipcode,
-                'fullAddress': $scope.CollegeInfo.fullAddress,
-                'acceptanceRate' : $scope.CollegeInfo.acceptanceRate,
-                'retentionRate' : $scope.CollegeInfo.retentionRate,
-                'institutionType': $scope.CollegeInfo.institutionType,
-                'studentPopulation': $scope.CollegeInfo.studentPopulation,
-                'classSize' : $scope.CollegeInfo.classSize,
-                'CommonApplicaiton': $scope.CollegeInfo.commonApplication,
-                'favoritedInstitutions': $scope.CollegeInfo.favoritedInstitutions
-            },
-        };
-        if (!checkFields()) {       // This checks the fields on the page
+        else {
+            var config = {
+                params: {
+                    // Put required values here
+                    'GPAvalue': $scope.parameter.gpa,
+                    'ACTScore': $scope.parameter.actcomposite,
+                    'highSchoolPercentile': $scope.parameter.HighSchoolPercentile,
+                    'MathScore': $scope.parameter.mathscore,
+                    'WritingScore': $scope.parameter.WritingScore,
+                    'ReadingScore': $scope.parameter.ReadingScore,
+                    'StateName': $scope.parameter.stateName,
+                    'name': $scope.parameter.InstitutionName,
+                    'zipCode': $scope.parameter.zipcode,
+                    'fullAddress': $scope.parameter.fullAddress,
+                    'acceptanceRate': $scope.parameter.acceptanceRate,
+                    'retentionRate': $scope.parameter.retentionRate,
+                    'institutionType': $scope.parameter.institutionType,
+                    'studentPopulation': $scope.parameter.studentPopulation,
+                    'classSize': $scope.parameter.classSize,
+                    'CommonApplicaiton': $scope.parameter.commonApplication,
+                    'favoritedInstitutions': $scope.parameter.favoritedInstitutions
+                },
+            };
+
+
+            parameters = formatSearch(config.params);
+            createCookie("searchParameters", parameters);           // create a cookie with the search parameters
+            window.location.href = "searchResults.html";      // redirect to a new page
+
             return false;
         }
-        searchOptions();
-
-        var search = constructSearch();
-
-        createCookie("searchParameters", search);           // create a cookie with the search parameters
-        window.location.href="searchResults.html";      // redirect to a new page
-
-        return false;
-
     };
+    pageSetup();
 });
 
-/*
-This performs search on the page
- */
-function performSearch() {
 
-
-    if (!checkFields()) {       // This checks the fields on the page
-        return false;
-    }
-    searchOptions();
-
-    var search = constructSearch();
-
-    createCookie("searchParameters", search);           // create a cookie with the search parameters
-        window.location.href="searchResults.html";      // redirect to a new page
-
-    return false;
-}
-
-function pageSetup() {
-
-    deleteAllCookies();
-}
-/*
-This function checks each field against a regular expression
-Another function performs the actual logic
-Returns true or false if one field is invalid
- */
-function checkFields() {
-
-    var GPAfield = $("#GPANumber");
-
-    var success;
-    searchParameters.GPAvalue = GPAfield.val();
-    if (GPAfield.val()=="-?[0-9]*(\.[0-9]+)?") {
-        alert("Please check error messages");
-        return false;
-    }
-
-    var ACTscore = $("#ACTScore");
-    var reg = new RegExp("[0-9]{2}")
-    success = this.checkRegExp(ACTscore, reg);
-    searchParameters.ACTScore = ACTscore.val();
-
-    var mathScore = $("#MathScore");
-
-    var reg = new RegExp("[0-9]{3}")
-    success = this.checkRegExp(mathScore, reg);
-    searchParameters.MathScore = mathScore.val();
-
-    var readingScore = $("#ReadingScore");
-
-    var reg = new RegExp("[0-9]{3}")
-    success = this.checkRegExp(readingScore, reg);
-    searchParameters.ReadingScore = readingScore.val();
-
-    var institutionName = $("#InstitutionName");
-
-    searchParameters.name = institutionName.val();
-
-    var writingScore = $("#WritingScore");
-
-    var reg = new RegExp("[0-9]{3}")
-    success = this.checkRegExp(writingScore, reg);
-    searchParameters.WritingScore = writingScore.val();
-
-
-    var zipCode = $("#zipCode");
-
-    var reg = new RegExp("[0-9]{5}")
-    success = this.checkRegExp(zipCode, reg);
-    searchParameters.zipCode = zipCode.val();
-
-    var fullAddress = $("#FullAddress");
-
-    searchParameters.fullAddress = encodeURIComponent(fullAddress.val());
-
-    var studentPopulation = $("#populationtxt");
-
-    searchParameters.studentPopulation = studentPopulation.val();
-
-    var classSize = $("#classSizetxt");
-
-    searchParameters.classSize = classSize.val();
-
-
-    if (success) {
-        return true;
-    }
-    else return false;
-}
-
-/*
-This function checks an element against a regular expression
-If the field is blank it returns true
-If the value contains text that follows the regular expression it returns true, else false
- */
-function checkRegExp(elem, regExp) {
-
-    if (!elem.text()=="") {
-        if (!regExp.test(elem.text())) {
-            window.id = elem;
-            return false;
-        }
-    }
-    return true;
-}
-
-/*
-This function gets all the searchOptions and saves them to a json object
- */
-function searchOptions() {
-    // Get all options from HTML fields and save them to a variable
-
-    var GPAfield = $("#GPANumber");
-
-    searchParameters.GPAvalue = GPAfield.val();
-
-    var ACTscore = $("#ACTScore");
-
-    searchParameters.ACTScore = ACTscore.val();
-
-    var mathScore = $("#MathScore");
-
-    searchParameters.MathScore = mathScore.val();
-
-    var readingScore = $("#ReadingScore");
-
-    searchParameters.ReadingScore = readingScore.val();
-
-    var institutionName = $("#InstitutionName");
-
-    searchParameters.name = institutionName.val();
-
-    var stateName = $("#stateName");
-
-    searchParameters.StateName = stateName.text();
-
-    var highSchoolPercentile = $("#highschoolPercentile");
-
-    searchParameters.highSchoolPercentile = highSchoolPercentile.text();
-
-    var writingScore = $("#WritingScore");
-
-    searchParameters.WritingScore = writingScore.val();
-
-    var zipCode = $("#zipCode");
-
-    searchParameters.zipCode = zipCode.val();
-
-    var fullAddress = $("#FullAddress");
-
-    searchParameters.fullAddress = encodeURIComponent(fullAddress.val());
-
-    var studentPopulation = $("#studentpopulation");
-
-    searchParameters.studentPopulation = studentPopulation.val();
-
-    var retentionRate = $("#retentionRate");
-
-    searchParameters.retentionRate = retentionRate.text();
-
-    var institutionType = $("#institutionType");
-
-    searchParameters = institutionType.text();
-
-    var classSize = $("#classSize");
-
-    searchParameters.classSize = classSize.val();
-
-    if (!searchParameters.HighSchoolPercentile) {
-        searchParameters.HighSchoolPercentile="";
-    }
-
-    if (!searchParameters.AcceptanceRate) {
-        searchParameters.AcceptanceRate="";
-    }
-    if (!searchParameters.StateName) {
-        searchParameters.StateName="";
-    }
-    if (!searchParameters.retentionRate) {
-        searchParameters.retentionRate="";
-    }
-    }
-    if (!searchParameters.institutionType) {
-        searchParameters.institutionType="";
-
-}
 /*
 This function contructs the search parameters
  */
-function constructSearch() {
+function constructSearch(params) {
     // usually just a get request so a simple GET is fine
 
     var dataType = "GET";
@@ -247,9 +73,8 @@ function constructSearch() {
 
     var url = "search.php?"; // construct the url
 
-    var jsonString = JSON.stringify(searchParameters);
 
-    url +=formatSearch();
+    url +=formatSearch(params);
 
 
     return url;
@@ -258,7 +83,7 @@ function constructSearch() {
 /*
 This function formats the search depending on the values that are filled in and not
  */
-function formatSearch() {
+function formatSearch(searchParameters) {
 
     var parameters="";
     if (searchParameters.GPAvalue) {

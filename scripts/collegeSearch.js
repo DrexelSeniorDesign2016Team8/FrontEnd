@@ -10,12 +10,10 @@ app.controller('headerController', function($scope, $mdDialog, $mdMedia) {
 	$scope.status = '  ';
 	var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 	$scope.showLoginPage = function(ev) {
-		var fileref=document.createElement("script");
-		fileref.setAttribute("src", "scripts/signIn.js");
-		document.getElementsByTagName("head")[0].appendChild(fileref);
+
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		$mdDialog.show({
-				controller: DialogController,
+				controller: signInController,
 				templateUrl: 'signIn.html',
 				parent: angular.element(document.body),
 				targetEvent: ev,
@@ -30,20 +28,6 @@ app.controller('headerController', function($scope, $mdDialog, $mdMedia) {
 		}, function(wantsFullScreen) {
 			$scope.customFullscreen = (wantsFullScreen === true);
 		});
-	};
-	$scope.showTabDialog = function(ev) {
-		$mdDialog.show({
-				controller: DialogController,
-				templateUrl: 'tabDialog.tmpl.html',
-				parent: angular.element(document.body),
-				targetEvent: ev,
-				clickOutsideToClose:true
-			})
-			.then(function(answer) {
-				$scope.status = 'You said the information was "' + answer + '".';
-			}, function() {
-				$scope.status = 'You cancelled the dialog.';
-			});
 	};
 });
 app.factory('searchService', function() {
@@ -61,18 +45,56 @@ app.factory('searchService', function() {
 	}
 
 });
-function DialogController($scope, $mdDialog) {
-	$scope.hide = function() {
-		$mdDialog.hide();
-	};
-	$scope.cancel = function() {
-		$mdDialog.cancel();
-	};
-	$scope.answer = function(answer) {
-		$mdDialog.hide(answer);
-	};
-}
 
+app.factory('apiCall', function() {
+
+	var endPoint = "http://mid.searchcollege.me";
+	var method = "";
+	var apiCall = '';
+	var finalUrl = "";
+	var response = "";
+	var currentUserLoggedin = false;
+	var service = {}
+
+	var makeUrl = function() {
+
+		finalUrl = endPoint + "/" + apiCall;
+
+		return finalUrl;
+	}
+
+	service.setApiDestination = function(apiDestination) {
+		apiCall = apiDestination
+	}
+	service.getapiCall = function() {
+		return apiCall;
+	}
+	service.setMethod = function(method) {
+		method = method;
+	}
+	service.getMethod = function() {
+		return method;
+	}
+	service.callCollegeSearchAPI = function($http) {
+		makeUrl();
+
+		if (service.getMethod() == "")  {
+			method = "GET";
+			service.setMethod(method);
+		}
+		$http({
+			method: method,
+			url: finalUrl,
+		}).success(function (data) {
+				response = data;
+			})
+			.error(function (data) {
+				//TODO input error message
+			})
+			return response;
+	};
+	return service;
+});
 
 
 function createHeader() {
@@ -97,69 +119,15 @@ function createHeader() {
 	var createAccountbtn = $("<md-button id='accountCreation' ng-click='showLoginPage(event)'>");
 		createAccountbtn.addClass("md-button");
 			createAccountbtn.text("Login/Create Account");
-
+	var fileref=document.createElement("script");
+	fileref.setAttribute("src", "scripts/signIn.js");
+	document.getElementsByTagName("head")[0].appendChild(fileref);
 	header.append(createAccountbtn);
 
 
 
 	//header.append("<hr>");
 //}
-
-}
-
-// This function retrieves the spinner and sets it to active to show the loading screen
-function showloadScreen() {
-
-	var spinner = $("#spinner")
-
-	spinner.addClass("is-active")
-}
-
-function removeLoadScreen() {
-	spinner.removeClass("is-active")
-}
-
-function openAccountPage() {
-	var modal = $("#loginPage");
-	modal.modal({
-		show: 'false',
-		refresh: true
-	});
-
-	moda.modal('show');
-	modal.focus();
-
-
-}
-/*
- This function invokes the college search api
- */
-function invokeCollegeSearchAPI(url, data, dataType, success) {
-
-
-	if (data=="") {
-		dataType="GET";
-	}
-	var startUrl = "http://mid.searchcollege.me";
-
-
-	url = startUrl+"/"+url;
-	var response = CollegeSearchAPI(url,data,success,dataType);
-
-	return response;
-}
-/*
- url is the url request
- data is the data that will be passed into the request
- */
-function CollegeSearchAPI(url, data, success, dataType){
-
-	var xmlHttp = new XMLHttpRequest();
-	$.get(url, function(data, status) {
-		var result = JSON.parse(data)
-		success(result);
-
-	});
 
 }
 
@@ -189,9 +157,8 @@ function deleteAllCookies() {
 		document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	}
 }
-
-
-//TODO Figure out how to allow this to be in external js page
-app.controller('signInPage', function () {
-
-});
+function deleteCookie(name) {
+	var regexp = new RegExp("(?:^" + name + "|;\s*"+ name + ")=(.*?)(?:;|$)", "g");
+	var result = regexp.exec(document.cookie);
+	document.cookie = result + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}

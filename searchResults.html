@@ -23,331 +23,341 @@
 
     <div id="header" ng-controller="headerController"></div>
 
-    <div ng-controller="resultsController">
-        <script>
-            createHeader();
-            loadResults();
-        </script>
-        <hr>
-    <br>
-    <br>
+        <div ng-controller="resultsController">
+            <script>
+                createHeader();
 
-                        <md-button class="refine button" ng-click="toggleSearch(CollegeInfo)"
-                                   class="md-primary">
-                            Refine Search
-                        </md-button>
+            </script>
+            <hr>
+        <br>
+        <br>
 
-                    </md-button>
-                        <md-sidenav class="md-sidenav-left md-whiteframe-z2 sideNavResult" md-component-id="searchBar">
-                            <form name="refineSearch" id="additionalinfo">
-                            <md-button ng-click="close()"
+                            <md-button class="refine button" ng-click="toggleSearch(CollegeInfo)"
                                        class="md-primary">
-                                Search
-                                </md-button>
+                                Refine Search
+                            </md-button>
 
+                        </md-button>
+                            <md-sidenav class="md-sidenav-left md-whiteframe-z2 sideNavResult" md-component-id="searchBar">
+                                <form name="refineSearch" id="additionalinfo">
+                                <md-button ng-click="close()"
+                                           class="md-primary">
+                                    Search
+                                    </md-button>
 
-                                            <md-card class="searchPageBox">
-                                                <md-input-container class="md-block searchPageBox flex-gt-sm">
-                                                    <label>GPA</label>
-                                                    <input md-maxlength="3" required name="gpa" ng-model="results.gpa">
-                                                    <div ng-messages="refineSearch.gpa.$error">
-                                                        <div ng-message="required">This is required.</div>
-                                                        <div ng-message="md-maxlength">Please type in a valid GPA out of 4.0</div>
-                                                    </div>
-                                                </md-input-container>
-                                            </md-card>
-
-                                <md-card class="searchPageBox">
-                                    <!-- ACT Box-->
-                                    <md-input-container class="md-block searchPageBox flex-gt-sm">
-                                        <label>ACT Composite Score</label>
-                                        <input required type="number" step="0.1" name="actcomposite" ng-model="results.actcomposite" min="0"
-                                               max="36" ng-pattern="/^[0-9]{1,2}$/" />
-                                        <div ng-messages="refineSearch.actcomposite.$error" multiple md-auto-hide="false">
-                                            <div ng-message="min">
-                                                You can't have a negative sore
-                                            </div>
-                                            <div ng-message="pattern">
-                                                You need to enter a two digit number
-                                            </div>
-                                            <div ng-message="max">
-                                                You can't have higher than a 36
-                                            </div>
-                                        </div>
-                                    </md-input-container>
-                                </md-card>
 
                                                 <md-card class="searchPageBox">
-                                                    <!-- High School Percentile Box-->
-                                                    <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                                        <md-select ng-model="results.HighSchoolPercentile" placeholder="Please Select" id="highschoolPercentile">
-
-                                                            <md-option value="10%">10%</md-option>
-                                                            <md-option value="20%">20%</md-option>
-                                                            <md-option value="30%">30%</md-option>
-                                                            <md-option value="40%">40%</md-option>
-                                                            <md-option value="50%">50%</md-option>
-                                                            <md-option value="60%">60%</md-option>
-                                                            <md-option value="70%">70%</md-option>
-                                                            <md-option value="80%">80%</md-option>
-                                                            <md-option value="90%">90%</md-option>
-                                                            <md-option value="100%">100%</md-option>
-                                                        </md-select>
-                                                        <md-card-title><b>High School Percentile</b></md-card-title>
+                                                    <md-input-container class="md-block searchPageBox flex-gt-sm">
+                                                        <label>GPA</label>
+                                                        <input md-maxlength="3" required name="gpa" ng-model="results.gpa">
+                                                        <div ng-messages="refineSearch.gpa.$error">
+                                                            <div ng-message="required">This is required.</div>
+                                                            <div ng-message="md-maxlength">Please type in a valid GPA out of 4.0</div>
+                                                        </div>
                                                     </md-input-container>
                                                 </md-card>
 
-                                <md-card class="searchPageBox">
-                                    <!-- ACT Box-->
-                                    <md-input-container class="md-block searchPageBox" flex-gt-sm>
-
-                                        <label>Math Score</label>
-                                        <input type="number" id="MathScore" name="MathScore" ng-model="results.MathScore" min="0"
-                                               max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
-                                        <div ng-messages="refineSearch.MathScore.$error" multiple md-auto-hide="false">
-                                            <div ng-message="min">
-                                                You can't have a negative sore
-                                            </div>
-                                            <div ng-message="pattern">
-                                                You need to enter a three digit number
-                                            </div>
-                                            <div ng-message="max">
-                                                You can't have higher than an 800
-                                            </div>
-                                        </div>
-                                    </md-input-container>
-
-                                </md-card>
-                                <md-card class="searchPageBox">
-                                    <!-- Math Score -->
-                                    <md-input-container class="md-block searchPageBox" flex-gt-sm>
-
-                                        <label>Writing Score</label>
-                                        <input type="number" name="WritingScore" ng-model="results.WritingScore" ng-pattern="/^[0-9]{1,3}$/" min="0"
-                                               max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
-                                        <div ng-messages="refineSearch.WritingScore.$error" multiple md-auto-hide="false">
-                                            <div ng-message="min">
-                                                You can't have a negative sore
-                                            </div>
-                                            <div ng-message="pattern">
-                                                You need to enter a three digit number
-                                            </div>
-                                            <div ng-message="max">
-                                                You can't have higher than an 800
-                                            </div>
-                                        </div>
-                                    </md-input-container>
-                                </md-card>
-
-                                <md-card class="searchPageBox">
-                                    <!-- Reading Score-->
-                                    <md-input-container class="md-block searchPageBox" flex-gt-sm>
-
-                                        <label>Reading Score</label>
-                                        <input type="number" name="ReadingScore" id="ReadingScore" ng-model="resulst.ReadingScore"min="0"
-                                               max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
-                                        <div ng-messages="refineSearch.ReadingScore.$error" multiple md-auto-hide="false">
-                                            <div ng-message="min">
-                                                You can't have a negative sore
-                                            </div>
-                                            <div ng-message="pattern">
-                                                You need to enter a three digit number
-                                            </div>
-                                            <div ng-message="max">
-                                                You can't have higher than an 800
-                                            </div>
-                                        </div>
-                                    </md-input-container>
-                                </md-card>
-
-
-                                                <div layout="title2" layout-align="center center">
-                                                    Institution Characteristics
+                                    <md-card class="searchPageBox">
+                                        <!-- ACT Box-->
+                                        <md-input-container class="md-block searchPageBox flex-gt-sm">
+                                            <label>ACT Composite Score</label>
+                                            <input required type="number" step="0.1" name="actcomposite" ng-model="results.actcomposite" min="0"
+                                                   max="36" ng-pattern="/^[0-9]{1,2}$/" />
+                                            <div ng-messages="refineSearch.actcomposite.$error" multiple md-auto-hide="false">
+                                                <div ng-message="min">
+                                                    You can't have a negative sore
                                                 </div>
-                                                    <!-- Institution Name-->
-                                                    <div class="mdl-card mdl-shadow--2dp searchPageBox">
+                                                <div ng-message="pattern">
+                                                    You need to enter a two digit number
+                                                </div>
+                                                <div ng-message="max">
+                                                    You can't have higher than a 36
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </md-card>
 
-                                                        <md-card class="searchPageBox">
-                                                            <!-- Reading Score-->
-                                                            <md-input-container class="md-block searchPageBox" flex-gt-sm>
-
-                                                                <label>Institution Name</label>
-                                                                <input type="text" id="InstitutionName" name="InstitutionName" ng-model="results.InstitutionName"/>
-
-                                                            </md-input-container>
-                                                        </md-card>
-
-
-
-                                                    <!-- State Name -->
                                                     <md-card class="searchPageBox">
-                                                        <!-- State Percentile Box-->
+                                                        <!-- High School Percentile Box-->
                                                         <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                                            <md-select ng-model="selectedUser" placeholder="Please Select" id="state">
+                                                            <md-select ng-model="results.HighSchoolPercentile" placeholder="Please Select" id="highschoolPercentile">
 
-                                                                <md-option value="Alabama">Alabama</md-option>
-                                                                <md-option value="Alaska">Alaska</md-option>
-                                                                <md-option value="Arizona">Arizona</md-option>
-                                                                <md-option value="Arkansas">Arkansas</md-option>
-                                                                <md-option value="California">California</md-option>
-                                                                <md-option value="Colorado">Colorado</md-option>
-                                                                <md-option value="Connecticut">Connecticut</md-option>
-                                                                <md-option value="Delaware">Delaware</md-option>
-                                                                <md-option value="Florida">Florida</md-option>
-                                                                <md-option value="Georgia">Georgia</md-option>
-                                                                <md-option value="Hawaii">Hawaii</md-option>
-                                                                <md-option value="Idaho">Idaho</md-option>
-                                                                <md-option value="Illinois">Illinois </md-option>
-                                                                <md-option value="Indiana">Indiana</md-option>
-                                                                <md-option value="Iowa">Iowa</md-option>
-                                                                <md-option value="Kansas">Kansas</md-option>
-                                                                <md-option value="Kentucky">Kentucky</md-option>
-                                                                <md-option value="Louisiana">Louisiana</md-option>
-                                                                <md-option value="Maine">Maine</md-option>
-                                                                <md-option value="Maryland">Maryland</md-option>
-                                                                <md-option value="Massachusetts">Massachusetts</md-option>
-                                                                <md-option value="Michigan">Michigan</md-option>
-                                                                <md-option value="Minnesota">Minnesota</md-option>
-                                                                <md-option value="Mississippi">Mississippi</md-option>
-                                                                <md-option value="Missouri">Missouri</md-option>
-                                                                <md-option value="Montana">Montana</md-option>
-                                                                <md-option value="Nebraska">Nebraska</md-option>
-                                                                <md-option value="Nevada">Nevada</md-option>
-                                                                <md-option value="New Hampshire">New Hampshire</md-option>
-                                                                <md-option value="New Jersey">New Jersey</md-option>
-                                                                <md-option value="New Mexico">New Mexico</md-option>
-                                                                <md-option value="New York">New York</md-option>
-                                                                <md-option value="North Carolina">North Carolina</md-option>
-                                                                <md-option value="North Dakota">North Dakota</md-option>
-                                                                <md-option value="Ohio">Ohio</md-option>
-                                                                <md-option value="Oklahoma">Oklahoma</md-option>
-                                                                <md-option value="Oregon">Oregon</md-option>
-                                                                <md-option value="Pennsylvania">Pennsylvania</md-option>
-                                                                <md-option value="Rhode Island">Rhode Island</md-option>
-                                                                <md-option value="South Carolina">South Carolina</md-option>
-                                                                <md-option value="South Dakota">South Dakota</md-option>
-                                                                <md-option value="Tennessee">Tennessee</md-option>
-                                                                <md-option value="Texas">Texas</md-option>
-                                                                <md-option value="Utah">Utah</md-option>
-                                                                <md-option value="Vermont">Vermont</md-option>
-                                                                <md-option value="Virginia">Virginia</md-option>
-                                                                <md-option value="Washington">Washington</md-option>
-                                                                <md-option value="West Virginia">West Virginia</md-option>
-                                                                <md-option value="Wisonsin">Wisconsin</md-option>
-                                                                <md-option value="Wyoming">Wyoming</md-option>
+                                                                <md-option value="10%">10%</md-option>
+                                                                <md-option value="20%">20%</md-option>
+                                                                <md-option value="30%">30%</md-option>
+                                                                <md-option value="40%">40%</md-option>
+                                                                <md-option value="50%">50%</md-option>
+                                                                <md-option value="60%">60%</md-option>
+                                                                <md-option value="70%">70%</md-option>
+                                                                <md-option value="80%">80%</md-option>
+                                                                <md-option value="90%">90%</md-option>
+                                                                <md-option value="100%">100%</md-option>
                                                             </md-select>
-                                                            <md-card-title><b>State Name</b></md-card-title>
+                                                            <md-card-title><b>High School Percentile</b></md-card-title>
                                                         </md-input-container>
                                                     </md-card>
 
+                                    <md-card class="searchPageBox">
+                                        <!-- ACT Box-->
+                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
+                                            <label>Math Score</label>
+                                            <input type="number" id="MathScore" name="MathScore" ng-model="results.MathScore" min="0"
+                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+                                            <div ng-messages="refineSearch.MathScore.$error" multiple md-auto-hide="false">
+                                                <div ng-message="min">
+                                                    You can't have a negative sore
+                                                </div>
+                                                <div ng-message="pattern">
+                                                    You need to enter a three digit number
+                                                </div>
+                                                <div ng-message="max">
+                                                    You can't have higher than an 800
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+
+                                    </md-card>
+                                    <md-card class="searchPageBox">
+                                        <!-- Math Score -->
+                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                            <label>Writing Score</label>
+                                            <input type="number" name="WritingScore" ng-model="results.WritingScore" ng-pattern="/^[0-9]{1,3}$/" min="0"
+                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+                                            <div ng-messages="refineSearch.WritingScore.$error" multiple md-auto-hide="false">
+                                                <div ng-message="min">
+                                                    You can't have a negative sore
+                                                </div>
+                                                <div ng-message="pattern">
+                                                    You need to enter a three digit number
+                                                </div>
+                                                <div ng-message="max">
+                                                    You can't have higher than an 800
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </md-card>
+
+                                    <md-card class="searchPageBox">
+                                        <!-- Reading Score-->
+                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                            <label>Reading Score</label>
+                                            <input type="number" name="ReadingScore" id="ReadingScore" ng-model="resulst.ReadingScore"min="0"
+                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+                                            <div ng-messages="refineSearch.ReadingScore.$error" multiple md-auto-hide="false">
+                                                <div ng-message="min">
+                                                    You can't have a negative sore
+                                                </div>
+                                                <div ng-message="pattern">
+                                                    You need to enter a three digit number
+                                                </div>
+                                                <div ng-message="max">
+                                                    You can't have higher than an 800
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </md-card>
+
+
+                                                    <div layout="title2" layout-align="center center">
+                                                        Institution Characteristics
+                                                    </div>
+                                                        <!-- Institution Name-->
+                                                        <div class="mdl-card mdl-shadow--2dp searchPageBox">
+
+                                                            <md-card class="searchPageBox">
+                                                                <!-- Reading Score-->
+                                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                                                    <label>Institution Name</label>
+                                                                    <input type="text" id="InstitutionName" name="InstitutionName" ng-model="results.InstitutionName"/>
+
+                                                                </md-input-container>
+                                                            </md-card>
+
+
+
+                                                        <!-- State Name -->
                                                         <md-card class="searchPageBox">
-                                                            <!-- Zip Code-->
+                                                            <!-- State Percentile Box-->
                                                             <md-input-container class="md-block searchPageBox" flex-gt-sm>
+                                                                <md-select ng-model="selectedUser" placeholder="Please Select" id="state">
 
-                                                                <label>Zip Code</label>
-                                                                <input type="text" name="zipcode" id="zipCode" ng-model="results.zipcode" ng-pattern="/^[0-9]{1,5}$/"/>
-                                                                <div ng-messages="refineSearch.zipcode.$error">
-                                                                    <div ng-message="pattern">Not a valid zip code</div>
-                                                                </div>
+                                                                    <md-option value="Alabama">Alabama</md-option>
+                                                                    <md-option value="Alaska">Alaska</md-option>
+                                                                    <md-option value="Arizona">Arizona</md-option>
+                                                                    <md-option value="Arkansas">Arkansas</md-option>
+                                                                    <md-option value="California">California</md-option>
+                                                                    <md-option value="Colorado">Colorado</md-option>
+                                                                    <md-option value="Connecticut">Connecticut</md-option>
+                                                                    <md-option value="Delaware">Delaware</md-option>
+                                                                    <md-option value="Florida">Florida</md-option>
+                                                                    <md-option value="Georgia">Georgia</md-option>
+                                                                    <md-option value="Hawaii">Hawaii</md-option>
+                                                                    <md-option value="Idaho">Idaho</md-option>
+                                                                    <md-option value="Illinois">Illinois </md-option>
+                                                                    <md-option value="Indiana">Indiana</md-option>
+                                                                    <md-option value="Iowa">Iowa</md-option>
+                                                                    <md-option value="Kansas">Kansas</md-option>
+                                                                    <md-option value="Kentucky">Kentucky</md-option>
+                                                                    <md-option value="Louisiana">Louisiana</md-option>
+                                                                    <md-option value="Maine">Maine</md-option>
+                                                                    <md-option value="Maryland">Maryland</md-option>
+                                                                    <md-option value="Massachusetts">Massachusetts</md-option>
+                                                                    <md-option value="Michigan">Michigan</md-option>
+                                                                    <md-option value="Minnesota">Minnesota</md-option>
+                                                                    <md-option value="Mississippi">Mississippi</md-option>
+                                                                    <md-option value="Missouri">Missouri</md-option>
+                                                                    <md-option value="Montana">Montana</md-option>
+                                                                    <md-option value="Nebraska">Nebraska</md-option>
+                                                                    <md-option value="Nevada">Nevada</md-option>
+                                                                    <md-option value="New Hampshire">New Hampshire</md-option>
+                                                                    <md-option value="New Jersey">New Jersey</md-option>
+                                                                    <md-option value="New Mexico">New Mexico</md-option>
+                                                                    <md-option value="New York">New York</md-option>
+                                                                    <md-option value="North Carolina">North Carolina</md-option>
+                                                                    <md-option value="North Dakota">North Dakota</md-option>
+                                                                    <md-option value="Ohio">Ohio</md-option>
+                                                                    <md-option value="Oklahoma">Oklahoma</md-option>
+                                                                    <md-option value="Oregon">Oregon</md-option>
+                                                                    <md-option value="Pennsylvania">Pennsylvania</md-option>
+                                                                    <md-option value="Rhode Island">Rhode Island</md-option>
+                                                                    <md-option value="South Carolina">South Carolina</md-option>
+                                                                    <md-option value="South Dakota">South Dakota</md-option>
+                                                                    <md-option value="Tennessee">Tennessee</md-option>
+                                                                    <md-option value="Texas">Texas</md-option>
+                                                                    <md-option value="Utah">Utah</md-option>
+                                                                    <md-option value="Vermont">Vermont</md-option>
+                                                                    <md-option value="Virginia">Virginia</md-option>
+                                                                    <md-option value="Washington">Washington</md-option>
+                                                                    <md-option value="West Virginia">West Virginia</md-option>
+                                                                    <md-option value="Wisonsin">Wisconsin</md-option>
+                                                                    <md-option value="Wyoming">Wyoming</md-option>
+                                                                </md-select>
+                                                                <md-card-title><b>State Name</b></md-card-title>
                                                             </md-input-container>
                                                         </md-card>
 
 
-                                                    <md-card class="searchPageBox">
-                                                        <!-- Full Address-->
-                                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+                                                            <md-card class="searchPageBox">
+                                                                <!-- Zip Code-->
+                                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-                                                            <label>Full Address</label>
-                                                            <input type="text" name="fullAddress" id="FullAddress" ng-model="CollegeInfo.fullAddress"/>
-
-                                                        </md-input-container>
-                                                    </md-card>
-
-
-                                                    <!-- Acceptance Rate-->
-                                                    <md-card class="searchPageBox">
-                                                        <md-select ng-model="acceptanceRate" placeholder="Please Select" id=acceptanceRate">
-
-                                                            <md-option value="10%">10%</md-option>
-                                                            <md-option value="20%">20%</md-option>
-                                                            <md-option value="30%">30%</md-option>
-                                                            <md-option value="40%">40%</md-option>
-                                                            <md-option value="50%">50%</md-option>
-                                                            <md-option value="60%">60%</md-option>
-                                                            <md-option value="70%">70%</md-option>
-                                                            <md-option value="80%">80%</md-option>
-                                                            <md-option value="90%">90%</md-option>
-                                                            <md-option value="100%">100%</md-option>
-                                                        </md-select>
-                                                        <md-card-title><b>Acceptance Rate</b></md-card-title>
-                                                    </md-card>
-                                                    <!-- Retention Rate-->
-                                                    <md-card class="searchPageBox">
-                                                        <md-select ng-model="retentionRate" placeholder="Please Select" id="retentionRate">
-
-                                                            <md-option value="10%">10%</md-option>
-                                                            <md-option value="20%">20%</md-option>
-                                                            <md-option value="30%">30%</md-option>
-                                                            <md-option value="40%">40%</md-option>
-                                                            <md-option value="50%">50%</md-option>
-                                                            <md-option value="60%">60%</md-option>
-                                                            <md-option value="70%">70%</md-option>
-                                                            <md-option value="80%">80%</md-option>
-                                                            <md-option value="90%">90%</md-option>
-                                                            <md-option value="100%">100%</md-option>
-                                                        </md-select>
-                                                        <md-card-title><b>Retention Rate</b></md-card-title>
-                                                    </md-card>
+                                                                    <label>Zip Code</label>
+                                                                    <input type="text" name="zipcode" id="zipCode" ng-model="results.zipcode" ng-pattern="/^[0-9]{1,5}$/"/>
+                                                                    <div ng-messages="refineSearch.zipcode.$error">
+                                                                        <div ng-message="pattern">Not a valid zip code</div>
+                                                                    </div>
+                                                                </md-input-container>
+                                                            </md-card>
 
 
-
-                                                <!-- Institution Type Rate -->
-                                                <md-card class="searchPageBox">
-                                                    <md-select ng-model="InstitutionType" placeholder="Please Select" id="institutionType">
-
-                                                        <md-option value="Public">Public</md-option>
-                                                        <md-option value="Private">Private</md-option>
-                                                    </md-select>
-                                                    <md-card-title><b>Institution Type</b></md-card-title>
-                                                </md-card>
-
-                                                        <!-- Student Population -->
                                                         <md-card class="searchPageBox">
                                                             <!-- Full Address-->
                                                             <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-                                                                <label>Student Population</label>
-                                                                <input type="number" id="studentpopulation" name="StudentPopulation" ng-model="results.studentPopulation" min="0"/>
-                                                                <div ng-messages="refineSearch.StudentPopulation.$error">
-                                                                    <div ng-message="min">Please enter a number greater than 0</div>
-                                                                </div>
+                                                                <label>Full Address</label>
+                                                                <input type="text" name="fullAddress" id="FullAddress" ng-model="CollegeInfo.fullAddress"/>
+
                                                             </md-input-container>
                                                         </md-card>
 
-                                                <!-- Class Size -->
-                                                <md-card class="searchPageBox">
-                                                    <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-                                                        <label>Class Size</label>
-                                                        <input type="number" id="classSize" name="classSize" ng-model="results.ClassSize" min="0"/>
-                                                        <div ng-messages="refineSearch.classSize.$error">
-                                                            <div ng-message="min">Please enter a number greater than 0</div>
-                                                        </div>
+                                                        <!-- Acceptance Rate-->
+                                                        <md-card class="searchPageBox">
+                                                            <md-select ng-model="acceptanceRate" placeholder="Please Select" id=acceptanceRate">
 
-                                                    </md-input-container>
-                                                </md-card>
-                                            </div>
-                                </form>
-                            </md-sidenav>
-            </div>
-    </div>
+                                                                <md-option value="10%">10%</md-option>
+                                                                <md-option value="20%">20%</md-option>
+                                                                <md-option value="30%">30%</md-option>
+                                                                <md-option value="40%">40%</md-option>
+                                                                <md-option value="50%">50%</md-option>
+                                                                <md-option value="60%">60%</md-option>
+                                                                <md-option value="70%">70%</md-option>
+                                                                <md-option value="80%">80%</md-option>
+                                                                <md-option value="90%">90%</md-option>
+                                                                <md-option value="100%">100%</md-option>
+                                                            </md-select>
+                                                            <md-card-title><b>Acceptance Rate</b></md-card-title>
+                                                        </md-card>
+                                                        <!-- Retention Rate-->
+                                                        <md-card class="searchPageBox">
+                                                            <md-select ng-model="retentionRate" placeholder="Please Select" id="retentionRate">
+
+                                                                <md-option value="10%">10%</md-option>
+                                                                <md-option value="20%">20%</md-option>
+                                                                <md-option value="30%">30%</md-option>
+                                                                <md-option value="40%">40%</md-option>
+                                                                <md-option value="50%">50%</md-option>
+                                                                <md-option value="60%">60%</md-option>
+                                                                <md-option value="70%">70%</md-option>
+                                                                <md-option value="80%">80%</md-option>
+                                                                <md-option value="90%">90%</md-option>
+                                                                <md-option value="100%">100%</md-option>
+                                                            </md-select>
+                                                            <md-card-title><b>Retention Rate</b></md-card-title>
+                                                        </md-card>
+
+
+
+                                                    <!-- Institution Type Rate -->
+                                                    <md-card class="searchPageBox">
+                                                        <md-select ng-model="InstitutionType" placeholder="Please Select" id="institutionType">
+
+                                                            <md-option value="Public">Public</md-option>
+                                                            <md-option value="Private">Private</md-option>
+                                                        </md-select>
+                                                        <md-card-title><b>Institution Type</b></md-card-title>
+                                                    </md-card>
+
+                                                            <!-- Student Population -->
+                                                            <md-card class="searchPageBox">
+                                                                <!-- Full Address-->
+                                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                                                    <label>Student Population</label>
+                                                                    <input type="number" id="studentpopulation" name="StudentPopulation" ng-model="results.studentPopulation" min="0"/>
+                                                                    <div ng-messages="refineSearch.StudentPopulation.$error">
+                                                                        <div ng-message="min">Please enter a number greater than 0</div>
+                                                                    </div>
+                                                                </md-input-container>
+                                                            </md-card>
+
+                                                    <!-- Class Size -->
+                                                    <md-card class="searchPageBox">
+                                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                                            <label>Class Size</label>
+                                                            <input type="number" id="classSize" name="classSize" ng-model="results.ClassSize" min="0"/>
+                                                            <div ng-messages="refineSearch.classSize.$error">
+                                                                <div ng-message="min">Please enter a number greater than 0</div>
+                                                            </div>
+
+                                                        </md-input-container>
+                                                    </md-card>
+                                                            <md-card class="searchPageBox">
+                                                                <md-checkbox ng-model="results.commonApplication" aria-label="Checkbox 1">
+                                                                    Common Application Only
+                                                                </md-checkbox>
+
+                                                            </md-card>
+                                                            <md-card class="searchPageBox loginParameter">
+                                                                <md-checkbox ng-model="results.favoritedInstitutions" aria-label="Checkbox 1">
+                                                                    Favorited Institutions Only
+                                                                </md-checkbox>
+
+                                                            </md-card>
+                                                </div>
+                                    </form>
+                                </md-sidenav>
+                </div>
+
 <md-content flex layout-padding>
     <div layout="column" layout-fill layout-align="top center">
 <div id="information" class="searchResults"></div>
-
-<div id="none"></div>
-        </div>
+</div>
 </html>
 <hr>
 

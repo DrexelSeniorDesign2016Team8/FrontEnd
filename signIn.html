@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="css/signIn.css">
 
 
+
 <html>
 <md-dialog aria-label="Sign in/Create Account"  class="dialogSignIn" ng-cloak>
     <md-toolbar>
@@ -21,7 +22,6 @@
                             <div class="md-dialog-content">
 
                                 <form name="signInForm" id="Signin">
-                                    <form>
                                         <md-input-container flex-gt-sm>
                                             <!-- Email Address-->
 
@@ -51,13 +51,10 @@
                                         </md-checkbox>
                                         <br>
                                         <!-- Flat button with ripple -->
-                                        <md-button class= id="signIn" style='text-align:center' onClick="signIn()">
+                                        <md-button class= id="signIn" style='text-align:center' ng-click="signIn()">
                                             Sign In
                                         </md-button>
-
-                                    </form>
-
-
+                                    <md-progress-circular class="md-hue-2 md-busy" ng-show="login.loading" md-mode="indeterminate" style="margin:auto"></md-progress-circular>
                                 </form>
 
                             </div>
@@ -101,7 +98,6 @@
 
                                 </div>
                             </md-tab>
-
                     </md-dialog-content>
     </md-dialog>
 </html>
