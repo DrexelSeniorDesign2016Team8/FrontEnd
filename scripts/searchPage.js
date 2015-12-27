@@ -51,8 +51,8 @@ app.controller('searchController', function ($scope, $timeout, $mdSidenav, $log)
             };
 
 
-            parameters = formatSearch(config.params);
-            createCookie("searchParameters", parameters);           // create a cookie with the search parameters
+            params = JSON.stringify(config.params);
+            createCookie("searchParameters", params);           // create a cookie with the search parameters
             window.location.href = "searchResults.html";      // redirect to a new page
 
             return false;
@@ -80,61 +80,7 @@ function constructSearch(params) {
     return url;
 }
 
-/*
-This function formats the search depending on the values that are filled in and not
- */
-function formatSearch(searchParameters) {
 
-    var parameters="";
-    if (searchParameters.GPAvalue) {
-        parameters += "GPAvalue=" + searchParameters.GPAvalue + "&";
-    }
-    if (searchParameters.ACTScore) {
-        parameters += "ACTScore=" + searchParameters.ACTScore + "&";
-    }
-    if (searchParameters.HighSchoolPercentile) {
-        parameters += "HighSchoolPercentile=" + searchParameters.HighSchoolPercentile + "&";
-    }
-    if (searchParameters.MathScore) {
-        parameters += "MathScore=" + searchParameters.MathScore + "&";
-    }
-    if (searchParameters.ReadingScore) {
-        parameters += "ReadingScore=" + searchParameters.ReadingScore + "&";
-    }
-    if (searchParameters.WritingScore) {
-        parameters += "WritingScore=" + searchParameters.WritingScore + "&";
-    }
-    if (searchParameters.name) {
-        parameters += "name=" + searchParameters.name + "&";
-    }
-    if (searchParameters.StateName) {
-        parameters += "stateName=" + searchParameters.StateName + "&";
-    }
-    if (searchParameters.zipCode) {
-        parameters += "zipCode=" + searchParameters.zipCode + "&";
-    }
-    if (searchParameters.fullAddress) {
-        parameters += "fullAddress=" + searchParameters.fullAddress + "&";
-    }
-    if (searchParameters.AcceptanceRate) {
-        parameters += "AcceptanceRate=" + searchParameters.AcceptanceRate + "&";
-    }
-    if (searchParameters.retentionRate) {
-        parameters += "retentionRate=" + searchParameters.retentionRate + "&";
-    }
-    if (searchParameters.institutionType) {
-        parameters += "institutionType=" + searchParameters.institutionType + "&";
-    }
-    if (searchParameters.studentPopulation) {
-        parameters += "studentPopulation=" + searchParameters.studentPopulation + "&";
-    }
-    if (searchParameters.classSize) {
-        parameters += "classSize=" + searchParameters.classSize;
-    }
-
-    return parameters;
-
-}
 
     function convert_state(name, to) {
         var name = name.toUpperCase();
