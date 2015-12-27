@@ -13,11 +13,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
 
     searchParameters = getCookie('searchParameters');
     var jsonString = JSON.stringify(searchParameters);
-    jsonString = jsonString.replace(/\"\:\"/g, "=");
-
-    jsonString = jsonString.replace("{", "");
-    jsonString = jsonString.replace("}", "");
-
+    jsonString = jsonString.replace(/\"/g, "");
 
     apiCall.setApiDestination(jsonString);
 
