@@ -75,7 +75,7 @@ app.factory('apiCall', function() {
 	service.getMethod = function() {
 		return method;
 	}
-	service.callCollegeSearchAPI = function($http) {
+	service.callCollegeSearchAPI = function($http, callback) {
 		makeUrl();
 
 		if (service.getMethod() == "")  {
@@ -88,10 +88,13 @@ app.factory('apiCall', function() {
 			async: false,
 		}).success(function (data) {
 				response = data;
+			callback(response);
 			})
 			.error(function (data) {
 				//TODO input error message
+				callback(response);
 			})
+			return response;
 	};
 	return service;
 });

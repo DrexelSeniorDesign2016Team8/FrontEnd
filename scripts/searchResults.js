@@ -19,8 +19,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
 
 
 
-    var response = apiCall.callCollegeSearchAPI($http);
-        loadResults(response);
+    var response = apiCall.callCollegeSearchAPI($http, loadResults);
         $scope.toggleSearch = buildToggler('searchBar')
         searchParameters = $scope.searchParameters;
         $scope.isSearchOpen = function () {
