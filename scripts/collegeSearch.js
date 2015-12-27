@@ -92,7 +92,6 @@ app.factory('apiCall', function() {
 			.error(function (data) {
 				//TODO input error message
 			})
-			return response;
 	};
 	return service;
 });
