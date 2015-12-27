@@ -15,7 +15,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
     var jsonString = JSON.stringify(searchParameters);
     jsonString = jsonString.replace(/\"/g, "");
 
-    apiCall.setApiDestination(jsonString);
+    apiCall.setApiDestination("search.php?"+jsonString);
 
 
 
