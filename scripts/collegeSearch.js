@@ -85,6 +85,7 @@ app.factory('apiCall', function() {
 		$http({
 			method: method,
 			url: finalUrl,
+			async: false,
 		}).success(function (data) {
 				response = data;
 			})
