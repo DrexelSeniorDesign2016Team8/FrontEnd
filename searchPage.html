@@ -43,7 +43,7 @@
                 </div>
                 <md-content layout-padding>
                     <form name="CollegeInfo" id="additionalInfo">
-                        <center><md-button class= id="searchBtn" style='text-align:center' ng-click="performSearch()">
+                        <center><md-button class= id="searchBtn" style='text-align:center' ng-disabled="CollegeInfo.$invalid" ng-click="performSearch()">
                             Search
                         </md-button>
 
