@@ -22,6 +22,30 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
 
     }
 
+    $scope.autoFillSearch = function() {
+        searchParameters = getCookie('searchParameters');
+        params = JSON.parse(searchParameters);
+        $scope.parameter = {
+            gpa: params.GPAvalue,
+            actcomposite: params.ACTScore,
+            HighSchoolPercentile: params.highSchoolPercentile,
+            mathscore : params.MathScore,
+            WritingScore: params.WritingScore,
+            ReadingScore: params.ReadingScore,
+           stateName: params.StateName,
+            InstitutionName: params.name,
+            zipcode: params.zipCode,
+            fullAddress: params.fullAddress,
+            acceptanceRate: params.acceptanceRate,
+           retentionRate: params.retentionRate,
+            institutionType: params.institutionType,
+            studentPopulation: params.studentPopulation,
+            classSize: params.classSize,
+            commonApplication: params.CommonApplication,
+            favoritedInstitutions: params.favoritedInstitutions,
+        }
+    }
+
 
         $scope.toggleSearch = buildToggler('searchBar')
         searchParameters = $scope.searchParameters;
@@ -63,6 +87,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
                 $mdSidenav('searchBar').close();
                 $log.debug("results pane is closed");
                 fillResults();
+                autoFillSearch();
             }
         };
         function buildToggler(navID) {
@@ -74,6 +99,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
                     });
             }
         }
+    $scope.autoFillSearch();
     fillResults();
 })
 

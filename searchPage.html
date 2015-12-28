@@ -84,7 +84,7 @@
                                     <md-card class="searchPageBox">
                                         <!-- High School Percentile Box-->
                                         <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                            <md-select ng-model="CollegeInfo.HighSchoolPercentile" placeholder="Please Select" id="highschoolPercentile">
+                                            <md-select ng-model="parameter.HighSchoolPercentile" placeholder="Please Select" id="highschoolPercentile">
 
                                                 <md-option value="10%">10%</md-option>
                                                 <md-option value="20%">20%</md-option>
@@ -191,7 +191,7 @@
                                     <md-card class="searchPageBox">
                                         <!-- State Percentile Box-->
                                         <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                            <md-select ng-model="CollegeInfo.stateName" placeholder="Please Select" id="state">
+                                            <md-select ng-model="parameter.stateName" placeholder="Please Select" id="state">
 
                                                 <md-option value="Alabama">Alabama</md-option>
                                                 <md-option value="Alaska">Alaska</md-option>
@@ -270,7 +270,7 @@
                                         <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
                                             <label>Full Address</label>
-                                            <input type="text" name="fullAddress" ng-model="parameter.fullAddress" id="FullAddress" ng-model="CollegeInfo.fullAddress"/>
+                                            <input type="text" name="fullAddress" ng-model="parameter.fullAddress" id="FullAddress" ng-model="parameter.fullAddress"/>
 
                                         </md-input-container>
                                     </md-card>
