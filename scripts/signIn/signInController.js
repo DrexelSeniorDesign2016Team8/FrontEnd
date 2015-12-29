@@ -1,5 +1,6 @@
-function signInController($scope, $mdDialog, $log) {
+function signInController ($scope, $mdDialog, $log, userService) {
 
+    var userService = userService;
     $scope.login = {
         loading: false,
         password: '',
@@ -18,6 +19,7 @@ function signInController($scope, $mdDialog, $log) {
             //TODO adjust page so logged in information is now shown
             createCookie("loggedIn", "false");
             $scope.currentUserLoggedin = true;
+            $scope.userName=$scope.signIn.emailAddress
             $mdDialog.hide();
 
         }
@@ -39,6 +41,8 @@ function signInController($scope, $mdDialog, $log) {
             createCookie("loggedIn", "true");
             $scope.currentUserLoggedin = true;
             $mdDialog.hide();
+            userService.loggedIn=true;
+            userService.userName=signinForm.emailAddress.value
 
         }
         else {
@@ -55,4 +59,4 @@ function signInController($scope, $mdDialog, $log) {
     $scope.answer = function(answer) {
         $mdDialog.hide(answer);
     };
-}
+};
