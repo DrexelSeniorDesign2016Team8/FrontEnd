@@ -6,6 +6,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
     $scope.results.loading = false;
     $scope.userService = userService;
     fillResults = function() {
+        var jsonString = "";
         searchParameters = getCookie('searchParameters');
         if (searchParameters) {     // if they exist make call
             params = JSON.parse(searchParameters);
