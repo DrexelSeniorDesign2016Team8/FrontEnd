@@ -1,4 +1,4 @@
-app.controller('resultsController', function ($scope, apiCall, $http, $timeout, $mdSidenav, $log, userService)
+app.controller('resultsController', function ($scope, apiCall, $localStorage, $http, $timeout, $mdSidenav, $log, userService)
 {
     $scope.results = {
         loading: false,
@@ -7,9 +7,8 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
     $scope.userService = userService;
     fillResults = function() {
         var jsonString = "";
-        searchParameters = getCookie('searchParameters');
-        if (searchParameters) {     // if they exist make call
-            params = JSON.parse(searchParameters);
+        params = $localStorage.params;
+        if (params) {     // if they exist make call
 
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
@@ -22,9 +21,8 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
     }
 
     $scope.autoFillSearch = function() {
-        searchParameters = getCookie('searchParameters');
+        params = $localStorage.params;
         if (searchParameters) {
-            params = JSON.parse(searchParameters);
             $scope.parameter = {
                 gpa: params.GPAvalue,
                 actcomposite: params.ACTScore,

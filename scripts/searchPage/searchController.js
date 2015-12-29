@@ -1,4 +1,4 @@
-app.controller('searchController', function ($scope, $timeout, $mdSidenav, $log, userService) {
+app.controller('searchController', function ($scope, $timeout, $localStorage, $mdSidenav, $log, userService) {
     $scope.searchParameters = {};
     $scope.userService = userService;
     var stateName = "";
@@ -49,10 +49,12 @@ app.controller('searchController', function ($scope, $timeout, $mdSidenav, $log,
                         'favoritedInstitutions': $scope.parameter.favoritedInstitutions
                     },
                 };
+                    $localStorage.searchParameters = config.params;
 
 
-                params = JSON.stringify(config.params);
-                createCookie("searchParameters", params);           // create a cookie with the search parameters
+              //  params = JSON.stringify(config.params);
+                $localStorage.params = config.params;
+             //   createCookie("searchParameters", params);           // create a cookie with the search parameters
             }
             window.location.href = "searchResults.html";      // redirect to a new page
 

@@ -1,6 +1,6 @@
 //var loggedIn = false;
 
-var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'LocalStorageModule'] );		// initialize the app for all classes
+var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngStorage'] );		// initialize the app for all classes
 
 
 
