@@ -1,5 +1,8 @@
 app.controller('resultsController', function ($scope, apiCall, $http, $timeout, $mdSidenav, $log)
 {
+    $scope.results = {
+        loading: false,
+    };
     $scope.results.loading = false;
     fillResults = function(loading) {
         searchParameters = getCookie('searchParameters');
