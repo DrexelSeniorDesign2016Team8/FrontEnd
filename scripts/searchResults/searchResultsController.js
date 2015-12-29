@@ -1,9 +1,10 @@
-app.controller('resultsController', function ($scope, apiCall, $http, $timeout, $mdSidenav, $log)
+app.controller('resultsController', function ($scope, apiCall, $http, $timeout, $mdSidenav, $log, userService)
 {
     $scope.results = {
         loading: false,
     };
     $scope.results.loading = false;
+    $scope.userService = userService;
     fillResults = function(loading) {
         searchParameters = getCookie('searchParameters');
         if (searchParameters) {     // if they exist make call

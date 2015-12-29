@@ -1,6 +1,6 @@
-app.controller('searchController', function ($scope, $timeout, $mdSidenav, $log) {
+app.controller('searchController', function ($scope, $timeout, $mdSidenav, $log, userService) {
     $scope.searchParameters = {};
-    $scope.currentUserLoggedin = false;
+    $scope.userService = userService;
     var stateName = "";
     pageSetup = function() {
 

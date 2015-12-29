@@ -381,12 +381,13 @@
                                     </md-checkbox>
 
                                 </md-card>
-                                <md-card class="searchPageBox" ng-show="currentUserLoggedin">
+                                <md-card class="searchPageBox" ng-show='userService.loggedIn'>
                                     <md-checkbox ng-model="parameter.favoritedInstitutions" aria-label="Checkbox 1">
                                         Favorited Institutions Only
                                     </md-checkbox>
 
                                 </md-card>
+
                             </div>
                         </center>
                     </form>

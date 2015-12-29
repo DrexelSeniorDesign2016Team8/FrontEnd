@@ -354,7 +354,14 @@
                                                                 </md-checkbox>
 
                                                             </md-card>
-                                                            <md-card class="searchPageBox loginParameter">
+                                                            <md-card class="searchPageBox" ng-show='userService.loggedIn'>
+                                                                <md-checkbox ng-model="parameter.favoritedInstitutions" aria-label="Checkbox 1">
+                                                                    Common Application Only
+                                                                </md-checkbox>
+
+                                                            </md-card>
+                                                           
+                                                            <md-card class="searchPageBox" ng-show='userService.loggedIn'>
                                                                 <md-checkbox ng-model="parameter.favoritedInstitutions" aria-label="Checkbox 1">
                                                                     Favorited Institutions Only
                                                                 </md-checkbox>
