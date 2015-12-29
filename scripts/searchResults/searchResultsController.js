@@ -5,7 +5,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
     };
     $scope.results.loading = false;
     $scope.userService = userService;
-    fillResults = function(loading) {
+    fillResults = function() {
         searchParameters = getCookie('searchParameters');
         if (searchParameters) {     // if they exist make call
             params = JSON.parse(searchParameters);
@@ -85,35 +85,38 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
         else {
             $scope.results.loading = true;
             if (searchParameters)
-            var config = {
-                params: {
-                    // Put required values here
-                    'GPAvalue': $scope.parameter.gpa,
-                    'ACTScore': $scope.parameter.actcomposite,
-                    'highSchoolPercentile': $scope.parameter.HighSchoolPercentile,
-                    'MathScore': $scope.parameter.mathscore,
-                    'WritingScore': $scope.parameter.WritingScore,
-                    'ReadingScore': $scope.parameter.ReadingScore,
-                    'StateName': $scope.parameter.stateName,
-                    'name': $scope.parameter.InstitutionName,
-                    'zipCode': $scope.parameter.zipcode,
-                    'fullAddress': $scope.parameter.fullAddress,
-                    'acceptanceRate': $scope.parameter.acceptanceRate,
-                    'retentionRate': $scope.parameter.retentionRate,
-                    'institutionType': $scope.parameter.institutionType,
-                    'studentPopulation': $scope.parameter.studentPopulation,
-                    'classSize': $scope.parameter.classSize,
-                    'CommonApplicaiton': $scope.parameter.commonApplication,
-                    'favoritedInstitutions': $scope.parameter.favoritedInstitutions
-                },
-            };
+                var config = {
+                    params: {
+                        // Put required values here
+                        'GPAvalue': $scope.parameter.gpa,
+                        'ACTScore': $scope.parameter.actcomposite,
+                        'highSchoolPercentile': $scope.parameter.HighSchoolPercentile,
+                        'MathScore': $scope.parameter.mathscore,
+                        'WritingScore': $scope.parameter.WritingScore,
+                        'ReadingScore': $scope.parameter.ReadingScore,
+                        'StateName': $scope.parameter.stateName,
+                        'name': $scope.parameter.InstitutionName,
+                        'zipCode': $scope.parameter.zipcode,
+                        'fullAddress': $scope.parameter.fullAddress,
+                        'acceptanceRate': $scope.parameter.acceptanceRate,
+                        'retentionRate': $scope.parameter.retentionRate,
+                        'institutionType': $scope.parameter.institutionType,
+                        'studentPopulation': $scope.parameter.studentPopulation,
+                        'classSize': $scope.parameter.classSize,
+                        'CommonApplicaiton': $scope.parameter.commonApplication,
+                        'favoritedInstitutions': $scope.parameter.favoritedInstitutions
+                    },
+                };
 
             params = JSON.stringify(config.params);
             createCookie("searchParameters", params);           // create a cookie with the search parameters
             $mdSidenav('searchBar').close();
             $log.debug("results pane is closed");
-            fillResults($scope.CollegeInfo);
+
+            fillResults();
+
         }
+        ;
     };
     function buildToggler(navID) {
         return function () {
