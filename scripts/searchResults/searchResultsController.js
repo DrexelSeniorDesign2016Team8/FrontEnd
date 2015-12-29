@@ -12,7 +12,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
             apiCall.setApiDestination("search.php?" + jsonString);
-            apiCall.callCollegeSearchAPI($http, loadResults);
+            apiCall.callCollegeSearchAPI($http, $scope.loadResults);
 
         }
     }
@@ -52,7 +52,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
 
         var resultsDiv = $("#information");
 
-        $scope.loading=false;
+        $scope.results.loading=false;
         for (var i = 0; i < response.length; i++) {
 
             if (response.length == 0) {
