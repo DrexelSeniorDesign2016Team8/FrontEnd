@@ -84,7 +84,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
         }
         else {
             $scope.results.loading = true;
-            if (params)
+            if (searchParameters)
             var config = {
                 params: {
                     // Put required values here
