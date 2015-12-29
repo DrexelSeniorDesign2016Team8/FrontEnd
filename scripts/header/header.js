@@ -1,7 +1,7 @@
 function createHeader() {
     var header = $("#header");
 
-    var imgSrc = "assets/icon/collegeSearch.PNG";
+    var imgSrc = "assets/icon/collegeSearch.png";
     var ahref = $("<a href='searchPage.html'>");
     var icon = new Image();
 
