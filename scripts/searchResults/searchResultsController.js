@@ -1,7 +1,7 @@
 app.controller('resultsController', function ($scope, apiCall, $http, $timeout, $mdSidenav, $log)
 {
-
-    fillResults = function() {
+    $scope.results.loading = false;
+    fillResults = function(loading) {
         searchParameters = getCookie('searchParameters');
         if (searchParameters) {     // if they exist make call
             params = JSON.parse(searchParameters);
@@ -9,7 +9,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
             apiCall.setApiDestination("search.php?" + jsonString);
-            apiCall.callCollegeSearchAPI($http, loadResults);
+            apiCall.callCollegeSearchAPI($http, loading, loadResults);
 
         }
     }
@@ -52,7 +52,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
             //TODO don't close since fields are invalid
         }
         else {
-            $mdSidenav('searchBar').close()
+            $scope.results.loading = true;
             var config = {
                 params: {
                     // Put required values here
@@ -80,8 +80,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
 
             $mdSidenav('searchBar').close();
             $log.debug("results pane is closed");
-            fillResults();
-            autoFillSearch();
+            fillResults($scope.CollegeInfo);
         }
     };
     function buildToggler(navID) {
