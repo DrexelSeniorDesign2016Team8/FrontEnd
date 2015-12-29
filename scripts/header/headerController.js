@@ -1,5 +1,6 @@
-app.controller('headerController', function($scope, $mdDialog, $mdMedia) {
+app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userService) {
     $scope.status = '  ';
+    $scope.userService = userService;
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $scope.showLoginPage = function(ev) {
 
@@ -20,4 +21,5 @@ app.controller('headerController', function($scope, $mdDialog, $mdMedia) {
             $scope.customFullscreen = (wantsFullScreen === true);
         });
     };
+
 });

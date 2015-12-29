@@ -15,21 +15,21 @@ function createHeader() {
     header.append(ahref);
 
 
-    //if (loggedIn==false) {
 
-    var createAccountbtn = $("<md-button id='accountCreation' ng-click='showLoginPage(event)'>");
-    createAccountbtn.addClass("md-button");
+    var createAccountbtn = $("<md-button id='accountCreation' ng-hide='userService.loggedIn' ng-click='showLoginPage(event)'>");
     createAccountbtn.text("Login/Create Account");
 
+    var loginDetails = $("<md-button id='accountCreation' ng-show='userService.loggedIn' ng-click='showLoginPage(event)'>");
     // add dependencies for signIn page
+    loginDetails.text('{{userService.userName}}');
     addDependency("script", "src", "scripts/signIn/signIn.js");
     addDependency("script", "src", "scripts/signIn/signInController.js");
 
 
     header.append(createAccountbtn);
+    header.append(loginDetails);
 
 
-
-    //header.append("<hr>");
 
 }
+
