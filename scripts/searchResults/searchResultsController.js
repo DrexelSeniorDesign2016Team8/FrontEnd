@@ -13,9 +13,10 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
             apiCall.setApiDestination("search.php?" + jsonString);
-            apiCall.callCollegeSearchAPI($http, $scope.loadResults);
-
         }
+        apiCall.callCollegeSearchAPI($http, $scope.loadResults);
+
+
     }
 
     $scope.autoFillSearch = function() {
@@ -110,10 +111,11 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
 
                 params = JSON.stringify(config.params);
                 createCookie("searchParameters", params);           // create a cookie with the search parameters
-                $mdSidenav('searchBar').close();
+
                 $log.debug("results pane is closed");
 
             }
+            $mdSidenav('searchBar').close();
             fillResults();
 
         }
