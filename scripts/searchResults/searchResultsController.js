@@ -12,7 +12,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
             apiCall.setApiDestination("search.php?" + jsonString);
-            apiCall.callCollegeSearchAPI($http, loading, loadResults);
+            apiCall.callCollegeSearchAPI($http, loadResults($scope));
 
         }
     }

@@ -80,17 +80,18 @@ This function loads the results
 This reads the cookie containing the search parameters
 It then makes a call to the college search api to retrieve the results
  */
-function loadResults(response) {
+function loadResults($scope, response) {
 
 
     var resultsDiv = $("#information");
 
-
+    $scope.loading=false;
     for (var i = 0; i < response.length; i++) {
 
         if (response.length == 0) {
             noResultsAvailable();
         }
+
         else {
             addSearchResult(response[i], resultsDiv, i)
         }
