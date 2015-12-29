@@ -2,21 +2,36 @@
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
-    <script src="node_modules/angular/angular.js"></script>
-    <script src="node_modules/angular-aria/angular-aria.js"></script>
-    <script src="node_modules/angular-animate/angular-animate.js"></script>
-    <script src="node_modules/angular-material/angular-material.js"></script>
-    <script src="node_modules/angular-messages/angular-messages.js"></script>
+
+    <!--load anglular js and angular material UI -->
+    <link rel="stylesheet" href="assets/node_modules/angular-material/angular-material.css">
+    <script src="assets/node_modules/angular/angular.js"></script>
+    <script src="assets/node_modules/angular-aria/angular-aria.js"></script>
+    <script src="assets/node_modules/angular-animate/angular-animate.js"></script>
+    <script src="assets/node_modules/angular-material/angular-material.js"></script>
+    <script src="assets/node_modules/angular-messages/angular-messages.js"></script>
     <!-- material design javascript -->
-    <script src="mdl/material.min.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="jQuery/jquery-1.11.3.min.js"></script>
-    <link rel="stylesheet" href="css/searchPage.css">
-    <link rel="stylesheet" href="css/collegeSearch.css">
+    <script src="assets/jQuery/jquery-1.11.3.min.js"></script>
+    <!-- load the css page for the applicaiton and corresponding page -->
+    <link rel="stylesheet" href="assets/css/searchPage.css">
+    <link rel="stylesheet" href="assets/css/collegeSearch.css">
+
+    <!--load the module and config files-->
     <script src="scripts/collegeSearch.js"></script>
-    <script src="scripts/searchPage.js"></script>
+
+    <!--load the api and config files-->
+    <script src="scripts/services/config.js"></script>
+    <script src="scripts/services/collegeSearchapi.js"></script>
+
+    <!-- load the header files since the controller is on this page-->
+    <script src="scripts/header/header.js"></script>
+    <script src="scripts/header/headerController.js"></script>
+    <!--load the controller and corresponding scripts -->
+    <script src="scripts/searchPage/searchController.js"></script>
+
+    <script src="scripts/searchPage/searchPage.js"></script>
 
 </head>
     <div ng-app="CollegeSearch">
@@ -41,6 +56,7 @@
                     CommonApplication = {{parameter.commonApplication}}
                     FavoritedInstitutions = {{parameter.favoritedInstitutions}}
                 </div>
+
                 <md-content layout-padding>
                     <form name="CollegeInfo" id="additionalInfo">
                         <center><md-button class= id="searchBtn" style='text-align:center' ng-disabled="CollegeInfo.$invalid" ng-click="performSearch()">
@@ -50,6 +66,7 @@
                             <div layout="row" layout-align="center center">
                                 Explore and Enter Additional Information
                             </div>
+
                                 <div layout="grid1" layout-align="center center">
                                     <md-card class="searchPageBox">
                                         <md-input-container class="md-block searchPageBox flex-gt-sm">

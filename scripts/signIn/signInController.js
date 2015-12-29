@@ -1,4 +1,3 @@
-
 function signInController($scope, $mdDialog, $log) {
 
     $scope.login = {
@@ -6,7 +5,6 @@ function signInController($scope, $mdDialog, $log) {
         password: '',
         user: ''
     };
-
     $scope.createAccount = function() {
         $scope.login.loading = true;
 
@@ -38,13 +36,14 @@ function signInController($scope, $mdDialog, $log) {
             $log.debug('login successful')
 
             //TODO adjust page so logged in information is now shown
-            createCookie("loggedIn", "false");
+            createCookie("loggedIn", "true");
             $scope.currentUserLoggedin = true;
             $mdDialog.hide();
 
         }
         else {
             $log.debug('login failed');
+            $scope.currentUserLoggedin = false;
         }
     }
     $scope.hide = function() {
@@ -56,34 +55,4 @@ function signInController($scope, $mdDialog, $log) {
     $scope.answer = function(answer) {
         $mdDialog.hide(answer);
     };
-}
-
-app.directive('pwCheck', [function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, elem, attrs, ctrl) {
-            var firstPassword = '#' + attrs.pwCheck;
-            elem.add(firstPassword).on('keyup', function () {
-                scope.$apply(function () {
-                    var v = elem.val() === $(firstPassword).val();
-                    ctrl.$setValidity('pwmatch', v);
-                });
-            });
-        }
-    }
-}]);
-function resetPassword() {
-    window.location.href="resetPassword.html";
-}
-
-function rememberMe() {
-    //TODO: implement remember me functionality
-
-}
-
-function createAccount() {
-
-}
-function signIn() {
-
 }
