@@ -12,7 +12,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
             apiCall.setApiDestination("search.php?" + jsonString);
-            apiCall.callCollegeSearchAPI($http, $scope.loadResults);
+            apiCall.callCollegeSearchAPI($http, loadResults);
 
         }
     }
@@ -47,7 +47,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
      This reads the cookie containing the search parameters
      It then makes a call to the college search api to retrieve the results
      */
-    $scope.loadResults = function($scope, response) {
+    $scope.loadResults = function(response) {
 
 
         var resultsDiv = $("#information");
