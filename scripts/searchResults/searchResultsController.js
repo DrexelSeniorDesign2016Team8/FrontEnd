@@ -84,7 +84,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
         }
         else {
             $scope.results.loading = true;
-            if (searchParameters)
+            if (searchParameters) {
                 var config = {
                     params: {
                         // Put required values here
@@ -108,15 +108,15 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
                     },
                 };
 
-            params = JSON.stringify(config.params);
-            createCookie("searchParameters", params);           // create a cookie with the search parameters
-            $mdSidenav('searchBar').close();
-            $log.debug("results pane is closed");
+                params = JSON.stringify(config.params);
+                createCookie("searchParameters", params);           // create a cookie with the search parameters
+                $mdSidenav('searchBar').close();
+                $log.debug("results pane is closed");
 
+            }
             fillResults();
 
         }
-        ;
     };
     function buildToggler(navID) {
         return function () {
