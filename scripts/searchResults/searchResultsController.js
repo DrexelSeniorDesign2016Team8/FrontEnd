@@ -53,6 +53,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
         var resultsDiv = $("#information");
 
         $scope.results.loading=false;
+        $scope.results.focusLoading=false;
         for (var i = 0; i < response.length; i++) {
 
             if (response.length == 0) {
