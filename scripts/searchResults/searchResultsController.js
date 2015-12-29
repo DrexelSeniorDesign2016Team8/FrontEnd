@@ -78,9 +78,9 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
                     'favoritedInstitutions': $scope.parameter.favoritedInstitutions
                 },
             };
-            parameters = formatSearch(config.params);
-            createCookie("searchParameters", parameters);           // create a cookie with the search parameters
 
+            params = JSON.stringify(config.params);
+            createCookie("searchParameters", params);           // create a cookie with the search parameters
             $mdSidenav('searchBar').close();
             $log.debug("results pane is closed");
             fillResults($scope.CollegeInfo);
