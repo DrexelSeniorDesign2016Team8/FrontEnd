@@ -27,7 +27,7 @@ app.factory('apiCall', function() {
     service.getMethod = function() {
         return method;
     }
-    service.callCollegeSearchAPI = function($http, loading, callback) {
+    service.callCollegeSearchAPI = function($http, callback) {
         makeUrl();
 
         if (service.getMethod() == "")  {
@@ -40,7 +40,6 @@ app.factory('apiCall', function() {
             async: false,
         }).success(function (data) {
                 response = data;
-                loading=false;
                 callback(response);
             })
             .error(function (data) {

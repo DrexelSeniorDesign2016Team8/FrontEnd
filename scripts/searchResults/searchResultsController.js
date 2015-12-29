@@ -12,7 +12,7 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
             apiCall.setApiDestination("search.php?" + jsonString);
-            apiCall.callCollegeSearchAPI($http, loadResults($scope));
+            apiCall.callCollegeSearchAPI($http, $scope.loadResults);
 
         }
     }
@@ -41,6 +41,32 @@ app.controller('resultsController', function ($scope, apiCall, $http, $timeout, 
                 favoritedInstitutions: params.favoritedInstitutions,
             }
         }
+    }
+    /*
+     This function loads the results
+     This reads the cookie containing the search parameters
+     It then makes a call to the college search api to retrieve the results
+     */
+    $scope.loadResults = function($scope, response) {
+
+
+        var resultsDiv = $("#information");
+
+        $scope.loading=false;
+        for (var i = 0; i < response.length; i++) {
+
+            if (response.length == 0) {
+                noResultsAvailable();
+            }
+
+            else {
+                addSearchResult(response[i], resultsDiv, i)
+            }
+        }
+
+        // TODO set up onclicks
+
+
     }
 
 
