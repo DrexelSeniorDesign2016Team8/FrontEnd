@@ -22,7 +22,7 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $h
 
     $scope.autoFillSearch = function() {
         params = $localStorage.params;
-        if (searchParameters) {
+        if (params) {
             $scope.parameter = {
                 gpa: params.GPAvalue,
                 actcomposite: params.ACTScore,
