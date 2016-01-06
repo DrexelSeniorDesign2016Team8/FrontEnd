@@ -1,6 +1,8 @@
-app.controller('searchController', function ($scope, $timeout, $localStorage, $mdSidenav, $log, userService) {
+app.controller('searchController', function ($scope, $timeout, $log, userService, searchService) {
     $scope.searchParameters = {};
     $scope.userService = userService;
+    $scope.searchService = searchService;
+
     var stateName = "";
     pageSetup = function() {
 
@@ -21,40 +23,17 @@ app.controller('searchController', function ($scope, $timeout, $localStorage, $m
             //TODO add message saying some values are invalid
         }
         else {
-            if ($scope.parameter) {
-                if ($scope.parameter.stateName) {
+            var searchOptions = $scope.parameter;
+            if (searchOptions) {
+                if (searchOptions.stateName) {
                     stateName = convert_state($scope.parameter.stateName, "abbrev");
                 }
             }
-            if ($scope.parameter) {
-                var config = {
-                    params: {
-                        // Put required values here
-                        'GPAvalue': $scope.parameter.gpa,
-                        'ACTScore': $scope.parameter.actcomposite,
-                        'highSchoolPercentile': $scope.parameter.HighSchoolPercentile,
-                        'MathScore': $scope.parameter.mathscore,
-                        'WritingScore': $scope.parameter.WritingScore,
-                        'ReadingScore': $scope.parameter.ReadingScore,
-                        'StateName': $scope.parameter.stateName,
-                        'name': $scope.parameter.InstitutionName,
-                        'zipCode': $scope.parameter.zipcode,
-                        'fullAddress': $scope.parameter.fullAddress,
-                        'acceptanceRate': $scope.parameter.acceptanceRate,
-                        'retentionRate': $scope.parameter.retentionRate,
-                        'institutionType': $scope.parameter.institutionType,
-                        'studentPopulation': $scope.parameter.studentPopulation,
-                        'classSize': $scope.parameter.classSize,
-                        'CommonApplicaiton': $scope.parameter.commonApplication,
-                        'favoritedInstitutions': $scope.parameter.favoritedInstitutions
-                    },
-                };
-                    $localStorage.searchParameters = config.params;
+            if (searchOptions) {
+
+                searchService.set(searchOptions);
 
 
-              //  params = JSON.stringify(config.params);
-                $localStorage.params = config.params;
-             //   createCookie("searchParameters", params);           // create a cookie with the search parameters
             }
             window.location.href = "searchResults.html";      // redirect to a new page
 

@@ -1,4 +1,4 @@
-function signInController ($scope, $mdDialog, $log, userService) {
+function signInController ($scope, $mdDialog, $log, userService, $localStorage) {
 
     var userService = userService;
     $scope.login = {
@@ -38,7 +38,7 @@ function signInController ($scope, $mdDialog, $log, userService) {
             $log.debug('login successful')
 
             //TODO adjust page so logged in information is now shown
-            createCookie("loggedIn", "true");
+            $localStorage.loggedIn = true;
             $scope.currentUserLoggedin = true;
             $mdDialog.hide();
             userService.loggedIn=true;
@@ -47,6 +47,7 @@ function signInController ($scope, $mdDialog, $log, userService) {
         }
         else {
             $log.debug('login failed');
+            $log.debug('login failed')
             $scope.currentUserLoggedin = false;
         }
     }

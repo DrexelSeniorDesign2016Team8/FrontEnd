@@ -5,21 +5,6 @@ var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngStor
 
 
 
-app.factory('searchService', function() {
-	var searchOptions = {}
-	function set(data) {
-		searchOptions = data;
-	}
-	function get() {
-		return savedData;
-	}
-
-	return {
-		set: set,
-		get: get
-	}
-
-});
 
 /*
  This function retrieves a cookie based on a name

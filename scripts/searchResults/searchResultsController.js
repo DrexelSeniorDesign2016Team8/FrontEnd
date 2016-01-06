@@ -1,4 +1,4 @@
-app.controller('resultsController', function ($scope, apiCall, $localStorage, $http, $timeout, $mdSidenav, $log, userService)
+app.controller('resultsController', function ($scope, apiCall, $localStorage, $mdSidenav, $log, userService, searchService)
 {
     $scope.results = {
         loading: false,
@@ -15,13 +15,13 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $h
             }
             apiCall.setApiDestination("search.php?" + jsonString);
 
-        apiCall.callCollegeSearchAPI($http, $scope.loadResults);
+        apiCall.callCollegeSearchAPI($scope.loadResults);
 
 
     }
 
     $scope.autoFillSearch = function() {
-        params = $localStorage.params;
+        params = searchService.get();
         if (params) {
             $scope.parameter = {
                 gpa: params.GPAvalue,
