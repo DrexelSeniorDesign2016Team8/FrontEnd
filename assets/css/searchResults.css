@@ -34,3 +34,7 @@
 .refineButton {
     margin-left: 75px;
 }
+.resultsGrid {
+    width: 500px;
+    height: 250px;
+}

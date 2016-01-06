@@ -3,9 +3,6 @@
 var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngStorage'] );		// initialize the app for all classes
 
 
-
-
-
 /*
  This function retrieves a cookie based on a name
  */

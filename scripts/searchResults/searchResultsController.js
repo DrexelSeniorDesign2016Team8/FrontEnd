@@ -15,8 +15,9 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $m
             }
             apiCall.setApiDestination("search.php?" + jsonString);
 
-        apiCall.callCollegeSearchAPI($scope.loadResults);
+            apiCall.callCollegeSearchAPI($scope.loadResults);
 
+       // $scope.loadResults();
 
     }
 
@@ -51,12 +52,13 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $m
      */
     $scope.loadResults = function(response) {
 
-
-        var resultsDiv = $("#information");
-
         $scope.results.loading=false;
         $scope.results.focusLoading=false;
-        for (var i = 0; i < response.length; i++) {
+        $scope.colleges=response;
+       // $scope.colleges = [
+         //   {website: 'www.drexel.edu', name: 'Drexel' ,population: 222,phoneNumber: '999-999-99999'}
+       // ];
+      /*  for (var i = 0; i < response.length; i++) {
 
             if (response.length == 0) {
                 noResultsAvailable();
@@ -69,7 +71,7 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $m
 
         // TODO set up onclicks
 
-
+*/
     }
 
 
@@ -130,5 +132,9 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $m
         }
     }
     $scope.autoFillSearch();
+    $scope.opts = [
+        {value: 111, text: '<b>1st</b>' },
+        {value: 222, text: '<i>2nd</i>' }
+    ];
     fillResults();
 })

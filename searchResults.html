@@ -36,6 +36,7 @@
     <!--load the controller and corresponding scripts -->
     <script src="scripts/searchResults/searchResults.js"></script>
     <script src="scripts/searchResults/searchResultsController.js"></script>
+    <script src="scripts/searchResults/resultsInformationController.js"></script>
 </head>
 <div ng-app="CollegeSearch">
 
@@ -372,17 +373,21 @@
                                                 </div>
                                     </form>
                                 </md-sidenav>
+            <md-content flex layout-padding>
+                <div layout="column" layout-fill layout-align="top center">
+                        <div ng-repeat=" college in colleges" ng-bind-html-unsafe="college.name" >
+                           <h2> {{ college.name }} </h2>
+                            <div ng-if='college.address!==undefined'>{{college.address}} </div>
+                            <p>{{college.website}} {{college.phoneNumber}} </p>
+                                Students: {{college.population}}
+
+                        </div>
+                    </ul>
                 </div>
 
-<md-content flex layout-padding>
-    <div layout="column" layout-fill layout-align="top center">
-<div id="information" class="searchResults"></div>
-</div>
 
+    </div>
+    </div>
 </html>
 <script>
 </script>
-<hr>
-
-
-</html>
