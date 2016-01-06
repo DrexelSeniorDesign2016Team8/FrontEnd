@@ -55,23 +55,9 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $m
         $scope.results.loading=false;
         $scope.results.focusLoading=false;
         $scope.colleges=response;
-       // $scope.colleges = [
-         //   {website: 'www.drexel.edu', name: 'Drexel' ,population: 222,phoneNumber: '999-999-99999'}
-       // ];
-      /*  for (var i = 0; i < response.length; i++) {
-
-            if (response.length == 0) {
-                noResultsAvailable();
-            }
-
-            else {
-                addSearchResult(response[i], resultsDiv, i)
-            }
-        }
 
         // TODO set up onclicks
 
-*/
     }
 
 
