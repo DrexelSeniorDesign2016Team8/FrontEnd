@@ -374,9 +374,9 @@
                                     </form>
                                 </md-sidenav>
             <md-content flex layout-padding>
-                <div layout="column" layout-fill layout-align="top center">
-                        <div ng-repeat=" college in colleges" ng-bind-html-unsafe="college.name" >
-                           <h2> {{ college.name }} </h2>
+                <div layout="column" layout-fill layout-align="center center">
+                        <div ng-repeat=" college in colleges" ng-bind-html-unsafe="college.name" class="searchResults" >
+                           <h2> { college.name }}</h2>
                             <div ng-if='college.address!==undefined'><p>{{college.address}}</p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
                            <div ng-if='college.website!=undefined && college.phoneNumber==undefined'> {college.website}} Number Unavailable</div>
@@ -388,7 +388,6 @@
                             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
 
                         </div>
-                    </ul>
                 </div>
 
 
