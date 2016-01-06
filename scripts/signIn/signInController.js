@@ -11,6 +11,7 @@ function signInController ($scope, $mdDialog, $log, userService, $localStorage) 
 
 
         // TODO: login call service with a callback
+        // TODO: provide hint text saying what password should look like
 
         var success=true;
         if (success) {
@@ -25,6 +26,7 @@ function signInController ($scope, $mdDialog, $log, userService, $localStorage) 
         }
         else {
             $log.debug('login failed');
+
         }
     }
     $scope.signIn = function () {
@@ -47,7 +49,7 @@ function signInController ($scope, $mdDialog, $log, userService, $localStorage) 
         }
         else {
             $log.debug('login failed');
-            $log.debug('login failed')
+            //TODO show error message saying invalid credentials
             $scope.currentUserLoggedin = false;
         }
     }

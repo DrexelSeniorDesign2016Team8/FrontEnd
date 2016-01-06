@@ -1,4 +1,4 @@
-app.factory('apiCall', function() {
+app.factory('apiCall', function($http) {
 
     var endPoint = "http://mid.searchcollege.me";
     var method = "";
@@ -27,7 +27,7 @@ app.factory('apiCall', function() {
     service.getMethod = function() {
         return method;
     }
-    service.callCollegeSearchAPI = function($http, callback) {
+    service.callCollegeSearchAPI = function(callback) {
         makeUrl();
 
         if (service.getMethod() == "")  {
