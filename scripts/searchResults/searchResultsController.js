@@ -54,6 +54,10 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $m
 
         $scope.results.loading=false;
         $scope.results.focusLoading=false;
+
+        if (response.length=0) {
+            noResultsAvailable();
+        }
         $scope.colleges=response;
 
         // TODO set up onclicks

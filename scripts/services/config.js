@@ -1,6 +1,7 @@
 app.config(function($mdIconProvider) {
     $mdIconProvider
-        .defaultIconSet('assets/icon/materialdesignicons.svg');
+        .defaultIconSet('assets/icon/materialdesignicons.svg')
+        .iconSet('large', 'assets/icon/materialdesignicons.svg');
 });
 
 app.directive('showFocus', function($timeout) {
