@@ -35,7 +35,7 @@
                                         <md-input-container class="flex-gt-sm">
                                             <!-- GPA Box-->
 
-                                            <input type="password" class="signInText" id="password" name="password" placeholder="Password" ng-model="signIn.password" />
+                                            <input type="password" class="signInText" id="password" name="password" required placeholder="Password" ng-model="signIn.password" />
 
                                         </md-input-container>
                                         <br>
@@ -73,13 +73,13 @@
                                                                     <md-input-container flex-gt-sm class="signInDialog">
                                                                         <!-- GPA Box-->
 
-                                                                        <input type="text" class="signInText" id="passwordCreation" name="password" placeholder="Enter a password"  ng-model="createAccount.password" ng-required/>
+                                                                        <input type="text" class="signInText" id="passwordCreation" required name="password" placeholder="Enter a password"  ng-model="createAccount.password" ng-required/>
 
                                                                     </md-input-container>
                                                                 <br>
                                                                     <md-input-container class="signInText "flex-gt-sm>
                                                                         <!-- GPA Box-->
-                                                                        <input type="text" class="signInText" id="verifyPasswordCreation" name="verifyPassword" ng-required pw-check="password" placeholder="Verify Password" ng-model="createAccount.verifyPassword" required/>
+                                                                        <input type="text" class="signInText" id="verifyPasswordCreation" required name="verifyPassword" required placeholder="Verify Password" ng-model="createAccount.verifyPassword" required/>
                                                                    </md-input-container>
                                                                     <div class="msg-block" ng-show="myForm.$error">
                                                                    </div>
@@ -88,7 +88,7 @@
 
                                                                 <br>
                                                                 <!-- Flat button with ripple -->
-                                                                    <md-button class= id="searchBtn" style='text-align:center' ng-click="createAccount()">
+                                                                    <md-button class= id="searchBtn" ng-disabled="createAccountform.$invalid" style='text-align:center' ng-click="createAccount()">
                                                                         Create Account
                                                                     </md-button>
                                                             </form>
