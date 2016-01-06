@@ -29,8 +29,8 @@
     <script src="scripts/services/userService.js"></script>
 
     <!-- load the header files since the controller is on this page-->
-    <script src="scripts/header/header.js"></script>
     <script src="scripts/header/headerController.js"></script>
+
 
     <!--load the controller and corresponding scripts -->
     <script src="scripts/searchResults/searchResults.js"></script>
@@ -39,7 +39,7 @@
 <div ng-app="CollegeSearch">
 
 
-    <div id="header" ng-controller="headerController"></div>
+    <div id="header" header></div>
 
         <div ng-controller="resultsController">
             <hr>
@@ -93,7 +93,7 @@
                                                         <!-- High School Percentile Box-->
                                                         <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                             <md-select ng-model="parameter.HighSchoolPercentile" placeholder="Please Select" id="highschoolPercentile">
-
+                                                                <md-option value="None">None</md-option>
                                                                 <md-option value="10%">10%</md-option>
                                                                 <md-option value="20%">20%</md-option>
                                                                 <md-option value="30%">30%</md-option>
@@ -196,7 +196,7 @@
                                                             <!-- State Percentile Box-->
                                                             <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                                 <md-select ng-model="selectedUser" placeholder="Please Select" ng-model="parameter.stateName" id="state">
-
+                                                                    <md-option value="None">None</md-option>
                                                                     <md-option value="Alabama">Alabama</md-option>
                                                                     <md-option value="Alaska">Alaska</md-option>
                                                                     <md-option value="Arizona">Arizona</md-option>
@@ -280,7 +280,7 @@
                                                         <!-- Acceptance Rate-->
                                                         <md-card class="searchPageBox">
                                                             <md-select ng-model="parameter.acceptanceRate" placeholder="Please Select" id=acceptanceRate">
-
+                                                                <md-option value="None">None</md-option>
                                                                 <md-option value="10%">10%</md-option>
                                                                 <md-option value="20%">20%</md-option>
                                                                 <md-option value="30%">30%</md-option>
@@ -297,7 +297,7 @@
                                                         <!-- Retention Rate-->
                                                         <md-card class="searchPageBox">
                                                             <md-select ng-model="parameter.retentionRate" placeholder="Please Select" id="retentionRate">
-
+                                                                <md-option value="None">None</md-option>
                                                                 <md-option value="10%">10%</md-option>
                                                                 <md-option value="20%">20%</md-option>
                                                                 <md-option value="30%">30%</md-option>
@@ -380,7 +380,6 @@
 
 </html>
 <script>
-    createHeader();
 </script>
 <hr>
 

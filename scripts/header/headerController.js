@@ -1,4 +1,5 @@
 app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userService) {
+
     $scope.status = '  ';
     $scope.userService = userService;
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -22,4 +23,12 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userSer
         });
     };
 
+    $scope.openMenu = function($mdOpenMenu, ev) {
+        originatorEv = ev;
+        $mdOpenMenu(ev);
+    };
+
+    $scope.logout = function() {
+        userService.loggedIn=false;
+    }
 });

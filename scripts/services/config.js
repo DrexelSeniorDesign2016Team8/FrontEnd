@@ -13,3 +13,14 @@ app.directive('showFocus', function($timeout) {
             },true);
     };
 });
+
+    app.directive('header', function() {
+        addDependency("script", "src", "scripts/signIn/signIn.js");
+        addDependency("script", "src", "scripts/signIn/signInController.js");
+        addDependency("rel", "stylesheet", "assets/css/header.css");
+        return {
+            controller: 'headerController',
+            templateUrl: 'header.html'
+
+        };
+    });

@@ -20,10 +20,10 @@ function createHeader() {
     createAccountbtn.text("Login/Create Account");
 
     var loginDetails = $("<md-button id='accountCreation' ng-show='userService.loggedIn' ng-click='showLoginPage(event)'>");
+
     // add dependencies for signIn page
     loginDetails.text('{{userService.userName}}');
-    addDependency("script", "src", "scripts/signIn/signIn.js");
-    addDependency("script", "src", "scripts/signIn/signInController.js");
+
 
 
     header.append(createAccountbtn);

@@ -10,7 +10,7 @@
             <h2>Sign in/Create Account</h2>
             <span flex></span>
             <md-button class="md-icon-button" ng-click="cancel()">
-                <md-icon md-svg-icon="close-box" aria-label="Close dialog"></i></md-icon>
+                <md-icon md-svg-icon="close-box" aria-label="Close dialog"></md-icon>
             </md-button>
         </div>
         </md-toolbar>
@@ -24,7 +24,7 @@
                                         <!-- Email Address-->
 
                                         <input type="email" required class="signInText" id="emailAddress" name="emailAddress" ng-model="signIn.emailAddress"placeholder="Email Address" ng-model="resetPassword.email" ng-pattern="/^.+@.+\..+$/" />
-                                        <div ng-messages="signinForm.emailAddress.$error" role="alert">
+                                        <div ng-messages="signinForm.emailAddress.$error">
                                             <div ng-message="pattern">
                                                 Please enter a valid email address
                                             </div>
