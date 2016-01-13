@@ -1,4 +1,4 @@
-app.factory('searchService', function($localStorage) {
+app.factory('searchService', function(apiCall, $localStorage) {
     var searchOptions = {}
     function set(data) {
         var config = {
@@ -30,9 +30,24 @@ app.factory('searchService', function($localStorage) {
         return $localStorage.params
     }
 
+
+    function search(callback) {
+
+        params = $localStorage.params;
+        if (params) {     // if they exist make call
+
+            jsonString = formatSearch(params);
+            jsonString = jsonString.replace(/\"/g, "");
+        }
+        apiCall.setApiDestination("search.php?" + jsonString);
+
+        apiCall.callCollegeSearchAPI(callback);
+    }
+
     return {
         set: set,
-        get: get
+        get: get,
+        search: search,
     }
 
 });

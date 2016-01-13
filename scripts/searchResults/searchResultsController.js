@@ -1,21 +1,14 @@
-app.controller('resultsController', function ($scope, apiCall, $localStorage, $mdSidenav, $log, userService, searchService)
+app.controller('resultsController', function ($scope, $mdSidenav, $log, searchService)
 {
     $scope.results = {
         loading: false,
     };
     $scope.results.loading = false;
-    $scope.userService = userService;
     fillResults = function() {
         var jsonString = "";
-        params = $localStorage.params;
-        if (params) {     // if they exist make call
 
-            jsonString = formatSearch(params);
-            jsonString = jsonString.replace(/\"/g, "");
-            }
-            apiCall.setApiDestination("search.php?" + jsonString);
+        searchService.search($scope.loadResults);
 
-            apiCall.callCollegeSearchAPI($scope.loadResults);
 
        // $scope.loadResults();
 
@@ -55,7 +48,7 @@ app.controller('resultsController', function ($scope, apiCall, $localStorage, $m
         $scope.results.loading=false;
         $scope.results.focusLoading=false;
 
-        if (response.length=0) {
+        if (response.length==0) {
             noResultsAvailable();
         }
         $scope.colleges=response;

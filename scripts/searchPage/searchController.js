@@ -1,8 +1,6 @@
-app.controller('searchController', function ($scope, $timeout, $log, userService, searchService) {
+app.controller('searchController', function ($scope, $timeout, $log, searchService, $location) {
     $scope.searchParameters = {};
-    $scope.userService = userService;
     $scope.searchService = searchService;
-
     var stateName = "";
     pageSetup = function() {
 
@@ -35,7 +33,8 @@ app.controller('searchController', function ($scope, $timeout, $log, userService
 
 
             }
-            window.location.href = "searchResults.html";      // redirect to a new page
+            window.location.href="searchResults.html";
+            $location.path("/results");      // redirect to a new page
 
             return false;
         }
