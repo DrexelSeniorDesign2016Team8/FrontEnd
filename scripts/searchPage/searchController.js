@@ -34,7 +34,6 @@ app.controller('searchController', function ($scope, $timeout, $log, searchServi
 
             }
             window.location.href="searchResults.html";
-            $location.path("/results");      // redirect to a new page
 
             return false;
         }
