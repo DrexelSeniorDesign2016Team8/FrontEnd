@@ -48,25 +48,6 @@
             <hr>
         <div ng-viewport="main"></div>
             <div ng-controller="searchController" layout="column" ng-cloak>
-                <div id="searchOptions" layout-align="center center">
-                    GPA = {{parameter.gpa}}
-                    ACT Score = {{parameter.actcomposite}}
-                    HighSchool Percentile = {{parameter.HighSchoolPercentile}}
-                    MathScore = {{parameter.MathScore}}
-                    Writing Score = {{parameter.WritingScore}}
-                    Reading Score = {{parameter.ReadingScore}}
-                    Institution Name = {{parameter.InstitutionName}}
-                    State Name = {{parameter.stateName}}
-                    Zip Code = {{parameter.zipcode}}
-                    Full Address = {{parameter.fullAddress}}
-                    Acceptance Rate = {{parameter.acceptanceRate}}
-                    Retention Rate = {{parameter.retentionRate}}
-                    Institution Type = {{parameter.institutionType}}
-                    Student Population = {{parameter.studentPopulation}}
-                    Class Size = {{parameter.classSize}}
-                    CommonApplication = {{parameter.commonApplication}}
-                    FavoritedInstitutions = {{parameter.favoritedInstitutions}}
-                </div>
 
                 <md-content layout-padding>
                     <form name="CollegeInfo" id="additionalInfo">
@@ -81,11 +62,9 @@
                                 <div layout="grid1" layout-align="center center">
                                     <md-card class="searchPageBox">
                                         <md-input-container class="md-block searchPageBox flex-gt-sm">
-                                            <label>GPA</label>
-                                            <input md-maxlength="3" name="gpa" ng-model="parameter.gpa">
-                                            <div ng-messages="CollegeInfo.gpa.$error">
-                                                <div ng-message="md-maxlength">Please type in a valid GPA out of 4.0</div>
-                                            </div>
+                                            <label>GPA (Out of 4.0}</label>
+                                            <input name="gpa" ng-model="parameter.gpa">
+
                                         </md-input-container>
                                     </md-card>
 
@@ -93,7 +72,7 @@
                                         <!-- ACT Box-->
                                         <md-input-container class="md-block searchPageBox flex-gt-sm">
                                             <label>ACT Composite Score</label>
-                                            <input type="number" step="0.1" name="actcomposite" ng-model="parameter.actcomposite" min="0"
+                                            <input type="number" step="1.0" name="actcomposite" ng-model="parameter.actcomposite" min="0"
                                                    max="36" ng-pattern="/^[0-9]{1,2}$/" />
                                             <div ng-messages="CollegeInfo.actcomposite.$error" multiple md-auto-hide="false">
                                                 <div ng-message="min">
