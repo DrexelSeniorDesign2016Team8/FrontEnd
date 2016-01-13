@@ -25,27 +25,4 @@ app.directive('showFocus', function($timeout) {
 
         };
     });
-app.config(['$routeProvider', '$locationProvider',
-    function($routeProvider,$locationProvider) {
-        $routeProvider
-            .when('/search', {
-                templateUrl: 'searchPage.html',
-                controller: 'searchController'
-            })
-            .when('/results', {
-                templateUrl: 'searchResults.html',
-                controller: 'searchResultsController'
-            })
-            .when('/resetPassword', {
-                templateUrl: 'resetPassword.html',
-                controller: 'resetPasswordController'
-            })
-            .when('/home', {
-                templateUrl: 'views/home.html',
-                controller: 'homeController'
-            })
-            .otherwise({
-                redirectTo: '/searchPage'
-            });
-    }]);
 

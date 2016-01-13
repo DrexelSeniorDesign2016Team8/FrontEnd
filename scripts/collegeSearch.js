@@ -1,14 +1,7 @@
 //var loggedIn = false;
 
-var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngStorage', 'ngRoute'] );		// initialize the app for all classes
+var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngStorage'] );		// initialize the app for all classes
 
-app.constant('USER_ROLES', {
-	all: '*',
-	admin: 'admin',
-	editor: 'editor',
-	guest: 'guest'
-
-});
 
 
 app.constant('AUTH_EVENTS', {
@@ -20,40 +13,20 @@ app.constant('AUTH_EVENTS', {
 	notAuthorized: 'auth-not-authorized'
 });
 
+	app.run(function ($rootScope, userService, apiCall) {
 
+		// first retrieve data from local storage
+		var authenticate = userService.restoreLocalStorage();
 
-	app.factory('AuthInterceptor', function ($rootScope, $q,
-											 AUTH_EVENTS) {
-		return {
-			responseError: function (response) {
-				$rootScope.$broadcast({
-					401: AUTH_EVENTS.notAuthenticated,
-					403: AUTH_EVENTS.notAuthorized,
-					419: AUTH_EVENTS.sessionTimeout,
-					440: AUTH_EVENTS.sessionTimeout
-				}[response.status], response);
-				return $q.reject(response);
-			}
-		};
-	})
+		// then make a call to verify the authentication key, if not a new one will be created
+		if (authenticate) {
+			apiCall.setApiDestination("authenticate");
 
-/* modify this so it works with authService
-	app.run(function ($rootScope, AUTH_EVENTS, authService) {
-		$rootScope.$on('$stateChangeStart', function (event, next) {
-			var authorizedRoles = next.data.authorizedRoles;
-			if (!authService.isAuthorized(authorizedRoles)) {
-				event.preventDefault();
-				if (authService.isAuthenticated()) {
-					// user is not allowed
-					$rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-				} else {
-					// user is not logged in
-					$rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-				}
-			}
-		});
+			apiCall.callCollegeSearchAPI();
+		}
+
 	});
-	*/
+
 	/*
 	 This function retrieves a cookie based on a name
 	 */
