@@ -375,7 +375,7 @@
                                 </md-sidenav>
             <md-content flex layout-padding>
                 <div layout="column" layout-fill layout-align="center center">
-                        <div ng-repeat=" college in colleges" ng-bind-html-unsafe="college.name" class="searchResults" limitTo:5 >
+                        <div ng-repeat=" college in colleges | limitTo:5" ng-bind-html-unsafe="college.name" class="searchResults"  >
                            <h2> {{ college.name }}</h2>
                             <div ng-if='college.address!==undefined'><p>{{college.address}}</p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
