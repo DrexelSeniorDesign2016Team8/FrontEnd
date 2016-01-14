@@ -21,6 +21,7 @@
 	height: 120px;
 	margin-right: 100px;
 	text-align: center;
+	max-width: 100%;
 }
 #searchOptions {
 	text-align: center;
