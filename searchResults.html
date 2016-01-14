@@ -336,9 +336,9 @@
             <br>
             <br>
             <br>
-            <md-content flex layout-padding>
 
-                        <div dir-paginate="college in colleges|itemsPerPage:pageSize" current-page="currentPage" ng-bind-html-unsafe="college.name" class="searchResults"  >
+
+                        <span dir-paginate="college in colleges|itemsPerPage:pageSize" current-page="currentPage" ng-bind-html-unsafe="college.name" class="searchResults"  >
                            <h2> {{college.name }}</h2>
                             <div ng-if='college.address!==undefined'><p>{{college.address}}</p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
@@ -350,7 +350,7 @@
                             <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
                             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
                             <hr>
-                        </div>
+                        </span>
 
 
 
