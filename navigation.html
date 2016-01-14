@@ -1,11 +1,11 @@
 
 <ul class="pagination" ng-if="1 < pages.length">
     <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope">
-        <md-icon md-svg-icon="arrow-left-bold-circle-outline"></md-icon>
+       <md-button><md-icon md-svg-icon="arrow-left-bold-circle-outline"></md-icon></md-button>
     </li>
 
     <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
-        <md-icon md-svg-icon="arrow-right-bold-circle-outline"></md-icon>
+        <md-button><md-icon md-svg-icon="arrow-right-bold-circle-outline"></md-icon></md-button>
     </li>
 </ul>
 
