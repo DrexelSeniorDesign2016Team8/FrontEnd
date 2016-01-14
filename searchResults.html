@@ -320,7 +320,7 @@
                             direction-links="true"
                             boundary-links="true">
                     </dir-pagination-controls>
-                        <tr dir-paginate="college in colleges|filter:search|itemsPerPage:10" ng-bind-html-unsafe="college.name" class="searchResults"  >
+                        <li dir-paginate="college in colleges|filter:search|itemsPerPage:10" ng-bind-html-unsafe="college.name" class="searchResults"  >
                            <h2> {{ college.name }}</h2>
                             <div ng-if='college.address!==undefined'><p>{{college.address}}</p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
@@ -332,7 +332,7 @@
                             <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
                             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
 
-                        </tr>
+                        </li>
                 </div>
 
 
