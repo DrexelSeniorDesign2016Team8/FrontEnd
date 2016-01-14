@@ -1,20 +1,4 @@
-<label>Filter</label>
-<md-select ng-model="filterOptions">
-    <md-option ng-repeat="filterOption in parameter.filterOptions" value="{{filterOption.filterOption}}">
-        {{filterOption.filterOption}}
-    </md-option>
-</md-select>
-</md-input-container>
-
-<md-input-container>
-    <label>Size</label>
-    <md-select ng-model="pageSize">
-        <md-option ng-repeat="pageSize in parameter.pageSizes" value="{{pageSize.pageSize}}">
-            {{pageSize.pageSize}}
-        </md-option>
-    </md-select>
-</md-input-container>
-<ul class="pagination" ng-if="1 < pages.length">
+<div class="pagination" ng-if="1 < pages.length">
     <div ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope">
         <a href="" ng-click="setCurrent(pagination.current - 1)" class="ng-binding">    <md-icon md-svg-icon="arrow-left-bold-circle-outline"></md-icon></a>
     </div>
@@ -23,4 +7,4 @@
     <div ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
         <a href="" ng-click="setCurrent(pagination.current + 1)" class="ng-binding">    <md-icon md-svg-icon="arrow-right-bold-circle-outline"></md-icon></a>
     </div>
-</ul>
+</div>
