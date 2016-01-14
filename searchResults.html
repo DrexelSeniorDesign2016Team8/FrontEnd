@@ -325,7 +325,15 @@
                             {{pageSize.pageSize}}
                         </md-option>
                     </md-select>
-                </md-input-container></div>
+                </md-input-container>
+                <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)">
+                    <md-button ng-if="boundaryLinks"  ng-class="{ disabled : pagination.current == pagination.first }" ng-clck="setCurrent(pagination.current-1)">
+                        <md-icon md-svg-icon="arrow-left-bold-circle-outline"></md-icon>
+                    </md-button>
+                    <md-button ng-if="boundaryLinks"  ng-class="{ disabled : pagination.current == pagination.last }" ng-clck="setCurrent(pagination.current+1)">
+                        <md-icon md-svg-icon="arrow-right-bold-circle-outline"></md-icon>
+                    </md-button></div>
+
             <md-content flex layout-padding>
 
                 <div layout="column" layout-fill layout-align="center center">
