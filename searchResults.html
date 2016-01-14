@@ -320,7 +320,7 @@
             </md-input-container>
 
                 <md-input-container>
-                    <label>Page Size</label>
+                    <label>Size</label>
                     <md-select ng-model="pageSize">
                         <md-option ng-repeat="pageSize in parameter.pageSizes" value="{{pageSize.pageSize}}">
                             {{pageSize.pageSize}}
@@ -336,7 +336,7 @@
             <md-content flex layout-padding>
 
                 <div layout="column" layout-fill layout-align="center center">
-                        <div dir-paginate="college in colleges|itemsPerPage:pageSize" current-page=" currentPage" ng-bind-html-unsafe="college.name" class="searchResults"  >
+                        <div dir-paginate="college in colleges|itemsPerPage:pageSize" current-page="currentPage" ng-bind-html-unsafe="college.name" class="searchResults"  >
                            <h2> {{college.name }}</h2>
                             <div ng-if='college.address!==undefined'><p>{{college.address}}</p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
