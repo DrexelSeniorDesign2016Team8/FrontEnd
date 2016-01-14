@@ -84,5 +84,5 @@ function noResultsAvailable() {
 
     alert("No results available. Returning to previous page");
 
-    window.location.href="searchPage.html"
+  //  window.location.href="searchPage.html"
 }

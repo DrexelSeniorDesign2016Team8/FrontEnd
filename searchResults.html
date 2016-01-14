@@ -10,7 +10,7 @@
     <script src="assets/node_modules/angular-messages/angular-messages.js"></script>
     <script src="assets/node_modules/angular-messages/angular-messages.js"></script>
     <script src="assets/node_modules/ngstorage/ngStorage.js"></script>
-    <script src="assets/node_modules/angular-route/angular-route.js"></script>
+    <script src="assets/node_modules/angular-utils-pagination/dirPagination.js"></script>
 
     <!-- material design javascript -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
@@ -94,20 +94,14 @@
                                                     <md-card class="searchPageBox">
                                                         <!-- High School Percentile Box-->
                                                         <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                                            <md-select ng-model="parameter.HighSchoolPercentile" placeholder="Please Select" id="highschoolPercentile">
-                                                                <md-option value="None">None</md-option>
-                                                                <md-option value="10%">10%</md-option>
-                                                                <md-option value="20%">20%</md-option>
-                                                                <md-option value="30%">30%</md-option>
-                                                                <md-option value="40%">40%</md-option>
-                                                                <md-option value="50%">50%</md-option>
-                                                                <md-option value="60%">60%</md-option>
-                                                                <md-option value="70%">70%</md-option>
-                                                                <md-option value="80%">80%</md-option>
-                                                                <md-option value="90%">90%</md-option>
-                                                                <md-option value="100%">100%</md-option>
-                                                            </md-select>
-                                                            <md-card-title><b>High School Percentile</b></md-card-title>
+                                                            <md-input-container>
+                                                                <label>Hgh School Percentle</label>
+                                                                <md-select ng-model="parameter.HighSchoolPercentile">
+                                                                    <md-option ng-repeat="percentage in parameter.percentages" value="{{percentage.percentage}}">
+                                                                        {{percentage.percentage}}
+                                                                    </md-option>
+                                                                </md-select>
+                                                            </md-input-container>
                                                         </md-input-container>
                                                     </md-card>
 
@@ -196,61 +190,13 @@
                                                         <!-- State Name -->
                                                         <md-card class="searchPageBox">
                                                             <!-- State Percentile Box-->
-                                                            <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                                                <md-select ng-model="selectedUser" placeholder="Please Select" ng-model="parameter.stateName" id="state">
-                                                                    <md-option value="None">None</md-option>
-                                                                    <md-option value="Alabama">Alabama</md-option>
-                                                                    <md-option value="Alaska">Alaska</md-option>
-                                                                    <md-option value="Arizona">Arizona</md-option>
-                                                                    <md-option value="Arkansas">Arkansas</md-option>
-                                                                    <md-option value="California">California</md-option>
-                                                                    <md-option value="Colorado">Colorado</md-option>
-                                                                    <md-option value="Connecticut">Connecticut</md-option>
-                                                                    <md-option value="Delaware">Delaware</md-option>
-                                                                    <md-option value="Florida">Florida</md-option>
-                                                                    <md-option value="Georgia">Georgia</md-option>
-                                                                    <md-option value="Hawaii">Hawaii</md-option>
-                                                                    <md-option value="Idaho">Idaho</md-option>
-                                                                    <md-option value="Illinois">Illinois </md-option>
-                                                                    <md-option value="Indiana">Indiana</md-option>
-                                                                    <md-option value="Iowa">Iowa</md-option>
-                                                                    <md-option value="Kansas">Kansas</md-option>
-                                                                    <md-option value="Kentucky">Kentucky</md-option>
-                                                                    <md-option value="Louisiana">Louisiana</md-option>
-                                                                    <md-option value="Maine">Maine</md-option>
-                                                                    <md-option value="Maryland">Maryland</md-option>
-                                                                    <md-option value="Massachusetts">Massachusetts</md-option>
-                                                                    <md-option value="Michigan">Michigan</md-option>
-                                                                    <md-option value="Minnesota">Minnesota</md-option>
-                                                                    <md-option value="Mississippi">Mississippi</md-option>
-                                                                    <md-option value="Missouri">Missouri</md-option>
-                                                                    <md-option value="Montana">Montana</md-option>
-                                                                    <md-option value="Nebraska">Nebraska</md-option>
-                                                                    <md-option value="Nevada">Nevada</md-option>
-                                                                    <md-option value="New Hampshire">New Hampshire</md-option>
-                                                                    <md-option value="New Jersey">New Jersey</md-option>
-                                                                    <md-option value="New Mexico">New Mexico</md-option>
-                                                                    <md-option value="New York">New York</md-option>
-                                                                    <md-option value="North Carolina">North Carolina</md-option>
-                                                                    <md-option value="North Dakota">North Dakota</md-option>
-                                                                    <md-option value="Ohio">Ohio</md-option>
-                                                                    <md-option value="Oklahoma">Oklahoma</md-option>
-                                                                    <md-option value="Oregon">Oregon</md-option>
-                                                                    <md-option value="Pennsylvania">Pennsylvania</md-option>
-                                                                    <md-option value="Rhode Island">Rhode Island</md-option>
-                                                                    <md-option value="South Carolina">South Carolina</md-option>
-                                                                    <md-option value="South Dakota">South Dakota</md-option>
-                                                                    <md-option value="Tennessee">Tennessee</md-option>
-                                                                    <md-option value="Texas">Texas</md-option>
-                                                                    <md-option value="Utah">Utah</md-option>
-                                                                    <md-option value="Vermont">Vermont</md-option>
-                                                                    <md-option value="Virginia">Virginia</md-option>
-                                                                    <md-option value="Washington">Washington</md-option>
-                                                                    <md-option value="West Virginia">West Virginia</md-option>
-                                                                    <md-option value="Wisonsin">Wisconsin</md-option>
-                                                                    <md-option value="Wyoming">Wyoming</md-option>
+                                                            <md-input-container>
+                                                                <label>State</label>
+                                                                <md-select ng-model="parameter.userState">
+                                                                    <md-option ng-repeat="state in parameter.states" value="{{state.fullName}}">
+                                                                        {{state.fullName}}
+                                                                    </md-option>
                                                                 </md-select>
-                                                                <md-card-title><b>State Name</b></md-card-title>
                                                             </md-input-container>
                                                         </md-card>
 
@@ -281,49 +227,41 @@
 
                                                         <!-- Acceptance Rate-->
                                                         <md-card class="searchPageBox">
-                                                            <md-select ng-model="parameter.acceptanceRate" placeholder="Please Select" id=acceptanceRate">
-                                                                <md-option value="None">None</md-option>
-                                                                <md-option value="10%">10%</md-option>
-                                                                <md-option value="20%">20%</md-option>
-                                                                <md-option value="30%">30%</md-option>
-                                                                <md-option value="40%">40%</md-option>
-                                                                <md-option value="50%">50%</md-option>
-                                                                <md-option value="60%">60%</md-option>
-                                                                <md-option value="70%">70%</md-option>
-                                                                <md-option value="80%">80%</md-option>
-                                                                <md-option value="90%">90%</md-option>
-                                                                <md-option value="100%">100%</md-option>
-                                                            </md-select>
-                                                            <md-card-title><b>Acceptance Rate</b></md-card-title>
+                                                            <md-input-container>
+                                                                <label>Acceptance Rate</label>
+                                                                <md-select ng-model="parameter.acceptanceRate">
+                                                                    <md-option ng-repeat="percentage in parameter.percentages" value="{{percentage.percentage}}">
+                                                                        {{percentage.percentage}}
+                                                                    </md-option>
+                                                                </md-select>
+                                                            </md-input-container>
                                                         </md-card>
                                                         <!-- Retention Rate-->
                                                         <md-card class="searchPageBox">
-                                                            <md-select ng-model="parameter.retentionRate" placeholder="Please Select" id="retentionRate">
-                                                                <md-option value="None">None</md-option>
-                                                                <md-option value="10%">10%</md-option>
-                                                                <md-option value="20%">20%</md-option>
-                                                                <md-option value="30%">30%</md-option>
-                                                                <md-option value="40%">40%</md-option>
-                                                                <md-option value="50%">50%</md-option>
-                                                                <md-option value="60%">60%</md-option>
-                                                                <md-option value="70%">70%</md-option>
-                                                                <md-option value="80%">80%</md-option>
-                                                                <md-option value="90%">90%</md-option>
-                                                                <md-option value="100%">100%</md-option>
-                                                            </md-select>
-                                                            <md-card-title><b>Retention Rate</b></md-card-title>
+                                                            <md-input-container>
+                                                                <label>Retention Rate</label>
+                                                                <md-select ng-model="parameter.retentonRate">
+                                                                    <md-option ng-repeat="percentage in parameter.percentages" value="{{percentage.percentage}}">
+                                                                        {{percentage.percentage}}
+                                                                    </md-option>
+                                                                </md-select>
+                                                            </md-input-container>
                                                         </md-card>
 
 
 
                                                     <!-- Institution Type Rate -->
                                                     <md-card class="searchPageBox">
-                                                        <md-select ng-model="parameter.InstitutionType" placeholder="Please Select" id="institutionType">
+                                                        <md-input-container>
+                                                            <label>Instituton Type</label>
 
-                                                            <md-option value="Public">Public</md-option>
-                                                            <md-option value="Private">Private</md-option>
-                                                        </md-select>
-                                                        <md-card-title><b>Institution Type</b></md-card-title>
+                                                            <md-select ng-model="parameter.institutionType">
+
+                                                                <md-option value="None">None</md-option>
+                                                                <md-option value="Public">Public</md-option>
+                                                                <md-option value="Private">Private</md-option>
+                                                            </md-select>
+                                                        </md-input-container>
                                                     </md-card>
 
                                                             <!-- Student Population -->
@@ -373,9 +311,16 @@
                                                 </div>
                                     </form>
                                 </md-sidenav>
+
+
             <md-content flex layout-padding>
                 <div layout="column" layout-fill layout-align="center center">
-                        <div ng-repeat=" college in colleges | limitTo:5" ng-bind-html-unsafe="college.name" class="searchResults"  >
+                    <dir-pagination-controls
+                            max-size="5"
+                            direction-links="true"
+                            boundary-links="true">
+                    </dir-pagination-controls>
+                        <tr dir-paginate="college in colleges|filter:search|itemsPerPage:10" ng-bind-html-unsafe="college.name" class="searchResults"  >
                            <h2> {{ college.name }}</h2>
                             <div ng-if='college.address!==undefined'><p>{{college.address}}</p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
@@ -387,7 +332,7 @@
                             <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
                             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
 
-                        </div>
+                        </tr>
                 </div>
 
 
