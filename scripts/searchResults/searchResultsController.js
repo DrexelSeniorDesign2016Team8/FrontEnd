@@ -39,6 +39,7 @@ loadDropdowns = function() {
     ).split(',').map(function (pageSize) {
         return {pageSize: pageSize};
     });
+    $scope.pageSize='10';
 
 }
     $scope.autoFillSearch = function() {
