@@ -29,6 +29,6 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userSer
     };
 
     $scope.logout = function() {
-        userService.loggedIn=false;
+        userService.logout();
     }
 });

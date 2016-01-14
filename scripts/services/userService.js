@@ -10,6 +10,23 @@ app.factory('userService', function($localStorage) {
         return user;
     }
 
+    function isLoggedin() {
+        if (user.loggedIn==true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    function logout() {
+        user.loggedIn=false;
+        user.username=false;
+        user.authenticationKey='';
+        $localStorage.loggedIn=false;
+        $localStorage.username='';
+        $localStorage.authenticationKey='';
+
+    }
     function set(loggedIn, username, authenticationKey) {
         var info = {
             authInfo: {
@@ -22,16 +39,17 @@ app.factory('userService', function($localStorage) {
 
         setLoggedIn(loggedIn);
         setUserName(username);
-            setAuthenticationKey(authenticationKey);
+        setAuthenticationKey(authenticationKey);
 
     }
 
     function setLoggedIn(loggedIn) {
         user.loggedIn = loggedIn;
-        $localStorage.loggedIn;
+        $localStorage.loggedIn = loggedIn;
     }
     function setUserName(username) {
         user.username = username;
+        $localStorage.username = username
     }
     function setAuthenticationKey(authenticationKey) {
         user.authenticationKey = authenticationKey;
@@ -51,5 +69,7 @@ app.factory('userService', function($localStorage) {
         setUserName: setUserName,
         setAuthenticationKey: setAuthenticationKey,
         restoreLocalStorage: restoreLocalStorage,
+        isLoggedin : isLoggedin,
+        logout: logout
     };
 });

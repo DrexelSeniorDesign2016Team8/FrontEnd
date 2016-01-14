@@ -40,12 +40,11 @@ function signInController ($scope, $mdDialog, $log, userService, $localStorage) 
             $log.debug('login successful')
 
             //TODO adjust page so logged in information is now shown
-            userService.set
-            $localStorage.loggedIn = true;
-            $scope.currentUserLoggedin = true;
+
+
             $mdDialog.hide();
-            userService.loggedIn=true;
-            userService.userName=signinForm.emailAddress.value
+            userService.setLoggedIn(true);
+            userService.setUserName(signinForm.emailAddress.value);
 
         }
         else {
