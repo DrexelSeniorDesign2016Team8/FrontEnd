@@ -1,9 +1,10 @@
-<ul class="pagination" ng-if="1 < pages.length">s
-    <dv ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope">
+<ul class="pagination" ng-if="1 < pages.length">
+    <div ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope">
         <a href="" ng-click="setCurrent(pagination.current - 1)" class="ng-binding">    <md-icon md-svg-icon="arrow-left-bold-circle-outline"></md-icon></a>
-    </dv>
+    </div>
 
-    <dv ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+    <label>Page {{pagination.current}}</label>
+    <div ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
         <a href="" ng-click="setCurrent(pagination.current + 1)" class="ng-binding">    <md-icon md-svg-icon="arrow-right-bold-circle-outline"></md-icon></a>
-    </dv>
+    </div>
 </ul>
