@@ -311,22 +311,7 @@
                                 </md-sidenav>
 
             <div class="gridOptons">   <md-input-container>
-                <label>Filter</label>
-                <md-select ng-model="filterOptions">
-                    <md-option ng-repeat="filterOption in parameter.filterOptions" value="{{filterOption.filterOption}}">
-                        {{filterOption.filterOption}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
 
-                <md-input-container>
-                    <label>Size</label>
-                    <md-select ng-model="pageSize">
-                        <md-option ng-repeat="pageSize in parameter.pageSizes" value="{{pageSize.pageSize}}">
-                            {{pageSize.pageSize}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
                 <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="navigation.html">
 
                 </dir-pagination-controls>
