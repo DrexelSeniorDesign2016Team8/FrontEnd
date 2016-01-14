@@ -35,11 +35,12 @@ loadDropdowns = function() {
     ).split(',').map(function (filterOption) {
         return {filterOption: filterOption};
     });
-    $scope.parameter.pageSizes = ('5, 10, 15, 20'
+    $scope.pageSize=10;
+    $scope.parameter.pageSizes = (5, 10, 15, 20
     ).split(',').map(function (pageSize) {
         return {pageSize: pageSize};
     });
-    $scope.pageSize=10;
+
     $scope.currentPage=1;
 
 }
