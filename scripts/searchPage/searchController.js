@@ -1,5 +1,4 @@
-app.controller('searchController', function ($scope, $log, searchService, navigationService) {
-    $scope.searchParameters = {};
+app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService) {
     $scope.searchService = searchService;
     pageSetup = function () {
 
@@ -50,7 +49,67 @@ app.controller('searchController', function ($scope, $log, searchService, naviga
 
             return false;
         }
+
+
     };
+
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    $scope.convertGPA = function(ev) {
+
+        var dialogContent = " <md-toolbar>" +
+            "<div class='md-toolbar-tools'>"+
+            "<h2>GPA Conversion</h2>"+
+        "<span flex></span>"+
+        "<md-button class='md-icon-button' ng-click='close()'>"+
+            "<md-icon md-svg-icon='close-box' aria-label='Close dialog'></md-icon>"+
+            "</md-button>"+
+            "</div>"+
+            "</md-toolbar>"+
+            "<md-content layout-wrap>" +
+                "<md-input-container> <label>GPA Scale</label>" +
+                   "<input ng-model='gpa.number' style='width:100px'>"+
+                        "</md-input-container>" +
+                       "<md-input-container>" +
+            "<md-select ng-model='gpa.gpaOutof' placeholder='Out of' style='float:right'>" +
+            "<md-option value='3'>3</md-option>"+
+            "<md-option value='4'>4</md-option>"+
+            "<md-option value='5'>5</md-option>"+
+            "<md-option value='6'>6</md-option>"+
+            "<md-option value='7'>7</md-option>"+
+            "<md-option value='8'>8</md-option>"+
+            "<md-option value='9'>9</md-option>"+
+            "<md-option value='10'>10</md-option>" +
+        "</md-select></md-input-container><br>" +
+            "<md-button ng-click='submit()' style='float:right'>Submit</md-button>"+
+
+            "</md-content>";
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+        $mdDialog.show({
+                controller: gpaController,
+                template: dialogContent,
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+            })
+            .then(function() {
+                var gpa = searchService.getGPA();
+                params = searchService.get();
+                if (gpa) {
+                    $scope.parameter = {
+                        gpa: gpa
+                    }
+                }
+            }, function() {
+
+
+            });
+        $scope.$watch(function() {
+            return $mdMedia('xs') || $mdMedia('sm');
+        }, function(wantsFullScreen) {
+            $scope.customFullscreen = (wantsFullScreen === true);
+        });
+    };
+
     pageSetup();
 
 

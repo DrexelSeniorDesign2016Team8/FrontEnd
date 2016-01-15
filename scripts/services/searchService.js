@@ -24,7 +24,18 @@ app.factory('searchService', function(apiCall, $localStorage) {
             },
         };
         $localStorage.params = config.params;
-        searchOptions = config.params;
+        searchOptions.params = config.params;
+    }
+    function setGPA(gpa) {
+        var config = {
+            params: {
+                'GPAvalue': gpa
+            }
+        }
+        searchOptions.GPAvalue = config.params.GPAvalue;
+    }
+    function  getGPA() {
+        return searchOptions.GPAvalue;
     }
     function get() {
         return $localStorage.params
@@ -48,6 +59,8 @@ app.factory('searchService', function(apiCall, $localStorage) {
         set: set,
         get: get,
         search: search,
+        setGPA:setGPA,
+        getGPA: getGPA
     }
 
 });

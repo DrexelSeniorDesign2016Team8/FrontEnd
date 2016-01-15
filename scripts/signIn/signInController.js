@@ -1,4 +1,4 @@
-function signInController ($scope, $mdDialog, $log, userService, $localStorage) {
+function signInController ($scope, $mdDialog, $log, userService) {
 
     var userService = userService;
     $scope.login = {
