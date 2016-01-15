@@ -35,10 +35,10 @@
 	.searchPageBox {
 		width: 150px;
 		height: 100px;
-		margin-right: 50px;
+		margin-right: 40px;
 		text-align: center;
 		max-width: 100%;
 		margin-top: 10px;
-		min-width: 90%;
+		min-width: 0%;
 	}
 }
