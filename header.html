@@ -5,13 +5,13 @@
     <script src="scripts/signIn/signInController.js"></script>
 
 <div ng-controller="headerController">
-<a ng-href="searchPage.html"> <img id="collegeSearchicon"  ng-Src="assets/icon/collegeSearch.png" atl="CollegeSearch"> </a>
+ <a href ng-click="logoClick('searchPage.html')"><img id="collegeSearchicon"  ng-Src="assets/icon/collegeSearch.png" atl="CollegeSearch" ></a>
 
 <md-button class="md-button accountCreation"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage()">Create Account/Login</md-button>
 
     <md-menu>
         <md-button aria-label="Open Login Options"  ng-show='userService.isLoggedin()' class= "accountCreation" ng-click="openMenu($mdOpenMenu, $event)">
-            <md-icon  md-svg-icon="account-location" style="width:40px; height:40px;" class="md-con-button accountOptions"></md-icon>
+            <md-icon  md-svg-icon="account-location" style="width:40px; height:40px;" class="md-icon-button accountOptions"></md-icon>
         </md-button>
         <md-menu-content width="4">
             <md-menu-item>

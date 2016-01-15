@@ -2,11 +2,12 @@ app.factory('userService', function($localStorage) {
     var user = {
         loggedIn: false,
         username: '',
-        authenticationKey: ''
+        authenticationKey: '',
+        rememberMe: false
     };
 
 
-    function get() {
+    function getUserName() {
         return user;
     }
 
@@ -22,9 +23,11 @@ app.factory('userService', function($localStorage) {
         user.loggedIn=false;
         user.username=false;
         user.authenticationKey='';
+        user.rememberMe=false;
         $localStorage.loggedIn=false;
         $localStorage.username='';
         $localStorage.authenticationKey='';
+        $localStorage.rememberMe=false;
 
     }
     function set(loggedIn, username, authenticationKey) {
@@ -54,19 +57,29 @@ app.factory('userService', function($localStorage) {
     function setAuthenticationKey(authenticationKey) {
         user.authenticationKey = authenticationKey;
     }
+    function setRememberMe(rememberMe) {
+        user.rememberMe=rememberMe;
+        $localStorage.rememberMe=rememberMe;
+    }
     function restoreLocalStorage() {
         if ($localStorage.username && $localStorage.loggedIn) {
-            user.username = $localStorage.username
+            user.username = $localStorage.username;
             user.loggedIn = $localStorage.loggedIn;
+            if ($localStorage.rememberMe==false) {      // if remember me is not selected remove local storage
+                $localStorage.loggedIn=false;
+                $localStorage.username='';
+            }
+
             return true;
         }
         else return false;
     }
     return {
-        get: get,
+        getUserName: getUserName,
         set: set,
         setLoggedIn: setLoggedIn,
         setUserName: setUserName,
+        setRememberMe :setRememberMe,
         setAuthenticationKey: setAuthenticationKey,
         restoreLocalStorage: restoreLocalStorage,
         isLoggedin : isLoggedin,

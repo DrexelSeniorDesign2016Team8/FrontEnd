@@ -1,4 +1,4 @@
-app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userService) {
+app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userService, navigationService) {
 
     $scope.status = '  ';
     $scope.userService = userService;
@@ -27,6 +27,10 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userSer
         originatorEv = ev;
         $mdOpenMenu(ev);
     };
+
+    $scope.logoClick = function(url) {
+        navigationService.leavePage(url);
+    }
 
     $scope.logout = function() {
         userService.logout();

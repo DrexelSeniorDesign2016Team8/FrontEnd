@@ -1,4 +1,4 @@
-app.controller('searchController', function ($scope, $timeout, $log, searchService, $location) {
+app.controller('searchController', function ($scope, $log, searchService, navigationService) {
     $scope.searchParameters = {};
     $scope.searchService = searchService;
     pageSetup = function () {
@@ -46,7 +46,7 @@ app.controller('searchController', function ($scope, $timeout, $log, searchServi
 
 
             }
-            window.location.href="searchResults.html";
+            navigationService.leavePage("searchResults.html");
 
             return false;
         }

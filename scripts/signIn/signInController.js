@@ -4,7 +4,9 @@ function signInController ($scope, $mdDialog, $log, userService, $localStorage) 
     $scope.login = {
         loading: false,
         password: '',
-        user: ''
+        user: '',
+        rememberMe: false
+
     };
     $scope.createAccount = function() {
         $scope.login.loading = true;
@@ -45,6 +47,13 @@ function signInController ($scope, $mdDialog, $log, userService, $localStorage) 
             $mdDialog.hide();
             userService.setLoggedIn(true);
             userService.setUserName(signinForm.emailAddress.value);
+            if ($scope.signIn.rememberMe==true) {
+                $scope.rememberMe=true;
+            }
+            else {
+                $scope.rememberMe=false;
+            }
+            userService.setRememberMe($scope.rememberMe);
 
         }
         else {

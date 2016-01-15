@@ -13,10 +13,12 @@ app.constant('AUTH_EVENTS', {
 	notAuthorized: 'auth-not-authorized'
 });
 
-	app.run(function ($rootScope, userService, apiCall) {
+	app.run(function ($rootScope, userService, apiCall, navigationService) {
 
 		// first retrieve data from local storage
 		var authenticate = userService.restoreLocalStorage();
+
+		navigationService.loadPage();
 
 		// then make a call to verify the authentication key, if not a new one will be created
 		if (authenticate) {
