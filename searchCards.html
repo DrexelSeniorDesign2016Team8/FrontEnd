@@ -1,0 +1,274 @@
+
+<span layout="grid1" layout-wrap layout-align="center center">
+                            <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <md-input-container class="md-block searchPageBox flex-gt-sm">
+                                            <label>GPA (Out of 4.0}</label>
+                                            <input name="gpa" ng-model="parameter.gpa">
+
+                                        </md-input-container>
+                                    </md-card>
+                            </div>
+                                    <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <!-- ACT Box-->
+                                        <md-input-container class="md-block searchPageBox flex-gt-sm">
+                                            <label>ACT Composite Score</label>
+                                            <input type="number" step="1.0" name="actcomposite" ng-model="parameter.actcomposite" min="0"
+                                                   max="36" ng-pattern="/^[0-9]{1,2}$/" />
+                                            <div ng-messages="CollegeInfo.actcomposite.$error" multiple md-auto-hide="false">
+                                                <div ng-message="min">
+                                                    You can't have a negative sore
+                                                </div>
+                                                <div ng-message="pattern">
+                                                    You need to enter a two digit number
+                                                </div>
+                                                <div ng-message="max">
+                                                    You can't have higher than a 36
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </md-card>
+                                        </div>
+                                <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <!-- High School Percentile Box-->
+
+                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+                                            <md-input-container>
+                                                <label>High School Percentile</label>
+                                                <md-select ng-model="parameter.HighSchoolPercentile">
+                                                    <md-option ng-repeat="percentage in parameter.percentages" value="{{percentage.percentage}}">
+                                                        {{percentage.percentage}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </md-input-container>
+                                    </md-card>
+                                    </div>
+
+                                    <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <!-- ACT Box-->
+                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                            <label>Math Score</label>
+                                            <input type="number" id="MathScore" name="MathScore" ng-model="parameter.MathScore" min="0"
+                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+                                            <div ng-messages="CollegeInfo.MathScore.$error" multiple md-auto-hide="false">
+                                                <div ng-message="min">
+                                                    You can't have a negative sore
+                                                </div>
+                                                <div ng-message="pattern">
+                                                    You need to enter a three digit number
+                                                </div>
+                                                <div ng-message="max">
+                                                    You can't have higher than an 800
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+
+                                    </md-card>
+                                        </div>
+                                    <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <!-- Math Score -->
+                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                            <label>Writing Score</label>
+                                            <input type="number" name="WritingScore" ng-model="parameter.WritingScore" ng-pattern="/^[0-9]{1,3}$/" min="0"
+                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+                                            <div ng-messages="CollegeInfo.WritingScore.$error" multiple md-auto-hide="false">
+                                                <div ng-message="min">
+                                                    You can't have a negative sore
+                                                </div>
+                                                <div ng-message="pattern">
+                                                    You need to enter a three digit number
+                                                </div>
+                                                <div ng-message="max">
+                                                    You can't have higher than an 800
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </md-card>
+                                            </div>
+                            <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <!-- Reading Score-->
+                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                            <label>Reading Score</label>
+                                            <input type="number" name="ReadingScore" id="ReadingScore" ng-model="parameter.ReadingScore"min="0"
+                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+                                            <div ng-messages="CollegeInfo.ReadingScore.$error" multiple md-auto-hide="false">
+                                                <div ng-message="min">
+                                                    You can't have a negative sore
+                                                </div>
+                                                <div ng-message="pattern">
+                                                    You need to enter a three digit number
+                                                </div>
+                                                <div ng-message="max">
+                                                    You can't have higher than an 800
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </md-card>
+                                </div>
+                                </span>
+<br>
+<div layout="title2" layout-align="center center" class="sideBarLabel">
+    Institution Characteristics
+</div>
+<br>
+<span layout="grid1" layout-wrap layout-align="center center" class="mobileFriendly">
+                                    <!-- Institution Name-->
+                                    <div class="searchPageBox" flex="20">
+
+                                        <md-card class="searchPageBox">
+                                            <!-- Reading Score-->
+                                            <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                                <label>Institution Name</label>
+                                                <input type="text" id="InstitutionName" name="InstitutionName" ng-model="parameter.InstitutionName"/>
+
+                                            </md-input-container>
+                                        </md-card>
+
+                                    </div>
+                                <br>
+
+                                      <div class="searchPageBox" flex="20">
+                              <!-- State Name -->
+                                    <md-card class="searchPageBox">
+                                        <!-- State Percentile Box-->
+                                        <md-input-container>
+                                            <label>State</label>
+                                            <md-select ng-model="parameter.userState">
+                                                <md-option ng-repeat="state in parameter.states" value="{{state.fullName}}">
+                                                    {{state.fullName}}
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </md-card>
+                                     </div>
+
+                                 <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <!-- Zip Code-->
+                                        <md-input-container>
+
+                                            <label>Zip Code</label>
+                                            <input type="text" name="zipcode" id="zipCode" ng-model="parameter.zipcode" ng-pattern="/^[0-9]{1,5}$/"/>
+                                            <div ng-messages="CollegeInfo.zipcode.$error">
+                                                <div ng-message="pattern">Not a valid zip code</div>
+                                            </div>
+                                        </md-input-container>
+                                    </md-card>
+                                </div>
+                                <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <!-- Full Address-->
+                                        <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                            <label>Full Address</label>
+                                            <input type="text" name="fullAddress" ng-model="parameter.fullAddress" id="FullAddress" ng-model="parameter.fullAddress"/>
+
+                                        </md-input-container>
+                                    </md-card>
+
+                                        </div>
+                             <!-- Acceptance Rate-->
+                                  <div class="searchPageBox" flex="20">
+                                    <md-card class="searchPageBox">
+                                        <md-input-container>
+                                            <label>Acceptance Rate</label>
+                                            <md-select ng-model="parameter.acceptanceRate">
+                                                <md-option ng-repeat="percentage in parameter.percentages" value="{{percentage.percentage}}">
+                                                    {{percentage.percentage}}
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+
+                                    </md-card>
+                                      </div>
+                                <div class="searchPageBox" flex="20">
+                                     <!-- Retention Rate-->
+                                    <md-card class="searchPageBox">
+                                        <md-input-container>
+                                            <label>Retention Rate</label>
+                                            <md-select ng-model="parameter.retentonRate">
+                                                <md-option ng-repeat="percentage in parameter.percentages" value="{{percentage.percentage}}">
+                                                    {{percentage.percentage}}
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </md-card>
+                                    </div>
+                            <!-- Institution Type Rate -->
+                                  <div class="searchPageBox" flex="20">
+                                <md-card class="searchPageBox">
+                                    <md-input-container>
+                                        <label>Instituton Type</label>
+
+                                        <md-select ng-model="parameter.institutionType">
+
+                                            <md-option value="None">None</md-option>
+                                            <md-option value="Public">Public</md-option>
+                                            <md-option value="Private">Private</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </md-card>
+                            </div>
+                          <!-- Student Population -->
+                                     <div class="searchPageBox" flex="20">
+                                <md-card class="searchPageBox">
+                                    <!-- Full Address-->
+                                    <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                        <label>Student Population</label>
+                                        <input type="number" id="studentpopulation" class="searchLabel" name="StudentPopulation" ng-model="parameter.studentPopulation" min="0"/>
+                                        <div ng-messages="CollegeInfo.studentpopulation.$error">
+                                            <div ng-message="min">Please enter a number greater than 0</div>
+                                        </div>
+                                    </md-input-container>
+                                </md-card>
+                                         </div>
+
+                                 <div class="searchPageBox" flex="20">
+                              <!-- Class Size -->
+                                <md-card class="searchPageBox">
+                                    <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                        <label>Class Size</label>
+                                        <input type="number" class="searchLabel" id="classSize" name="classSize" ng-model="parameter.classSize" min="0"/>
+                                        <div ng-messages="CollegeInfo.classSize.$error">
+                                            <div ng-message="min">Please enter a number greater than 0</div>
+                                        </div>
+                                    </md-input-container>
+                                </md-card>
+                                     </div>
+                            </span>
+<br>
+
+<div layout="title2" layout-align="center center" class="sideBarLabel">
+    Additional Options
+</div>
+            <span layout="grid1" layout-wrap layout-align="center center">
+
+                                    <div class="searchPageBox" flex="20">
+                                <md-card class="searchPageBox">
+                                    <md-checkbox ng-model="parameter.commonApplication" aria-label="Checkbox 1">
+                                        Common Application Only
+                                    </md-checkbox>
+
+                                </md-card>
+                                        </div>
+                                        <div class="searchPageBox" flex="20">
+                                <md-card class="searchPageBox"ng-show='userService.loggedIn'>
+                                    <md-checkbox ng-model="parameter.favoritedInstitutions" aria-label="Checkbox 1">
+                                        Favorited Institutions Only
+                                    </md-checkbox>
+
+                                </md-card>
+                                    </div>
+                            </span>

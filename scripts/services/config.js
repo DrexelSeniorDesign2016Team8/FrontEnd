@@ -26,3 +26,11 @@ app.directive('showFocus', function($timeout) {
         };
     });
 
+    app.directive('search', function () {
+
+
+        return {
+            templateUrl: 'searchCards.html'
+        }
+        
+    })

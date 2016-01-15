@@ -18,8 +18,9 @@
 }
 .searchPageBox {
     width: 200px;
-    height: 120px;
-    margin-right: 100px;
+    height: 80px;
+    margin-right: 90px;
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -45,4 +46,8 @@
 }
 .searchButton {
     float: left;
+}
+.sideBarLabel{
+    text-align: center;
+    margin-left: 100px;
 }
