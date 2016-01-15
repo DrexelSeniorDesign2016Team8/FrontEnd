@@ -10,8 +10,8 @@
 <md-button class="md-button accountCreation"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage()">Create Account/Login</md-button>
 
     <md-menu>
-        <md-button aria-label="Open Login Options"  ng-show='userService.isLoggedin()' class="md-icon-button accountCreation" ng-click="openMenu($mdOpenMenu, $event)">
-            <md-icon md-menu-origin md-svg-icon="large:account-location " class="accountOptions"></md-icon>
+        <md-button aria-label="Open Login Options"  ng-show='userService.isLoggedin()' class= "accountCreation" ng-click="openMenu($mdOpenMenu, $event)">
+            <md-icon  md-svg-icon="account-location" style="width:40px; height:40px;" class="md-con-button accountOptions"></md-icon>
         </md-button>
         <md-menu-content width="4">
             <md-menu-item>
