@@ -53,6 +53,7 @@ app.directive('searchResults', function() {
 
         link: function (scope, element, attrs) {
             scope.image = attrs.image
+            scope.address = attrs.address
 
         }
     }
