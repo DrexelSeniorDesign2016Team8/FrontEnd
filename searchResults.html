@@ -15,6 +15,7 @@
 
     <!-- material design javascript -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="assets/jQuery/jquery-1.11.3.min.js"></script>
 
@@ -90,19 +91,8 @@
             <br>
 
 
-                        <span dir-paginate="college in colleges|itemsPerPage:pageSize" current-page="currentPage" ng-bind-html-unsafe="college.name" class="searchResults"  >
-                           <h2> {{college.name }}</h2>
-                            <div ng-if="college.image!=undefined"><img src="{{college.image}}.jpg" alt="{{college.name}}" style="width:200px;height:200px; float:left"></div>
-                            <div ng-if='college.address!==undefined'><p>{{college.address}}</p></div>
-                            <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
-                           <div ng-if='college.website!=undefined && college.phoneNumber==undefined'> {college.website}} Number Unavailable</div>
-                            <div ng-if='college.website==undefined && college.phoneNumber==undefined'>Website unavailable Number Unavailable</div>
-                            <div ng-if='college.website==undefined && college.phoneNumber!=undefined'>Website unavailable {{college.phoneNumber}}</div>
-                            <div ng-if='college.phoneNumber!=undefined && college.website!=undefined'> {{college.website}} {{college.phoneNumber}}</div>
-                            <div ng-if='college.phoneNumber==undefined'><p>Number unavailable</p></div>
-                            <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
-                            <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
-                            <hr>
+                        <span dir-paginate="college in colleges|itemsPerPage:pageSize" current-page="currentPage" ng-bind-html-unsafe="college.name" class="searchResults" searchResults  >
+
                         </span>
 
 

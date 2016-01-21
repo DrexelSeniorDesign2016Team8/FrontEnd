@@ -40,17 +40,22 @@
     <script src="scripts/searchPage/searchController.js"></script>
 
 
-    <script src="scripts/searchPage/searchPage.js"></script>
-    <script src="scripts/searchPage/gpaController.js"></script>
+    <script src="scripts/userPreferences/userPreferencesController.js"></script>
 
 </head>
 <div ng-app="CollegeSearch">
     <div id="header" header></div>
     <hr>
-
+   <div ng-show="userService.arePreferencesUpdated()"> <label>Search Preferences Updated</label></div>
     <div id="search" flex="80"search></div>
 
-    <md-button class= id="searchBtn" style='float:left' ng-disabled="CollegeInfo.$invalid" ng-click="savePreferences()">
+    <div ng-controller="userPreferencesController">
+    <md-button class= id="save" style='float:left' ng-disabled="CollegeInfo.$invalid" ng-click="savePreferences()">
         Save
     </md-button>
+
+    <md-button class= id="delete" style='float:left' ng-click="deleteConfirmation()">
+        Delete
+    </md-button>
+    </div>
     </div>
