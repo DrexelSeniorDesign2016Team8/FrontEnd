@@ -31,6 +31,9 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userSer
     $scope.logoClick = function(url) {
         navigationService.leavePage(url);
     }
+    $scope.userPreferences = function(url) {
+        navigationService.leavePage(url);
+    }
 
     $scope.logout = function() {
         userService.logout();

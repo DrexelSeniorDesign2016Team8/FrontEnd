@@ -75,10 +75,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
             "<md-option value='4'>4</md-option>"+
             "<md-option value='5'>5</md-option>"+
             "<md-option value='6'>6</md-option>"+
-            "<md-option value='7'>7</md-option>"+
-            "<md-option value='8'>8</md-option>"+
-            "<md-option value='9'>9</md-option>"+
-            "<md-option value='10'>10</md-option>" +
+            "<md-option value='100'>100</md-option>" +
         "</md-select></md-input-container><br>" +
             "<md-button ng-click='submit()' style='float:right'>Submit</md-button>"+
 

@@ -3,7 +3,8 @@ app.factory('userService', function($localStorage) {
         loggedIn: false,
         username: '',
         authenticationKey: '',
-        rememberMe: false
+        rememberMe: false,
+        preferencesUpdated: false,
     };
 
 
@@ -19,6 +20,9 @@ app.factory('userService', function($localStorage) {
             return false;
         }
     }
+    function arePreferencesUpdated() {
+        return user.preferencesUpdated;
+    }
     function logout() {
         user.loggedIn=false;
         user.username=false;
@@ -29,6 +33,10 @@ app.factory('userService', function($localStorage) {
         $localStorage.authenticationKey='';
         $localStorage.rememberMe=false;
 
+    }
+
+    function updatePreferences() {
+        user.preferencesUpdated=true;
     }
     function set(loggedIn, username, authenticationKey) {
         var info = {
@@ -83,6 +91,9 @@ app.factory('userService', function($localStorage) {
         setAuthenticationKey: setAuthenticationKey,
         restoreLocalStorage: restoreLocalStorage,
         isLoggedin : isLoggedin,
+        updatePreferences: updatePreferences,
+        arePreferencesUpdated : arePreferencesUpdated,
+
         logout: logout
     };
 });
