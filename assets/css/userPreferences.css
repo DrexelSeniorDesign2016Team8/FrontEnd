@@ -29,6 +29,9 @@
 #searchOptions {
     text-align: center;
 }
+.gpaConverter {
+    visibility: hidden;
+}
 
 @media only screen and (max-device-width: 480px) {
     .searchPageBox {

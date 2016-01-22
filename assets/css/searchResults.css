@@ -54,3 +54,6 @@
 .collegeLabel {
     font-family: 'Roboto', sans-serif;
 }
+.gpaConverter {
+    visibility: hidden;
+}
