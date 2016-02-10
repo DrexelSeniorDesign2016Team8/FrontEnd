@@ -1,4 +1,4 @@
-app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService) {
+app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService, userService) {
     $scope.searchService = searchService;
     pageSetup = function () {
 
@@ -32,7 +32,6 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
         if (!$scope.CollegeInfo.$valid) {
             //TODO add message saying some values are invalid
         }
-        else {
             var searchOptions = $scope.parameter;
             if (searchOptions) {
                 if (searchOptions.stateName) {
@@ -48,9 +47,6 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
             navigationService.leavePage("searchResults.html");
 
             return false;
-        }
-
-
     };
 
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -108,8 +104,4 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
     };
 
     pageSetup();
-
-
-
-
 });

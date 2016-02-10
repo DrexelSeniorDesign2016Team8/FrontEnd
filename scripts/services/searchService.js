@@ -1,4 +1,4 @@
-app.factory('searchService', function(apiCall, $localStorage) {
+app.factory('searchService', function(apiCall, $localStorage,userService) {
     var searchOptions = {}
     function set(data) {
         var config = {
@@ -40,7 +40,6 @@ app.factory('searchService', function(apiCall, $localStorage) {
     function get() {
         return $localStorage.params
     }
-
 
     function search(callback) {
 

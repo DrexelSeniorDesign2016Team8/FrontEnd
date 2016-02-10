@@ -1,13 +1,19 @@
 app.factory('userService', function($localStorage) {
     var user = {
+        fullName: "",
         loggedIn: false,
         username: '',
-        authenticationKey: '',
+        sessionId: '',
         rememberMe: false,
-        preferencesUpdated: false,
+        preferencesUpdated: false
     };
 
-
+    function setfullName(name) {
+        user.fullName = name;
+    }
+    function setSessionId(sessionId) {
+        user.sessionId=sessionId;
+    }
     function getUserName() {
         return user;
     }
@@ -82,6 +88,34 @@ app.factory('userService', function($localStorage) {
         }
         else return false;
     }
+
+    function generatesignInUrl() {
+        var loginString = "login.php?";
+
+        if (user.userName) {
+            loginString += "userName=" + user.userName + "&";
+        }
+        if (user.password) {
+            loginString += "pass=" + user.password + "&";
+        }
+            return loginString;
+
+
+    }
+    function generateCreateAccountUrl() {
+        var creationString = "create.php?";
+        if (user.fullName) {
+            creationString += "name=" + user.name;
+        }
+        if (user.userName) {
+            creationString += "userName" + user.userName;
+        }
+        if (user.password) {
+            creationString += "pass" + user.password;
+        }
+        return creationString;
+    }
+
     return {
         getUserName: getUserName,
         set: set,
@@ -93,7 +127,10 @@ app.factory('userService', function($localStorage) {
         isLoggedin : isLoggedin,
         updatePreferences: updatePreferences,
         arePreferencesUpdated : arePreferencesUpdated,
-
-        logout: logout
+        setSessionId : setSessionId,
+        generatesignInUrl:generatesignInUrl,
+        generateCreateAccountUrl: generateCreateAccountUrl,
+        logout: logout,
+        setfullName: setfullName
     };
 });

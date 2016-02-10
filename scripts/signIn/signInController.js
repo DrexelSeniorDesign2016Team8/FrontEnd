@@ -1,4 +1,4 @@
-function signInController ($scope, $mdDialog, $log, userService) {
+function signInController ($scope, $mdDialog, $log, userService, apiCall) {
 
     var userService = userService;
     $scope.login = {
@@ -11,7 +11,9 @@ function signInController ($scope, $mdDialog, $log, userService) {
     $scope.createAccount = function() {
         $scope.login.loading = true;
 
-
+        if (createAccountform.fullName.length>55) {
+            //TODO Error Message
+        }
         // TODO: login call service with a callback
         // TODO: provide hint text saying what password should look like
 
@@ -22,9 +24,13 @@ function signInController ($scope, $mdDialog, $log, userService) {
             //TODO adjust page so logged in information is now shown
             createCookie("loggedIn", "false");
             $scope.currentUserLoggedin = true;
-            $scope.userName=$scope.signIn.emailAddress
+            $scope.userName=createAccountform.emailAddress.value
+            userService.setfullName(createAccountform.fullName.value);
+            var createAccountUrl =  userService.generateCreateAccountUrl();
+            apiCall.setApiDestination(createAccountUrl);
             $mdDialog.hide();
 
+            apiCall.setApiDestination()
         }
         else {
             $log.debug('login failed');
@@ -33,19 +39,26 @@ function signInController ($scope, $mdDialog, $log, userService) {
     }
     $scope.signIn = function () {
         $scope.login.loading = true;
+        var userInfo = {};
+        userInfo.userName = userService.userName;
+        userInfo.password = userService.password;
 
+        var destination = userService.generatesignInUrl(userInfo);
+
+        var results = apiCall.setApiDestination(destination)
 
         // TODO: login call service with a callback
 
         var success=true;
         if (success) {
-            $log.debug('login successful')
-
+            $log.debug('login successful');
+            if (results && results.SessionID) {
+                userService.setSessionId(results.SessionID);
+            }
             //TODO adjust page so logged in information is now shown
-
-
             $mdDialog.hide();
             userService.setLoggedIn(true);
+
             userService.setUserName(signinForm.emailAddress.value);
             if ($scope.signIn.rememberMe==true) {
                 $scope.rememberMe=true;
@@ -71,4 +84,5 @@ function signInController ($scope, $mdDialog, $log, userService) {
     $scope.answer = function(answer) {
         $mdDialog.hide(answer);
     };
+
 };

@@ -1,19 +1,23 @@
-app.factory('apiCall', function($http) {
+app.factory('apiCall', function($http, userService) {
 
     var endPoint = "http://mid.searchcollege.me";
     var method = "";
     var apiCall = '';
     var finalUrl = "";
     var response = "";
-    var currentUserLoggedin = false;
     var service = {}
 
     var makeUrl = function() {
 
-        finalUrl = endPoint + "/" + apiCall;
+        finalUrl = endPoint + "/";
 
+        if (userService.isLoggedin()) {
+            finalUrl =+ userService.sessionId+"&";
+        }
+
+        finalUrl = finalUrl + apiCall;
         return finalUrl;
-    }
+    };
 
     service.setApiDestination = function(apiDestination) {
         apiCall = apiDestination
@@ -22,7 +26,7 @@ app.factory('apiCall', function($http) {
         return apiCall;
     }
     service.setMethod = function(method) {
-        method = method;
+        this.method = method;
     }
     service.getMethod = function() {
         return method;
@@ -35,7 +39,7 @@ app.factory('apiCall', function($http) {
             service.setMethod(method);
         }
         $http({
-            method: method,
+            method: this.method,
             url: finalUrl,
             async: false,
         }).success(function (data) {

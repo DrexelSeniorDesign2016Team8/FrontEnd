@@ -3,7 +3,6 @@
 var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngStorage', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
 
 
-
 app.constant('AUTH_EVENTS', {
 	loginSuccess: 'auth-login-success',
 	loginFailed: 'auth-login-failed',
@@ -21,11 +20,6 @@ app.constant('AUTH_EVENTS', {
 		navigationService.loadPage();
 
 		// then make a call to verify the authentication key, if not a new one will be created
-		if (authenticate) {
-			apiCall.setApiDestination("authenticate");
-
-			apiCall.callCollegeSearchAPI();
-		}
 
 	});
 

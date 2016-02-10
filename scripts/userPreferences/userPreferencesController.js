@@ -1,4 +1,4 @@
-app.controller('userPreferencesController', function ($scope, $mdDialog,$mdMedia, $log, userService) {
+app.controller('userPreferencesController', function ($scope, $mdDialog,$mdMedia, $log, userService, searchService) {
     $scope.userService = userService;
 
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -39,12 +39,12 @@ app.controller('userPreferencesController', function ($scope, $mdDialog,$mdMedia
     };
 
     $scope.savePreferences = function(ev) {
+        searchCriteria = $scope.parameter;
         userService.updatePreferences();
         //TODO call api to update user preferences
     };
 
 });
-
 
 function deleteController ($scope, $mdDialog, apiCall, navigationService, userService) {
 
