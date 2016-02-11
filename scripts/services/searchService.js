@@ -1,5 +1,11 @@
 app.factory('searchService', function(apiCall, $localStorage,userService) {
-    var searchOptions = {}
+    var searchOptions = {};
+
+    /**
+     * This function sets all the search parameters
+     * The parameters are also stored in local storage
+     * @param data - the data to be searched
+     */
     function set(data) {
         var config = {
             params: {
@@ -41,6 +47,10 @@ app.factory('searchService', function(apiCall, $localStorage,userService) {
         return $localStorage.params
     }
 
+    /**
+     * This function performs a search
+     * @param callback - the function to be called after a search is performed
+     */
     function search(callback) {
 
         params = $localStorage.params;

@@ -5,7 +5,8 @@ app.factory('userService', function($localStorage) {
         username: '',
         sessionId: '',
         rememberMe: false,
-        preferencesUpdated: false
+        preferencesUpdated: false,
+        loginFailed: false
     };
 
     function setfullName(name) {
@@ -29,6 +30,10 @@ app.factory('userService', function($localStorage) {
     function arePreferencesUpdated() {
         return user.preferencesUpdated;
     }
+
+    /**
+     * This function logs a user out, and sets all the corresponding values to their default values
+     */
     function logout() {
         user.loggedIn=false;
         user.username=false;
@@ -75,6 +80,11 @@ app.factory('userService', function($localStorage) {
         user.rememberMe=rememberMe;
         $localStorage.rememberMe=rememberMe;
     }
+
+    /**
+     * This method restores the user information from local storage
+     * @returns {boolean}
+     */
     function restoreLocalStorage() {
         if ($localStorage.username && $localStorage.loggedIn) {
             user.username = $localStorage.username;
@@ -89,6 +99,10 @@ app.factory('userService', function($localStorage) {
         else return false;
     }
 
+    /**
+     * This generates a sign in url with a username and password of the user
+     * @returns {string}
+     */
     function generatesignInUrl() {
         var loginString = "login.php?";
 
@@ -99,9 +113,12 @@ app.factory('userService', function($localStorage) {
             loginString += "pass=" + user.password + "&";
         }
             return loginString;
-
-
     }
+
+    /**
+     * This generates an account url with the full name and userName of the user
+     * @returns {string}
+     */
     function generateCreateAccountUrl() {
         var creationString = "create.php?";
         if (user.fullName) {
@@ -114,6 +131,9 @@ app.factory('userService', function($localStorage) {
             creationString += "pass" + user.password;
         }
         return creationString;
+    }
+    function setLoginStatus(status) {
+        user.loginFailed = status;
     }
 
     return {
@@ -131,6 +151,7 @@ app.factory('userService', function($localStorage) {
         generatesignInUrl:generatesignInUrl,
         generateCreateAccountUrl: generateCreateAccountUrl,
         logout: logout,
-        setfullName: setfullName
+        setfullName: setfullName,
+        setLoginStatus: setLoginStatus
     };
 });

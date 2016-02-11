@@ -58,7 +58,18 @@
                         </md-tab>
                         <md-tab label="Create Account ">
                                                 <div class="md-dialog-content">
-                                                                <form name="createAccountform">
+                                                    <div ng-show="userService.failed()"></div>
+                                                    <div id="search" flex="80"search></div>
+
+                                                    <form name="createAccountform">
+                                                                    <md-input-container flex-gt-sm class="signInDialog">
+                                                                        <!--  Name -->
+
+                                                                        <input type="text" class="signInText" id="fullName" name="fullName" placeholder="Name" required ng-model="createAccount.fullName"/>
+                                                                            <span ng-show="createAccountform.fullName.$error.maxLength">
+                                                                                  Please enter less than 55 characters
+                                                                               </span>
+                                                                    </md-input-container>
                                                                     <md-input-container flex-gt-sm class="signInDialog">
                                                                         <!--  Email Address-->
 
