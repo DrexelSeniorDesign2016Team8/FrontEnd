@@ -55,7 +55,6 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
 
         var success=true;
         if (success) {
-            $log.debug('login successful');
             if (results && results.SessionID) {
                 userService.setSessionId(results.SessionID);
             }
@@ -74,7 +73,6 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
 
         }
         else {
-            $log.debug('login failed');
             //TODO show error message saying invalid credentials
             $scope.currentUserLoggedin = false;
         }
