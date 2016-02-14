@@ -52,31 +52,36 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         var results = apiCall.setApiDestination(destination)
 
         // TODO: login call service with a callback
+        apiCall.callCollegeSearchAPI(function (response) {
 
-        var success=true;
-        if (success) {
-            if (results && results.SessionID) {
-                userService.setSessionId(results.SessionID);
-            }
-            //TODO adjust page so logged in information is now shown
-            $mdDialog.hide();
-            userService.setLoggedIn(true);
+            var success = true;
+            if (success) {
+                if (results && results.SessionID) {
+                    userService.setSessionId(results.SessionID);
+                }
+                //TODO adjust page so logged in information is now shown
+                $mdDialog.hide();
+                userService.setLoggedIn(true);
 
-            userService.setUserName(signinForm.emailAddress.value);
-            if ($scope.signIn.rememberMe==true) {
-                $scope.rememberMe=true;
-            }
-            else {
-                $scope.rememberMe=false;
-            }
-            userService.setRememberMe($scope.rememberMe);
+                userService.setUserName(signinForm.emailAddress.value);
+                if ($scope.signIn.rememberMe == true) {
+                    $scope.rememberMe = true;
+                }
+                else {
+                    $scope.rememberMe = false;
+                }
+                userService.setRememberMe($scope.rememberMe);
 
-        }
-        else {
-            //TODO show error message saying invalid credentials
-            $scope.currentUserLoggedin = false;
-        }
-    }
+            }
+            else
+                {
+                    //TODO show error message saying invalid credentials
+                    $scope.currentUserLoggedin = false;
+                }
+
+
+        });
+    };
     $scope.hide = function() {
         $mdDialog.hide();
     };
