@@ -38,6 +38,7 @@
 
 
     <!--load the controller and corresponding scripts -->
+    <script src="scripts/searchPage/searchPage.js"></script>
     <script src="scripts/searchResults/searchResults.js"></script>
     <script src="scripts/searchResults/searchResultsController.js"></script>
 </head>
@@ -85,12 +86,14 @@
 
                 </dir-pagination-controls>
             </div>
-
             <br>
             <br>
             <br>
 
-
+                        <!--
+                        Pageniation is used here. The directive is dir-paginate
+                        ng-if determines if specific parameters exist and what to display
+                     -->
                         <span dir-paginate="college in colleges|itemsPerPage:pageSize" current-page="currentPage" ng-bind-html-unsafe="college.name" class="searchResults" searchResults  >
                            <h2> {{college.name }}</h2>
                             <div ng-if="college.image!=undefined"><img src="{{college.image}}.jpg" alt="{{college.name}}" style="width:200px;height:200px; float:left"></div>

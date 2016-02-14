@@ -5,14 +5,13 @@ app.controller('resultsController', function ($scope, $mdSidenav, $log, searchSe
     };
     $scope.results.loading = false;
     fillResults = function() {
-        var jsonString = "";
 
         searchService.search($scope.loadResults);
 
 
        // $scope.loadResults();
 
-    }
+    };
 loadDropdowns = function() {
     $scope.parameter.stateName = '';
 
@@ -43,7 +42,7 @@ loadDropdowns = function() {
 
     $scope.currentPage=1;
 
-}
+};
     $scope.autoFillSearch = function() {
         params = searchService.get();
         if (params) {
@@ -67,7 +66,7 @@ loadDropdowns = function() {
                 favoritedInstitutions: params.favoritedInstitutions,
             }
         }
-    }
+    };
     /*
      This function loads the results
      This reads the cookie containing the search parameters
@@ -81,19 +80,23 @@ loadDropdowns = function() {
         if (response.length==0) {
             noResultsAvailable();
         }
+        // Put the response in the colleges variable to be used on the html page
         $scope.colleges=response;
 
         // TODO set up onclicks
 
-    }
+    };
 
 
-    $scope.toggleSearch = buildToggler('searchBar')
+    $scope.toggleSearch = buildToggler('searchBar');
     searchParameters = $scope.searchParameters;
     $scope.isSearchOpen = function () {
         return $mdSidenav('searchBar').isOpen();
 
     };
+    /*
+    Close the toggle bar and perform a search
+     */
     $scope.close = function () {
         if (!$scope.CollegeInfo.$valid) {
             //TODO don't close since fields are invalid
@@ -146,4 +149,4 @@ loadDropdowns = function() {
     $scope.autoFillSearch();
     loadDropdowns();
     fillResults();
-})
+});

@@ -1,5 +1,7 @@
+/*
+GPA controller to be used for dialog
+ */
 function gpaController ($scope, $mdDialog, searchService) {
-
 
     $scope.close = function() {
         $mdDialog.hide();
@@ -21,4 +23,4 @@ function gpaController ($scope, $mdDialog, searchService) {
          return temp * 4 ;
 
     }
-};
+}

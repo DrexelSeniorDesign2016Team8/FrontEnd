@@ -9,28 +9,64 @@ var searchParameters = {};
 
 
 /*
-This function contructs the search parameters
+ This function formats the search depending on the values that are filled in and not
  */
-function constructSearch(params) {
-    // usually just a get request so a simple GET is fine
+function formatSearch(searchParameters) {
 
-    var dataType = "GET";
+    var parameters="";
+    if (searchParameters.GPAvalue) {
+        parameters += "GPAvalue=" + searchParameters.GPAvalue + "&";
+    }
+    if (searchParameters.ACTScore) {
+        parameters += "ACTScore=" + searchParameters.ACTScore + "&";
+    }
+    if (searchParameters.HighSchoolPercentile) {
+        parameters += "HighSchoolPercentile=" + searchParameters.HighSchoolPercentile + "&";
+    }
+    if (searchParameters.MathScore) {
+        parameters += "MathScore=" + searchParameters.MathScore + "&";
+    }
+    if (searchParameters.ReadingScore) {
+        parameters += "ReadingScore=" + searchParameters.ReadingScore + "&";
+    }
+    if (searchParameters.WritingScore) {
+        parameters += "WritingScore=" + searchParameters.WritingScore + "&";
+    }
+    if (searchParameters.name) {
+        parameters += "name=" + searchParameters.name + "&";
+    }
+    if (searchParameters.StateName) {
+        parameters += "stateName=" + searchParameters.StateName + "&";
+    }
+    if (searchParameters.zipCode) {
+        parameters += "zipCode=" + searchParameters.zipCode + "&";
+    }
+    if (searchParameters.fullAddress) {
+        parameters += "fullAddress=" + searchParameters.fullAddress + "&";
+    }
+    if (searchParameters.AcceptanceRate) {
+        parameters += "AcceptanceRate=" + searchParameters.AcceptanceRate + "&";
+    }
+    if (searchParameters.retentionRate) {
+        parameters += "retentionRate=" + searchParameters.retentionRate + "&";
+    }
+    if (searchParameters.institutionType) {
+        parameters += "institutionType=" + searchParameters.institutionType + "&";
+    }
+    if (searchParameters.studentPopulation) {
+        parameters += "studentPopulation=" + searchParameters.studentPopulation + "&";
+    }
+    if (searchParameters.classSize) {
+        parameters += "classSize=" + searchParameters.classSize;
+    }
 
+    return parameters;
 
-    var url = "search.php?"; // construct the url
-
-
-    url +=formatSearch(params);
-
-
-    return url;
 }
 
-
-
     function convert_state(name, to) {
-        var name = name.toUpperCase();
-        var states = new Array({'name': 'Alabama', 'abbrev': 'AL'}, {'name': 'Alaska', 'abbrev': 'AK'},
+         name = name.toUpperCase();
+        var states = [{'name': 'Alabama', 'abbrev': 'AL'}, {'name': 'Alaska', 'abbrev': 'AK'},
             {'name': 'Arizona', 'abbrev': 'AZ'}, {'name': 'Arkansas', 'abbrev': 'AR'}, {
                 'name': 'California',
                 'abbrev': 'CA'
@@ -88,8 +124,7 @@ function constructSearch(params) {
             {'name': 'West Virginia', 'abbrev': 'WV'}, {'name': 'Wisconsin', 'abbrev': 'WI'}, {
                 'name': 'Wyoming',
                 'abbrev': 'WY'
-            }
-        );
+            }];
         var returnthis = false;
         $.each(states, function (index, value) {
             if (to == 'name') {

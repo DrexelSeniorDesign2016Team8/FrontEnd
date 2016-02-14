@@ -1,3 +1,8 @@
+/*
+This controller is used for the search page
+TODO move more information over to searchService and away from controller
+ */
+
 app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService, userService) {
     $scope.searchService = searchService;
     pageSetup = function () {
@@ -27,7 +32,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
         ).split(',').map(function (percentage) { return { percentage: percentage }; });
 
         deleteCookie("searchParameters");
-    }
+    };
     $scope.performSearch = function() {
         if (!$scope.CollegeInfo.$valid) {
             //TODO add message saying some values are invalid
@@ -50,6 +55,9 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
     };
 
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    /*
+    Build the convertGPA dialog
+     */
     $scope.convertGPA = function(ev) {
 
         var dialogContent = " <md-toolbar>" +
