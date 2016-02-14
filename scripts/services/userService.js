@@ -107,7 +107,7 @@ app.factory('userService', function($localStorage) {
         var loginString = "login.php?";
 
         if (user.userName) {
-            loginString += "userName=" + user.userName + "&";
+            loginString += "email=" + user.userName + "&";
         }
         if (user.password) {
             loginString += "pass=" + user.password + "&";

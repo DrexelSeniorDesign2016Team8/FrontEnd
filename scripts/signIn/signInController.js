@@ -27,7 +27,11 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
             $scope.userName=createAccountform.emailAddress.value
             userService.setfullName(createAccountform.fullName.value);
             var createAccountUrl =  userService.generateCreateAccountUrl();
-            apiCall.setApiDestination(createAccountUrl);
+            var result = apiCall.setApiDestination(createAccountUrl);
+
+            if (result.error) {
+
+            }
             $mdDialog.hide();
 
             apiCall.setApiDestination()

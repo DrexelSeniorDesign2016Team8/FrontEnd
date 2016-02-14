@@ -1,4 +1,4 @@
-app.factory('apiCall', function($http, userService) {
+app.factory('apiCall', function($http, $log, userService) {
 
     var endPoint = "http://mid.searchcollege.me";
     var method = "";
@@ -68,7 +68,9 @@ app.factory('apiCall', function($http, userService) {
                 callback(response);
             })
             .error(function (data) {
+                $log.debug(data);       // put response in error window. Maybe display user friendliness
                 //TODO input error message
+                $log.
                 callback(response);
             })
         return response;
