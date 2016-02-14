@@ -71,7 +71,7 @@ app.factory('apiCall', function($http, $log, userService) {
             .error(function (data) {
                 $log.debug(data);       // put response in error window. Maybe display user friendliness
                 //TODO input error message
-                $log.
+
                 callback(response);
             })
         return response;
