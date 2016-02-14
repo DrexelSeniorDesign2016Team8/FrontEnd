@@ -65,6 +65,7 @@ app.factory('apiCall', function($http, $log, userService) {
             async: false,
         }).success(function (data) {
                 response = data;
+                $log.debug(data);
                 callback(response);
             })
             .error(function (data) {
