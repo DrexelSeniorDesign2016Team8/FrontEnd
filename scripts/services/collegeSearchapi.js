@@ -64,8 +64,12 @@ app.factory('apiCall', function($http, $log, userService) {
             url: finalUrl,
             async: false,
         }).success(function (data) {
+
+            if (data.status=="error") {
+                $log.debug(data.error);     // log the error message
+             //   TODO input error message here
+            }
                 response = data;
-                $log.debug(data);
                 callback(response);
             })
             .error(function (data) {

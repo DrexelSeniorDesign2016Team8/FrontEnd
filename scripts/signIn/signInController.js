@@ -44,8 +44,8 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
     $scope.signIn = function () {
         $scope.login.loading = true;
         var userInfo = {};
-        userInfo.userName = userService.userName;
-        userInfo.password = userService.password;
+        userInfo.userName = signinForm.emailAddress.value;
+        userInfo.password = signinForm.password.value;
 
         var destination = userService.generatesignInUrl(userInfo);
 
