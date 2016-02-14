@@ -110,9 +110,8 @@ loadDropdowns = function() {
             $log.debug("results pane is closed");
 
         }
-        searchService.search();
+        searchService.search(loadResults);
         $mdSidenav('searchBar').close();
-        fillResults();
 
     };
     function buildToggler(navID) {
