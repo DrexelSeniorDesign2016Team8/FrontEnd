@@ -103,15 +103,12 @@ app.factory('userService', function($localStorage) {
      * This generates a sign in url with a username and password of the user
      * @returns {string}
      */
-    function generatesignInUrl() {
+    function generatesignInUrl(userInfo) {
         var loginString = "login.php?";
 
-        if (user.userName) {
-            loginString += "email=" + user.userName + "&";
-        }
-        if (user.password) {
-            loginString += "pass=" + user.password + "&";
-        }
+            loginString += "email=" + userInfo.userName + "&";
+            loginString += "pass=" + userInfo.password + "&";
+
             return loginString;
     }
 
@@ -119,17 +116,11 @@ app.factory('userService', function($localStorage) {
      * This generates an account url with the full name and userName of the user
      * @returns {string}
      */
-    function generateCreateAccountUrl() {
+    function generateCreateAccountUrl(userInfo) {
         var creationString = "create.php?";
-        if (user.fullName) {
-            creationString += "name=" + user.name;
-        }
-        if (user.userName) {
-            creationString += "userName" + user.userName;
-        }
-        if (user.password) {
-            creationString += "pass" + user.password;
-        }
+            creationString += "name=" + userInfo.name;
+            creationString += "userName" + userInfo.userName;
+            creationString += "pass" + userInfo.password;
         return creationString;
     }
     function setLoginStatus(status) {
