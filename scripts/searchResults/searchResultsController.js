@@ -89,7 +89,7 @@ loadDropdowns = function() {
 
 
     $scope.toggleSearch = buildToggler('searchBar');
-    searchParameters = $scope.searchParameters;
+    searchParameters = $scope.parameter;
     $scope.isSearchOpen = function () {
         return $mdSidenav('searchBar').isOpen();
 
@@ -103,39 +103,17 @@ loadDropdowns = function() {
         }
         else {
             $scope.results.loading = true;
-            if (searchParameters) {
-                var config = {
-                    params: {
-                        // Put required values here
-                        'GPAvalue': $scope.parameter.gpa,
-                        'ACTScore': $scope.parameter.actcomposite,
-                        'highSchoolPercentile': $scope.parameter.HighSchoolPercentile,
-                        'MathScore': $scope.parameter.mathscore,
-                        'WritingScore': $scope.parameter.WritingScore,
-                        'ReadingScore': $scope.parameter.ReadingScore,
-                        'StateName': $scope.parameter.stateName,
-                        'name': $scope.parameter.InstitutionName,
-                        'zipCode': $scope.parameter.zipcode,
-                        'fullAddress': $scope.parameter.fullAddress,
-                        'acceptanceRate': $scope.parameter.acceptanceRate,
-                        'retentionRate': $scope.parameter.retentionRate,
-                        'institutionType': $scope.parameter.institutionType,
-                        'studentPopulation': $scope.parameter.studentPopulation,
-                        'classSize': $scope.parameter.classSize,
-                        'CommonApplicaiton': $scope.parameter.commonApplication,
-                        'favoritedInstitutions': $scope.parameter.favoritedInstitutions
-                    },
-                };
+            searchParameters = $scope.parameter;
 
-                params = JSON.stringify(config.params);
 
-                $log.debug("results pane is closed");
-
-            }
-            $mdSidenav('searchBar').close();
-            fillResults();
+            searchService.set(searchParameters);
+            $log.debug("results pane is closed");
 
         }
+        searchService.search();
+        $mdSidenav('searchBar').close();
+        fillResults();
+
     };
     function buildToggler(navID) {
         return function () {
