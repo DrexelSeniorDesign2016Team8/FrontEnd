@@ -42,12 +42,13 @@
                                         <md-button id="resetPassword" style='text-align:center' onClick="resetPassword()">
                                             Reset Password
                                         </md-button>
-                                     <div class='invalid' ng-show='login.failed'> {{login.message}}</div>
+
                                         <br>
                                         <!-- Flat button with ripple -->
-                                        <md-checkbox input type=checkbox ng-model="signIn.rememberMe" name="rememberMe" id="rememberMe" aria-label="Remember Me"/>
+                                        <md-checkbox input type=checkbox ng-model="signIn.rememberMe" name="rememberMe" id="rememberMe" aria-label="Remember Me">
                                             Remember Me
                                         </md-checkbox>
+                                    <div class='invalid' ng-show='login.failed'> {{login.message}}</div>
                                         <br>
                                         <!-- Flat button with ripple -->
                                         <md-button class= id="signIn" ng-disabled="signinForm.$invalid" style='text-align:center' ng-click="signIn()">
