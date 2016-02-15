@@ -8,28 +8,13 @@ app.controller('resultsController', function ($scope, $mdSidenav, $log, searchSe
 
         searchService.search($scope.loadResults);
 
-
-       // $scope.loadResults();
-
     };
 loadDropdowns = function() {
     $scope.parameter.stateName = '';
 
-    $scope.parameter.states = ('None,' + 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,' +
-        'Florida Georgia, Hawaii, Idaho, Illinois Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland,' +
-        'Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire,' +
-        'New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania,' +
-        'Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington,' +
-        'West Virginia, Wisconsin, Wyoming,'
-    ).split(',').map(function (state) {
-        return {fullName: state};
-    });
+    $scope.parameter.states = searchService.fillStates();
 
-
-    $scope.parameter.percentages = ('None,' + '10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%'
-    ).split(',').map(function (percentage) {
-        return {percentage: percentage};
-    });
+    $scope.parameter.percentages = searchService.fillPercentages();
     $scope.parameter.filterOptions = ('Best Match,'
     ).split(',').map(function (filterOption) {
         return {filterOption: filterOption};
@@ -86,7 +71,6 @@ loadDropdowns = function() {
         // TODO set up onclicks
 
     };
-
 
     $scope.toggleSearch = buildToggler('searchBar');
     searchParameters = $scope.parameter;

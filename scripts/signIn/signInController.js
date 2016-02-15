@@ -94,8 +94,6 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                     $scope.currentUserLoggedin = false;
                     $scope.login.loading=false;
                 }
-
-
         });
     };
     $scope.hide = function() {

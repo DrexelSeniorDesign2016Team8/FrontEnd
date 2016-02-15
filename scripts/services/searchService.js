@@ -46,7 +46,19 @@ app.factory('searchService', function(apiCall, $localStorage,userService) {
     function get() {
         return $localStorage.params
     }
-
+    function fillStates() {
+        return ('None,' + 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,' +
+            'Florida Georgia, Hawaii, Idaho, Illinois Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland,' +
+            'Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire,' +
+            'New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania,' +
+            'Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington,' +
+            'West Virginia, Wisconsin, Wyoming,'
+        ).split(',').map(function (state) { return { fullName: state }; });
+    }
+    function fillPercentages() {
+        return  ('None,' + '10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%'
+        ).split(',').map(function (percentage) { return { percentage: percentage }; });
+    }
     /**
      * This function performs a search
      * @param callback - the function to be called after a search is performed
@@ -69,7 +81,9 @@ app.factory('searchService', function(apiCall, $localStorage,userService) {
         get: get,
         search: search,
         setGPA:setGPA,
-        getGPA: getGPA
+        getGPA: getGPA,
+        fillStates : fillStates,
+        fillPercentages: fillPercentages,
     }
 
 });
