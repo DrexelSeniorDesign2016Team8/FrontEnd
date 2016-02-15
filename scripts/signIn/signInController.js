@@ -57,13 +57,14 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         apiCall.callCollegeSearchAPI(function (response) {
     var success;
             if (response.status=="error") {
-                if ($scope.login.attempts==0) {
-                    $mdDialog.hide();
-                }
+
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
                 $scope.login.attempts--;
                 success = false;
+                if ($scope.login.attempts==0) {
+                    $mdDialog.hide();
+                }
             }
             else if (response.status=="success"){
                 success=true;
