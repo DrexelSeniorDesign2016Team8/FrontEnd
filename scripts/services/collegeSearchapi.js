@@ -70,6 +70,7 @@ app.factory('apiCall', function($http, $log, userService) {
              //   TODO input error message here
             }
                 response = data;
+
                 callback(response);
             })
             .error(function (data) {

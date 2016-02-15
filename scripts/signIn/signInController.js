@@ -5,7 +5,8 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         loading: false,
         password: '',
         user: '',
-        rememberMe: false
+        rememberMe: false,
+        failed: ''
 
     };
     $scope.createAccount = function() {
@@ -54,7 +55,12 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         // TODO: login call service with a callback
         apiCall.callCollegeSearchAPI(function (response) {
 
-            var success = true;
+            if (response.status=="error") {
+                $scope.login.failed = true;
+                $scope.login.message = "test";
+                success = false;
+            }
+           var success = true;
             if (success) {
                 if (results && results.SessionID) {
                     userService.setSessionId(results.SessionID);
@@ -77,6 +83,7 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 {
                     //TODO show error message saying invalid credentials
                     $scope.currentUserLoggedin = false;
+                    $scope.login.loading=false;
                 }
 
 
