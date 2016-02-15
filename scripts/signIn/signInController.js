@@ -54,15 +54,17 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
 
         // TODO: login call service with a callback
         apiCall.callCollegeSearchAPI(function (response) {
-
+    var success;
             if (response.status=="error") {
                 $scope.login.failed = true;
                 $scope.login.message = "test";
                 success = false;
             }
-           var success = true;
+            else if (response.status=="success"){
+                success=true;
+            }
             if (success) {
-                if (results && results.SessionID) {
+                if (response && response.SessionID) {
                     userService.setSessionId(results.SessionID);
                 }
                 //TODO adjust page so logged in information is now shown

@@ -31,3 +31,6 @@
 .signInDialog {
 	margin: 2px 0 !important;
 }
+.invalid {
+	color: red;
+}
