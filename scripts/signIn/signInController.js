@@ -57,11 +57,12 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
     var success;
             if (response.status=="error") {
                 $scope.login.failed = true;
-                $scope.login.message = "test";
+                $scope.login.message = response.error;
                 success = false;
             }
             else if (response.status=="success"){
                 success=true;
+                $scope.login.failed=false;
             }
             if (success) {
                 if (response && response.SessionID) {
