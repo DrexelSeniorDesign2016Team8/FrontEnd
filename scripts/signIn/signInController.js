@@ -6,7 +6,8 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         password: '',
         user: '',
         rememberMe: false,
-        failed: ''
+        failed: '',
+        attempts: 3,
 
     };
     $scope.createAccount = function() {
@@ -56,8 +57,12 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         apiCall.callCollegeSearchAPI(function (response) {
     var success;
             if (response.status=="error") {
+                if (login.attempts==0) {
+                    $mdDialog.hide();
+                }
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
+                login.attempts--;
                 success = false;
             }
             else if (response.status=="success"){
