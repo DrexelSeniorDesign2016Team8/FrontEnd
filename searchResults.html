@@ -98,12 +98,12 @@
                            <h2> {{college.name }}</h2>
                             <div ng-if="college.image!=undefined"><img src="{{college.image}}.jpg" alt="{{college.name}}" style="width:200px;height:200px; float:left"></div>
                             <div ng-f="college.image==undefined"><label class="collegeLabel" collegeLetter></div>
-                            <div ng-if='college.address!==undefined'><p> <a href={{college.googleMapsAddress}}>{{college.address}}</a></p></div>
+                            <div ng-if='college.address!==undefined'><p> <a target="_blank" href={{college.googleMapsAddress}}>{{college.address}} </a></p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
-                           <div ng-if='college.URL!="N/A" && college.phoneNumber==undefined'>  <a href="{{collegeURL}}" >{{college.URL}}</a> Number Unavailable</div>
+                           <div ng-if='college.URL!="N/A" && college.phoneNumber==undefined'>  <a target="_blank" href="{{collegeURL}}" >{{college.URL}}</a> Number Unavailable</div>
                             <div ng-if='college.URL=="N/A" && college.phoneNumber==undefined'>Website unavailable Number Unavailable</div>
                             <div ng-if='college.URL=="N/A" && college.phoneNumber!=undefined'>Website unavailable {{college.phoneNumber}}</div>
-                            <div ng-if='college.phoneNumber!=undefined && college.URL!="N/A"'> <a href="{{college.URL}}" >{{college.URL}}</a> {{college.phoneNumber}}</div>
+                            <div ng-if='college.phoneNumber!=undefined && college.URL!="N/A"'> <a target="_blank" href="{{college.URL}}" >{{college.URL}}</a> {{college.phoneNumber}}</div>
                             <div ng-if='college.phoneNumber==undefined'><p>Number unavailable</p></div>
                             <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
                             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
