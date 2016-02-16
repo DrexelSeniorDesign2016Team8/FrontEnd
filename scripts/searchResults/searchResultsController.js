@@ -68,7 +68,7 @@ loadDropdowns = function() {
         // Put the response in the colleges variable to be used on the html page
 
         // add the google maps address
-       for (var i=0; response.length; i++) {
+       for (var i=0; i<response.length; i++) {
            if (response[i].URL && response[i].address)    // only if website exists
             response[i].googleMapsAddress = "'http://maps.google.com/maps?q=" +((response[i].address));
         }
