@@ -7,6 +7,9 @@ app.factory('searchService', function(apiCall, $localStorage,userService) {
      * @param data - the data to be searched
      */
     function set(data) {
+        if (data.stateName) {
+            convert_state(data.stateName, 'abbrev');
+        }
         var config = {
             params: {
                 // Put required values here
