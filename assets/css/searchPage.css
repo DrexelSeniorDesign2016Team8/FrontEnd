@@ -1,11 +1,4 @@
-.searchLabel {
-	float: right;
-	margin-top: 25px;
-    margin-right: 20px;
-	position: relative;
-	font-size: 16px;
-	font-weight: bold;
-}
+
 
 .title_searchOption {
 	float: right;
@@ -24,13 +17,32 @@
 	max-width: 100%;
 	margin-top: 10px;
 	min-width: 20%;
+	font-color: white;
+}
+#additionalInfo {
+	background: gray;
 }
 
-
+.searchButton {
+	background-color: white !important;
+	color:black !important;
+}
 #searchOptions {
 	text-align: center;
 }
+.searchLabel {
+	color: white !important;
+}
+.md-checkbox .md-icon {
+	border-color: white !important;
+}
 
+.md-select span {
+	color: white !important;
+}
+.md-select-value.md-select-placeholder {
+	color: white !important;
+}
 
 @media only screen and (max-device-width: 480px) {
 	.searchPageBox {

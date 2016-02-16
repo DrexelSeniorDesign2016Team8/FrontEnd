@@ -61,7 +61,7 @@
                                            class="md-primary">
                                     Search
                                     </md-button>
-                                    <div id="search" flex="50"search></div>
+                                    <div id="search" flex="5"search></div>
                                     </form>
                                 </md-sidenav>
 
@@ -100,10 +100,10 @@
                             <div ng-f="college.image==undefined"><label class="collegeLabel" collegeLetter></div>
                             <div ng-if='college.address!==undefined'><p>{{college.address}}</p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
-                           <div ng-if='college.website!=undefined && college.phoneNumber==undefined'> {college.website}} Number Unavailable</div>
+                           <div ng-if='college.website!=undefined && college.phoneNumber==undefined'>  <a href={{college.googleMapsAddress}} >{{college.website}}</a> Number Unavailable</div>
                             <div ng-if='college.website==undefined && college.phoneNumber==undefined'>Website unavailable Number Unavailable</div>
                             <div ng-if='college.website==undefined && college.phoneNumber!=undefined'>Website unavailable {{college.phoneNumber}}</div>
-                            <div ng-if='college.phoneNumber!=undefined && college.website!=undefined'> {{college.website}} {{college.phoneNumber}}</div>
+                            <div ng-if='college.phoneNumber!=undefined && college.website!=undefined'> <a href={{college.googleMapsAddress}} >{{college.website}}</a> {{college.phoneNumber}}</div>
                             <div ng-if='college.phoneNumber==undefined'><p>Number unavailable</p></div>
                             <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
                             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>

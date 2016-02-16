@@ -43,19 +43,22 @@
 </head>
     <div ng-app="CollegeSearch">
         <div id="header" header></div>
-            <hr>
-            <div ng-controller="searchController as parameter" layout="column" ng-cloak>
 
-                    <form name="CollegeInfo" id="additionalInfo">
-                        <center><md-button class= id="searchBtn" style='text-align:center' ng-disabled="CollegeInfo.$invalid" ng-click="performSearch()">
-                            Search
-                        </md-button>
+            <div ng-controller="searchController as parameter" layout="column" ng-cloak id="additionalInfo">
 
-                            <div layout="row" layout-align="center center">
-                                Explore and Enter Additional Information
+                <br>
+
+                    <form name="CollegeInfo">
+                        <center>
+                            <div layout="row" layout-align="center center" class="searchLabel">
+                               Academic Information
                             </div>
+                            <br>
+                            <br>
                         <div id="search" flex="80"search></div>
-
+                            <md-button class="md-raised md-warn searchButton" id="searchBtn" style='text-align:center;' ng-disabled="CollegeInfo.$invalid" ng-click="performSearch()">
+                                Search
+                            </md-button>
                         </center>
                     </form>
             </div>

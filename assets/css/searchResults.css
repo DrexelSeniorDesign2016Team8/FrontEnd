@@ -1,11 +1,4 @@
-.searchLabel {
-    float: right;
-    margin-top: 25px;
-    margin-right: 20px;
-    position: relative;
-    font-size: 16px;
-    font-weight: bold;
-}
+
 
 .title_searchOption {
     float: right;
@@ -18,9 +11,9 @@
 }
 .searchPageBox {
     width: 200px;
-    height: 80px;
-    margin-right: 90px;
-    margin-top: 10px;
+    height: 45px;
+    margin-right: 5px;
+    margin-top: 0px;
     text-align: center;
 }
 
@@ -50,6 +43,8 @@
 .sideBarLabel{
     text-align: center;
     margin-left: 100px;
+    margin-top:5px;
+    margin-bottom:5px;
 }
 .collegeLabel {
     font-family: 'Roboto', sans-serif;
