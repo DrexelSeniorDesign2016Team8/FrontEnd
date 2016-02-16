@@ -100,9 +100,9 @@
                             <div ng-f="college.image==undefined"><label class="collegeLabel" collegeLetter></div>
                             <div ng-if='college.address!==undefined'><p> <a href={{college.googleMapsAddress}} {{college.address}}</p></div>
                             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
-                           <div ng-if='college.URL!=undefined && college.phoneNumber==undefined'>  <a href="{{collegeURL}}" >{{college.URL}}</a> Number Unavailable</div>
-                            <div ng-if='college.URL==undefined && college.phoneNumber==undefined'>Website unavailable Number Unavailable</div>
-                            <div ng-if='college.URL==undefined && college.phoneNumber!=undefined'>Website unavailable {{college.phoneNumber}}</div>
+                           <div ng-if='college.URL!=N/A && college.phoneNumber==undefined'>  <a href="{{collegeURL}}" >{{college.URL}}</a> Number Unavailable</div>
+                            <div ng-if='college.URL==N/A && college.phoneNumber==undefined'>Website unavailable Number Unavailable</div>
+                            <div ng-if='college.URL==N/A && college.phoneNumber!=undefined'>Website unavailable {{college.phoneNumber}}</div>
                             <div ng-if='college.phoneNumber!=undefined && college.URL!=undefined'> <a href="{{college.URL}}" >{{college.URL}}</a> {{college.phoneNumber}}</div>
                             <div ng-if='college.phoneNumber==undefined'><p>Number unavailable</p></div>
                             <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
