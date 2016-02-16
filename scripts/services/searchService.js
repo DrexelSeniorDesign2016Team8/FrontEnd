@@ -71,7 +71,8 @@ app.factory('searchService', function(apiCall, $localStorage,userService) {
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
         }
-        apiCall.setApiDestination("search.php?" + jsonString);
+        apiCall.setApiDestination("search.php?");
+        apiCall.setParameters(jsonString);
 
         apiCall.callCollegeSearchAPI(callback);
     }

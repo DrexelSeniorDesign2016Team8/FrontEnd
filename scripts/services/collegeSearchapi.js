@@ -3,6 +3,7 @@ app.factory('apiCall', function($http, $log, userService) {
     var endPoint = "http://mid.searchcollege.me";
     var method = "";
     var apiCall = '';
+    var apiParameters = '';
     var finalUrl = "";
     var response = "";
     var service = {}
@@ -18,7 +19,7 @@ app.factory('apiCall', function($http, $log, userService) {
             finalUrl =+ userService.sessionId+"&";
         }
 
-        finalUrl = finalUrl + apiCall;
+        finalUrl = finalUrl + apiCall + apiParameters;
         return finalUrl;
     };
     /**
@@ -26,7 +27,12 @@ app.factory('apiCall', function($http, $log, userService) {
      * @param apiDestination - destination for the api call
      */
     service.setApiDestination = function(apiDestination) {
-        apiCall = apiDestination
+       var encodedDestination = encodeURI(apiDestination);
+        apiCall = encodedDestination;
+    }
+    service.setParameters = function(parameters) {
+        var encodedDestination = encodeURI(parameters);
+        apiParameters = encodedDestination;
     }
     service.getapiCall = function() {
         return apiCall;
