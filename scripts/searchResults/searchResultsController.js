@@ -67,11 +67,12 @@ loadDropdowns = function() {
         }
         // Put the response in the colleges variable to be used on the html page
 
-        // add the google maps address
+    /*    // add the google maps address
        for (var i=0; response.length; i++) {
            if (response.url)    // only if website exists
             response.googleMapsAddress = "'http://maps.google.com/maps?q=" + encodeURIComponent( $(response[i].address));
         }
+        */
         $scope.colleges=response;
 
         // TODO set up onclicks
