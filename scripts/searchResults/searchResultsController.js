@@ -70,7 +70,7 @@ loadDropdowns = function() {
         // add the google maps address
        for (var i=0; i<response.length; i++) {
            if (response[i].URL && response[i].address)    // only if website exists
-            response[i].googleMapsAddress = "'http://maps.google.com/maps?q=" +((response[i].address));
+            response[i].googleMapsAddress = "'http://www.maps.google.com/maps?q=" +((response[i].address));
         }
 
         $scope.colleges=response;
