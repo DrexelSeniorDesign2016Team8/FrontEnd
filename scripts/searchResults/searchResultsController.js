@@ -69,8 +69,8 @@ loadDropdowns = function() {
 
         // add the google maps address
        for (var i=0; response.length; i++) {
-           if (response.website)    // only if website exists
-            response.googleMapsAddress = "<a href='http://maps.google.com/maps?q=" + encodeURIComponent( $(response[i].website));
+           if (response.url)    // only if website exists
+            response.googleMapsAddress = "'http://maps.google.com/maps?q=" + encodeURIComponent( $(response[i].address));
         }
         $scope.colleges=response;
 
