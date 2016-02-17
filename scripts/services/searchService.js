@@ -67,7 +67,7 @@ app.factory('searchService', function(apiCall, $localStorage,userService) {
      * @param callback - the function to be called after a search is performed
      */
     function search(callback) {
-
+        var jsonString = "";
         params = $localStorage.params;
         if (params) {     // if they exist make call
 

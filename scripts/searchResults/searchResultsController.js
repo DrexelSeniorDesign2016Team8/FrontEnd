@@ -4,13 +4,14 @@ app.controller('resultsController', function ($scope, $mdSidenav, $log, searchSe
         loading: false,
     };
     $scope.results.loading = false;
+    $scope.parameter = {};
     fillResults = function() {
 
         searchService.search($scope.loadResults);
 
     };
 loadDropdowns = function() {
-    $scope.parameter.stateName = '';
+
 
     $scope.parameter.states = searchService.fillStates();
 
