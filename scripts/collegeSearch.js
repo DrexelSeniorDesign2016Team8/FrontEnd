@@ -17,10 +17,9 @@ app.constant('AUTH_EVENTS', {
 		// first retrieve data from local storage
 		var authenticate = userService.restoreLocalStorage();
 
-		var version = ".6";
-		version = $localStorage.version;
-
-		if (version==".6") {
+		$localStorage.version = ".5";
+		var version = $localStorage.version;
+		if (version!=".6") {
 			$localStorage.$reset();
 		}
 		navigationService.loadPage();
