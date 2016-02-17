@@ -19,9 +19,8 @@ app.constant('AUTH_EVENTS', {
 
 		$localStorage.version = ".5";
 		var version = $localStorage.version;
-		if (version!=".6") {
 			$localStorage.$reset();
-		}
+
 		navigationService.loadPage();
 
 		// then make a call to verify the authentication key, if not a new one will be created
