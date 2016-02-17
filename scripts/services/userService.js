@@ -103,25 +103,31 @@ app.factory('userService', function($localStorage) {
      * This generates a sign in url with a username and password of the user
      * @returns {string}
      */
-    function generatesignInUrl(userInfo) {
-        var loginString = "login.php?";
+    function getSignInURL() {
+        return  "login.php?";
+    }
+    function generateSignInUParameters(userInfo) {
+        var paramters = '';
+        paramters += "email=" + userInfo.userName + "&";
+        paramters += "pass=" + userInfo.password + "&";
 
-            loginString += "email=" + userInfo.userName + "&";
-            loginString += "pass=" + userInfo.password + "&";
-
-            return loginString;
+            return paramters;
     }
 
     /**
      * This generates an account url with the full name and userName of the user
      * @returns {string}
      */
-    function generateCreateAccountUrl(userInfo) {
+    function getCreateAccountURL() {
         var creationString = "create.php?";
-            creationString += "name=" + userInfo.name;
-            creationString += "userName" + userInfo.userName;
-            creationString += "pass" + userInfo.password;
         return creationString;
+    }
+    function generateCreateAccountParameters(userInfo) {
+        var parameters ='';
+        parameters += "name=" + userInfo.name;
+        parameters += "userName" + userInfo.userName;
+        parameters += "pass" + userInfo.password;
+        return parameters;
     }
     function setLoginStatus(status) {
         user.loginFailed = status;
@@ -139,8 +145,10 @@ app.factory('userService', function($localStorage) {
         updatePreferences: updatePreferences,
         arePreferencesUpdated : arePreferencesUpdated,
         setSessionId : setSessionId,
-        generatesignInUrl:generatesignInUrl,
-        generateCreateAccountUrl: generateCreateAccountUrl,
+        getSignInURL:getSignInURL,
+        generateSignInUParameters: generateSignInUParameters,
+        generateCreateAccountParameters: generateCreateAccountParameters,
+        getCreateAccountURL: getCreateAccountURL,
         logout: logout,
         setfullName: setfullName,
         setLoginStatus: setLoginStatus

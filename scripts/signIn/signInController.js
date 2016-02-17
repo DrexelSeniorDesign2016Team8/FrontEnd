@@ -49,9 +49,10 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         userInfo.userName = signinForm.emailAddress.value;
         userInfo.password = signinForm.password.value;
 
-        var destination = userService.generatesignInUrl(userInfo);
-
-        var results = apiCall.setApiDestination(destination)
+        var url = userService.getSignInURL();
+        var destination = userService.generateSignInUParameters(userInfo);
+        apiCall.setApiDestination(url);
+        apiCall.setParameters(destination)
 
         // TODO: login call service with a callback
         apiCall.callCollegeSearchAPI(function (response) {
