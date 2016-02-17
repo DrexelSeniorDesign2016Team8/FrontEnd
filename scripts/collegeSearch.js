@@ -17,11 +17,11 @@ app.constant('AUTH_EVENTS', {
 		// first retrieve data from local storage
 		var authenticate = userService.restoreLocalStorage();
 
-		version = ".6";
+		var version = ".6";
 		version = $localStorage.version;
 
 		if (version==".6") {
-			$localStorage = {};
+			$localStorage.$reset();
 		}
 		navigationService.loadPage();
 
