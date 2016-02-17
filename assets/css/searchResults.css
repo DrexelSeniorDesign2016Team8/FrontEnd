@@ -26,6 +26,12 @@
     margin-left: 75px;
     text-align: center
 }
+.collegeInfo {
+    float: left;
+}
+.favoriteButton {
+    float: right;
+}
 .refineButton {
     margin-left: 75px;
 }
