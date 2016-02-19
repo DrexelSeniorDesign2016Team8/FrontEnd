@@ -23,8 +23,7 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 userInfo.name = createAccountform.fullName.value;
                 userInfo.userName =createAccountform.emailAddress.value;
                 userInfo.pass = createAccountform.password.value;
-        userService.generateCreateAccountParameters()
-            userService.setfullName(createAccountform.fullName.value);
+        userService.generateCreateAccountParameters(userInfo)
             var createAccountUrl =  userService.getCreateAccountURL();
             apiCall.setApiDestination(createAccountUrl);
              apiCall.setParameters(createAccountUrl);
