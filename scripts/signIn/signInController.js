@@ -33,8 +33,8 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
             else {
                 $log.debug("account creation successful");
                 var success = true;
-                userService.setUserName(response.email);
-                userService.setEmailAddress(response.email);
+                userService.setUserName(response.response.email);
+                userService.setEmailAddress(response.response.email);
                 userService.setLoggedIn(true);
             }
             $mdDialog.hide();
