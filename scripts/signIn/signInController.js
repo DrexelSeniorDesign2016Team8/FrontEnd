@@ -22,11 +22,11 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
             var userInfo = {}
                 userInfo.name = createAccountform.fullName.value;
                 userInfo.userName =createAccountform.emailAddress.value;
-                userInfo.pass = createAccountform.password.value;
-        userService.generateCreateAccountParameters(userInfo)
+                userInfo.password = createAccountform.password.value;
+        var parameters = userService.generateCreateAccountParameters(userInfo)
             var createAccountUrl =  userService.getCreateAccountURL();
             apiCall.setApiDestination(createAccountUrl);
-             apiCall.setParameters(createAccountUrl);
+             apiCall.setParameters(parameters);
         apiCall.callCollegeSearchAPI(function(response) {
             if (response.error) {
             }
