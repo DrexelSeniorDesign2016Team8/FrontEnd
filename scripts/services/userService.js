@@ -12,6 +12,9 @@ app.factory('userService', function($localStorage) {
     function setfullName(name) {
         user.fullName = name;
     }
+    function setEmailAddress(email) {
+        user.emailAddress = email;
+    }
     function setSessionId(sessionId) {
         user.sessionId=sessionId;
     }
@@ -138,6 +141,7 @@ app.factory('userService', function($localStorage) {
         set: set,
         setLoggedIn: setLoggedIn,
         setUserName: setUserName,
+        setEmailAddress: setEmailAddress,
         setRememberMe :setRememberMe,
         setAuthenticationKey: setAuthenticationKey,
         restoreLocalStorage: restoreLocalStorage,
