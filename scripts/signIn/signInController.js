@@ -16,32 +16,21 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         if (createAccountform.fullName.length>55) {
             //TODO Error Message
         }
-        // TODO: login call service with a callback
-        // TODO: provide hint text saying what password should look like
-
-        var success=true;
-        if (success) {
-            $log.debug('login successful')
-
             //TODO adjust page so logged in information is now shown
             createCookie("loggedIn", "false");
             $scope.currentUserLoggedin = true;
             $scope.userName=createAccountform.emailAddress.value
             userService.setfullName(createAccountform.fullName.value);
-            var createAccountUrl =  userService.generateCreateAccountUrl();
+            var createAccountUrl =  userService.getCreateAccountURL();
             var result = apiCall.setApiDestination(createAccountUrl);
 
             if (result.error) {
-
+            }
+            else {
+            $log.debug("account creation successful");
+                var success = true;
             }
             $mdDialog.hide();
-
-            apiCall.setApiDestination()
-        }
-        else {
-            $log.debug('login failed');
-
-        }
     }
     $scope.signIn = function () {
         $scope.login.loading = true;
