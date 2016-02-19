@@ -19,10 +19,15 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
             //TODO adjust page so logged in information is now shown
             createCookie("loggedIn", "false");
             $scope.currentUserLoggedin = true;
-            $scope.userName=createAccountform.emailAddress.value
+            var userInfo = {}
+                userInfo.name = createAccountform.fullName.value;
+                userInfo.userName =createAccountform.emailAddress.value;
+                userInfo.pass = createAccountform.password.value;
+        userService.generateCreateAccountParameters()
             userService.setfullName(createAccountform.fullName.value);
             var createAccountUrl =  userService.getCreateAccountURL();
-             apiCall.setApiDestination(createAccountUrl);
+            apiCall.setApiDestination(createAccountUrl);
+             apiCall.setParameters(createAccountUrl);
         apiCall.callCollegeSearchAPI(function(response) {
             if (response.error) {
             }
