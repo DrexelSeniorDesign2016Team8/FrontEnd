@@ -125,8 +125,8 @@ app.factory('userService', function($localStorage) {
     function generateCreateAccountParameters(userInfo) {
         var parameters ='';
         parameters += "name=" + userInfo.name + "&";
-        parameters += "email" + userInfo.userName +"&";
-        parameters += "pass" + userInfo.password + "&";
+        parameters += "email=" + userInfo.userName +"&";
+        parameters += "pass=" + userInfo.password + "&";
         return parameters;
     }
     function setLoginStatus(status) {
