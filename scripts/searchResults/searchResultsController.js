@@ -91,7 +91,7 @@ loadDropdowns = function() {
 
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
         $mdDialog.show({
-                controller: 'fullRecordController',
+                controller: fullRecordController,
                 templateUrl: 'fullRecord.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
