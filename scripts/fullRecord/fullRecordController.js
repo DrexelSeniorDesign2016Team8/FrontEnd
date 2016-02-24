@@ -1,5 +1,5 @@
 
-function fullRecordController ($scope, $mdDialog, $mdMedia,userService, navigationService) {
+function fullRecordController ($scope, items, $mdDialog, $mdMedia,userService, navigationService) {
 
     $scope.items=items;
 
