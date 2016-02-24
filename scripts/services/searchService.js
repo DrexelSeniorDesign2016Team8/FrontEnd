@@ -1,4 +1,4 @@
-app.factory('searchService', function(apiCall, $localStorage,userService) {
+app.factory('searchService', function(apiCall, $localStorage) {
     var searchOptions = {};
 
     /**

@@ -1,4 +1,4 @@
-app.factory('navigationService', function($localStorage, userService) {
+app.factory('navigationService', function($localStorage, userService,searchService) {
 
 
     function leavePage(url) {
@@ -6,6 +6,7 @@ app.factory('navigationService', function($localStorage, userService) {
         if (userService.rememberMe==true) {
             $localStorage.username=userService.getUserName();
             $localStorage.loggedIn=true;
+            $localStorage.params=searchService.get();
         }
         window.location.href=url;
 
@@ -14,6 +15,7 @@ app.factory('navigationService', function($localStorage, userService) {
         $localStorage.rememberMe=false;
         $localStorage.username='';
         $localStorage.loggedIn='';
+        $localStorage.params=searchService.get();
     }
 
     return {
