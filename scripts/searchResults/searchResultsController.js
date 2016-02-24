@@ -1,4 +1,4 @@
-app.controller('resultsController', function ($scope, $mdSidenav, $log, searchService)
+app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $mdMedia, $log, searchService)
 {
     $scope.results = {
         loading: false,
