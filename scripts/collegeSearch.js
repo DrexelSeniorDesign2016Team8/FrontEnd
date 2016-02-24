@@ -20,7 +20,7 @@ app.constant('AUTH_EVENTS', {
 		var version = $localStorage.version;
 
 		if (version!=".6")
-			$localStorage.$reset();
+			//$localStorage.$reset();
 
 		navigationService.loadPage();
 
