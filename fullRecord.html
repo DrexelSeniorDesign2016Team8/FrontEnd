@@ -2,10 +2,10 @@
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>{{college.name}}</h2>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-icon="close-box" aria-label="Close dialog"></md-icon>
+            </md-button>
             </div>
-        <md-button class="md-icon-button" ng-click="cancel()">
-            <md-icon md-svg-icon="close-box" aria-label="Close dialog"></md-icon>
-        </md-button>
         </md-toolbar>
             <span flex></span>
             <div ng-if='college.address!==undefined'><p> <a target="_blank" href={{college.googleMapsAddress}}>{{college.address}} </a></p></div>
