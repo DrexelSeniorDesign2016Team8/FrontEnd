@@ -100,7 +100,7 @@
                             <div class="collegeInfo">
                             <div ng-if="college.image!=undefined"><img src="{{college.image}}.jpg" alt="{{college.name}}" style="width:200px;height:200px; float:left"></div>
                             <div ng-f="college.image==undefined"></div>
-                                <h2> ng-href="#" ng-click="openMoreInfo(college)">{{college.name }}</></h2>
+                                <h2> <a ng-href="#" ng-click="openMoreInfo(college)">{{college.name }}</a></h2>
 
                             <div class="favoriteButton">
                                 <md-button>FAVORITE</md-button>
