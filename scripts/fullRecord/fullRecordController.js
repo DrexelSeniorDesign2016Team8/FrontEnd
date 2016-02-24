@@ -1,4 +1,4 @@
-app.controller('fullRecordController' , function($scope, $mdDialog, $mdMedia,userService, navigationService) {
+app.controller('fullRecordController ' , function($scope, $mdDialog, $mdMedia,userService, navigationService) {
 
 
 });/**

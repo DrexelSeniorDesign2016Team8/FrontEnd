@@ -86,7 +86,7 @@ loadDropdowns = function() {
         return $mdSidenav('searchBar').isOpen();
 
     };
-    $scope.openMoreInfo = function(college) {
+    $scope.openMoreInfo = function(ev, college) {
 
 
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
