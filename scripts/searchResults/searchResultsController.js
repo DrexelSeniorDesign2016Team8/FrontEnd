@@ -96,7 +96,7 @@ loadDropdowns = function() {
                 parent: angular.element(document.body),
                 targetEvent: ev,
             locals: {
-                items: college,
+                items: ev,
             },
                 clickOutsideToClose:true,
 
