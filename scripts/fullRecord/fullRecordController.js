@@ -3,7 +3,7 @@ function fullRecordController ($scope, items, $mdDialog, $mdMedia,userService, n
 
     $scope.items=items;
 
-    college=$scope.items;
+    $scope.college=$scope.items;
 
 };/**
  * Created by ianshinbro on 2/23/2016.
