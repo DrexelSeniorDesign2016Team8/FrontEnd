@@ -21,7 +21,7 @@ loadDropdowns = function() {
         return {filterOption: filterOption};
     });
     $scope.pageSize=10;
-    $scope.parameter.pageSizes = ('5, 10, 15, 20'
+    $scope.parameter.pageSizes = ('10, 20, 50, 100'
     ).split(',').map(function (pageSize) {
         return {pageSize: pageSize};
     });
@@ -91,7 +91,7 @@ loadDropdowns = function() {
 
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
         $mdDialog.show({
-                controller: fullRecordController,
+                controller: 'fullRecordController',
                 templateUrl: 'fullRecord.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
