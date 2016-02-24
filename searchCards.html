@@ -49,7 +49,7 @@
                                                  <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                      <label class="searchLabel">Math Score</label>
                                                      <input type="number" step="1.0" name="MathScore" ng-model="parameter.MathScore" min="0"
-                                                            max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"* />
+                                                            max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*  min="200" />
                                                      <div ng-messages="CollegeInfo.MathScore.$error" multiple md-auto-hide="false">
                                                          <div ng-message="min">
                                                              You can't have a negative sore
@@ -71,7 +71,7 @@
 
                                             <label class="searchLabel">Writing Score</label>
                                             <input type="number" name="WritingScore" ng-model="parameter.WritingScore" ng-pattern="/^[0-9]{1,3}$/" min="0"
-                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"* min="200"/>
                                             <div ng-messages="CollegeInfo.WritingScore.$error" multiple md-auto-hide="false">
                                                 <div ng-message="min">
                                                     You can't have a negative sore
@@ -91,7 +91,7 @@
 
                                             <label class="searchLabel">Reading Score</label>
                                             <input type="number" name="ReadingScore" id="ReadingScore" ng-model="parameter.ReadingScore"min="0"
-                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*/>
+                                                   max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"* min="200"/>
                                             <div ng-messages="CollegeInfo.ReadingScore.$error" multiple md-auto-hide="false">
                                                 <div ng-message="min">
                                                     You can't have a negative sore
@@ -142,7 +142,7 @@
                                                   <!-- Zip Code-->
                                                   <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                       <label class="searchLabel">Zip Code</label>
-                                                      <input type="number" name="zipcode" ng-model="parameter.zipcode"ng-pattern="/^[0-9]{1,5}$/">
+                                                      <input type="text" name="zipcode" ng-model="parameter.zipcode"ng-pattern="/^[0-9]{1,5}$/">
                                                       <div ng-messages="CollegeInfo.zipcode.$error">
                                                           <div ng-message="pattern">Not a valid zip code</div>
                                                       </div>

@@ -86,6 +86,34 @@ loadDropdowns = function() {
         return $mdSidenav('searchBar').isOpen();
 
     };
+    $scope.openMoreInfo = function(college) {
+
+
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+        $mdDialog.show({
+                controller: fullRecordController,
+                templateUrl: 'fullRecord.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+            locals: {
+                items: college,
+            },
+                clickOutsideToClose:true,
+
+            })
+            .then(function() {
+            }, function() {
+            });
+        $scope.$watch(function() {
+            return $mdMedia('xs') || $mdMedia('sm');
+        }, function(wantsFullScreen) {
+            $scope.customFullscreen = (wantsFullScreen === true);
+        });
+    };
+    $scope.openMenu = function($mdOpenMenu, ev) {
+        originatorEv = ev;
+        $mdOpenMenu(ev);
+    };
     /*
     Close the toggle bar and perform a search
      */
