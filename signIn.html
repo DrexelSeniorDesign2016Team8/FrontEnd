@@ -15,10 +15,10 @@
         </div>
     </md-toolbar>
 
-
+    <md-dialog-content>
     <md-tabs md-dynamic-height md-border-bottom>
         <md-tab label="Sign In">
-            <md-dialog-content>
+
                 <form name="signinForm" id="Signin" class="md-dialog-content">
 
                     <md-input-container class="flex-gt-sm">
@@ -59,13 +59,11 @@
 
                     <md-progress-circular class="md-hue-2 md-busy" ng-show="login.loading" md-mode="indeterminate" style="margin:auto"></md-progress-circular>
                 </form>
-
-            </md-dialog-content>
         </md-tab>
-        <md-tab label="Create Account ">
+        <md-tab label="Create Account">
             <div ng-show="userService.failed()"></div>
 
-            <form name="createAccountForm">
+            <form name="createAccountForm"  class="md-dialog-content">
 
                     <!-- Email Address-->
 
@@ -103,7 +101,9 @@
                     <md-button class= "md-raised" id="searchBtn" ng-disabled="createAccountForm.$invalid" style='text-align:center' ng-click="createAccount()">
                         Create Account
                     </md-button>
-            </form>
+                  </form>
+
         </md-tab>
     </md-tabs>
+    </md-dialog-content>
 </md-dialog>
