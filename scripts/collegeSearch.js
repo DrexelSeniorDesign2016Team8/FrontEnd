@@ -1,6 +1,6 @@
 //var loggedIn = false;
 
-var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngStorage', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
+var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','ngStorage', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
 
 
 app.constant('AUTH_EVENTS', {

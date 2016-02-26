@@ -3,8 +3,8 @@
 
 
 
-<html>
-<md-content>
+
+<md-dialog aria-label="Sign in/Create Account">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>Sign in/Create Account</h2>
@@ -13,96 +13,97 @@
                 <md-icon md-svg-icon="close-box" aria-label="Close dialog"></md-icon>
             </md-button>
         </div>
-        </md-toolbar>
+    </md-toolbar>
 
-                <md-dialog-content>
-                    <md-tabs md-dynamic-height md-border-bottom>
-                                               <md-tab label="Sign In">
-                                <form name="signinForm" id="Signin" class="md-dialog-content">
 
-                                    <md-input-container class="flex-gt-sm">
-                                        <!-- Email Address-->
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Sign In">
+            <md-dialog-content>
+                <form name="signinForm" id="Signin" class="md-dialog-content">
 
-                                        <input type="email" required class="signInText" id="emailAddress" name="emailAddress" ng-model="signIn.emailAddress"placeholder="Email Address" ng-model="resetPassword.email" ng-pattern="/^.+@.+\..+$/" />
-                                        <div ng-messages="signinForm.emailAddress.$error">
-                                            <div ng-message="pattern">
-                                                Please enter a valid email address
-                                            </div>
-                                        </div>
+                    <md-input-container class="flex-gt-sm">
+                        <!-- Email Address-->
 
-                                    </md-input-container>
-                                        <br>
-                                        <md-input-container class="flex-gt-sm">
-                                            <!-- GPA Box-->
+                        <input type="email" required class="signInText" id="emailAddressSignIn" name="emailAddressSignIn" ng-model="signIn.emailAddress" placeholder="Email Address" ng-pattern="/^.+@.+\..+$/" />
+                        <div ng-messages="signinForm.emailAddressSignIn.$error">
+                            <div ng-message="pattern">
+                                Please enter a valid email address
+                            </div>
+                        </div>
 
-                                            <input type="password" class="signInText" id="password" name="password" required placeholder="Password" ng-model="signIn.password" />
+                    </md-input-container>
+                    <br>
+                    <md-input-container class="flex-gt-sm">
+                        <!-- GPA Box-->
 
-                                        </md-input-container>
-                                        <br>
-                                        <md-button id="resetPassword" style='text-align:center' onClick="resetPassword()">
-                                            Reset Password
-                                        </md-button>
+                        <input type="password" class="signInText" id="password" name="passwordSignIn" required placeholder="Password" ng-model="signIn.password" />
 
-                                        <br>
-                                        <!-- Flat button with ripple -->
-                                        <md-checkbox input type=checkbox ng-model="signIn.rememberMe" name="rememberMe" id="rememberMe" aria-label="Remember Me">
-                                            Remember Me
-                                        </md-checkbox>
-                                    <div class='invalid' ng-show='login.failed'>{{login.message}} </div>
-                                    <div class="invalid" ng-show="login.failed">{{login.attempts}} attempts remaining</div>
-                                        <br>
-                                        <!-- Flat button with ripple -->
-                                        <md-button class= id="signIn" ng-disabled="signinForm.$invalid" style='text-align:center' ng-click="signIn()">
-                                            Sign In
-                                        </md-button>
+                    </md-input-container>
+                    <br>
+                    <md-button id="resetPassword" style='text-align:center' onClick="resetPassword()">
+                        Reset Password
+                    </md-button>
 
-                                    <md-progress-circular class="md-hue-2 md-busy" ng-show="login.loading" md-mode="indeterminate" style="margin:auto"></md-progress-circular>
-                                </form>
+                    <br>
+                    <!-- Flat button with ripple -->
+                    <md-checkbox input type=checkbox ng-model="signIn.rememberMe" name="rememberMe" id="rememberMe" aria-label="Remember Me">
+                        Remember Me
+                    </md-checkbox>
+                    <div class='invalid' ng-show='login.failed'>{{login.message}} </div>
+                    <div class="invalid" ng-show="login.failed">{{login.attempts}} attempts remaining</div>
+                    <br>
+                    <!-- Flat button with ripple -->
+                    <md-button class="md-raised" id="signIn" ng-disabled="signinForm.$invalid" style='text-align:center' ng-click="signIn()">
+                        Sign In
+                    </md-button>
 
-                        </md-tab>
-                        <md-tab label="Create Account ">
-                                                <div class="md-dialog-content">
-                                                    <div ng-show="userService.failed()"></div>
+                    <md-progress-circular class="md-hue-2 md-busy" ng-show="login.loading" md-mode="indeterminate" style="margin:auto"></md-progress-circular>
+                </form>
 
-                                                    <form name="createAccountform">
-                                                                        <!--  Name -->
-                                                                    <md-input-container flex-gt-sm class="signInDialog">
-                                                                        <!--  Email Address-->
+            </md-dialog-content>
+        </md-tab>
+        <md-tab label="Create Account ">
+            <div ng-show="userService.failed()"></div>
 
-                                                                        <input type="text" class="signInText" name="email" placeholder="Enter an email Address" required ng-model="createAccount.emailAddress" ng-pattern="/^.+@.+\..+$/"/>
-                                                                        <div ng-messages="createAccountform.emailAddress.$error">
-                                                                            <div ng-message="pattern">
-                                                                                Please enter a valid email address
-                                                                            </div>
-                                                                        </div>
-                                                                    </md-input-container>
-                                                                <br>
-                                                                    <md-input-container flex-gt-sm class="signInDialog">
-                                                                        <!-- GPA Box-->
+            <form name="createAccountForm">
 
-                                                                        <input type="password" class="signInText" id="passwordCreation" required name="password" placeholder="Enter a password"  ng-model="createAccount.password" ng-required/>
+                    <!-- Email Address-->
 
-                                                                    </md-input-container>
-                                                                <br>
-                                                                    <md-input-container class="signInText "flex-gt-sm>
-                                                                        <!-- GPA Box-->
-                                                                        <input type="password" class="signInText" id="verifyPasswordCreation" required name="verifyPassword" required placeholder="Verify Password" ng-model="createAccount.verifyPassword" required/>
-                                                                   </md-input-container>
-                                                                    <div class="msg-block" ng-show="myForm.$error">
-                                                                   </div>
-                                                                <br>
-                                                                <!-- Flat button with ripple -->
+                    <md-input-container class="flex-gt-sm">
+                        <!--  Email Address-->
+                        <input type="email" class="signInText" name="emailAddressCreateAccount" placeholder="Enter an email Address" required ng-model="createAccount.emailAddress" ng-pattern="/^.+@.+\..+$/"/>
+                        <div ng-messages="createAccountForm.emailAddressCreateAccount.$error">
+                            <div ng-message="pattern">
+                                Please enter a valid email address
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <br>
+                    <md-input-container flex-gt-sm class="signInDialog">
+                        <!-- GPA Box-->
 
-                                                                <br>
-                                                                <!-- Flat button with ripple -->
-                                                                    <md-button class= id="searchBtn" ng-disabled="createAccountform.$invalid" style='text-align:center' ng-click="createAccount()">
-                                                                        Create Account
-                                                                    </md-button>
-                                                            </form>
+                        <input type="password" class="signInText" id="passwordCreation" name="passwordCreateAccount" placeholder="Enter a password"  ng-model="createAccount.password" required/>
 
-                                                            </div>
-                                                        </md-tab>
-                        </md-tabs>
-                    </md-dialog-content>
-</md-content>
-</html>
+                    </md-input-container>
+                    <br>
+                    <md-input-container class="signInText" flex-gt-sm>
+                        <!-- GPA Box-->
+                        <input type="password" class="signInText" id="verifyPasswordCreation" name="verifyPasswordCreateAccount" required placeholder="Verify Password" ng-model="createAccount.verifyPasswordCreateAccount" password-match="createAccount.password"/>
+                        <div ng-messages="createAccountForm.verifyPasswordCreateAccount.$error">
+                            <div ng-message="match">
+                                Passwords don't match
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <br>
+                    <!-- Flat button with ripple -->
+
+                    <br>
+                    <!-- Flat button with ripple -->
+                    <md-button class= "md-raised" id="searchBtn" ng-disabled="createAccountForm.$invalid" style='text-align:center' ng-click="createAccount()">
+                        Create Account
+                    </md-button>
+            </form>
+        </md-tab>
+    </md-tabs>
+</md-dialog>
