@@ -13,16 +13,15 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
     $scope.createAccount = function() {
         $scope.login.loading = true;
 
-        if (createAccountform.fullName.length>55) {
+        if (createAccountForm.fullName.length>55) {
             //TODO Error Message
         }
-            //TODO adjust page so logged in information is now shown
             createCookie("loggedIn", "false");
             $scope.currentUserLoggedin = true;
             var userInfo = {}
-                userInfo.name = createAccountform.fullName.value;
-                userInfo.userName =createAccountform.emailAddress.value;
-                userInfo.password = createAccountform.password.value;
+                userInfo.name = createAccountForm.fullName.value;
+                userInfo.userName =createAccountForm.emailAddress.value;
+                userInfo.password = createAccountForm.password.value;
         var parameters = userService.generateCreateAccountParameters(userInfo)
             var createAccountUrl =  userService.getCreateAccountURL();
             apiCall.setApiDestination(createAccountUrl);
