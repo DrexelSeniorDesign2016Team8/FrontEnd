@@ -1,17 +1,17 @@
-app.factory('userService', function($localStorage) {
+app.factory('userService', function($localStorage, searchService, apiCall) {
     var user = {
-        fullName: "",
         loggedIn: false,
         username: '',
         sessionId: '',
         rememberMe: false,
         preferencesUpdated: false,
-        loginFailed: false
+        loginFailed: false,
+        searchService : searchService,
     };
-
-    function setfullName(name) {
-        user.fullName = name;
+    function getSearchService() {
+        return searchService;
     }
+
     function setEmailAddress(email) {
         user.emailAddress = email;
     }
@@ -19,7 +19,14 @@ app.factory('userService', function($localStorage) {
         user.sessionId=sessionId;
     }
     function getUserName() {
-        return user;
+        return user.emailAddress;
+    }
+    function setSearchPreferences() {
+       user.searchService.set(searchService.get());
+    }
+
+    function getSearchParameters() {
+        return user.searchService.get();
     }
 
     function isLoggedin() {
@@ -97,6 +104,7 @@ app.factory('userService', function($localStorage) {
                 $localStorage.username='';
             }
 
+
             return true;
         }
         else return false;
@@ -136,7 +144,34 @@ app.factory('userService', function($localStorage) {
         user.loginFailed = status;
     }
 
+    function saveSearchPreferences(callback) {
+        params = searchService.get();
+
+        var formattedParams = formatSearch(params);
+
+        if (formattedParams) {     // if they exist make call
+
+            jsonString = formatSearch(formattedParams);
+            jsonString = jsonString.replace(/\"/g, "");
+        }
+        apiCall.setApiDestination("savePreferences.php?");
+        apiCall.setParameters(jsonString);
+
+        apiCall.callCollegeSearchAPI(callback);
+    }
+    function deleteAccount() {
+        apiCall.setApiDestination("delete.php");
+        apiCall.callCollegeSearchAPI(navigationService.leavePage("searchPage.html"));
+    }
+    function emailFavorites() {
+        apiCall.setParameters(userService.get());
+        apiCall.setApiDestination("email.php");
+    }
+    function setApiSearch() {
+        searchService.setApiCall(apiCall);
+    }
     return {
+
         getUserName: getUserName,
         set: set,
         setLoggedIn: setLoggedIn,
@@ -154,7 +189,13 @@ app.factory('userService', function($localStorage) {
         generateCreateAccountParameters: generateCreateAccountParameters,
         getCreateAccountURL: getCreateAccountURL,
         logout: logout,
-        setfullName: setfullName,
-        setLoginStatus: setLoginStatus
+        setLoginStatus: setLoginStatus,
+        setSearchPreferences: setSearchPreferences,
+        getSearchParameters: getSearchParameters,
+        deleteAccount: deleteAccount,
+        emailFavorites: emailFavorites,
+        saveSearchPreference: saveSearchPreferences,
+        getSearchService: getSearchService,
+        setApiSearch: setApiSearch
     };
 });

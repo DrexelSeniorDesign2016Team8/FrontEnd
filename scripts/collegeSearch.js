@@ -3,22 +3,16 @@
 var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','ngStorage', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
 
 
-app.constant('AUTH_EVENTS', {
-	loginSuccess: 'auth-login-success',
-	loginFailed: 'auth-login-failed',
-	logoutSuccess: 'auth-logout-success',
-	sessionTimeout: 'auth-session-timeout',
-	notAuthenticated: 'auth-not-authenticated',
-	notAuthorized: 'auth-not-authorized'
-});
-
-	app.run(function ($rootScope, userService, apiCall, navigationService, $localStorage) {
+	app.run(function ($rootScope, userService, navigationService, searchService, apiCall, $localStorage) {
 
 		// first retrieve data from local storage
 		var authenticate = userService.restoreLocalStorage();
 
 		var version = $localStorage.version;
+		userService.setApiSearch();
+		apiCall.setUser(userService.sessionId);
 
+		var searchPreferences = userService.getSearchParameters();
 		if (version!=".6")
 			//$localStorage.$reset();
 

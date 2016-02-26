@@ -1,4 +1,4 @@
-app.factory('searchService', function(apiCall, $localStorage) {
+app.factory('searchService', function($localStorage, apiCall) {
     var searchOptions = {};
 
     /**
@@ -79,6 +79,9 @@ app.factory('searchService', function(apiCall, $localStorage) {
 
         apiCall.callCollegeSearchAPI(callback);
     }
+    function setApiCall(apiCall) {
+        this.apiCall = apiCall;
+    }
 
     return {
         set: set,
@@ -88,6 +91,7 @@ app.factory('searchService', function(apiCall, $localStorage) {
         getGPA: getGPA,
         fillStates : fillStates,
         fillPercentages: fillPercentages,
+        setApiCall: setApiCall,
     }
 
 });

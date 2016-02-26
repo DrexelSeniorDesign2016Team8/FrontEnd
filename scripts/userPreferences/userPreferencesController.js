@@ -1,66 +1,118 @@
-app.controller('userPreferencesController', function ($scope, $mdDialog,$mdMedia, $log, userService, searchService) {
+/*
+This is the controller for the preferences screen
+The delete content dialog is generated here
+ */
+app.controller('userPreferencesController', function ($scope, $mdDialog, $log, userService, $mdToast) {
     $scope.userService = userService;
+   var searchService = userService.getSearchService();
+    $scope.deleteConfirmation = function (ev) {
 
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-    $scope.deleteConfirmation = function(ev) {
+        options = {};
 
-        var dialogContent = " <md-toolbar>" +
-            "<div class='md-toolbar-tools'>"+
-            "<h2>Delete Account</h2>"+
-            "<span flex></span>"+
-            "<md-button class='md-icon-button' ng-click='close()'>"+
-            "<md-icon md-svg-icon='close-box' aria-label='Close dialog'></md-icon>"+
-            "</md-button>"+
-            "</div>"+
-            "</md-toolbar>"+
-            "<md-content layout-wrap>" +
-            "<center><md-button ng-click='delete()' style='float:right'>Are you Sure?</md-button></center>"+
+        options.title = "Are you sure you want to delete your account?";
 
-            "</md-content>";
-        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-        $mdDialog.show({
-                controller: deleteController,
-                template: dialogContent,
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose:true,
-            })
-            .then(function() {
+        options.text = "Account information cannot be recovered after account deletion.?";
 
-            }, function() {
+        options.confirm = "YES, DELETE MY ACCOUNT";
 
+        options.cancel = "CANCEL";
 
-            });
-        $scope.$watch(function() {
-            return $mdMedia('xs') || $mdMedia('sm');
-        }, function(wantsFullScreen) {
-            $scope.customFullscreen = (wantsFullScreen === true);
+        options.onconfirm = deleteAccount;
+
+        $scope.showDialog(ev, options);
+    };
+
+    $scope.emailFavorites = function (ev) {
+        options = {};
+
+        options.title = "Email Favorite Institutions";
+        options.text = "An email will be sent to " + userService.getUserName();
+
+        options.confirm = "EMAIL";
+
+        options.cancel = "CANCEL";
+
+        options.onconfirm = emailFavorites;
+
+        $scope.showDialog(ev, options);
+    }
+    $scope.saveConfirm = function () {
+
+        //TODO make toast message
+        var options = {};
+
+        options.title = "Save Preferences";
+        options.text = "Preferences Saved";
+        options.confirm="OK";
+
+        options.onClick = savePreferences;
+
+        $scope.showToast(options);
+    };
+
+    $scope.UndoChanges = function () {
+        //Revert Changes
+        var parameters = userService.getSearchParameters();
+            searchService.set(parameters);
+        var options = {}
+            options.text = "Preferences reverted";
+        options.confirm = "Ok";
+        $scope.showToast(options);
+
+    };
+    $scope.showToast = function(toastOptions) {
+
+        var toast = $mdToast.simple()
+            .textContent(toastOptions.text)
+            .action(toastOptions.confirm)
+            .highlightAction(false)
+            .position('bottom right')
+        $mdToast.show(toast).then(function (response) {
+            if (response == 'ok') {
+                $log.debug('ok clicked');
+                $mdToast.hide();
+            }
+        });
+    };
+    $scope.showDialog = function (ev, dialogOptions) {
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm = $mdDialog.confirm()
+            .title(dialogOptions.title)
+            .textContent(dialogOptions.text)
+            .targetEvent(ev)
+            .ok(dialogOptions.confirm)
+            .cancel(dialogOptions.cancel);
+        $mdDialog.show(confirm).then(function () {
+            $scope.status = 'You decided to get rid of your debt.';
+        }, function () {
+            $scope.status = 'You decided to keep your debt.';
         });
     };
 
-    $scope.savePreferences = function(ev) {
-        searchCriteria = $scope.parameter;
-        userService.updatePreferences();
-        //TODO call api to update user preferences
-    };
+    function deleteAccount() {
+
+    userService.deleteAccount();
+    }
+    function emailFavorites() {
+        userService.emailFavorites();
+    }
+
+    function savePreferences() {
+        userService.set(searchService.get());
+    }
+    onPageLoad = function() {
+       var params= userService.getSearchParameters();
+        userService.setSearchPreferences(params);
+        userService.setSearchPreferences();
+    }
+
+    $scope.cancel = function () {
+        $mdDialog.hide();
+    }
+    onPageLoad();
 
 });
 
-function deleteController ($scope, $mdDialog, apiCall, navigationService, userService) {
 
 
-    $scope.close = function() {
-        $mdDialog.hide();
-    };
-    $scope.confirm = function(answer) {
 
-        apiCall.setApiDestination("deleteAccount");
-
-//TODO add redirect after deleting account
-        apiCall.callCollegeSearchAPI(  navigationService.leavePage("searchResults.html"));
-
-        userService.deleteAccount();
-        $mdDialog.hide(answer);
-    };
-
-};

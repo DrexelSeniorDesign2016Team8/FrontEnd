@@ -1,4 +1,4 @@
-app.factory('navigationService', function($localStorage, userService,searchService) {
+app.factory('navigationService', function($localStorage, userService) {
 
 
     function leavePage(url) {
@@ -6,16 +6,18 @@ app.factory('navigationService', function($localStorage, userService,searchServi
         if (userService.rememberMe==true) {
             $localStorage.username=userService.getUserName();
             $localStorage.loggedIn=true;
-            $localStorage.params=searchService.get();
+            $localStorage.params=userService.getSearchParameters().get();
+            $localStorage.userName=userService.getUserName();
         }
         window.location.href=url;
 
     }
-    function  loadPage(url) {
+    function  loadPage() {
         $localStorage.rememberMe=false;
         $localStorage.username='';
         $localStorage.loggedIn='';
-        $localStorage.params=searchService.get();
+        $localStorage.params=userService.getSearchParameters();
+        userService.setEmailAddress($localStorage.userName);
     }
 
     return {

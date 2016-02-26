@@ -1,4 +1,4 @@
-app.factory('apiCall', function($http, $log, userService) {
+app.factory('apiCall', function($http, $log) {
 
     var endPoint = "http://mid.searchcollege.me";
     var method = "";
@@ -6,7 +6,8 @@ app.factory('apiCall', function($http, $log, userService) {
     var apiParameters = '';
     var finalUrl = "";
     var response = "";
-    var service = {}
+    var service = {};
+    var user = {}
     /**
      * This function creates the url for the college search api
      * @returns {string}
@@ -15,8 +16,8 @@ app.factory('apiCall', function($http, $log, userService) {
 
         finalUrl = endPoint + "/";
 
-        if (userService.isLoggedin()) {
-            finalUrl =+ userService.sessionId+"&";
+        if (user.loggedIn) {
+            finalUrl =+ user.sessionId+"&";
         }
 
         finalUrl = finalUrl + apiCall + apiParameters;
@@ -49,6 +50,9 @@ app.factory('apiCall', function($http, $log, userService) {
      */
     service.getMethod = function() {
         return method;
+    };
+    service.setUser = function(user) {
+        this.userService = user;
     };
     /**
      * performs the api request by creating an http request
