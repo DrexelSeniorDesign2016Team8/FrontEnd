@@ -65,14 +65,11 @@
                                                     <div ng-show="userService.failed()"></div>
 
                                                     <form name="createAccountform">
-                                                                    <md-input-container flex-gt-sm class="signInDialog">
                                                                         <!--  Name -->
-
-
                                                                     <md-input-container flex-gt-sm class="signInDialog">
                                                                         <!--  Email Address-->
 
-                                                                        <input type="text" class="signInText" id="emailAddress" name="email" placeholder="Enter an email Address" required ng-model="createAccount.emailAddress" ng-pattern="/^.+@.+\..+$/"/>
+                                                                        <input type="text" class="signInText" name="email" placeholder="Enter an email Address" required ng-model="createAccount.emailAddress" ng-pattern="/^.+@.+\..+$/"/>
                                                                         <div ng-messages="createAccountform.emailAddress.$error">
                                                                             <div ng-message="pattern">
                                                                                 Please enter a valid email address
