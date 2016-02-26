@@ -24,7 +24,7 @@
                     <md-input-container class="flex-gt-sm">
                         <!-- Email Address-->
 
-                        <input type="email" required class="signInText" id="emailAddressSignIn" name="emailAddressSignIn" ng-model="signIn.emailAddress" placeholder="Email Address" ng-pattern="/^.+@.+\..+$/" />
+                        <input type="email" required class="signInText" id="emailAddressSignIn" name="emailAddressSignIn" ng-model="signIn.emailAddressSignIn" placeholder="Email Address" ng-pattern="/^.+@.+\..+$/" />
                         <div ng-messages="signinForm.emailAddressSignIn.$error">
                             <div ng-message="pattern">
                                 Please enter a valid email address
@@ -36,7 +36,7 @@
                     <md-input-container class="flex-gt-sm">
                         <!-- GPA Box-->
 
-                        <input type="password" class="signInText" id="password" name="passwordSignIn" required placeholder="Password" ng-model="signIn.password" />
+                        <input type="password" class="signInText" id="password" name="passwordSignIn" required placeholder="Password" ng-model="signIn.passwordSignIn" />
 
                     </md-input-container>
                     <br>
@@ -71,7 +71,7 @@
 
                     <md-input-container class="flex-gt-sm">
                         <!--  Email Address-->
-                        <input type="email" class="signInText" name="emailAddressCreateAccount" placeholder="Enter an email Address" required ng-model="createAccount.emailAddress" ng-pattern="/^.+@.+\..+$/"/>
+                        <input type="email" class="signInText" name="emailAddressCreateAccount" placeholder="Enter an email Address" required ng-model="createAccount.emailAddressCreateAccount" ng-pattern="/^.+@.+\..+$/"/>
                         <div ng-messages="createAccountForm.emailAddressCreateAccount.$error">
                             <div ng-message="pattern">
                                 Please enter a valid email address
@@ -82,13 +82,13 @@
                     <md-input-container flex-gt-sm class="signInDialog">
                         <!-- GPA Box-->
 
-                        <input type="password" class="signInText" id="passwordCreation" name="passwordCreateAccount" placeholder="Enter a password"  ng-model="createAccount.password" required/>
+                        <input type="password" class="signInText" id="passwordCreation" name="passwordCreateAccount" placeholder="Enter a password"  ng-model="createAccount.passwordCreateAccount" required/>
 
                     </md-input-container>
                     <br>
                     <md-input-container class="signInText" flex-gt-sm>
                         <!-- GPA Box-->
-                        <input type="password" class="signInText" id="verifyPasswordCreation" name="verifyPasswordCreateAccount" required placeholder="Verify Password" ng-model="createAccount.verifyPasswordCreateAccount" password-match="createAccount.password"/>
+                        <input type="password" class="signInText" id="verifyPasswordCreation" name="verifyPasswordCreateAccount" required placeholder="Verify Password" ng-model="createAccount.verifyPasswordCreateAccount" password-match="createAccount.passwordCreateAccount"/>
                         <div ng-messages="createAccountForm.verifyPasswordCreateAccount.$error">
                             <div ng-message="match">
                                 Passwords don't match

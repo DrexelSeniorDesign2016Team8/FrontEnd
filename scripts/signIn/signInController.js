@@ -13,15 +13,11 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
     $scope.createAccount = function() {
         $scope.login.loading = true;
 
-        if (createAccountForm.fullName.length>55) {
-            //TODO Error Message
-        }
             createCookie("loggedIn", "false");
             $scope.currentUserLoggedin = true;
             var userInfo = {}
-                userInfo.name = createAccountForm.fullName.value;
-                userInfo.userName =createAccountForm.emailAddress.value;
-                userInfo.password = createAccountForm.password.value;
+                userInfo.userName =createAccountForm.emailAddressCreateAccount.value;
+                userInfo.password = createAccountForm.passwordCreateAccount.value;
         var parameters = userService.generateCreateAccountParameters(userInfo)
             var createAccountUrl =  userService.getCreateAccountURL();
             apiCall.setApiDestination(createAccountUrl);
@@ -44,8 +40,8 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
     $scope.signIn = function () {
         $scope.login.loading = true;
         var userInfo = {};
-        userInfo.userName = signinForm.emailAddress.value;
-        userInfo.password = signinForm.password.value;
+        userInfo.userName = signinForm.emailAddressSignIn.value;
+        userInfo.password = signinForm.passwordSignIn.value;
 
         var url = userService.getSignInURL();
         var destination = userService.generateSignInUParameters(userInfo);
