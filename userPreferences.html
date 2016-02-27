@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html>
+<html ng-app="CollegeSearch">
 <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1" />
 
@@ -23,7 +24,6 @@
     <!--load the module and config files-->
     <script src="scripts/collegeSearch.js"></script>
 
-
     <!--load the api and config files-->
 
     <script src="scripts/services/config.js"></script>
@@ -35,50 +35,65 @@
     <!-- load the header files since the controller is on this page-->
     <script src="scripts/header/headerController.js"></script>
     <!--load the controller and corresponding scripts -->
-    <script src="scripts/searchPage/searchController.js"></script>
+    <script src="scripts/userPreferences/userPreferencesController.js"></script>
 
 
     <script src="scripts/userPreferences/userPreferencesController.js"></script>
-    <script src="scripts/userPreferences/userPreferences.js"></script>
+    <script src="scripts/searchPage/gpaController.js"></script>
 
 </head>
-<div ng-app="CollegeSearch" >
+<div id="header" header></div>
 
-    <div id="header" header></div>
-    <hr>
-   <div ng-show="userService.arePreferencesUpdated()"> <label>Search Preferences Updated</label></div>
-    <div id="search" flex="80"search></div>
+<div ng-controller="userPreferencesController as parameter" layout="column" ng-cloak>
 
-    <div ng-controller="userPreferencesController">
-    <md-button class="md-raised" id="save" class=md-raised" style='float:left' ng-disabled="CollegeInfo.$invalid" ng-click="saveConfirm()">
-        Save
-    </md-button>
-    <md-button  class="md-raised" style="float:left" ng-disabled="CollegeInfo.$invalid" ng-click="UndoChanges()">UNDO</md-button>
+    <br>
+
+    <form name="CollegeInfo">
+        <center>
+            <div layout="row" layout-align="center center" class="searchLabel searchHeader">
+                Academic Information
+            </div>
+            <br>
+            <br>
+            <div id="search" flex="80"search></div>
+
+        </center>
+        <md-button class="md-raised" id="save" class=md-raised" style='float:left' ng-disabled="CollegeInfo.$invalid" ng-click="saveConfirm()">
+            Save
+        </md-button>
+        <md-button  class="md-raised" style="float:left" ng-click="UndoChanges()">UNDO</md-button>
         <br>
         <br>
         <br>
+        <span class="preferencesTitle">Favorites</span>
+        <hr>
+
+        <a href="searchResults.html">Click to view favorites</a>
+        <br>
+
         <div>
-            <span id="preferencesTitle">Favorites</span>
-            <hr>
-            <a href="searchResults.html">Click to view favorites</a>
-        </div>
-        <br>
-
-        <div>
-            <spcan id="preferencesTitle">Email Report
+            <br>
+            <br>
+            <span class="preferencesTitle">Email Report </span>
                 <hr>
-            Email a list of your favorite institutions to your email address on file.</spcan>
+                Email a list of your favorite institutions to your email address on file.
+            <br>
             <md-button class="md-raised" ng-click="emailFavorites()">Email</md-button>
         </div>
         <br>
         <div>
-            <spcan id="preferencesTitle">Delete Account</spcan>
-                <hr>
+            <spcan class="preferencesTitle">Delete Account</spcan>
+            <hr>
             I understand that deleted accounts are not recoverable
             <br>
-    <md-button class="md-raised" style='float:left' ng-click="deleteConfirmation()">
-        Delete
-    </md-button>
-                </div>
-    </div>
-    </div>
+            <md-button class="md-raised" style='float:left' ng-click="deleteConfirmation()">
+                Delete
+            </md-button>
+        </div>
+
+</form>
+</div>
+
+<script>
+</script>
+</html><!DOCTYPE html>
