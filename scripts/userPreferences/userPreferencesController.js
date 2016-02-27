@@ -52,8 +52,28 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
     $scope.UndoChanges = function () {
         //Revert Changes
-        var parameters = userService.getSearchParameters();
-            searchService.set(parameters);
+        var params = userService.getSearchParameters();
+        if (params) {
+            $scope.parameter = {
+                gpa: params.GPAvalue,
+                actcomposite: params.ACTScore,
+                HighSchoolPercentile: params.highSchoolPercentile,
+                mathscore: params.MathScore,
+                WritingScore: params.WritingScore,
+                ReadingScore: params.ReadingScore,
+                stateName: params.StateName,
+                InstitutionName: params.name,
+                zipcode: params.zipCode,
+                fullAddress: params.fullAddress,
+                acceptanceRate: params.acceptanceRate,
+                retentionRate: params.retentionRate,
+                institutionType: params.institutionType,
+                studentPopulation: params.studentPopulation,
+                classSize: params.classSize,
+                commonApplication: params.CommonApplication,
+                favoritedInstitutions: params.favoritedInstitutions,
+            };
+        }
         var options = {}
             options.text = "Preferences reverted";
         options.confirm = "Ok";
