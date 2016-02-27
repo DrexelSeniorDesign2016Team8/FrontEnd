@@ -43,6 +43,9 @@
 .md-select-value.md-select-placeholder {
 	color: white !important;
 }
+.gpaConverter {
+	visibility: hidden;
+}
 
 @media only screen and (max-device-width: 480px) {
 	.searchPageBox {
