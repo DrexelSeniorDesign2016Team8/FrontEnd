@@ -34,3 +34,6 @@
 .invalid {
 	color: red;
 }
+.searchHeader {
+	font-weight: bold;
+}

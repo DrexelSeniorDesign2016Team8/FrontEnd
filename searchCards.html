@@ -1,7 +1,7 @@
 
 <span layout="grid1" layout-wrap layout-align="center center">
                                            <div class="searchPageBox" flex="20">
-                                               <!-- ACT Box-->
+                                               <!-- GPA Box-->
                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                             <label class="searchLabel">GPA (Out of 4.0)</label>
                                             <input type="number" name="gpa" ng-model="parameter.gpa">
@@ -10,7 +10,6 @@
                                             </md-button>
                                         </md-input-container>
                                                </div>
-                                        <!-- ACT Box-->
                                            <div class="searchPageBox" flex="20">
                                                <!-- ACT Box-->
                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
@@ -33,7 +32,6 @@
                                         <!-- High School Percentile Box-->
 
                                              <div class="searchPageBox" flex="20">
-                                                 <!-- Retention Rate-->
                                                  <md-input-container class="searchPageBox">
                                                      <label class="searchLabel">High School Percentile</label>
                                                      <md-select class="searchLabel" ng-model="parameter.HighSchoolPercentile">
@@ -45,7 +43,7 @@
                                              </div>
 
                                              <div class="searchPageBox" flex="20">
-                                                 <!-- ACT Box-->
+                                                 <!-- Math Score Box-->
                                                  <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                      <label class="searchLabel">Math Score</label>
                                                      <input type="number" step="1.0" name="MathScore" ng-model="parameter.MathScore" min="0"
@@ -107,7 +105,7 @@
                                 </div>
                                 </span>
 <br>
-<div layout="title2" layout-align="center center" class="sideBarLabel searchLabel">
+<div layout="title2" layout-align="center center" class="sideBarLabel searchHeader searchLabel">
     Personal Preferences
 </div>
 <br>
@@ -115,7 +113,6 @@
                                     <!-- Institution Name-->
                                     <div class="searchPageBox" flex="20">
 
-                                            <!-- Reading Score-->
                                             <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
                                                 <label class="searchLabel">Institution Name</label>
@@ -150,7 +147,7 @@
                                               </div>
 
                                               <div class="searchPageBox" flex="20">
-                                                  <!-- Zip Code-->
+                                                  <!-- Full Address-->
                                                   <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                       <label class="searchLabel">Full Address</label>
                                                       <input type="text" name="fullAddress" ng-model="parameter.fullAddress">
@@ -169,6 +166,7 @@
                                         </md-input-container>
 
                                       </div>
+
                                              <div class="searchPageBox" flex="20">
                                                  <!-- Retention Rate-->
                                                  <md-input-container class="searchPageBox">
@@ -181,7 +179,7 @@
                                                  </md-input-container>
                                              </div>
 
-                            <!-- Institution Type Rate -->
+                            <!-- Institution Type -->
                                   <div class="searchPageBox" flex="20">
                                     <md-input-container class="searchPageBox">
                                         <label class="searchLabel">Institution Type</label>
@@ -195,9 +193,8 @@
                                     </md-input-container>
                             </div>
 
-                          <!-- Student Population -->
                                  <div class="searchPageBox" flex="20">
-                                     <!-- ACT Box-->
+                                     <!-- Student Population-->
                                      <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                          <label class="searchLabel">Student Population</label>
                                          <input type="number" name="studentPopulation" ng-model="parameter.studentPopulation" min="0">
@@ -208,7 +205,7 @@
                                  </div>
 
                                       <div class="searchPageBox" flex="20">
-                                          <!-- ACT Box-->
+                                          <!-- Class Size-->
                                           <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                               <label class="searchLabel">Class Size</label>
                                               <input type="number" name="classSize" ng-model="parameter.classSize" min="0">
@@ -220,7 +217,7 @@
                             </span>
 <br>
 
-<div layout="title2" layout-align="center center" class="sideBarLabel preferences searchLabel">
+<div layout="title2" layout-align="center center" class="sideBarLabel searchHeader preferences searchLabel">
     Additional Options
 </div>
             <span layout="grid1" layout-wrap layout-align="center center" style=>
