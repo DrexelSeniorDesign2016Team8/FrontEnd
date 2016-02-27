@@ -58,14 +58,3 @@
 .gpaConverter {
     visibility: hidden;
 }
-@media only screen and (max-device-width: 480px) {
-    .searchPageBox {
-        width: 100px;
-        height: 100px;
-        margin-left: 10px;
-        text-align: center;
-        max-width: 100%;
-        margin-top: 10px;
-        min-width: 80%;
-    }
-}
