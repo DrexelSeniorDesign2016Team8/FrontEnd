@@ -54,8 +54,10 @@ app.factory('apiCall', function($http, $log) {
         return method;
     };
    service.setSessionId = function(sessionId) {
-       loggedIn=true;
-       this.sessionId=sessionId;
+       if (sessionId) {
+           loggedIn = true;
+           this.sessionId = sessionId;
+       }
    }
     /**
      * performs the api request by creating an http request
