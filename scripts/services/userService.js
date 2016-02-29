@@ -17,6 +17,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     }
     function setSessionId(sessionId) {
         user.sessionId=sessionId;
+        apiCall.setSessionId(sessionId);
     }
     function getUserName() {
         return user.emailAddress;
@@ -171,7 +172,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         searchService.setApiCall(apiCall);
     }
     function setFavorite(collegeId, callback) {
-        apiCall.setApiDestination("AddFavorite.php");
+        apiCall.setApiDestination("AddFavorite.php?");
         apiCall.setParameters("college_id="+collegeId);
         apiCall.callCollegeSearchAPI(callback);
     }

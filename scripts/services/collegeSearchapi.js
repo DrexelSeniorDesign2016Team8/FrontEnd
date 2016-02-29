@@ -7,7 +7,8 @@ app.factory('apiCall', function($http, $log) {
     var finalUrl = "";
     var response = "";
     var service = {};
-    var user = {}
+    var loggedIn = false;
+    var sessionId;
     /**
      * This function creates the url for the college search api
      * @returns {string}
@@ -16,12 +17,10 @@ app.factory('apiCall', function($http, $log) {
 
         finalUrl = endPoint + "/";
 
-
-
         finalUrl = finalUrl + apiCall;
 
-        if (user.loggedIn) {
-            finalUrl =+ "sid"+user.sessionId+"&";
+        if (loggedIn) {
+            finalUrl =+ "sid"+sessionId+"&";
         }
         finalUrl +=apiParameters;
         return finalUrl;
@@ -54,9 +53,10 @@ app.factory('apiCall', function($http, $log) {
     service.getMethod = function() {
         return method;
     };
-    service.setUser = function(user) {
-        this.userService = user;
-    };
+   service.setSessionId = function(sessionId) {
+       loggedIn=true;
+       this.sessionId=sessionId;
+   }
     /**
      * performs the api request by creating an http request
      * The requests are all done not asynchronously.
