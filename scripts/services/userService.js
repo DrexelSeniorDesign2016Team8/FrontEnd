@@ -170,6 +170,16 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function setApiSearch() {
         searchService.setApiCall(apiCall);
     }
+    function setFavorite(collegeId, callback) {
+        apiCall.setApiDestination("AddFavorite.php");
+        apiCall.setParameters("college_id="+collegeId);
+        apiCall.callCollegeSearchAPI(callback);
+    }
+    function removeFavorite(collegeId, callback) {
+        apiCall.setApiDestination("RemoveFavorite.php");
+        apiCall.setParameters("college_id="+collegeId);
+        apiCall.callCollegeSearchAPI(callback);
+    }
     return {
 
         getUserName: getUserName,
@@ -196,6 +206,8 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         emailFavorites: emailFavorites,
         saveSearchPreference: saveSearchPreferences,
         getSearchService: getSearchService,
-        setApiSearch: setApiSearch
+        setApiSearch: setApiSearch,
+        removeFavorite: removeFavorite,
+        setFavorite: setFavorite
     };
 });

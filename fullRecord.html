@@ -19,6 +19,6 @@
             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
 
     <div class="favoriteButton">
-        <md-button>FAVORITE</md-button>
+        <md-button class="md-raised" ng-show='userService.isLoggedin()'>FAVORITE</md-button>
     </div>
         </div>

@@ -16,11 +16,14 @@ app.factory('apiCall', function($http, $log) {
 
         finalUrl = endPoint + "/";
 
-        if (user.loggedIn) {
-            finalUrl =+ user.sessionId+"&";
-        }
 
-        finalUrl = finalUrl + apiCall + apiParameters;
+
+        finalUrl = finalUrl + apiCall;
+
+        if (user.loggedIn) {
+            finalUrl =+ "sid"+user.sessionId+"&";
+        }
+        finalUrl +=apiParameters;
         return finalUrl;
     };
     /**

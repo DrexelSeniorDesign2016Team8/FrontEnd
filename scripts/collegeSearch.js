@@ -12,6 +12,7 @@ var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnim
 		userService.setApiSearch();
 		apiCall.setUser(userService.sessionId);
 
+
 		var searchPreferences = userService.getSearchParameters();
 		if (version!=".6")
 			//$localStorage.$reset();

@@ -1,4 +1,4 @@
-app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $mdMedia, $log, searchService)
+app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $mdToast, $log, searchService, userService)
 {
     $scope.results = {
         loading: false,
@@ -76,8 +76,6 @@ loadDropdowns = function() {
 
         $scope.colleges=response;
 
-        // TODO set up onclicks
-
     };
 
     $scope.toggleSearch = buildToggler('searchBar');
@@ -89,7 +87,6 @@ loadDropdowns = function() {
     $scope.openMoreInfo = function(ev, college) {
 
 
-        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
         $mdDialog.show({
                 controller: fullRecordController,
                 templateUrl: 'fullRecord.html',
@@ -104,14 +101,8 @@ loadDropdowns = function() {
             .then(function() {
             }, function() {
             });
-        $scope.$watch(function() {
-            return $mdMedia('xs') || $mdMedia('sm');
-        }, function(wantsFullScreen) {
-            $scope.customFullscreen = (wantsFullScreen === true);
-        });
     };
     $scope.openMenu = function($mdOpenMenu, ev) {
-        originatorEv = ev;
         $mdOpenMenu(ev);
     };
     /*
@@ -133,6 +124,34 @@ loadDropdowns = function() {
         searchService.search($scope.loadResults);
         $mdSidenav('searchBar').close();
 
+    };
+    $scope.addFavorite = function(collegeId) {
+        $scope.results.loading=true;
+        userService.setFavorite(collegeId, function() {
+            $scope.showToast("College Unfavorited", "college unfavorited");
+            $scope.results.loading=false;
+        });
+    }
+    $scope.RemoveFavorite = function(collegeId) {
+        $scope.results.loading=true;
+        userService.removeFavorite(collegeId, function() {
+            $scope.showToast("College Unfavorited", "college unfavorited")
+            $scope.results.loading=false;
+        })
+    };
+    $scope.showToast = function(message, action) {
+
+        var toast = $mdToast.simple()
+            .textContent(message)
+            .action('OK')
+            .highlightAction(false)
+            .position('top right')
+        $mdToast.show(toast).then(function (response) {
+            if (response == 'ok') {
+                $log.debug(action);
+                $mdToast.hide();
+            }
+        });
     };
     function buildToggler(navID) {
         return function () {
