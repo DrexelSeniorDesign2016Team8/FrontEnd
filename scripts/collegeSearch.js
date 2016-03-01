@@ -10,7 +10,7 @@ var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnim
 
 		var version = $localStorage.version;
 		userService.setApiSearch();
-		apiCall.setSessionId(userService.sessionId);
+		apiCall.setSessionId(843284523);
 
 
 		var searchPreferences = userService.getSearchParameters();
