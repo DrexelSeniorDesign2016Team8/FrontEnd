@@ -132,18 +132,18 @@ loadDropdowns = function() {
         $mdSidenav('searchBar').close();
 
     };
-    $scope.addFavorite = function(college, index) {
+    $scope.addFavorite = function(instIds, index) {
         $scope.results.loading=true;
-        collegeId = college.instIDs
+        collegeId = instIds;
         userService.setFavorite(collegeId, function() {
             $scope.showToast("College Unfavorited", "college unfavorited");
             $scope.colleges[index].favorited=true;
             $scope.results.loading=false;
         });
     }
-    $scope.removeFavorite = function(college,index) {
+    $scope.removeFavorite = function(instIds,index) {
         $scope.results.loading=true;
-        collegeId = college.instIDs
+        collegeId = instIDs;
         userService.removeFavorite(collegeId, function() {
             $scope.showToast("College Unfavorited", "college unfavorited")
             $scope.results.loading=false;
