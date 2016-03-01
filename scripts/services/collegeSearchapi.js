@@ -53,11 +53,10 @@ app.factory('apiCall', function($http, $log) {
     service.getMethod = function() {
         return method;
     };
-   service.setSessionId = function(sessionId) {
+   service.setSessionId = function(sid) {
        if (sessionId) {
            loggedIn = true;
-           this.sessionId = sessionId;
-
+           sessionId = sid;
 
        }
    }
