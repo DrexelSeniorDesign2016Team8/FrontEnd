@@ -177,7 +177,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         apiCall.callCollegeSearchAPI(callback);
     }
     function removeFavorite(collegeId, callback) {
-        apiCall.setApiDestination("removeFavorite.php");
+        apiCall.setApiDestination("deleteFavorite.php");
         apiCall.setParameters("college_id="+collegeId);
         apiCall.callCollegeSearchAPI(callback);
     }
