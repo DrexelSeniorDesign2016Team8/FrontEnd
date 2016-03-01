@@ -73,6 +73,12 @@ loadDropdowns = function() {
            if (response[i].URL && response[i].address)    // only if website exists
             response[i].googleMapsAddress = "http://www.maps.google.com/maps?q=" +((response[i].address));
            // determine if college is faovirited and make boolean
+           if (response[i].favorited=="1") {
+               response[i].favorited=true;
+           }
+           else if (response[i].favorited=="0") {
+               response[i].favorited=false;
+           }
         }
 
         $scope.colleges=response;
