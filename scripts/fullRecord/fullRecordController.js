@@ -5,13 +5,10 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
 
     $scope.college=$scope.items;
 
-
-
 $scope.hide = function() {
     $mdDialog.hide();
 };
 $scope.cancel = function() {
-    $mdDialog.can
     $scope.removeFavorite = function(collegeId) {
         $scope.results.loading=true;
         userService.removeFavorite(collegeId, function() {

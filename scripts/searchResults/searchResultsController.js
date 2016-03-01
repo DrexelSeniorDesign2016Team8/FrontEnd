@@ -169,6 +169,7 @@ loadDropdowns = function() {
                 });
         }
     }
+
     $scope.autoFillSearch();
     loadDropdowns();
     fillResults();
