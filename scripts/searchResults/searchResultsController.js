@@ -143,7 +143,7 @@ loadDropdowns = function() {
     }
     $scope.removeFavorite = function(instIds,index) {
         $scope.results.loading=true;
-        collegeId = instIDs;
+        collegeId = instIds;
         userService.removeFavorite(collegeId, function() {
             $scope.showToast("College Unfavorited", "college unfavorited")
             $scope.results.loading=false;
