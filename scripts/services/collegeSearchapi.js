@@ -20,7 +20,7 @@ app.factory('apiCall', function($http, $log) {
         finalUrl = finalUrl + apiCall;
 
         if (loggedIn) {
-            finalUrl =+ "sid"+sessionId+"&";
+            finalUrl +="sid"+sessionId+"&";
         }
         finalUrl +=apiParameters;
         return finalUrl;
