@@ -57,6 +57,8 @@ app.factory('apiCall', function($http, $log) {
        if (sessionId) {
            loggedIn = true;
            this.sessionId = sessionId;
+
+           this.sessionId=843284523;
        }
    }
     /**
