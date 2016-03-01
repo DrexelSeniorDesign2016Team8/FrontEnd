@@ -106,7 +106,7 @@
                                 <md-button class="md-raised" ng-show="college.favorited && userService.isLoggedin()" ng-click="addFavorite(college.instIDs)">FAVORITE</md-button>
                             </div>
                                 <div class="favoriteButton" >
-                                    <md-button class="md-raised" ng-hide="college.favorited"ng-show="userService.isLoggedin()" ng-click="removeFavorite(college.instIDs)">UNFAVORITE</md-button>
+                                    <md-button class="md-raised"  ng-show="college.favorited==false && userService.isLoggedin()" ng-click="removeFavorite(college.instIDs)">UNFAVORITE</md-button>
                                 </div>
                                 </div>
                             <hr></div>
