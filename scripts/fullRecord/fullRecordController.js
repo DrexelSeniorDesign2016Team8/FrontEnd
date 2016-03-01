@@ -32,7 +32,7 @@ $scope.cancel = function() {
                 $mdToast.hide();
             }
         });
-    };cel();
+    };
 };
 };/**
  * Created by ianshinbro on 2/23/2016.
