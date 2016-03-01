@@ -172,12 +172,12 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         searchService.setApiCall(apiCall);
     }
     function setFavorite(collegeId, callback) {
-        apiCall.setApiDestination("AddFavorite.php?");
+        apiCall.setApiDestination("addFavorite.php?");
         apiCall.setParameters("college_id="+collegeId);
         apiCall.callCollegeSearchAPI(callback);
     }
     function removeFavorite(collegeId, callback) {
-        apiCall.setApiDestination("RemoveFavorite.php");
+        apiCall.setApiDestination("removeFavorite.php");
         apiCall.setParameters("college_id="+collegeId);
         apiCall.callCollegeSearchAPI(callback);
     }
