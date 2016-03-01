@@ -57,7 +57,13 @@ function formatSearch(searchParameters) {
         parameters += "studentPopulation=" + searchParameters.studentPopulation + "&";
     }
     if (searchParameters.classSize) {
-        parameters += "classSize=" + searchParameters.classSize;
+        parameters += "classSize=" + searchParameters.classSize+"&";
+    }
+    if (searchParameters.favoritedInstitutions) {
+        parameters += "favoritedInstitutions=" + searchParameters.favoritedInstitutions +"&";
+    }
+    if (searchParameters.commonApplication) {
+        parameters += "commonApplication=" + searchParameters.commonApplication + "&";
     }
 
     return parameters;

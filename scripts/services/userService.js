@@ -144,6 +144,12 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function setLoginStatus(status) {
         user.loginFailed = status;
     }
+    function searchFavorites() {
+        preferences = {};
+        preferences.favoritedInstitutions = {}
+        preferences.favoritedInstitutions = 1;
+        searchService.set(preferences);
+    }
 
     function saveSearchPreferences(callback) {
         params = searchService.get();
@@ -209,6 +215,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         getSearchService: getSearchService,
         setApiSearch: setApiSearch,
         removeFavorite: removeFavorite,
-        setFavorite: setFavorite
+        setFavorite: setFavorite,
+        searchFavorites: searchFavorites
     };
 });

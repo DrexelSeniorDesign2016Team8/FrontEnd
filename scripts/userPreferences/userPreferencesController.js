@@ -2,7 +2,7 @@
 This is the controller for the preferences screen
 The delete content dialog is generated here
  */
-app.controller('userPreferencesController', function ($scope, $mdDialog, $log, userService, $mdToast) {
+app.controller('userPreferencesController', function ($scope, $mdDialog, $log, userService, $mdToast,navigationService) {
     $scope.userService = userService;
    var searchService = userService.getSearchService();
     $scope.deleteConfirmation = function (ev) {
@@ -108,7 +108,11 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
             $scope.status = 'You decided to keep your debt.';
         });
     };
-
+    $scope.getFavorites = function()
+    {
+        userService.searchFavorites();
+        navigationService.leavePage("searchResults.html");
+    }
     function deleteAccount() {
 
     userService.deleteAccount();
