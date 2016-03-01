@@ -33,6 +33,20 @@ $scope.cancel = function() {
             }
         });
     };
+    $scope.addFavorite = function(collegeId) {
+        $scope.results.loading=true;
+        userService.setFavorite(collegeId, function() {
+            $scope.showToast("College Unfavorited", "college unfavorited");
+            $scope.results.loading=false;
+        });
+    }
+    $scope.removeFavorite = function(collegeId) {
+        $scope.results.loading=true;
+        userService.removeFavorite(collegeId, function() {
+            $scope.showToast("College Unfavorited", "college unfavorited")
+            $scope.results.loading=false;
+        })
+    };
 };
 };/**
  * Created by ianshinbro on 2/23/2016.
