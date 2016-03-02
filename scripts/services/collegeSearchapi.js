@@ -30,8 +30,7 @@ app.factory('apiCall', function($http, $log) {
      * @param apiDestination - destination for the api call
      */
     service.setApiDestination = function(apiDestination) {
-        var encodedDestination = encodeURIComponent(apiDestination);
-        apiCall = encodedDestination;
+        apiCall = apiDestination;
     }
     service.setParameters = function(parameters) {
         var encodedDestination = encodeURIComponent(parameters);
