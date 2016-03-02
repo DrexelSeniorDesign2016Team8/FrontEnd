@@ -56,11 +56,11 @@ function formatSearch(searchParameters) {
     if (searchParameters.studentPopulation) {
      //   minPop=
        //     maxPop=
-       var population =  searchParameters.studentPopluation.split("-");
+       var population =  searchParameters.studentPopulation.split("-");
         parameters += "minPop=" + population[0] + "&" + "maxPop=" + population[1];
     }
     if (searchParameters.averageClassSize) {
-        var classSize =  searchParameters.studentPopluation.split("-");
+        var classSize =  searchParameters.averageClassSize.split("-");
         parameters += "minClass=" + classSize[0]+"&" + "maxClass=" + classSize[1];
     }
     if (searchParameters.favoritedInstitutions) {
