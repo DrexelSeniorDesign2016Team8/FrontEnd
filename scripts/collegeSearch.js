@@ -13,10 +13,8 @@ var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnim
 
 
 		var searchPreferences = userService.getSearchParameters();
-		if (version!=".6")
+		//if (version!=".6")
 			//$localStorage.$reset();
-
-		navigationService.loadPage();
 
 		// then make a call to verify the authentication key, if not a new one will be created
 
