@@ -105,7 +105,7 @@
                                 </div>
                                 </span>
 <br>
-<div layout="title2" layout-align="center center" class="sideBarLabel searchHeader searchLabel">
+<div layout="title2" layout-align="center center" class="sideBarLabel searchHeader searchLabel" style="text-decoration:underline;">
     Personal Preferences
 </div>
 <br>
@@ -126,7 +126,7 @@
                                        <div class="searchPageBox" flex="20">
                                            <!-- State-->
                                            <md-input-container class="searchPageBox">
-                                               <label>State</label>
+                                               <label style="color:white !important;">State</label>
                                                <md-select class="searchLabel" ng-model="parameter.stateName">
                                                    <md-option ng-repeat="state in parameter.states" value="{{state.fullName}}">
                                                        {{state.fullName}}
@@ -139,7 +139,7 @@
                                                   <!-- Zip Code-->
                                                   <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                       <label class="searchLabel">Zip Code</label>
-                                                      <input type="text" name="zipcode" ng-model="parameter.zipcode"ng-pattern="/^[0-9]{1,5}$/">
+                                                      <input type="text" name="zipcode" ng-model="parameter.zipcode"ng-pattern="/^[0-9]{1,5}$/" style="color:white !important;" >
                                                       <div ng-messages="CollegeInfo.zipcode.$error">
                                                           <div ng-message="pattern">Not a valid zip code</div>
                                                       </div>
