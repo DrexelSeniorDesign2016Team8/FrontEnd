@@ -71,11 +71,11 @@ app.factory('apiCall', function($http, $log) {
         makeUrl();
 
         if (service.getMethod() == "")  {
-            this.method = "GET";
+            method = "GET";
             service.setMethod(method);
         }
         $http({
-            method: this.method,
+            method: service.getMethod(),
             url: finalUrl,
             async: false,
         }).success(function (data) {
