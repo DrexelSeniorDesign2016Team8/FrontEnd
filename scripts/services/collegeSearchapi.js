@@ -41,10 +41,6 @@ app.factory('apiCall', function($http, $log) {
             query += param[0]+"=";
 
             query += encodeURIComponent(param[1]);
-
-            if (i!==results.length-1) {
-                query+="&";
-            }
         }
         var encodedDestination = (query);
         apiParameters = encodedDestination;
