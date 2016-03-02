@@ -30,18 +30,24 @@ $scope.cancel = function() {
             }
         });
     };
-    $scope.addFavorite = function(collegeId) {
+    $scope.addFavorite = function(instIds, index) {
         $scope.results.loading=true;
+        collegeId = instIds;
         userService.setFavorite(collegeId, function() {
             $scope.showToast("College Unfavorited", "college unfavorited");
+            //TODO determine based on success
+            $scope.colleges[index].favorited=true;
             $scope.results.loading=false;
         });
     }
-    $scope.removeFavorite = function(collegeId) {
+    $scope.removeFavorite = function(instIds,index) {
         $scope.results.loading=true;
+        collegeId = instIds;
         userService.removeFavorite(collegeId, function() {
             $scope.showToast("College Unfavorited", "college unfavorited")
             $scope.results.loading=false;
+            //TODO determine based on success
+            $scope.colleges[index].favorited=false;
         })
     };
 };
