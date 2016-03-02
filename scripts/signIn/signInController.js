@@ -78,8 +78,8 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 $scope.login.failed=false;
             }
             if (success) {
-                if (response && response.SessionID) {
-                    userService.setSessionId(results.SessionID);
+                if (response && response.response.session_id) {
+                    userService.setSessionId(results.response.session_id);
                 }
                 //TODO adjust page so logged in information is now shown
                 $mdDialog.hide();
