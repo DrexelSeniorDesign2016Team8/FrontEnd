@@ -54,10 +54,14 @@ function formatSearch(searchParameters) {
         parameters += "institutionType=" + searchParameters.institutionType + "&";
     }
     if (searchParameters.studentPopulation) {
-        parameters += "studentPopulation=" + searchParameters.studentPopulation + "&";
+     //   minPop=
+       //     maxPop=
+       var population =  searchParameters.studentPopluation.split("-");
+        parameters += "minPop=" + population[0] + "&" + "maxPop=" + population[1];
     }
-    if (searchParameters.classSize) {
-        parameters += "classSize=" + searchParameters.classSize+"&";
+    if (searchParameters.averageClassSize) {
+        var classSize =  searchParameters.studentPopluation.split("-");
+        parameters += "minClass=" + classSize[0]+"&" + "maxClass=" + classSize[1];
     }
     if (searchParameters.favoritedInstitutions) {
         parameters += "favoritedInstitutions=" + searchParameters.favoritedInstitutions +"&";

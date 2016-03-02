@@ -193,27 +193,23 @@
                                     </md-input-container>
                             </div>
 
-                                 <div class="searchPageBox" flex="20">
-                                     <!-- Student Population-->
-                                     <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                         <label class="searchLabel">Student Population</label>
-                                         <input type="number" name="studentPopulation" ng-model="parameter.studentPopulation" min="0">
-                                         <div ng-messages="CollegeInfo.studentPopulation.$error">
-                                             <div ng-message="min">Please enter a number greater than 0</div>
-                                         </div>
-                                     </md-input-container>
-                                 </div>
+                                <md-input-container class="searchPageBox">
+                                    <label>Student Population</label>
+                                    <md-select class="searchLabel" ng-model="parameter.studentPopulation">
+                                        <md-option ng-repeat="population in parameter.population" value="{{population.population}}">
+                                            {{population.population}}
+                                        </md-option>
+                                    </md-select>
+                                  </md-input-container>
 
-                                      <div class="searchPageBox" flex="20">
-                                          <!-- Class Size-->
-                                          <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                              <label class="searchLabel">Class Size</label>
-                                              <input type="number" name="classSize" ng-model="parameter.classSize" min="0">
-                                              <div ng-messages="CollegeInfo.classSize.$error">
-                                                  <div ng-message="min">Please enter a number greater than 0</div>
-                                              </div>
-                                          </md-input-container>
-                                      </div>
+                                      <md-input-container class="searchPageBox">
+                                          <label>Average Class Size</label>
+                                          <md-select class="searchLabel" ng-model="parameter.averageClassSize">
+                                              <md-option ng-repeat="classSize in parameter.classSize" value="{{classSize.classSize}}">
+                                                  {{classSize.classSize}}
+                                              </md-option>
+                                          </md-select>
+                                      </md-input-container>
                             </span>
 <br>
 

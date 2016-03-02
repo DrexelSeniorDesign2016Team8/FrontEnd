@@ -128,6 +128,15 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
        var params= userService.getSearchParameters();
         userService.setSearchPreferences(params);
         userService.setSearchPreferences();
+        $scope.parameter.states = searchService.fillStates();
+        $scope.parameter.population = searchService.fillPercentages();
+
+        $scope.parameter.percentages = searchService.fillPercentages();
+        $scope.parameter.studentPopulation = searchService.fillPopulation();
+        $scope.parameter.population = searchService.fillPopulation();
+
+
+        $scope.parameter.classSize = searchService.fillClassSize();
     }
 
     $scope.cancel = function () {

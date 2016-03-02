@@ -27,14 +27,15 @@ app.factory('searchService', function($localStorage, apiCall) {
                 'retentionRate': data.retentionRate,
                 'institutionType': data.institutionType,
                 'studentPopulation': data.studentPopulation,
-                'classSize': data.classSize,
-                'CommonApplicaiton': data.commonApplication,
+                'averageClassSize': data.averageClassSize,
+                'CommonApplication': data.commonApplication,
                 'favoritedInstitutions': data.favoritedInstitutions
             },
         };
         $localStorage.params = config.params;
         searchOptions.params = config.params;
     }
+
     function setGPA(gpa) {
         var config = {
             params: {
@@ -43,12 +44,15 @@ app.factory('searchService', function($localStorage, apiCall) {
         }
         searchOptions.GPAvalue = config.params.GPAvalue;
     }
-    function  getGPA() {
+
+    function getGPA() {
         return searchOptions.GPAvalue;
     }
+
     function get() {
         return $localStorage.params
     }
+
     function fillStates() {
         return ('None,' + 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,' +
             'Florida Georgia, Hawaii, Idaho, Illinois Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland,' +
@@ -56,12 +60,29 @@ app.factory('searchService', function($localStorage, apiCall) {
             'New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania,' +
             'Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington,' +
             'West Virginia, Wisconsin, Wyoming,'
-        ).split(',').map(function (state) { return { fullName: state }; });
+        ).split(',').map(function (state) {
+            return {fullName: state};
+        });
     }
+
+    function fillPopulation() {
+        return ("500-1,000:" + "1,000-2,500:"+"2,500-10,000:"+"10,000+" ).split(':').map(function (population) {
+            return {population: population};
+        });
+    }
+    function fillClassSize() {
+        return ("0-10:" + "10-20:"+"20-30:"+"40-50" ).split(':').map(function (classSize) {
+            return {classSize: classSize};
+        });
+    }
+
     function fillPercentages() {
-        return  ('None,' + '10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%'
-        ).split(',').map(function (percentage) { return { percentage: percentage }; });
+        return ('None,' + '10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%'
+        ).split(',').map(function (percentage) {
+            return {percentage: percentage};
+        });
     }
+
     /**
      * This function performs a search
      * @param callback - the function to be called after a search is performed
@@ -79,6 +100,7 @@ app.factory('searchService', function($localStorage, apiCall) {
 
         apiCall.callCollegeSearchAPI(callback);
     }
+
     function setApiCall(apiCall) {
         this.apiCall = apiCall;
     }
@@ -87,11 +109,13 @@ app.factory('searchService', function($localStorage, apiCall) {
         set: set,
         get: get,
         search: search,
-        setGPA:setGPA,
+        setGPA: setGPA,
         getGPA: getGPA,
-        fillStates : fillStates,
+        fillStates: fillStates,
+        fillPopulation: fillPopulation,
         fillPercentages: fillPercentages,
         setApiCall: setApiCall,
+        fillClassSize: fillClassSize
     }
 
 });

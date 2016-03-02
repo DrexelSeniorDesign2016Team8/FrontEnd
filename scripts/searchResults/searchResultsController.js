@@ -14,8 +14,14 @@ loadDropdowns = function() {
 
 
     $scope.parameter.states = searchService.fillStates();
+    $scope.parameter.population = searchService.fillPercentages();
 
     $scope.parameter.percentages = searchService.fillPercentages();
+    $scope.parameter.studentPopulation = searchService.fillPopulation();
+    $scope.parameter.population = searchService.fillPopulation();
+
+
+    $scope.parameter.classSize = searchService.fillClassSize();
     $scope.parameter.filterOptions = ('Best Match,'
     ).split(',').map(function (filterOption) {
         return {filterOption: filterOption};
