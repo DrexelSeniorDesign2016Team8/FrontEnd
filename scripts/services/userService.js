@@ -18,6 +18,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function setSessionId(sessionId) {
         user.sessionId=sessionId;
         apiCall.setSessionId(sessionId);
+        $localStorage.sessionId=sessionId;
     }
     function getUserName() {
         return user.emailAddress;
@@ -54,6 +55,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         $localStorage.username='';
         $localStorage.authenticationKey='';
         $localStorage.rememberMe=false;
+        $localStorage.sessionId="";
 
     }
 
@@ -98,8 +100,9 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
      */
     function restoreLocalStorage() {
         if ($localStorage.username && $localStorage.loggedIn) {
-            user.username = $localStorage.username;
-            user.loggedIn = $localStorage.loggedIn;
+            user.username = setUserName($localStorage.username);
+            user.loggedIn = setLoggedIn(localStorage.loggedIn);
+            user.sessionId=setSessionId(sessionId);
             if ($localStorage.rememberMe==false) {      // if remember me is not selected remove local storage
                 $localStorage.loggedIn=false;
                 $localStorage.username='';

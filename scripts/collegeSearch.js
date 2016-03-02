@@ -11,6 +11,7 @@ var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnim
 		var version = $localStorage.version;
 		userService.setApiSearch();
 
+
 		var searchPreferences = userService.getSearchParameters();
 		if (version!=".6")
 			//$localStorage.$reset();

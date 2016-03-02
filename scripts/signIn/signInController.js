@@ -38,6 +38,9 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 userService.setUserName(response.response.email);
                 userService.setEmailAddress(response.response.email);
                 userService.setLoggedIn(true);
+                if (response && response.SessionID) {
+                    userService.setSessionId(results.SessionID);
+                }
                 $scope.login.loading=true;
                 $mdDialog.hide();
             }
