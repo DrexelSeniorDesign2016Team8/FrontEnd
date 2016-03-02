@@ -33,7 +33,8 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
             }
             else {
                 $log.debug("account creation successful");
-
+                createAccountForm.emailAddressCreateAccount.value = "";
+                createAccountForm.passwordCreateAccount.value = "";
                 var success = true;
                 userService.setUserName(response.response.email);
                 userService.setEmailAddress(response.response.email);
@@ -69,6 +70,8 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 $scope.login.attempts--;
                 $scope.login.loading=false;
                 success = false;
+                signinForm.emailAddressSignIn.value = "";
+                signinForm.passwordSignIn.value ="";
                 if ($scope.login.attempts==0) {
                     $mdDialog.hide();
                 }
