@@ -27,7 +27,6 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 $log.debug("account  creation failed");
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
-                $scope.login.attempts--;
                 success = false;
             }
             else {
