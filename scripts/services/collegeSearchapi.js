@@ -33,7 +33,15 @@ app.factory('apiCall', function($http, $log) {
         apiCall = apiDestination;
     }
     service.setParameters = function(parameters) {
-        var encodedDestination = encodeURIComponent(parameters);
+        var param = parameters;
+       var results =  param.split("&").split("=");
+        var query = "";
+        for (var i=0; i<results.length; i++) {
+                var param = results[0].split("=");
+            query =+ param[0];
+            query =+ encodeURIComponent(param[1]);
+        }
+        var encodedDestination = encodeURIComponent(query);
         apiParameters = encodedDestination;
     }
     service.getapiCall = function() {
