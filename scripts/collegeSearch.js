@@ -10,8 +10,6 @@ var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnim
 
 		var version = $localStorage.version;
 		userService.setApiSearch();
-		apiCall.setSessionId(843284523);
-
 
 		var searchPreferences = userService.getSearchParameters();
 		if (version!=".6")
