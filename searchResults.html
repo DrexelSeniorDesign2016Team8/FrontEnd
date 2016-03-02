@@ -105,10 +105,10 @@
                                 <h2> <a ng-href="#" ng-click="openMoreInfo(college)">{{college.name}}</a></h2>
 
                             <div class="favoriteButton" >
-                                <md-button class="md-raised" ng-show="college.favorited && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)">FAVORITE</md-button>
+                                <md-button class="md-raised" ng-show="college.favorited==false && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)">FAVORITE</md-button>
                             </div>
                                 <div class="favoriteButton" >
-                                    <md-button class="md-raised"  ng-show="college.favorited==false && userService.isLoggedin()" ng-click="removeFavorite(college.instIDs, $index)">UNFAVORITE</md-button>
+                                    <md-button class="md-raised"  ng-show="college.favorited&& userService.isLoggedin()" ng-click="removeFavorite(college.instIDs, $index)">UNFAVORITE</md-button>
                                 </div>
                                 </div>
                             <hr></div>
