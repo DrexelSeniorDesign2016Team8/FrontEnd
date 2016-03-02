@@ -18,10 +18,10 @@
             <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
     <div class="favoriteButton" >
-        <md-button class="md-raised" ng-show="userService.isLoggedin() && college.favorited" ng-click="addFavorite(college.instIDs)">FAVORITE</md-button>
+        <md-button class="md-raised" ng-show="college.favorited==false && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)">FAVORITE</md-button>
     </div>
     <div class="favoriteButton" >
-        <md-button class="md-raised"  ng-show="college.favorited==false && userService.isLoggedin()"  ng-click="removeFavorite(college.instIDs)">UNFAVORITE</md-button>
+        <md-button class="md-raised"  ng-show="college.favorited&& userService.isLoggedin()" ng-click="removeFavorite(college.instIDs, $index)">UNFAVORITE</md-button>
     </div>
 </div>
 
