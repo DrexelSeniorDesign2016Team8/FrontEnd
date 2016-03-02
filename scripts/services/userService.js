@@ -121,7 +121,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function generateSignInUParameters(userInfo) {
         var paramters = '';
         paramters += "email=" + userInfo.userName + "&";
-        paramters += "pass=" + userInfo.password + "&";
+        paramters += "pass=" + userInfo.password;
 
             return paramters;
     }
@@ -136,9 +136,8 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     }
     function generateCreateAccountParameters(userInfo) {
         var parameters ='';
-        parameters += "name=" + userInfo.name + "&";
         parameters += "email=" + userInfo.userName +"&";
-        parameters += "pass=" + userInfo.password + "&";
+        parameters += "pass=" + userInfo.password ;
         return parameters;
     }
     function setLoginStatus(status) {
