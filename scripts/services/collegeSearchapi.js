@@ -41,7 +41,7 @@ app.factory('apiCall', function($http, $log) {
             query += param[0]+"=";
             query += encodeURIComponent(param[1]);
         }
-        var encodedDestination = encodeURIComponent(query);
+        var encodedDestination = (query);
         apiParameters = encodedDestination;
     }
     service.getapiCall = function() {
