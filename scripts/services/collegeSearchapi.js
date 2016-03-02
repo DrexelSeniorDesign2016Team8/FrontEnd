@@ -38,8 +38,8 @@ app.factory('apiCall', function($http, $log) {
         var query = "";
         for (var i=0; i<results.length; i++) {
                 var param = results[0].split("=");
-            query =+ param[0];
-            query =+ encodeURIComponent(param[1]);
+            query += param[0]+"=";
+            query += encodeURIComponent(param[1]);
         }
         var encodedDestination = encodeURIComponent(query);
         apiParameters = encodedDestination;
