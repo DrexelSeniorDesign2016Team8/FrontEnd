@@ -59,8 +59,8 @@ function formatSearch(searchParameters) {
        var population =  searchParameters.studentPopulation.split("-");
         parameters += "minPop=" + population[0] + "&" + "maxPop=" + population[1];
     }
-    if (searchParameters.averageClassSize) {
-        var classSize =  searchParameters.averageClassSize.split("-");
+    if (searchParameters.classSizes) {
+        var classSize =  searchParameters.classSizes.split("-");
         parameters += "minClass=" + classSize[0]+"&" + "maxClass=" + classSize[1];
     }
     if (searchParameters.favoritedInstitutions) {

@@ -27,6 +27,7 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 $log.debug("account  creation failed");
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
+                $scope.login.loading=false;
                 userService.setLoggedIn(false);
                 success = false;
             }
@@ -37,6 +38,7 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 userService.setUserName(response.response.email);
                 userService.setEmailAddress(response.response.email);
                 userService.setLoggedIn(true);
+                $scope.login.loading=true;
                 $mdDialog.hide();
             }
         })

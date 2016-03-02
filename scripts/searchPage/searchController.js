@@ -23,7 +23,6 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
         $scope.parameter.population = searchService.fillPopulation();
 
         $scope.parameter.percentages = searchService.fillPercentages();
-
         $scope.parameter.classSize = searchService.fillClassSize();
 
         deleteCookie("searchParameters");
