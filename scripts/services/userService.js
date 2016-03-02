@@ -42,6 +42,12 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function arePreferencesUpdated() {
         return user.preferencesUpdated;
     }
+    function getSearchPreferences(callback) {
+
+        //TODO change based on php page
+        apiCall.setApiDestination("getPreferences.php?");
+        apiCall.callCollegeSearchAPI(callback);
+    }
 
     /**
      * This function logs a user out, and sets all the corresponding values to their default values
@@ -218,6 +224,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         setApiSearch: setApiSearch,
         removeFavorite: removeFavorite,
         setFavorite: setFavorite,
-        searchFavorites: searchFavorites
+        searchFavorites: searchFavorites,
+        getSearchPreferences: getSearchPreferences
     };
 });

@@ -125,7 +125,8 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         userService.set(searchService.get());
     }
     onPageLoad = function() {
-       var params= userService.getSearchParameters();
+       var params= userService.getSearchPreferences();
+        //TODO fix this based on the response
         userService.setSearchPreferences(params);
         userService.setSearchPreferences();
         $scope.parameter.states = searchService.fillStates();
