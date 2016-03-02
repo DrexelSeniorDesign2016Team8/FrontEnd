@@ -23,16 +23,22 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
             apiCall.setApiDestination(createAccountUrl);
              apiCall.setParameters(parameters);
         apiCall.callCollegeSearchAPI(function(response) {
-            if (response.error) {
+            if (response.status=="error") {
+                $log.debug("account  creation failed");
+                $scope.login.failed = true;
+                $scope.login.message = response.error;
+                $scope.login.attempts--;
+                success = false;
             }
             else {
                 $log.debug("account creation successful");
+
                 var success = true;
                 userService.setUserName(response.response.email);
                 userService.setEmailAddress(response.response.email);
                 userService.setLoggedIn(true);
+                $mdDialog.hide();
             }
-            $mdDialog.hide();
         })
 
 
