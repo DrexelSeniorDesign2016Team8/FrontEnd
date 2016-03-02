@@ -141,6 +141,7 @@ loadDropdowns = function() {
         collegeId = instIds;
         userService.setFavorite(collegeId, function() {
             $scope.showToast("College Unfavorited", "college unfavorited");
+            //TODO determine based on success
             $scope.colleges[index].favorited=true;
             $scope.results.loading=false;
         });
@@ -151,7 +152,8 @@ loadDropdowns = function() {
         userService.removeFavorite(collegeId, function() {
             $scope.showToast("College Unfavorited", "college unfavorited")
             $scope.results.loading=false;
-            $scope.colleges[index].favorited=true;
+            //TODO determine based on success
+            $scope.colleges[index].favorited=false;
         })
     };
     $scope.showToast = function(message, action) {
