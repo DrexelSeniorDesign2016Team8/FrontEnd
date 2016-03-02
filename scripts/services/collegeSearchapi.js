@@ -42,7 +42,7 @@ app.factory('apiCall', function($http, $log) {
 
             query += encodeURIComponent(param[1]);
 
-            if (i!=results.length-1) {
+            if (i!==results.length-1) {
                 query+="&";
             }
         }
