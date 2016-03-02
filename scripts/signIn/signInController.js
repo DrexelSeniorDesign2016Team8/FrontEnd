@@ -64,6 +64,7 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
                 $scope.login.attempts--;
+                $scope.login.loading=false;
                 success = false;
                 if ($scope.login.attempts==0) {
                     $mdDialog.hide();
@@ -81,7 +82,7 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 $mdDialog.hide();
                 userService.setLoggedIn(true);
 
-                userService.setUserName(signinForm.emailAddress.value);
+                userService.setUserName(signinForm.emailAddressSignIn.value);
                 if ($scope.signIn.rememberMe == true) {
                     $scope.rememberMe = true;
                 }
