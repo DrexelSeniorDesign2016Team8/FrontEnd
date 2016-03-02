@@ -34,7 +34,7 @@ app.factory('apiCall', function($http, $log) {
     }
     service.setParameters = function(parameters) {
         var param = parameters;
-       var results =  param.split("&").split("=");
+       var results =  param.split("&");
         var query = "";
         for (var i=0; i<results.length; i++) {
                 var param = results[0].split("=");
