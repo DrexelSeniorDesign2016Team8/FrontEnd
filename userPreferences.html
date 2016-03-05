@@ -51,13 +51,131 @@
     <form name="CollegeInfo">
         <center>
             <div layout="row" layout-align="center center" class="searchLabel searchHeader">
-                Academic Information
+               Personal settings
             </div>
             <br>
             <br>
-            <div id="search" flex="80"search></div>
+           <span layout="grid1" layout-wrap layout-align="center center">
+                                           <div class="searchPageBox" flex="20">
+                                               <!-- GPA Box-->
+                                               <md-input-container class="md-block searchPageBox" flex-gt-sm>
+                                                   <label class="searchLabel">GPA (Out of 4.0)</label>
+                                                   <input type="number" name="gpa" ng-model="parameter.gpa">
+                                                   <md-button class="gpaConverter" style='text-align:center; color:white'  ng-click="convertGPA()">
+                                                       GPA Converter
+                                                   </md-button>
+                                               </md-input-container>
+                                           </div>
+                                           <div class="searchPageBox" flex="20">
+                                               <!-- ACT Box-->
+                                               <md-input-container class="md-block searchPageBox" flex-gt-sm>
+                                                   <label class="searchLabel">ACT Composite Score</label>
+                                                   <input type="number" step="1.0" name="actcomposite" ng-model="parameter.actcomposite" min="0"
+                                                          max="36" ng-pattern="/^[0-9]{1,2}$/" />
+                                                   <div ng-messages="CollegeInfo.actcomposite.$error" multiple md-auto-hide="false">
+                                                       <div ng-message="min">
+                                                           You can't have a negative sore
+                                                       </div>
+                                                       <div ng-message="pattern">
+                                                           You need to enter a two digit number
+                                                       </div>
+                                                       <div ng-message="max">
+                                                           You can't have higher than a 36
+                                                       </div>
+                                                   </div>
+                                               </md-input-container>
+                                           </div>
+               <!-- High School Percentile Box-->
 
-        </center>
+                                             <div class="searchPageBox" flex="20">
+                                                 <md-input-container class="searchPageBox">
+                                                     <label class="searchLabel">High School Percentile</label>
+                                                     <md-select class="searchLabel" ng-model="parameter.HighSchoolPercentile">
+                                                         <md-option ng-repeat="percentage in parameter.percentages" value="{{percentage.percentage}}">
+                                                             {{percentage.percentage}}
+                                                         </md-option>
+                                                     </md-select>
+                                                 </md-input-container>
+                                             </div>
+
+                                             <div class="searchPageBox" flex="20">
+                                                 <!-- Math Score Box-->
+                                                 <md-input-container class="md-block searchPageBox" flex-gt-sm>
+                                                     <label class="searchLabel">Math Score</label>
+                                                     <input type="number" step="1.0" name="MathScore" ng-model="parameter.MathScore" min="0"
+                                                            max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*  min="200" />
+                                                     <div ng-messages="CollegeInfo.MathScore.$error" multiple md-auto-hide="false">
+                                                         <div ng-message="min">
+                                                             You can't have a negative sore
+                                                         </div>
+                                                         <div ng-message="pattern">
+                                                             You need to enter a three digit number
+                                                         </div>
+                                                         <div ng-message="max">
+                                                             You can't have higher than an 800
+                                                         </div>
+                                                     </div>
+                                                 </md-input-container>
+                                             </div>
+
+
+                                      <div class="searchPageBox" flex="20">
+                                          <!-- Writing Box-->
+                                          <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                              <label class="searchLabel">Writing Score</label>
+                                              <input type="number" name="WritingScore" ng-model="parameter.WritingScore" ng-pattern="/^[0-9]{1,3}$/" min="0"
+                                                     max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"* min="200"/>
+                                              <div ng-messages="CollegeInfo.WritingScore.$error" multiple md-auto-hide="false">
+                                                  <div ng-message="min">
+                                                      You can't have a negative sore
+                                                  </div>
+                                                  <div ng-message="pattern">
+                                                      You need to enter a three digit number
+                                                  </div>
+                                                  <div ng-message="max">
+                                                      You can't have higher than an 800
+                                                  </div>
+                                              </div>
+                                          </md-input-container>
+                                      </div>
+                            <div class="searchPageBox" flex="20">
+                                <!-- Reading Score-->
+                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
+
+                                    <label class="searchLabel">Reading Score</label>
+                                    <input type="number" name="ReadingScore" id="ReadingScore" ng-model="parameter.ReadingScore"min="0"
+                                           max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"* min="200"/>
+                                    <div ng-messages="CollegeInfo.ReadingScore.$error" multiple md-auto-hide="false">
+                                        <div ng-message="min">
+                                            You can't have a negative sore
+                                        </div>
+                                        <div ng-message="pattern">
+                                            You need to enter a three digit number
+                                        </div>
+                                        <div ng-message="max">
+                                            You can't have higher than an 800
+                                        </div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                                </span>
+            <br>
+            <br>
+<span layout="grid1" layout-wrap layout-align="center center" class="mobileFriendly">
+
+
+                                       <div class="searchPageBox" flex="20">
+                                           <!-- State-->
+                                           <md-input-container class="searchPageBox">
+                                               <label style="color:white !important;">State</label>
+                                               <md-select class="searchLabel" ng-model="parameter.stateName">
+                                                   <md-option ng-repeat="state in parameter.states" value="{{state.fullName}}">
+                                                       {{state.fullName}}
+                                                   </md-option>
+                                               </md-select>
+                                           </md-input-container>
+                                       </div>
         <md-button class="md-raised" id="save" class=md-raised" style='float:left' ng-disabled="CollegeInfo.$invalid" ng-click="saveConfirm()">
             Save
         </md-button>
