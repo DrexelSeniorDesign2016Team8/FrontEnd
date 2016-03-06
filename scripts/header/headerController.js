@@ -23,7 +23,7 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userSer
     };
 
     $scope.logoClick = function(url) {
-        navigationService.leavePage(url);
+        window.location.href=url;
     }
     $scope.userPreferences = function(url) {
        window.location.href=url;
