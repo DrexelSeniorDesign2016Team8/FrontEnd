@@ -128,6 +128,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         userService.getSearchPreferences(function(response) {
             //TODO fix this based on the response
             userService.setSearchPreferences(response);
+            $scope.parameter=response;
         });
         $scope.parameter.states = searchService.fillStates();
         $scope.parameter.population = searchService.fillPercentages();
@@ -135,6 +136,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         $scope.parameter.percentages = searchService.fillPercentages();
         $scope.parameter.studentPopulation = searchService.fillPopulation();
         $scope.parameter.population = searchService.fillPopulation();
+
 
 
         $scope.parameter.classSize = searchService.fillClassSize();
