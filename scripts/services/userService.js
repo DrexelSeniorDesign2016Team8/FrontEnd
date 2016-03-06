@@ -162,11 +162,9 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function saveSearchPreferences(callback) {
         params = searchService.get();
 
-        var formattedParams = formatSearch(params);
+        if (params) {     // if they exist make call
 
-        if (formattedParams) {     // if they exist make call
-
-            jsonString = formatSearch(formattedParams);
+            jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
         }
         apiCall.setApiDestination("savePreferences.php?");
