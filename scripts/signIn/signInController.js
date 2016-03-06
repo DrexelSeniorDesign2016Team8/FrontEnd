@@ -106,6 +106,9 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 }
         });
     };
+    $scope.resetPassword = function() {
+        window.location.href="resetPassword.html";
+    }
     $scope.hide = function() {
         $mdDialog.hide();
     };
