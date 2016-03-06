@@ -140,7 +140,7 @@ loadDropdowns = function() {
         $scope.results.loading=true;
         collegeId = instIds;
         userService.setFavorite(collegeId, function() {
-            $scope.showToast("College Unfavorited", "college unfavorited");
+            $scope.showToast("College Favorited", "college favorited");
             //TODO determine based on success
             $scope.colleges[index].favorited=true;
             $scope.results.loading=false;
