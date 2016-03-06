@@ -1,12 +1,15 @@
-app.controller('resetPasswordController', function ($scope, userService, $timeout, $log, $mdToast) {
+app.controller('resetPasswordController', function ($scope, userService, apiCall, $timeout, $log, $mdToast) {
     $scope.showConfirmation = false;
     $scope.userService = userService;
         $scope.sendEmailResetPassword = function () {
-           // sendEmail($scope.resetPassword.emailAddress);
+            apiCall.setApiDestination("resetPassword?");
 
-            $scope.showConfirmation();
-           // $scope.showConfirmation = true;
-        };
+            apiCall.callCollegeSearchAPI(function () {
+
+                $scope.showConfirmation();
+                // $scope.showConfirmation = true;
+            });
+        }
 
     $scope.showConfirmation = function() {
 
