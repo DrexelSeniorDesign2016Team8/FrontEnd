@@ -2,8 +2,8 @@ app.controller('resetPasswordController', function ($scope, userService, apiCall
     $scope.showConfirmation = false;
     $scope.userService = userService;
         $scope.sendEmailResetPassword = function () {
-            apiCall.setApiDestination("resetPassword?");
-
+            apiCall.setApiDestination("resetPassword.php?");
+            apiCall.setParameters($scope.resetPasswordform.emailAddress.$viewValue);
             apiCall.callCollegeSearchAPI(function () {
 
                 $scope.showConfirmation();
