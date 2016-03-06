@@ -58,12 +58,14 @@ function formatSearch(searchParameters) {
        //     maxPop=
         if (searchParameters.studentPopulation[0]="10,000+")
         {
-            var population = searchParameters.studentPopulation="10000-99999";
+            var pops = searchParameters.studentPopulation="10000-99999";
+            var population = pops.split("-");
         }
-        else
-        {
+
+            else {
             var population = searchParameters.studentPopulation.split("-");
         }
+
         parameters += "minPop=" + population[0] + "&" + "maxPop=" + population[1];
     }
     if (searchParameters.classSizes) {
