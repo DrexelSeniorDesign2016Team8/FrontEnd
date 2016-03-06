@@ -64,11 +64,14 @@ app.factory('searchService', function($localStorage, apiCall) {
                 'WritingScore': data.WritingScore,
                 'ReadingScore': data.ReadingScore,
 
-                'zipCode': data.zipcode,
+
             },
         };
         if (data.stateName) {
             config.params.StateName = convert_state(data.stateName, "abbrev")
+        }
+        if (data.zipcode) {
+            config.params.zipCode = data.zipcode
         }
         $localStorage.params = config.params;
         searchOptions.params = config.params;
