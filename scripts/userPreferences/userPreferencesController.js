@@ -111,10 +111,10 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
             .title(dialogOptions.title)
             .textContent(dialogOptions.text)
             .targetEvent(ev)
-            .ok(dialogOptions.onconfirm)
+            .ok(dialogOptions.confirm)
             .cancel(dialogOptions.cancel);
         $mdDialog.show(confirm).then(function () {
-            $scope.status = 'You decided to get rid of your debt.';
+            dialogOptions.onconfirm;
         }, function () {
             $scope.status = 'You decided to keep your debt.';
         });
