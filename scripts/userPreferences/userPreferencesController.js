@@ -48,7 +48,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         if (params.zipcode) {
             params.zipCode = params.zipcode;
         }
-        searchService.set(params);
+        searchService.saveForFormat(params);
         savePreferences(function() {
 
             $scope.showToast(options);

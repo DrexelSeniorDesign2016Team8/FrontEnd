@@ -53,7 +53,24 @@ app.factory('searchService', function($localStorage, apiCall) {
         $localStorage.params = config.params;
         searchOptions.params = config.params;
     }
+    function saveForFormat(data) {
+        var config = {
+            params: {
+                // Put required values here
+                'GPAvalue': data.GPAvalue,
+                'ACTScore': data.ACTScore,
+                'highSchoolPercentile': data.HighSchoolPercentile,
+                'MathScore': data.MathScore,
+                'WritingScore': data.WritingScore,
+                'ReadingScore': data.ReadingScore,
+                'StateName': data.stateName,
+                'zipCode': data.zipcode,
+            },
+        };
+        $localStorage.params = config.params;
+        searchOptions.params = config.params;
 
+        }
     function setGPA(gpa) {
         var config = {
             params: {
@@ -135,6 +152,7 @@ app.factory('searchService', function($localStorage, apiCall) {
         setApiCall: setApiCall,
         fillClassSize: fillClassSize,
         restorePreferences: restorePreferences,
+        saveForFormat: saveForFormat
     }
 
 });
