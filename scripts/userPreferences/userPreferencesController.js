@@ -158,6 +158,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         }
             $scope.parameter=response[0];
             $scope.parameter.states = searchService.fillStates();
+            $scope.parameter.stateName=response[0].stateName;
             searchService.set(response[0])
         });
 
