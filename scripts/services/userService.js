@@ -24,6 +24,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         return user.emailAddress;
     }
     function setSearchPreferences(response) {
+        if (response.length==0)
        user.searchService.restorePreferences(response[0]);
     }
 
