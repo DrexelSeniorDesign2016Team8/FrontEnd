@@ -129,7 +129,10 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
     userService.deleteAccount();
     }
     function emailFavorites() {
-        userService.emailFavorites();
+        userService.emailFavorites(function() {
+            options.text = "Favorites sent";
+            options.confirm = "Ok";
+        });
     }
 
     function savePreferences(callback) {
