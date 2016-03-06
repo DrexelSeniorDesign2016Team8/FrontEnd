@@ -8,7 +8,7 @@ app.factory('searchService', function($localStorage, apiCall) {
      */
     function set(data) {
         if (data.stateName) {
-            data.stateName = convert_state(data.stateName, 'abbrev');
+            data.stateName = data.stateName;
         }
         var config = {
             params: {
