@@ -151,7 +151,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
             if (response[0].zipCode)
                 response[0].zipcode = response[0].zipCode;
             if (response[0].ACTScore) {
-                response[0].actcomposite = response[0].ACTScore;
+                response[0].actcomposite = parseInt(response[0].ACTScore);
             }
             $scope.parameter.states = searchService.fillStates();
             $scope.parameter=response[0];
