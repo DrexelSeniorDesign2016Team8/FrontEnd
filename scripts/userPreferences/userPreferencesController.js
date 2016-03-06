@@ -17,7 +17,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
         options.cancel = "CANCEL";
 
-        options.onconfirm = deleteAccount;
+        options.onconfirm = "deleteAccount()";
 
         $scope.showDialog(ev, options);
     };
@@ -32,7 +32,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
         options.cancel = "CANCEL";
 
-        options.onconfirm = sendEmail();
+        options.onconfirm = "sendEmail()";
 
         $scope.showDialog(ev, options);
     }
