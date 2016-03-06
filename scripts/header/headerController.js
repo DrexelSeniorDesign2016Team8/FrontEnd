@@ -26,7 +26,7 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userSer
         navigationService.leavePage(url);
     }
     $scope.userPreferences = function(url) {
-        navigationService.leavePage(url);
+       window.location.href=url;
     }
 
     $scope.logout = function() {
