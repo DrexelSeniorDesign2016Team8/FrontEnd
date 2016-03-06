@@ -177,7 +177,6 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         apiCall.callCollegeSearchAPI(navigationService.leavePage("searchPage.html"));
     }
     function emailFavorites(callback) {
-        apiCall.setParameters(userService.get());
         apiCall.setApiDestination("sendMail.php?");
         apiCall.callCollegeSearchAPI(callback);
     }
