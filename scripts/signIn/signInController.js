@@ -36,7 +36,6 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 createAccountForm.emailAddressCreateAccount.value = "";
                 createAccountForm.passwordCreateAccount.value = "";
                 var success = true;
-                userService.setUserName(response.response.email);
                 userService.setEmailAddress(response.response.email);
                 userService.setLoggedIn(true);
                 if (response && response.response.session_id) {
