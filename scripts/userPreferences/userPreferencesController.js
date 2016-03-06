@@ -44,7 +44,11 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         options.title = "Save Preferences";
         options.text = "Preferences Saved";
         options.confirm="OK";
-        searchService.set($scope.parameter);
+        var params = $scope.parameter;
+        if (params.zipcode) {
+            params.zipCode = params.zipcode;
+        }
+        searchService.set(params);
         savePreferences(function() {
 
             $scope.showToast(options);
