@@ -4,10 +4,21 @@
                                                <!-- GPA Box-->
                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                             <label class="searchLabel">GPA (Out of 4.0)</label>
-                                            <input type="number" name="gpa" ng-model="parameter.gpa">
+                                            <input type="number" name="gpa" ng-model="parameter.gpa" min="0" max="4.0"ng-pattern="/^\d{0,3}(\.\d{1,2})?$/" >
+                                                   <div ng-messages="CollegeInfo.gpa.$error" multiple md-auto-hide="false">
+                                                       <div ng-message="min">
+                                                           You can't have a negative sore
+                                                       </div>
+                                                       <div ng-message="pattern">
+                                                           You need to enter a gpa in the range of #.##
+                                                       </div>
+                                                       <div ng-message="max">
+                                                           You can't have higher than a 4.0
+                                                       </div>
+                                                   </div>
                                             <md-button class="gpaConverter" style='text-align:center; color:white'  ng-click="convertGPA()">
                                                 GPA Converter
-                                            </md-button>x
+                                            </md-button>
                                         </md-input-container>
                                                </div>
                                            <div class="searchPageBox" flex="20">
@@ -45,7 +56,7 @@
                                              <div class="searchPageBox" flex="20">
                                                  <!-- Math Score Box-->
                                                  <md-input-container class="md-block searchPageBox" flex-gt-sm>
-                                                     <label class="searchLabel">Math Score</label>
+                                                     <label class="searchLabel">SAT Math Score</label>
                                                      <input type="number" step="1.0" name="MathScore" ng-model="parameter.MathScore" min="0"
                                                             max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"*  min="200" />
                                                      <div ng-messages="CollegeInfo.MathScore.$error" multiple md-auto-hide="false">
@@ -67,7 +78,7 @@
                                           <!-- Writing Box-->
                                           <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-                                            <label class="searchLabel">Writing Score</label>
+                                            <label class="searchLabel">SAT Writing Score</label>
                                             <input type="number" name="WritingScore" ng-model="parameter.WritingScore" ng-pattern="/^[0-9]{1,3}$/" min="0"
                                                    max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"* min="200"/>
                                             <div ng-messages="CollegeInfo.WritingScore.$error" multiple md-auto-hide="false">
@@ -87,7 +98,7 @@
                                         <!-- Reading Score-->
                                         <md-input-container class="md-block searchPageBox" flex-gt-sm>
 
-                                            <label class="searchLabel">Reading Score</label>
+                                            <label class="searchLabel">SAT Reading Score</label>
                                             <input type="number" name="ReadingScore" id="ReadingScore" ng-model="parameter.ReadingScore"min="0"
                                                    max="800" ng-pattern="/^[0-9]{1,3}$/" *step="1.0"* min="200"/>
                                             <div ng-messages="CollegeInfo.ReadingScore.$error" multiple md-auto-hide="false">
@@ -139,7 +150,7 @@
                                                   <!-- Zip Code-->
                                                   <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                       <label class="searchLabel">Zip Code</label>
-                                                      <input type="text" name="zipcode" ng-model="parameter.zipcode"ng-pattern="/^[0-9]{1,5}$/" style="color:white !important;" >
+                                                      <input type="number" name="zipcode" ng-model="parameter.zipcode"ng-pattern="/^[0-9]{1,5}$/" style="color:white !important;" >
                                                       <div ng-messages="CollegeInfo.zipcode.$error">
                                                           <div ng-message="pattern">Not a valid zip code</div>
                                                       </div>

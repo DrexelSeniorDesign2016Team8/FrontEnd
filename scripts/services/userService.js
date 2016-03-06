@@ -173,7 +173,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         apiCall.callCollegeSearchAPI(callback);
     }
     function deleteAccount() {
-        apiCall.setApiDestination("delete.php?");
+        apiCall.setApiDestination("deleteAccount.php?");
         apiCall.callCollegeSearchAPI(navigationService.leavePage("searchPage.html"));
     }
     function emailFavorites(callback) {
