@@ -219,7 +219,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         getSearchParameters: getSearchParameters,
         deleteAccount: deleteAccount,
         emailFavorites: emailFavorites,
-        saveSearchPreference: saveSearchPreferences,
+        saveSearchPreferences: saveSearchPreferences,
         getSearchService: getSearchService,
         setApiSearch: setApiSearch,
         removeFavorite: removeFavorite,

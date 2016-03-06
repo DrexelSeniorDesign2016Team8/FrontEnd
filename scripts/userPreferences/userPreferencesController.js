@@ -45,9 +45,10 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         options.text = "Preferences Saved";
         options.confirm="OK";
 
-        savePreferences();
+        savePreferences(function() {
 
-        $scope.showToast(options);
+            $scope.showToast(options);
+        });
     };
 
     $scope.UndoChanges = function () {
@@ -121,8 +122,8 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         userService.emailFavorites();
     }
 
-    function savePreferences() {
-        userService.saveSearchPreferences(searchService.get());
+    function savePreferences(callback) {
+        userService.saveSearchPreferences(callback);
     }
     onPageLoad = function() {
         userService.getSearchPreferences(function(response) {
