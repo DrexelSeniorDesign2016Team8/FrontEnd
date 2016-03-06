@@ -150,10 +150,14 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
                 response[0].gpa = parseFloat(response[0].GPAvalue);
             if (response[0].zipCode)
                 response[0].zipcode = response[0].zipCode;
+            if (response[0].ACTScore) {
+                response[0].actcomposite = response[0].ACTScore;
+            }
+            $scope.parameter.states = searchService.fillStates();
             $scope.parameter=response[0];
             searchService.set(response[0])
         });
-        $scope.parameter.states = searchService.fillStates();
+
 
     }
 
