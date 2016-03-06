@@ -87,16 +87,17 @@
                                            </div>
                <!-- High School Percentile Box-->
 
-                                             <div class="searchPageBox" flex="20">
-                                                 <md-input-container class="searchPageBox">
-                                                     <label class="searchLabel">High School Percentile</label>
-                                                     <md-select class="searchLabel" ng-model="parameter.HighSchoolPercentile">
-                                                         <md-option ng-repeat="percentage in parameter.percentages" value="{{percentage.percentage}}">
-                                                             {{percentage.percentage}}
-                                                         </md-option>
-                                                     </md-select>
-                                                 </md-input-container>
-                                             </div>
+                                           <div class="searchPageBox" flex="20">
+                                               <!-- Zip Code-->
+                                               <md-input-container class="md-block searchPageBox" flex-gt-sm>
+                                                   <label class="searchLabel">Zip Code</label>
+                                                   <input type="text" name="zipcode" ng-model="parameter.zipcode"ng-pattern="/^[0-9]{1,5}$/" style="color:white !important;" >
+                                                   <div ng-messages="CollegeInfo.zipcode.$error">
+                                                       <div ng-message="pattern">Not a valid zip code</div>
+                                                   </div>
+                                               </md-input-container>
+                                           </div>
+
 
                                              <div class="searchPageBox" flex="20">
                                                  <!-- Math Score Box-->
