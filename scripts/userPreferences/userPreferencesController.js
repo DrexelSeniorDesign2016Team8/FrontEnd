@@ -45,7 +45,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         options.text = "Preferences Saved";
         options.confirm="OK";
 
-        options.onClick = savePreferences;
+        savePreferences();
 
         $scope.showToast(options);
     };
