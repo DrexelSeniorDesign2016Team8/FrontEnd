@@ -153,10 +153,6 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
             if (response[0].ACTScore) {
                 response[0].actcomposite = parseInt(response[0].ACTScore);
             }
-            if (response[0].stateName) {
-                response[0].stateName = convert_state(response[0].stateName, "abbrev");
-            }
-
             $scope.parameter=response[0];
             $scope.parameter.states = searchService.fillStates();
             searchService.set(response[0])

@@ -63,7 +63,7 @@ app.factory('searchService', function($localStorage, apiCall) {
                 'MathScore': data.MathScore,
                 'WritingScore': data.WritingScore,
                 'ReadingScore': data.ReadingScore,
-                'StateName': data.stateName,
+                'StateName': convert_state(data.stateName, "abbrev"),
                 'zipCode': data.zipcode,
             },
         };
