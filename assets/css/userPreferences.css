@@ -30,6 +30,9 @@
 #searchOptions {
     text-align: center;
 }
+.notUserPreferences {
+    visibility: hidden;
+}
 
 .gpaConverter {
     visibility: hidden;

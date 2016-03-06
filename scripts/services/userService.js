@@ -23,8 +23,8 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function getUserName() {
         return user.emailAddress;
     }
-    function setSearchPreferences() {
-       user.searchService.set(searchService.get());
+    function setSearchPreferences(response) {
+       user.searchService.set(response);
     }
 
     function getSearchParameters() {
