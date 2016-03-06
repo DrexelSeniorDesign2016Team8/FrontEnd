@@ -32,7 +32,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
         options.cancel = "CANCEL";
 
-        options.onconfirm = emailFavorites;
+        options.onconfirm = sendEmail();
 
         $scope.showDialog(ev, options);
     }
@@ -128,7 +128,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
     userService.deleteAccount();
     }
-    function emailFavorites() {
+    function sendEmail() {
         userService.emailFavorites(function() {
             options.text = "Favorites sent";
             options.confirm = "Ok";
