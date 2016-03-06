@@ -1,4 +1,4 @@
-app.factory('userService', function($localStorage, searchService, apiCall, navigationService) {
+app.factory('userService', function($localStorage, searchService, apiCall) {
     var user = {
         loggedIn: false,
         username: '',
@@ -175,8 +175,14 @@ app.factory('userService', function($localStorage, searchService, apiCall, navig
     }
     function deleteAccount() {
         apiCall.setApiDestination("deleteAccount.php?");
-        apiCall.callCollegeSearchAPI(navigationService.leavePage("searchPage.html"));
-    }
+        apiCall.callCollegeSearchAPI(function () {
+            window.location.href = ("searchPage.html")
+
+            logout();
+
+
+        })
+    };
     function emailFavorites(callback) {
         apiCall.setApiDestination("sendMail.php?");
         apiCall.callCollegeSearchAPI(callback);
