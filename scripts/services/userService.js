@@ -1,4 +1,4 @@
-app.factory('userService', function($localStorage, searchService, apiCall) {
+app.factory('userService', function($localStorage, searchService, apiCall, navigationService) {
     var user = {
         loggedIn: false,
         username: '',
