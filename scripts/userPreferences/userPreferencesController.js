@@ -134,6 +134,8 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
             response[0].ReadingScore = parseInt(response[0].ReadingScore)
             if (response[0].WritingScore)
                 response[0].WritingScore = parseInt(response[0].WritingScore);
+            if (response[0].GPAvalue)
+                response[0].gpa = response[0].GPAvalue;
             $scope.parameter=response[0];
         });
         $scope.parameter.states = searchService.fillStates();
