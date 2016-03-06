@@ -70,8 +70,11 @@ app.factory('searchService', function($localStorage, apiCall) {
         if (data.stateName) {
             config.params.StateName = convert_state(data.stateName, "abbrev")
         }
-        if (data.zipcode) {
-            config.params.zipCode = data.zipcode
+        if (data.zipcode=="null") {
+            config.params.zipCode
+        }
+        else if (data.zipcode!="null") {
+            config.params.zipCode=data.zipcode;
         }
         $localStorage.params = config.params;
         searchOptions.params = config.params;
