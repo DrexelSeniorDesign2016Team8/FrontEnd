@@ -48,6 +48,12 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         if (params.zipcode) {
             params.zipCode = params.zipcode;
         }
+        if (params.gpa) {
+            params.GPAvalue = params.gpa;
+        }
+        if (params.actcomposite) {
+            params.ACTScore = params.actcomposite;
+        }
         searchService.saveForFormat(params);
         savePreferences(function() {
 
@@ -148,15 +154,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
             searchService.set(response[0])
         });
         $scope.parameter.states = searchService.fillStates();
-        $scope.parameter.population = searchService.fillPercentages();
 
-        $scope.parameter.percentages = searchService.fillPercentages();
-        $scope.parameter.studentPopulation = searchService.fillPopulation();
-        $scope.parameter.population = searchService.fillPopulation();
-
-
-
-        $scope.parameter.classSize = searchService.fillClassSize();
     }
 
     $scope.cancel = function () {
