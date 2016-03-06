@@ -58,7 +58,7 @@ function formatSearch(searchParameters) {
        //     maxPop=
         if (searchParameters.studentPopulation[0]="10,000+")
         {
-            var pops = searchParameters.studentPopulation="10000-99999";
+            var pops = searchParameters.studentPopulation="10000-9999999999999999999999";
             var population = pops.split("-");
         }
 
