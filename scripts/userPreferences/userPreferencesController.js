@@ -122,7 +122,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
     }
 
     function savePreferences() {
-        userService.set(searchService.get());
+        userService.saveSearchPreferences(searchService.get());
     }
     onPageLoad = function() {
         userService.getSearchPreferences(function(response) {
