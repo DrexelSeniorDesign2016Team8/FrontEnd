@@ -123,6 +123,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
     }
 
     function savePreferences(callback) {
+
         userService.saveSearchPreferences(callback);
     }
     onPageLoad = function() {
@@ -140,6 +141,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
             if (response[0].zipCode)
                 response[0].zipcode = response[0].zipCode;
             $scope.parameter=response[0];
+            searchService.set(response[0])
         });
         $scope.parameter.states = searchService.fillStates();
         $scope.parameter.population = searchService.fillPercentages();
