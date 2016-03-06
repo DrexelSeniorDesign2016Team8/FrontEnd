@@ -26,7 +26,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         options = {};
 
         options.title = "Email Favorite Institutions";
-        options.text = "An email will be sent to " + userService.getUserName();
+        options.text = "An email will be sent to the email address on file.";;
 
         options.confirm = "EMAIL";
 
