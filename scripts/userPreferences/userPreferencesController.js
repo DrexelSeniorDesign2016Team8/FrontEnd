@@ -160,7 +160,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
                 if (response[0].stateName) {
                     response[0].stateName = convert_state(response[0].stateName, "name")
                 }
-                if (response[0].zipcCode=="null") {
+                if (response[0].zipcode=="null") {
                     response[0].zipcode = "";
                 }
                 $scope.parameter = response[0];
