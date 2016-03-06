@@ -128,7 +128,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         userService.getSearchPreferences(function(response) {
             //TODO fix this based on the response
             userService.setSearchPreferences(response);
-            if (resposne[0].MathScore)
+            if (response[0].MathScore)
             response[0].MathScore=parseInt(response[0].MathScore);
             if (response[0].ReadingScore)
             response[0].ReadingScore = parseInt(response[0].ReadingScore)
