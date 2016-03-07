@@ -19,6 +19,12 @@
             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
             <div ng-if="college.GPAvalue!=undefined">GPA: {{college.GPAvalue}}</div>
             <div ng-if="college.GPAvalue==undefined">GPA not available</div>
+            <div ng-if="college.WritingScore==undefined">SAT Writing Score Unavailable</div>
+            <div ng="if=college.WritingScore!=undefined">{{college.WritingScore</div>
+    <div ng-if="college.ReadingScore==undefined">SAT Reading Score Unavailable</div>
+    <div ng="if=college.ReadingScore!=undefined">{{college.ReadingScore</div>
+    <div ng-if="college.MathScore==undefined">SAT Math Score Unavailable</div>
+    <div ng="if=college.MathScore!=undefined">{{college.MathScore</div>
             <div ng-if='college.CommonApp==1'><a target="_blank" href="https://www.commonapp.org/">Common Application</a></div>
     <div class="favoriteButton" >
         <md-button class="md-raised" ng-show="college.favorited==false && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)">FAVORITE</md-button>
