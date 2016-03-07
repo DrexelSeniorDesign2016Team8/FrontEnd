@@ -25,6 +25,8 @@
     <div ng="if=college.ReadingScore!=undefined">{{college.ReadingScore</div>
     <div ng-if="college.MathScore==undefined">SAT Math Score Unavailable</div>
     <div ng="if=college.MathScore!=undefined">{{college.MathScore</div>
+    <div ng-if="college.ACTscore==undefined">ACT Score Unavailable</div>
+    <div ng="if=college.ACTscore!=undefined">{{college.ACTscore</div>
             <div ng-if='college.CommonApp==1'><a target="_blank" href="https://www.commonapp.org/">Common Application</a></div>
     <div class="favoriteButton" >
         <md-button class="md-raised" ng-show="college.favorited==false && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)">FAVORITE</md-button>
