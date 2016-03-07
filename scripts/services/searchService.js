@@ -133,8 +133,7 @@ app.factory('searchService', function($localStorage, apiCall) {
      */
     function search(callback) {
         var jsonString = "";
-        var params = {};
-        params.searchParameters = $localStorage.params;
+        params = $localStorage.params;
         if (params) {     // if they exist make call
 
             jsonString = formatSearch(params);
