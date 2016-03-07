@@ -75,8 +75,8 @@ function formatSearch(searchParameters) {
     if (searchParameters.favoritedInstitutions) {
         parameters += "favoritedInstitutions=" + searchParameters.favoritedInstitutions +"&";
     }
-    if (searchParameters.commonApplication) {
-        parameters += "commonApplication=" + searchParameters.commonApplication;
+    if (searchParameters.CommonApplication) {
+        parameters += "commonApplication=" + searchParameters.CommonApplication;
     }
 
     return parameters;
