@@ -17,6 +17,7 @@
             <div ng-if='college.phoneNumber==undefined'><p>Number unavailable</p></div>
             <div ng-if='college.population!==undefined'><p>Students: {{college.population}}</p></div>
             <div ng-if='college.population==undefined'><p>Student count unavailable</p></div>
+            <div ng-if='college.CommonApp==1'><a target="_blank" href="https://www.commonapp.org/">Common Application</a></div>
     <div class="favoriteButton" >
         <md-button class="md-raised" ng-show="college.favorited==false && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)">FAVORITE</md-button>
     </div>
