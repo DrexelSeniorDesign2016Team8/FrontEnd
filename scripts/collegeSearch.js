@@ -1,6 +1,6 @@
 //var loggedIn = false;
 
-var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','ngStorage', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
+var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','ngStorage', 'ngRoute', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
 
 
 	app.run(function ($rootScope, userService, navigationService, searchService, apiCall, $localStorage) {

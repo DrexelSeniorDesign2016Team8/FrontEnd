@@ -14,6 +14,7 @@
     <script src="assets/node_modules/angular-messages/angular-messages.js"></script>
     <script src="assets/node_modules/ngstorage/ngStorage.js"></script>
     <script src="assets/node_modules/angular-utils-pagination/dirPagination.js"></script>
+    <script src="assets/node_modules/angular-route/angular-route.js"></script>
     <script src="assets/jQuery/jquery-1.11.3.min.js"></script>
     <!-- material design javascript -->
 
@@ -170,6 +171,8 @@
                                 </md-input-container>
                             </div>
                                 </span>
+            </center>
+    </form>
             <br>
             <br>
 <span layout="grid1" layout-wrap layout-align="center center" class="mobileFriendly">
@@ -186,7 +189,9 @@
                                                </md-select>
                                            </md-input-container>
                                        </div>
+
     </span>
+
         <md-button class="md-raised" id="save" class=md-raised" style='float:left' ng-disabled="CollegeInfo.$invalid" ng-click="saveConfirm()">
             Save
         </md-button>
@@ -220,7 +225,7 @@
             </md-button>
         </div>
 
-</form>
+
 </div>
 
 <script>

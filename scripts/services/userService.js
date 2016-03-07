@@ -45,7 +45,6 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     }
     function getSearchPreferences(callback) {
 
-        //TODO change based on php page
         apiCall.setApiDestination("getPreferences.php?");
         apiCall.callCollegeSearchAPI(callback);
     }
