@@ -121,7 +121,7 @@ app.factory('searchService', function($localStorage, apiCall) {
     }
 
     function fillPercentages() {
-        return ('None,' + '10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%'
+        return (',' + '10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%'
         ).split(',').map(function (percentage) {
             return {percentage: percentage};
         });
