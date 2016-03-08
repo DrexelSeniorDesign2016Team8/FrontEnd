@@ -29,7 +29,7 @@ loadDropdowns = function() {
     ).split(',').map(function (pageSize) {
         return {pageSize: pageSize};
     });
-
+    $scope.results.loading = true;
     $scope.currentPage=1;
 
 };
