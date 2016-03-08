@@ -11,7 +11,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
         options.title = "Are you sure you want to delete your account?";
 
-        options.text = "Account information cannot be recovered after account deletion.?";
+        options.text = "Account information cannot be recovered after account deletion.";
 
         options.confirm = "YES, DELETE MY ACCOUNT";
 
