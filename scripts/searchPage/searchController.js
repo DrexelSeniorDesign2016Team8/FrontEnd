@@ -42,6 +42,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                     response[0].zipcode = "";
                 }
                 $scope.parameter = response[0];
+                $scope.parameter.states = searchService.fillStates();
             }
 
             if (response.length!=0) {
