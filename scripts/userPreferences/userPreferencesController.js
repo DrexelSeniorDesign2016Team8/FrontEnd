@@ -171,6 +171,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
                 searchService.set(response[0])
             }
         });
+        $scope.parameter.states = searchService.fillStates();
 
 
     }
