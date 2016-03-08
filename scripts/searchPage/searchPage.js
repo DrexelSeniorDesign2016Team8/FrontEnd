@@ -36,7 +36,7 @@ function formatSearch(searchParameters) {
         parameters += "name=" + searchParameters.name + "&";
     }
     if (searchParameters.StateName) {
-        parameters += "stateName=" + searchParameters.StateName + "&";
+        parameters += "stateName=" + convert_state(searchParameters.StateName, "abbrev") + "&";
     }
     if (searchParameters.zipCode) {
         parameters += "zipCode=" + searchParameters.zipCode + "&";
