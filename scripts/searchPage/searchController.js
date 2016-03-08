@@ -43,12 +43,19 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                 }
                 $scope.parameter = response[0];
             }
-            $scope.parameter.states = searchService.fillStates();
+
             if (response.length!=0) {
                 $scope.parameter.stateName = response[0].stateName;
                 searchService.set(response[0])
             }
         });
+        $scope.parameter.states = searchService.fillStates();
+        $scope.parameter.population = searchService.fillPercentages();
+
+        $scope.parameter.percentages = searchService.fillPercentages();
+        $scope.parameter.population = searchService.fillPopulation();
+
+        $scope.parameter.classSize = searchService.fillClassSize();
 
         deleteCookie("searchParameters");
     };
