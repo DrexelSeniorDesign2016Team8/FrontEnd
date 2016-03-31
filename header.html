@@ -12,9 +12,9 @@
  <div align="right">
 
 
-<md-button class="md-raised"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage($event)">Create Account/Login
+<md-button class="md-raised accountCreation"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage($event)">Create Account/Login
  </md-button>
-     <div>
+     <div class="accountCreation">
      {{userService.getUserName()}}
  </div>
      </div>
