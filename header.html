@@ -12,9 +12,9 @@
  <div class="accountCreation">
 
 
-<md-button class="md-raised"  ng-hide='userService.isLoggedin()' id="accountButton" ng-click="showLoginPage($event)">Create Account/Login
+<md-button class="md-raised"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage($event)">Create Account/Login
  </md-button>
-     <label for="accountButton">{{userService.getUserName()}} </label>
+     {{userService.getUserName()}}
  </div>
     <md-menu>
         <md-button aria-label="Open Login Options"  ng-show='userService.isLoggedin()' class= "accountCreation" ng-click="openMenu($mdOpenMenu, $event)">
