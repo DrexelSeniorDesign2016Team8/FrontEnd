@@ -9,7 +9,9 @@
 <body ng-controller="headerController">
  <a href ng-click="logoClick('searchPage.html')"><img id="collegeSearchicon"  ng-Src="assets/icon/collegeSearch.png" atl="CollegeSearch" ></a>
 
+ <div>
  {{userService.getUserName()}}
+     </div>
 <md-button class="md-raised accountCreation"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage($event)">Create Account/Login
  </md-button>
 
