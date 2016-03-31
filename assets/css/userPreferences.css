@@ -39,6 +39,11 @@
 }
 .preferencesTitle {
     font-weight: bold;
+    font-size: 24px;
+}
+.preferencesHeader {
+    width: 15%;
+    float:left;
 }
 
 @media only screen and (max-device-width: 480px) {

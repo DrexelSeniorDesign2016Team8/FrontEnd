@@ -49,7 +49,7 @@
 <div ng-controller="userPreferencesController as parameter" layout="column" ng-cloak>
 
     <br>
-
+    <md-content flex layout-padding>
     <form name="CollegeInfo">
         <center>
             <div layout="row" layout-align="center center" class="searchLabel searchHeader">
@@ -192,24 +192,35 @@
 
     </span>
 
-        <md-button class="md-raised" id="save" class=md-raised" style='float:left' ng-disabled="CollegeInfo.$invalid" ng-click="saveConfirm()">
+        <md-button class="md-raised" id="save" style="width:50px" ng-disabled="CollegeInfo.$invalid" ng-click="saveConfirm()">
             Save
+            <md-tooltip md-direction="right">
+                Click to Save user preferences
+            </md-tooltip></md-button>
         </md-button>
-        <md-button  class="md-raised" style="float:left" ng-click="UndoChanges()">UNDO</md-button>
+        <md-button  class="md-raised" style="width:50px" ng-click="UndoChanges()">UNDO
+            <md-tooltip md-direction="right">
+                Click to undo preferences modification
+            </md-tooltip></md-button></md-button>
         <br>
         <br>
         <br>
+        <div>
         <span class="preferencesTitle">Favorites</span>
-        <hr>
-
+            <br>
+        <hr class="preferencesHeader">
+            <br>
+            <br>
         <a href="" ng-click="getFavorites()">Click to view favorites</a>
         <br>
-
+        </div>
         <div>
             <br>
             <br>
             <span class="preferencesTitle">Email Report </span>
-                <hr>
+            <br>
+                <hr class="preferencesHeader">
+            <br>
                 Email a list of your favorite institutions to your email address on file.
             <br>
             <md-button class="md-raised" ng-click="emailFavorites()">Email</md-button>
@@ -217,7 +228,9 @@
         <br>
         <div>
             <spcan class="preferencesTitle">Delete Account</spcan>
-            <hr>
+            <br>
+            <hr class="preferencesHeader">
+            <br>
             I understand that deleted accounts are not recoverable
             <br>
             <md-button class="md-raised" style='float:left' ng-click="deleteConfirmation()">
@@ -225,8 +238,9 @@
             </md-button>
         </div>
 
-
+</md-content>
 </div>
+
 
 <script>
 </script>
