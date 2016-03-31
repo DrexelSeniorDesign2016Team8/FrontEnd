@@ -12,16 +12,14 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         return searchService;
     }
 
-    function setEmailAddress(email) {
-        user.emailAddress = email;
-    }
+
     function setSessionId(sessionId) {
         user.sessionId=sessionId;
         apiCall.setSessionId(sessionId);
         $localStorage.sessionId=sessionId;
     }
     function getUserName() {
-        return user.emailAddress;
+        return user.username;
     }
     function setSearchPreferences(response) {
         if (response.length!=0)
@@ -205,7 +203,6 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         set: set,
         setLoggedIn: setLoggedIn,
         setUserName: setUserName,
-        setEmailAddress: setEmailAddress,
         setRememberMe :setRememberMe,
         setAuthenticationKey: setAuthenticationKey,
         restoreLocalStorage: restoreLocalStorage,

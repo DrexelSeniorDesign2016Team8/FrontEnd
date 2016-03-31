@@ -17,7 +17,7 @@ app.factory('navigationService', function($localStorage, userService) {
         $localStorage.username='';
         $localStorage.loggedIn='';
         $localStorage.params=userService.getSearchParameters();
-        userService.setEmailAddress($localStorage.userName);
+        userService.setUserName($localStorage.userName);
     }
 
     return {
