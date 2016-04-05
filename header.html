@@ -16,13 +16,13 @@
     <md-menu>
 
         <md-button aria-label="Open Login Options" id="accountButton"  ng-show='userService.isLoggedin()' class= "accountCreation" ng-click="openMenu($mdOpenMenu, $event)">
+            {{userService.getUserName()}}
             <md-icon  md-svg-icon="account-location" style="width:40px; height:40px;" class="md-icon-button accountOptions"></md-icon>
         </md-button>
         <md-menu-content width="4">
             <md-menu-item>
-                <label for="accountButton"> </label>
                 <md-button id="accountButton" ng-click="userPreferences('userPreferences.html')">
-                    {{userService.getUserName()}}
+
                     <md-icon md-svg-icon="settings" md-menu-align-target></md-icon>
                     Account Preferences
                 </md-button>
