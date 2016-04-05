@@ -13,15 +13,15 @@ app.factory('searchService', function($localStorage, apiCall) {
         var config = {
             params: {
                 // Put required values here
-                'GPAvalue': data.gpa,
-                'ACTScore': data.actcomposite,
+                'GPAvalue': data.GPAvalue,
+                'ACTScore': data.ACTScore,
                 'highSchoolPercentile': data.HighSchoolPercentile,
-                'MathScore': data.mathscore,
+                'MathScore': data.MathScore,
                 'WritingScore': data.WritingScore,
                 'ReadingScore': data.ReadingScore,
                 'StateName': data.stateName,
                 'name': data.InstitutionName,
-                'zipCode': data.zipcode,
+                'zipCode': data.zipCode,
                 'fullAddress': data.fullAddress,
                 'acceptanceRate': data.acceptanceRate,
                 'retentionRate': data.retentionRate,

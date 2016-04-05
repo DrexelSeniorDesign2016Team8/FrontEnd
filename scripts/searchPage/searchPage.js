@@ -32,11 +32,11 @@ function formatSearch(searchParameters) {
     if (searchParameters.WritingScore) {
         parameters += "WritingScore=" + searchParameters.WritingScore + "&";
     }
-    if (searchParameters.name) {
-        parameters += "name=" + searchParameters.name + "&";
+    if (searchParameters.InstitutionName) {
+        parameters += "name=" + searchParameters.InstitutionName + "&";
     }
-    if (searchParameters.StateName) {
-        parameters += "stateName=" + convert_state(searchParameters.StateName, "abbrev") + "&";
+    if (searchParameters.stateName) {
+        parameters += "stateName=" + convert_state(searchParameters.stateName, "abbrev") + "&";
     }
     if (searchParameters.zipCode) {
         parameters += "zipCode=" + searchParameters.zipCode + "&";
@@ -44,8 +44,8 @@ function formatSearch(searchParameters) {
     if (searchParameters.fullAddress) {
         parameters += "fullAddress=" + searchParameters.fullAddress + "&";
     }
-    if (searchParameters.AcceptanceRate) {
-        parameters += "AcceptanceRate=" + searchParameters.AcceptanceRate + "&";
+    if (searchParameters.acceptanceRate) {
+        parameters += "AcceptanceRate=" + searchParameters.acceptanceRate + "&";
     }
     if (searchParameters.retentionRate) {
         parameters += "retentionRate=" + searchParameters.retentionRate + "&";
@@ -54,8 +54,6 @@ function formatSearch(searchParameters) {
         parameters += "institutionType=" + searchParameters.institutionType + "&";
     }
     if (searchParameters.studentPopulation) {
-     //   minPop=
-       //     maxPop=
         if (searchParameters.studentPopulation[0]="10,000+")
         {
             var pops = searchParameters.studentPopulation="10000-9999999999999999999999";
@@ -68,14 +66,14 @@ function formatSearch(searchParameters) {
 
         parameters += "minPop=" + population[0] + "&" + "maxPop=" + population[1];
     }
-    if (searchParameters.classSizes) {
-        var classSize =  searchParameters.classSizes.split("-");
+    if (searchParameters.averageClassSize) {
+        var classSize =  searchParameters.averageClassSize.split("-");
         parameters += "minClass=" + classSize[0]+"&" + "maxClass=" + classSize[1];
     }
     if (searchParameters.favoritedInstitutions) {
         parameters += "favoritedInstitutions=" + searchParameters.favoritedInstitutions +"&";
     }
-    if (searchParameters.CommonApplication) {
+    if (searchParameters.commonApplication) {
         parameters += "commonApplication=" + searchParameters.CommonApplication;
     }
 

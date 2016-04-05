@@ -4,8 +4,8 @@
                                                <!-- GPA Box-->
                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                             <label class="searchLabel">GPA (Out of 4.0)</label>
-                                            <input type="number" class="searchParameterColor" name="gpa" ng-model="parameter.gpa" min="0" max="4.0"ng-pattern="/^\d{0,3}(\.\d{1,2})?$/" >
-                                                   <div ng-messages="CollegeInfo.gpa.$error" multiple md-auto-hide="false">
+                                            <input type="number" class="searchParameterColor" name="gpa" ng-model="parameter.GPAvalue" min="0" max="4.0"ng-pattern="/^\d{0,3}(\.\d{1,2})?$/" >
+                                                   <div ng-messages="CollegeInfo.GPAvalue.$error" multiple md-auto-hide="false">
                                                        <div ng-message="min">
                                                            You can't have a negative sore
                                                        </div>
@@ -25,9 +25,9 @@
                                                <!-- ACT Box-->
                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                             <label class="searchLabel">ACT Composite Score</label>
-                                            <input type="number" class="searchParameterColor" step="1.0" name="actcomposite" ng-model="parameter.actcomposite" min="0"
+                                            <input type="number" class="searchParameterColor" step="1.0" name="ACTScore" ng-model="parameter.ACTScore" min="0"
                                                    max="36" ng-pattern="/^[0-9]{1,2}$/" />
-                                            <div ng-messages="CollegeInfo.actcomposite.$error" multiple md-auto-hide="false">
+                                            <div ng-messages="CollegeInfo.ACTScore.$error" multiple md-auto-hide="false">
                                                 <div ng-message="min">
                                                     You can't have a negative sore
                                                 </div>
@@ -150,8 +150,8 @@
                                                   <!-- Zip Code-->
                                                   <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                                       <label class="searchLabel">Zip Code</label>
-                                                      <input type="number" class="searchParameterColor" name="zipcode" ng-model="parameter.zipcode"ng-pattern="/^[0-9]{1,5}$/" >
-                                                      <div ng-messages="CollegeInfo.zipcode.$error">
+                                                      <input type="number" class="searchParameterColor" name="zipCode" ng-model="parameter.zipCode"ng-pattern="/^[0-9]{1,5}$/" >
+                                                      <div ng-messages="CollegeInfo.zipCode.$error">
                                                           <div ng-message="pattern">Not a valid zip code</div>
                                                       </div>
                                                   </md-input-container>
