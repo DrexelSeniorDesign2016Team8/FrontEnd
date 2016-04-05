@@ -10,23 +10,6 @@ app.factory('searchService', function($localStorage, apiCall) {
         $localStorage.params = data;
         searchOptions.params = data;
     }
-
-    function restorePreferences(data) {
-        var config = {};
-         config.params = {
-                // Put required values here
-                GPAvalue: data.GPAvalue,
-                ACTScore: data.ACTScore,
-                highSchoolPercentile: data.HighSchoolPercentile,
-                MathScore: data.MathScore,
-                WritingScore: data.WritingScore,
-                ReadingScore: data.ReadingScore,
-                stateName: data.stateName,
-                zipCode: data.zipCode,
-            };
-        $localStorage.params = config.params;
-        searchOptions.params = config.params;
-    }
     function setGPA(gpa) {
         var config = {
             params: {
@@ -107,7 +90,6 @@ app.factory('searchService', function($localStorage, apiCall) {
         fillPercentages: fillPercentages,
         setApiCall: setApiCall,
         fillClassSize: fillClassSize,
-        restorePreferences: restorePreferences,
     }
 
 });

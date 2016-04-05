@@ -23,7 +23,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     }
     function setSearchPreferences(response) {
         if (response.length!=0)
-       user.searchService.restorePreferences(response[0]);
+       user.searchService.set(response[0]);
     }
 
     function getSearchParameters() {
