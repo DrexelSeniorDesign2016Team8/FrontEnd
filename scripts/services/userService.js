@@ -61,6 +61,9 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
                     response[0].GPAvalue = parseFloat(response[0].GPAvalue);
                 if (response[0].zipCode)
                 // convert to int
+                    if (isNaN(response[0].zipCode)) {
+                        response[0].zipCode="";
+                    }
                     response[0].zipCode = parseInt(response[0].zipCode);
                 if (response[0].ACTScore) {
                     // convert to int
