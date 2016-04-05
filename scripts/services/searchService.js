@@ -47,31 +47,12 @@ app.factory('searchService', function($localStorage, apiCall) {
         searchOptions.params = config.params;
     }
     function saveForFormat(data) {
-        var config = {
-            params: {
-                // Put required values here
-                'GPAvalue': data.GPAvalue,
-                'ACTScore': data.ACTScore,
-                'highSchoolPercentile': data.HighSchoolPercentile,
-                'MathScore': data.MathScore,
-                'WritingScore': data.WritingScore,
-                'ReadingScore': data.ReadingScore,
 
-
-            },
-        };
         if (data.stateName) {
-            config.params.StateName = convert_state(data.stateName, "abbrev")
+            data.stateName = convert_state(data.stateName, "abbrev")
         }
-        if (data.zipcode=="null") {
-            config.params.zipCode
-        }
-        else if (data.zipcode!="null") {
-            config.params.zipCode=data.zipcode;
-        }
-        
-        $localStorage.params = config.params;
-        searchOptions.params = config.params;
+        $localStorage.params = data;
+        searchOptions.params = data;
 
         }
     function setGPA(gpa) {

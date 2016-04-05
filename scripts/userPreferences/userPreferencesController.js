@@ -45,15 +45,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         options.text = "Preferences Saved";
         options.confirm="OK";
         var params = $scope.parameter;
-        if (params.zipcode) {
-            params.zipCode = params.zipcode;
-        }
-        if (params.gpa) {
-            params.GPAvalue = params.gpa;
-        }
-        if (params.actcomposite) {
-            params.ACTScore = params.actcomposite;
-        }
+       
         searchService.saveForFormat(params);
         savePreferences(function() {
 
