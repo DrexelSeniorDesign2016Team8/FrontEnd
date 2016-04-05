@@ -11,7 +11,8 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
         if (userService.isLoggedin()) {
             userService.getSearchPreferences(function (response) {
                 //TODO fix this based on the response
-                userService.setSearchPreferences(response);
+
+                userService.setSearchPreferences(response[0]);
                 // this converts the fields to int
                 $scope.parameter = response[0];
                 $scope.parameter.states = searchService.fillStates();
