@@ -1,5 +1,6 @@
 /*
 This controller is used for the search page
+100% coded by  Ian Shinbrot
 TODO move more information over to searchService and away from controller
  */
 app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService, userService) {

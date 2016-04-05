@@ -1,11 +1,7 @@
 /**
  * Created by ianshinbrot on 11/19/15.
+ * 100% coded by Ian Shinbrot
  */
-// Include app dependency on ngMaterial
-
-var searchParameters = {};
-
-
 
 
 /*
