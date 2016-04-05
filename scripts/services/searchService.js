@@ -7,9 +7,6 @@ app.factory('searchService', function($localStorage, apiCall) {
      * @param data - the data to be searched
      */
     function set(data) {
-        if (data.stateName) {
-            data.stateName = data.stateName;
-        }
         var config = {};
         config.params = {
             GPAvalue: data.GPAvalue,
@@ -18,7 +15,7 @@ app.factory('searchService', function($localStorage, apiCall) {
             MathScore: data.MathScore,
             WritingScore: data.WritingScore,
             ReadingScore: data.ReadingScore,
-            StateName: data.stateName,
+            stateName: data.stateName,
             name: data.InstitutionName,
             zipCode: data.zipCode,
             fullAddress: data.fullAddress,
@@ -43,7 +40,7 @@ app.factory('searchService', function($localStorage, apiCall) {
                 MathScore: data.MathScore,
                 WritingScore: data.WritingScore,
                 ReadingScore: data.ReadingScore,
-                StateName: data.stateName,
+                stateName: data.stateName,
                 zipCode: data.zipCode,
             };
         $localStorage.params = config.params;
