@@ -81,7 +81,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
      */
     function logout() {
         user.loggedIn=false;
-        user.username=false;
+        user.username="";
         user.authenticationKey='';
         user.rememberMe=false;
         $localStorage.loggedIn=false;
