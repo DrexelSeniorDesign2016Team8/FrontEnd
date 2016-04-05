@@ -6,10 +6,6 @@ TODO move more information over to searchService and away from controller
 app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService, userService) {
     $scope.searchService = searchService;
     pageSetup = function () {
-
-
-
-      
         $scope.parameter.stateName = '';
 
         if (userService.isLoggedin()) {
@@ -19,11 +15,6 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                 // this converts the fields to int
                 $scope.parameter = response[0];
                 $scope.parameter.states = searchService.fillStates();
-
-                if (response.length != 0) {
-                    $scope.parameter.stateName = response[0].stateName;
-                    searchService.set(response[0])
-                }
 
             });
         };
