@@ -136,28 +136,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         userService.getSearchPreferences(function(response) {
             //TODO fix this based on the response
             userService.setSearchPreferences(response);
-            if (response.length!=0) {
-                if (response[0].MathScore)
-                    response[0].MathScore = parseInt(response[0].MathScore);
-                if (response[0].ReadingScore)
-                    response[0].ReadingScore = parseInt(response[0].ReadingScore)
-                if (response[0].WritingScore)
-                    response[0].WritingScore = parseInt(response[0].WritingScore);
-                if (response[0].GPAvalue)
-                    response[0].gpa = parseFloat(response[0].GPAvalue);
-                if (response[0].zipCode)
-                    response[0].zipcode = response[0].zipCode;
-                if (response[0].ACTScore) {
-                    response[0].actcomposite = parseInt(response[0].ACTScore);
-                }
-                if (response[0].stateName) {
-                    response[0].stateName = convert_state(response[0].stateName, "name")
-                }
-                if (response[0].zipcode=="null") {
-                    response[0].zipcode = "";
-                }
-                $scope.parameter = response[0];
-            }
+  
             $scope.parameter.states = searchService.fillStates();
             if (response.length!=0) {
                 $scope.parameter.stateName = response[0].stateName;
