@@ -45,8 +45,8 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         options.text = "Preferences Saved";
         options.confirm="OK";
         var params = $scope.parameter;
-       
-        searchService.saveForFormat(params);
+
+        searchService.set(params);
         savePreferences(function() {
 
             $scope.showToast(options);

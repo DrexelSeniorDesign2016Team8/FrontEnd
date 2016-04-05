@@ -7,27 +7,8 @@ app.factory('searchService', function($localStorage, apiCall) {
      * @param data - the data to be searched
      */
     function set(data) {
-        var config = {};
-        config.params = {
-            GPAvalue: data.GPAvalue,
-            ACTScore: data.ACTScore,
-            highSchoolPercentile: data.HighSchoolPercentile,
-            MathScore: data.MathScore,
-            WritingScore: data.WritingScore,
-            ReadingScore: data.ReadingScore,
-            stateName: data.stateName,
-            name: data.InstitutionName,
-            zipCode: data.zipCode,
-            fullAddress: data.fullAddress,
-            acceptanceRate: data.acceptanceRate,
-            retentionRate: data.retentionRate,
-            institutionType: data.institutionType,
-            studentPopulation: data.studentPopulation,
-            averageClassSize: data.averageClassSize,
-            CommonApplication: data.commonApplication,
-            favoritedInstitutions: data.favoritedInstitutions};
-        $localStorage.params = config.params;
-        searchOptions.params = config.params;
+        $localStorage.params = data;
+        searchOptions.params = data;
     }
 
     function restorePreferences(data) {
@@ -46,15 +27,6 @@ app.factory('searchService', function($localStorage, apiCall) {
         $localStorage.params = config.params;
         searchOptions.params = config.params;
     }
-    function saveForFormat(data) {
-
-        if (data.stateName) {
-            data.stateName = convert_state(data.stateName, "abbrev")
-        }
-        $localStorage.params = data;
-        searchOptions.params = data;
-
-        }
     function setGPA(gpa) {
         var config = {
             params: {
@@ -136,7 +108,6 @@ app.factory('searchService', function($localStorage, apiCall) {
         setApiCall: setApiCall,
         fillClassSize: fillClassSize,
         restorePreferences: restorePreferences,
-        saveForFormat: saveForFormat
     }
 
 });
