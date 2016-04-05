@@ -16,16 +16,24 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                 // this converts the fields to int
                 $scope.parameter = response[0];
                 $scope.parameter.states = searchService.fillStates();
+                $scope.parameter.states = searchService.fillStates();
+                $scope.parameter.population = searchService.fillPercentages();
 
+                $scope.parameter.percentages = searchService.fillPercentages();
+                $scope.parameter.population = searchService.fillPopulation();
+
+                $scope.parameter.classSize = searchService.fillClassSize();
             });
-        };
-        $scope.parameter.states = searchService.fillStates();
-        $scope.parameter.population = searchService.fillPercentages();
+        }
+        else {
+            $scope.parameter.states = searchService.fillStates();
+            $scope.parameter.population = searchService.fillPercentages();
 
-        $scope.parameter.percentages = searchService.fillPercentages();
-        $scope.parameter.population = searchService.fillPopulation();
+            $scope.parameter.percentages = searchService.fillPercentages();
+            $scope.parameter.population = searchService.fillPopulation();
 
-        $scope.parameter.classSize = searchService.fillClassSize();
+            $scope.parameter.classSize = searchService.fillClassSize();
+        }
         deleteCookie("searchParameters");
     };
 
