@@ -23,23 +23,27 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
             userService.setSearchPreferences(response);
             if (response.length!=0) {
                 if (response[0].MathScore)
+                    // convert to int
                     response[0].MathScore = parseInt(response[0].MathScore);
                 if (response[0].ReadingScore)
+                    // convert to int
                     response[0].ReadingScore = parseInt(response[0].ReadingScore)
                 if (response[0].WritingScore)
+                    // convert to int
                     response[0].WritingScore = parseInt(response[0].WritingScore);
                 if (response[0].GPAvalue)
-                    response[0].gpa = parseFloat(response[0].GPAvalue);
+                    // convert to float
+                    response[0].GPAvalue = parseFloat(response[0].GPAvalue);
                 if (response[0].zipCode)
-                    response[0].zipcode = response[0].zipCode;
+                    // convert to int
+                    response[0].zipCode = parseInt(response[0].zipCode);
                 if (response[0].ACTScore) {
-                    response[0].actcomposite = parseInt(response[0].ACTScore);
+                    // convert to int
+                    response[0].ACTScore = parseInt(response[0].ACTScore);
                 }
                 if (response[0].stateName) {
+                    // convert state name
                     response[0].stateName = convert_state(response[0].stateName, "name")
-                }
-                if (response[0].zipcode=="null") {
-                    response[0].zipcode = "";
                 }
                 $scope.parameter = response[0];
                 $scope.parameter.states = searchService.fillStates();
@@ -49,14 +53,15 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                 $scope.parameter.stateName = response[0].stateName;
                 searchService.set(response[0])
             }
+            $scope.parameter.states = searchService.fillStates();
+            $scope.parameter.population = searchService.fillPercentages();
+
+            $scope.parameter.percentages = searchService.fillPercentages();
+            $scope.parameter.population = searchService.fillPopulation();
+
+            $scope.parameter.classSize = searchService.fillClassSize();
         });
-        $scope.parameter.states = searchService.fillStates();
-        $scope.parameter.population = searchService.fillPercentages();
 
-        $scope.parameter.percentages = searchService.fillPercentages();
-        $scope.parameter.population = searchService.fillPopulation();
-
-        $scope.parameter.classSize = searchService.fillClassSize();
 
         deleteCookie("searchParameters");
     };
