@@ -3,5 +3,6 @@ This function should show a warning that no search results are available and ret
  */
 function noResultsAvailable() {
 
-    alert("No results available. Returning to previous page");
+    alert("No results available. Please refine results");
+    $("#refineSearchButton").click()
 }
