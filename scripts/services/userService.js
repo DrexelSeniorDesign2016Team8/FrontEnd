@@ -70,11 +70,9 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
                     // convert state name
                     response[0].stateName = convert_state(response[0].stateName, "name")
                 }
-                $scope.parameter = response[0];
-                $scope.parameter.states = searchService.fillStates();
             }
 
-            callback();
+            callback(response);
         });
     }
 
