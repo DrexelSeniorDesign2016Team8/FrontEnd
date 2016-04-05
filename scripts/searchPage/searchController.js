@@ -9,13 +9,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
 
 
 
-        if (loggedIn == "true") {
-            //TODO Angular probably lets us delete ths
-            // remove class for not showing logged in functions
-        }
-        else {
-            // we don't need to modify anything
-        }
+      
         $scope.parameter.stateName = '';
 
         if (userService.isLoggedin()) {
