@@ -44,7 +44,38 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function getSearchPreferences(callback) {
 
         apiCall.setApiDestination("getPreferences.php?");
-        apiCall.callCollegeSearchAPI(callback);
+        apiCall.callCollegeSearchAPI(function(response) {
+
+            if (response.length!=0) {
+                if (response[0].MathScore)
+                // convert to int
+                    response[0].MathScore = parseInt(response[0].MathScore);
+                if (response[0].ReadingScore)
+                // convert to int
+                    response[0].ReadingScore = parseInt(response[0].ReadingScore)
+                if (response[0].WritingScore)
+                // convert to int
+                    response[0].WritingScore = parseInt(response[0].WritingScore);
+                if (response[0].GPAvalue)
+                // convert to float
+                    response[0].GPAvalue = parseFloat(response[0].GPAvalue);
+                if (response[0].zipCode)
+                // convert to int
+                    response[0].zipCode = parseInt(response[0].zipCode);
+                if (response[0].ACTScore) {
+                    // convert to int
+                    response[0].ACTScore = parseInt(response[0].ACTScore);
+                }
+                if (response[0].stateName) {
+                    // convert state name
+                    response[0].stateName = convert_state(response[0].stateName, "name")
+                }
+                $scope.parameter = response[0];
+                $scope.parameter.states = searchService.fillStates();
+            }
+
+            callback();
+        });
     }
 
     /**
