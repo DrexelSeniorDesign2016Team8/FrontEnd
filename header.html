@@ -12,9 +12,9 @@
 
 <md-button class="md-raised accountCreation"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage($event)">Create Account/Login
  </md-button>
-
+<div class="accountCreation">
     <md-menu>
-        <md-label class="accountCreation"> {{userService.getUserName()}}</md-label>
+         {{userService.getUserName()}}
         <md-button aria-label="Open Login Options" id="accountButton"  ng-show='userService.isLoggedin()' class= "accountCreation" ng-click="openMenu($mdOpenMenu, $event)">
 
             <md-icon  md-svg-icon="account-location" style="width:40px; height:40px;" class="md-icon-button accountOptions"></md-icon>
@@ -36,5 +36,6 @@
             </md-menu-item>
         </md-menu-content>
     </md-menu>
+    </div>
     </body>
     <br>
