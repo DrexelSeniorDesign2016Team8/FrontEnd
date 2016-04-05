@@ -21,6 +21,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
         userService.getSearchPreferences(function(response) {
             //TODO fix this based on the response
             userService.setSearchPreferences(response);
+            // this converts the fields to int
             if (response.length!=0) {
                 if (response[0].MathScore)
                     // convert to int
@@ -72,8 +73,30 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
         }
             var searchOptions = $scope.parameter;
             if (searchOptions) {
-                if (searchOptions.stateName) {
+                if (searchOptions.stateName && searchOptions.stateName!="None") {
                     stateName = convert_state($scope.parameter.stateName, "abbrev");
+                }
+                    // If none is selected make the value an empty string
+                else if (searchOptions.stateName=="None") {
+                    searchOptions.stateName="";
+                }
+                if (searchOptions.averageClassSize=="None") {
+                    searchOptions.averageClassSize=="";
+                }
+                if (searchOptions.retentionRate=="None") {
+                    searchOptions.retentionRate=="";
+                }
+                if (searchOptions.acceptanceRate=="None") {
+                    searchOptions.acceptanceRate=="";
+                }
+                if (searchOptions.studentPopulation=="None") {
+                    searchOptions.studentPopulation=="";
+                }
+                if (searchOptions.institutionType=="None") {
+                    searchOptions.institutionType=="";
+                }
+                if (searchOptions.highSchoolPercentile=="None") {
+                    searchOptions.highSchoolPercentile=="";
                 }
             }
             if (searchOptions) {
