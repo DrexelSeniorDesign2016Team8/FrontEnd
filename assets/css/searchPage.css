@@ -48,7 +48,7 @@
 }
 .gpaConverter {
 	background-color:blue !important;
-	color:white;
+	text-color:white !important;;
 	margin-right:54px !important;
 	text-align:center;
 }
