@@ -205,7 +205,7 @@
                             </div>
  <div class="searchPageBox" flex="20">
                                 <md-input-container class="searchPageBox">
-                                    <label>Student Population</label>
+                                    <label class="searchLabel">Student Population</label>
                                     <md-select class="searchLabel" ng-model="parameter.studentPopulation">
                                         <md-option ng-repeat="population in parameter.population" value="{{population.population}}">
                                             {{population.population}}
@@ -215,7 +215,7 @@
 </div>
      <div class="searchPageBox" flex="20">
                                       <md-input-container class="searchPageBox">
-                                          <label>Average Class Size</label>
+                                          <label class="searchLabel">Average Class Size</label>
                                           <md-select class="searchLabel" ng-model="parameter.averageClassSize">
                                               <md-option ng-repeat="classSize in parameter.classSize" value="{{classSize.classSize}}">
                                                   {{classSize.classSize}}
