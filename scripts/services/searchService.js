@@ -76,6 +76,7 @@ app.factory('searchService', function($localStorage, apiCall) {
         else if (data.zipcode!="null") {
             config.params.zipCode=data.zipcode;
         }
+        
         $localStorage.params = config.params;
         searchOptions.params = config.params;
 
@@ -110,18 +111,18 @@ app.factory('searchService', function($localStorage, apiCall) {
     }
 
     function fillPopulation() {
-        return ("500-1,000:" + "1,000-2,500:"+"2,500-10,000:"+"10,000+" ).split(':').map(function (population) {
+        return ("None:" + "500-1,000:" + "1,000-2,500:"+"2,500-10,000:"+"10,000+" ).split(':').map(function (population) {
             return {population: population};
         });
     }
     function fillClassSize() {
-        return ("0-10:" + "10-20:"+"20-30:"+"40-50" ).split(':').map(function (classSize) {
+        return ("None:" + "0-10:" + "10-20:"+"20-30:"+"40-50" ).split(':').map(function (classSize) {
             return {classSize: classSize};
         });
     }
 
     function fillPercentages() {
-        return (',' + '10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%'
+        return ('None,' + '10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%'
         ).split(',').map(function (percentage) {
             return {percentage: percentage};
         });
