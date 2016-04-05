@@ -68,7 +68,8 @@ loadDropdowns = function() {
         $scope.results.focusLoading=false;
 
         if (response.length==0) {
-            noResultsAvailable();
+            alert("No results available. Please refine results");
+            $scope.toggleSearch("CollegeInfo");
         }
         // Put the response in the colleges variable to be used on the html page
 
