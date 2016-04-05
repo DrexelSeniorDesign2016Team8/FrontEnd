@@ -22,7 +22,7 @@
 #additionalInfo {
 	background: gray;
 }
-.md-input-container.md-default-theme .md-input, .md-input-container .md-input {
+.searchParameterColor {
 	color: white !important;
 }
 

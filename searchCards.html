@@ -4,7 +4,7 @@
                                                <!-- GPA Box-->
                                                <md-input-container class="md-block searchPageBox" flex-gt-sm>
                                             <label class="searchLabel">GPA (Out of 4.0)</label>
-                                            <input type="number" name="gpa" ng-model="parameter.gpa" min="0" max="4.0"ng-pattern="/^\d{0,3}(\.\d{1,2})?$/" >
+                                            <input type="number" class="searchParameterColor" name="gpa" ng-model="parameter.gpa" min="0" max="4.0"ng-pattern="/^\d{0,3}(\.\d{1,2})?$/" >
                                                    <div ng-messages="CollegeInfo.gpa.$error" multiple md-auto-hide="false">
                                                        <div ng-message="min">
                                                            You can't have a negative sore
