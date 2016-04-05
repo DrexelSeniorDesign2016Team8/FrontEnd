@@ -41,21 +41,21 @@ loadDropdowns = function() {
         params = searchService.get();
         if (params) {
             $scope.parameter = {
-                gpa: params.GPAvalue,
-                actcomposite: params.ACTScore,
+                GPAvalue: params.GPAvalue,
+                ACTScore: params.ACTScore,
                 HighSchoolPercentile: params.highSchoolPercentile,
-                mathscore: params.MathScore,
+                MathScore: params.MathScore,
                 WritingScore: params.WritingScore,
                 ReadingScore: params.ReadingScore,
-                stateName: params.StateName,
-                InstitutionName: params.name,
+                stateName: params.stateName,
+                InstitutionName: params.InstitutionName,
                 zipcode: params.zipCode,
                 fullAddress: params.fullAddress,
                 acceptanceRate: params.acceptanceRate,
                 retentionRate: params.retentionRate,
                 institutionType: params.institutionType,
                 studentPopulation: params.studentPopulation,
-                classSize: params.classSize,
+                averageClassSize: params.averageClassSize,
                 commonApplication: params.CommonApplication,
                 favoritedInstitutions: params.favoritedInstitutions,
             }

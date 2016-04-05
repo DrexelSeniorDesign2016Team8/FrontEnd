@@ -10,46 +10,42 @@ app.factory('searchService', function($localStorage, apiCall) {
         if (data.stateName) {
             data.stateName = data.stateName;
         }
-        var config = {
-            params: {
-                // Put required values here
-                'GPAvalue': data.GPAvalue,
-                'ACTScore': data.ACTScore,
-                'highSchoolPercentile': data.HighSchoolPercentile,
-                'MathScore': data.MathScore,
-                'WritingScore': data.WritingScore,
-                'ReadingScore': data.ReadingScore,
-                'StateName': data.stateName,
-                'name': data.InstitutionName,
-                'zipCode': data.zipCode,
-                'fullAddress': data.fullAddress,
-                'acceptanceRate': data.acceptanceRate,
-                'retentionRate': data.retentionRate,
-                'institutionType': data.institutionType,
-                'studentPopulation': data.studentPopulation,
-                'averageClassSize': data.averageClassSize,
-                'CommonApplication': data.commonApplication,
-                'favoritedInstitutions': data.favoritedInstitutions
-            },
-        };
+        var config = {};
+        config.params = {
+            GPAvalue: data.GPAvalue,
+            ACTScore: data.ACTScore,
+            highSchoolPercentile: data.HighSchoolPercentile,
+            MathScore: data.MathScore,
+            WritingScore: data.WritingScore,
+            ReadingScore: data.ReadingScore,
+            StateName: data.stateName,
+            name: data.InstitutionName,
+            zipCode: data.zipCode,
+            fullAddress: data.fullAddress,
+            acceptanceRate: data.acceptanceRate,
+            retentionRate: data.retentionRate,
+            institutionType: data.institutionType,
+            studentPopulation: data.studentPopulation,
+            averageClassSize: data.averageClassSize,
+            CommonApplication: data.commonApplication,
+            favoritedInstitutions: data.favoritedInstitutions};
         $localStorage.params = config.params;
         searchOptions.params = config.params;
     }
 
     function restorePreferences(data) {
-        var config = {
-            params: {
+        var config = {};
+         config.params = {
                 // Put required values here
-                'GPAvalue': data.GPAvalue,
-                'ACTScore': data.ACTScore,
-                'highSchoolPercentile': data.HighSchoolPercentile,
-                'MathScore': data.MathScore,
-                'WritingScore': data.WritingScore,
-                'ReadingScore': data.ReadingScore,
-                'StateName': data.stateName,
-                'zipCode': data.zipCode,
-            },
-        };
+                GPAvalue: data.GPAvalue,
+                ACTScore: data.ACTScore,
+                highSchoolPercentile: data.HighSchoolPercentile,
+                MathScore: data.MathScore,
+                WritingScore: data.WritingScore,
+                ReadingScore: data.ReadingScore,
+                StateName: data.stateName,
+                zipCode: data.zipCode,
+            };
         $localStorage.params = config.params;
         searchOptions.params = config.params;
     }
