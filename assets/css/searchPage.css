@@ -47,7 +47,10 @@
 	color: white !important;
 }
 .gpaConverter {
-	visibility: hidden;
+	background-color:blue;
+	color:white;
+	margin-right:54px;
+	text-align:center;
 }
 
 @media only screen and (max-device-width: 480px) {
