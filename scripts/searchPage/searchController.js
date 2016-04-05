@@ -12,7 +12,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
             userService.getSearchPreferences(function (response) {
                 //TODO fix this based on the response
 
-                userService.setSearchPreferences(response[0]);
+                userService.setSearchPreferences(response);
                 // this converts the fields to int
                 $scope.parameter = response[0];
                 $scope.parameter.states = searchService.fillStates();
