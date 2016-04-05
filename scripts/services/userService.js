@@ -71,7 +71,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
                 }
                 if (response[0].stateName) {
                     // convert state name
-                    convert_state(response[0].stateName, "abbrev")
+                    convert_state(response[0].stateName, "name")
                 }
             }
 
