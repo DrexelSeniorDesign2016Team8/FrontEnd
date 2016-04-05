@@ -34,9 +34,15 @@ app.directive('header', function() {
 
     app.directive('search', function () {
         return {
-            templateUrl: 'searchCards.html'
+            templateUrl: 'fullSearch.html'
         }
         
+    });
+
+    app.directive('searchPreferences' ,function() {
+        return {
+            templateUrl: 'searchPreferences.html'
+        }
     });
 app.directive('passwordMatch', [function () {
     return {
