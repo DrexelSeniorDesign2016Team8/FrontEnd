@@ -39,7 +39,7 @@ app.directive('header', function() {
         
     });
 
-    app.directive('searchPreferences' ,function() {
+    app.directive('preferences' ,function() {
         return {
             templateUrl: 'searchPreferences.html'
         }
