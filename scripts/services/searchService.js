@@ -47,7 +47,7 @@ app.factory('searchService', function($localStorage, apiCall) {
                 'WritingScore': data.WritingScore,
                 'ReadingScore': data.ReadingScore,
                 'StateName': data.stateName,
-                'zipCode': data.zipcode,
+                'zipCode': data.zipCode,
             },
         };
         $localStorage.params = config.params;
