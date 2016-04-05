@@ -7,7 +7,6 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
     $scope.searchService = searchService;
     pageSetup = function () {
 
-        var loggedIn = getCookie("loggedIn");
 
 
         if (loggedIn == "true") {
@@ -19,27 +18,28 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
         }
         $scope.parameter.stateName = '';
 
-        userService.getSearchPreferences(function(response) {
-            //TODO fix this based on the response
-            userService.setSearchPreferences(response);
-            // this converts the fields to int
-            $scope.parameter = response[0];
-            $scope.parameter.states = searchService.fillStates();
+        if (userService.isLoggedin()) {
+            userService.getSearchPreferences(function (response) {
+                //TODO fix this based on the response
+                userService.setSearchPreferences(response);
+                // this converts the fields to int
+                $scope.parameter = response[0];
+                $scope.parameter.states = searchService.fillStates();
 
-            if (response.length!=0) {
-                $scope.parameter.stateName = response[0].stateName;
-                searchService.set(response[0])
-            }
-            $scope.parameter.states = searchService.fillStates();
-            $scope.parameter.population = searchService.fillPercentages();
+                if (response.length != 0) {
+                    $scope.parameter.stateName = response[0].stateName;
+                    searchService.set(response[0])
+                }
 
-            $scope.parameter.percentages = searchService.fillPercentages();
-            $scope.parameter.population = searchService.fillPopulation();
+            });
+        };
+        $scope.parameter.states = searchService.fillStates();
+        $scope.parameter.population = searchService.fillPercentages();
 
-            $scope.parameter.classSize = searchService.fillClassSize();
-        });
+        $scope.parameter.percentages = searchService.fillPercentages();
+        $scope.parameter.population = searchService.fillPopulation();
 
-
+        $scope.parameter.classSize = searchService.fillClassSize();
         deleteCookie("searchParameters");
     };
 
