@@ -20,7 +20,7 @@ function formatSearch(searchParameters) {
     if (searchParameters.ACTScore) {
         parameters += "ACTScore=" + searchParameters.ACTScore + "&";
     }
-    if (searchParameters.HighSchoolPercentile) {
+    if (searchParameters.HighSchoolPercentile && searchParameters.HighSchoolPercentile!="None") {
         parameters += "HighSchoolPercentile=" + searchParameters.HighSchoolPercentile + "&";
     }
     if (searchParameters.MathScore) {
@@ -35,7 +35,7 @@ function formatSearch(searchParameters) {
     if (searchParameters.InstitutionName) {
         parameters += "name=" + searchParameters.InstitutionName + "&";
     }
-    if (searchParameters.stateName) {
+    if (searchParameters.stateName && searchParameters.stateName!="None") {
         parameters += "stateName=" + convert_state(searchParameters.stateName, "abbrev") + "&";
     }
     if (searchParameters.zipCode) {
@@ -44,16 +44,16 @@ function formatSearch(searchParameters) {
     if (searchParameters.fullAddress) {
         parameters += "fullAddress=" + searchParameters.fullAddress + "&";
     }
-    if (searchParameters.acceptanceRate) {
+    if (searchParameters.acceptanceRate && searchParameters.acceptanceRate!="None") {
         parameters += "AcceptanceRate=" + searchParameters.acceptanceRate + "&";
     }
-    if (searchParameters.retentionRate) {
+    if (searchParameters.retentionRate && searchParameters.retentionRate!="None") {
         parameters += "retentionRate=" + searchParameters.retentionRate + "&";
     }
     if (searchParameters.institutionType) {
         parameters += "institutionType=" + searchParameters.institutionType + "&";
     }
-    if (searchParameters.studentPopulation) {
+    if (searchParameters.studentPopulation && searchParameters.studentPopulation!="None") {
         if (searchParameters.studentPopulation[0]="10,000+")
         {
             var pops = searchParameters.studentPopulation="10000-9999999999999999999999";
@@ -66,7 +66,7 @@ function formatSearch(searchParameters) {
 
         parameters += "minPop=" + population[0] + "&" + "maxPop=" + population[1];
     }
-    if (searchParameters.averageClassSize) {
+    if (searchParameters.averageClassSize && searchParameters.averageClassSize!="None") {
         var classSize =  searchParameters.averageClassSize.split("-");
         parameters += "minClass=" + classSize[0]+"&" + "maxClass=" + classSize[1];
     }
