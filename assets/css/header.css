@@ -13,6 +13,7 @@
 }
 .accountCreation {
     float: right;
+    margin-top: 25px;
     margin-right: 20px;
     position: relative;
 }
