@@ -9,9 +9,9 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
     };
     $scope.results.loading = false;
     $scope.parameter = {};
-    fillResults = function(pageNumber) {
-
-        searchService.searchWithPagination($scope.loadResults, pageNumber, $scope.pageSize);
+    fillResults = function(pageSize, pageNumber) {
+        
+        searchService.searchWithPagination($scope.loadResults, pageNumber, pageSize);
 
     };
 loadDropdowns = function() {
@@ -86,7 +86,7 @@ loadDropdowns = function() {
                response[i].favorited=false;
            }
         }
-
+        // $scope.totalResults=totalResults needs to be implemented for pagination to be proper
         $scope.colleges=response;
 
     };
@@ -184,5 +184,5 @@ loadDropdowns = function() {
 
     $scope.autoFillSearch();
     loadDropdowns();
-    fillResults(1);
+    fillResults(1, $scope.pageSize);
 });
