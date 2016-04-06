@@ -153,7 +153,7 @@ loadDropdowns = function() {
             $log.debug("results pane is closed");
 
         }
-        searchService.search($scope.loadResults);
+        fillResults();
         $mdSidenav('searchBar').close();
 
     };
