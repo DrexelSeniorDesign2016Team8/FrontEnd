@@ -24,11 +24,8 @@ loadDropdowns = function() {
     $scope.parameter.population = searchService.fillPopulation();
 
     $scope.parameter.classSize = searchService.fillClassSize();
-    $scope.parameter.filterOptions = ('Best Match,'
-    ).split(',').map(function (filterOption) {
-        return {filterOption: filterOption};
-    });
-    $scope.pageSize=10;
+
+    $scope.pageSize=20;
     $scope.parameter.pageSizes = ('10, 20, 50, 100'
     ).split(',').map(function (pageSize) {
         return {pageSize: pageSize};
