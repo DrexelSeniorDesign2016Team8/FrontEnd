@@ -7,6 +7,7 @@
             </md-button>
             </div>
         </md-toolbar>
+    <md-progress-circular show-focus="results.loading" class="md-hue-2 md-busy " md-diameter="100" ng-show="results.loading" md-mode="indeterminate" style="margin:auto"></md-progress-circular>
             <span flex></span>
             <div ng-if='college.address!==undefined'><p> <a target="_blank" href={{college.googleMapsAddress}}>{{college.address}} </a></p></div>
             <div ng-if='college.address==undefined'> <p>Address unavailable</p></div>
