@@ -71,12 +71,12 @@
                 <md-input-container>
                     <label>Size</label>
                     <md-select ng-model="pageSize">
-                        <md-option ng-repeat="pageSize in parameter.pageSizes" on-page-change="fillResults(pageSize, newPageNumber)" value="{{pageSize.pageSize}}">
+                        <md-option ng-repeat="pageSize in parameter.pageSizes" md-on-close="pageSizeChange(pageSize)" value="{{pageSize.pageSize}}">
                             {{pageSize.pageSize}}
                         </md-option>
                     </md-select>
                 </md-input-container>
-                <dir-pagination-controls boundary-links="true" on-page-change="fillResults(pageSize, newPageNumber)" template-url="navigation.html">
+                <dir-pagination-controls boundary-links="true" on-page-change="updatePage(newPageNumber)" template-url="navigation.html">
 
                 </dir-pagination-controls>
             </div>
