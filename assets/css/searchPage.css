@@ -52,6 +52,11 @@
 	margin-right:54px !important;
 	text-align:center;
 }
+.headScreen {
+	text-align:center;
+	max-width:50px;
+	color:white
+}
 
 @media only screen and (max-device-width: 480px) {
 	.searchPageBox {
@@ -62,5 +67,8 @@
 		max-width: 100%;
 		margin-top: 10px;
 		min-width: 80%;
+	}
+	.headScreen {
+		visibility: hidden;
 	}
 }
