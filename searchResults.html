@@ -70,8 +70,8 @@
 
                 <md-input-container>
                     <label>Size</label>
-                    <md-select ng-model="pageSize">
-                        <md-option ng-repeat="pageSize in parameter.pageSizes" md-on-close="pageSizeChange(pageSize)" value="{{pageSize.pageSize}}">
+                    <md-select ng-model="pageSize" md-on-close="pageSizeChange(pageSize)">
+                        <md-option ng-repeat="pageSize in parameter.pageSizes"  value="{{pageSize.pageSize}}">
                             {{pageSize.pageSize}}
                         </md-option>
                     </md-select>
