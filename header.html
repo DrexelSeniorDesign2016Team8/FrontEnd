@@ -10,7 +10,12 @@
  <a href ng-click="logoClick('searchPage.html')"><img id="collegeSearchicon"  ng-Src="assets/icon/collegeSearch.png" atl="CollegeSearch" ></a>
 
 
-<md-button class="md-raised accountCreation"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage($event)">Create Account/Login
+
+ <md-button class="accountCreation"><md-icon md-svg-icon="help-circle"><md-tooltip md-direction="bottom">
+     Click to view Help
+ </md-tooltip></md-icon>
+ </md-button>
+ <md-button class="md-raised accountCreation"  ng-hide='userService.isLoggedin()' ng-click="showLoginPage($event)">Create Account/Login
  </md-button>
 <div class="accountCreation">
     <md-menu>
@@ -36,6 +41,8 @@
             </md-menu-item>
         </md-menu-content>
     </md-menu>
+
+
     </div>
     </body>
     <br>
