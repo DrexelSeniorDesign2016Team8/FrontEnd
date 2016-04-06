@@ -8,10 +8,18 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
     $scope.college.name=$scope.items.name;
     $scope.ID = $scope.items.instID;
 
+    $scope.results = {
+        loading: false,
+    };
+    $scope.results.loading = false;
+
 
     getResults = function () {
+        $scope.results.loading=true;
+        $scope.results.focusLoading=true;
         apiCall.setApiDestination("getInstDetails.php");
         apiCall.callCollegeSearchAPI(function () {
+            $scope.loading=false;
             $log.debug("college data retrieved");
         });
     };
