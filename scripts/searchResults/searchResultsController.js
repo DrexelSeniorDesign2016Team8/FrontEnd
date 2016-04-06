@@ -15,7 +15,7 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
         searchService.searchWithPagination($scope.loadResults, $scope.pageNumber, $scope.pageSize);
 
     };
-    pageSizeChange = function(size) {
+    $scope.pageSizeChange = function(size) {
         $scope.pageSize=size;
         fillResults();
     }
