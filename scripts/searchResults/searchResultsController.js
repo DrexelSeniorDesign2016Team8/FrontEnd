@@ -184,5 +184,5 @@ loadDropdowns = function() {
 
     $scope.autoFillSearch();
     loadDropdowns();
-    fillResults(1, $scope.pageSize);
+    fillResults($scope.pageSize,1);
 });
