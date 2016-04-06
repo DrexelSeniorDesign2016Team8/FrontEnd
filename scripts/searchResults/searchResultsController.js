@@ -15,11 +15,21 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
         searchService.searchWithPagination($scope.loadResults, $scope.pageNumber, $scope.pageSize);
 
     };
-    $scope.pageSizeChange = function(size) {
-        $scope.pageSize=size;
+    fillResultsonPageLoad = function() {
+        $scope.results.loading=true;
+        $scope.results.focusLoading=true;
         fillResults();
     }
-    updatePage = function(pageNumber) {
+    $scope.pageSizeChange = function(size) {
+        $scope.pageSize=size;
+        $scope.results.focusLoading=true;
+        $scope.loading=true;
+        $scope.colleges=null;
+        fillResults();
+    }
+    $scope.updatePage = function(pageNumber) {
+        $scope.results.focusLoading=true;
+        $scope.loading=true;
         $scope.pageNumber=pageNumber;
         fillResults();
     }
@@ -193,5 +203,5 @@ loadDropdowns = function() {
 
     $scope.autoFillSearch();
     loadDropdowns();
-    fillResults();
+    fillResultsonPageLoad();
 });
