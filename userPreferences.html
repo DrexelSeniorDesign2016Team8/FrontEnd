@@ -46,11 +46,17 @@
 </head>
 <div id="header" header></div>
 
-<div ng-controller="userPreferencesController as parameter" layout="column" ng-cloak>
+<div ng-controller="userPreferencesController as parameter" layout="column" ng-cloak class="listdemoBasicUsage">
 
     <br>
-    <md-content flex layout-padding>
+    <div flex-gt-sm="50" flex="">
 
+        <md-toolbar layout="row" class="md-hue-3">
+            <div class="md-toolbar-tools">
+                <span>{{pageTitle}}</span>
+            </div>
+        </md-toolbar>
+        </div>
             <br>
             <br>
         <div id="preferences" flex="80"preferences></div>
@@ -60,6 +66,8 @@
             <md-tooltip md-direction="right">
                 Click to Save user preferences
             </md-tooltip></md-button>
+
+
         </md-button>
         <md-button  class="md-raised" style="width:50px" ng-click="UndoChanges()" ng-disabled="CollegeInfo.$invalid">UNDO
             <md-tooltip md-direction="right">

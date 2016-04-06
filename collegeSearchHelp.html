@@ -19,7 +19,7 @@
     <!-- material design javascript -->
 
     <!-- load the css page for the application and corresponding page -->
-    <link rel="stylesheet" href="assets/css/searchPage.css">
+    <link rel="stylesheet" href="assets/css/collegeSearchHelp.css">
     <link rel="stylesheet" href="assets/css/collegeSearch.css">
 
     <!--load the module and config files-->
@@ -37,16 +37,72 @@
     <!-- load the header files since the controller is on this page-->
     <script src="scripts/header/headerController.js"></script>
     <!--load the controller and corresponding scripts -->
-    <script src="scripts/searchPage/searchController.js"></script>
 
-
-    <script src="scripts/searchPage/searchPage.js"></script>
-    <script src="scripts/searchPage/gpaController.js"></script>
+    <script src="scripts/collegeSearchHelp/collegeSearchHelpController.js"></script>
 
 
 </head>
 
     <div id="header" header></div>
 
+<div ng-controller="AppCtrl" ng-cloak="" layout-gt-sm="row" layout="column" class="listdemoBasicUsage">
 
+    <div flex-gt-sm="50" flex="">
+
+        <md-toolbar layout="row" class="md-hue-3">
+            <div class="md-toolbar-tools">
+                <span>{{pageTitle}}</span>
+            </div>
+        </md-toolbar>
+
+        <md-content>
+            <md-list flex="">
+                <md-subheader class="md-no-sticky">Main Items</md-subheader>
+                <md-list-item class="md-2-line">
+                <div class="md-list-item-text">
+                    <h3>What is College Search</h3>
+                    <p>I dont know. You tell me</p>
+                </div>
+            </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>Why does this page exist.</h3>
+                        <p>Because you don't know how to use this site</p>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+
+                <md-subheader class="md-no-sticky">User Preferences</md-subheader>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>What is a user</h3>
+                        <p>Do you want to become a user. Make an account and see for yourself</p>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>What are preferences</h3>
+                        <p>Search Preferences you can save for yourself</p>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>What preferences can be saved per user</h3>
+                        <p>GPA, ACT, Zip Code, SAT Scores, State</p>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>Favorites, What are they</h3>
+                        <p>You can mark colleges as favorites to retain their results</p>
+                    </div>
+                </md-list-item>
+                </md-list>
+        </md-content>
+    </div>
+ </div>
 </html>

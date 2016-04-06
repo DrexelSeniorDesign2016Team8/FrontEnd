@@ -21,6 +21,11 @@
 	height: 100px;
 	position: relative;
 }
+.listdemoBasicUsage md-divider {
+	margin-top: 10px;
+	margin-bottom: 0; }
+
+
 #header {
 	position:relative;
 	height: 100px;
