@@ -1,9 +1,17 @@
 
-function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userService) {
+function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userService, apiCall) {
 
     $scope.items=items;
 
-    $scope.college=$scope.items;
+    $scope.ID=$scope.items.instID;
+
+    getResults = function() {
+        apiCall.setApiDestination("getInstDetails.php");
+        apiCall.callCollegeSearchAPI(function() {
+            $log.debug("college data retrieved");
+        });
+    }
+
 
 $scope.hide = function() {
     $mdDialog.hide();
