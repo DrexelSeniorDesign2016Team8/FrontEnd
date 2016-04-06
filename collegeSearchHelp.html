@@ -43,41 +43,10 @@
     <script src="scripts/searchPage/searchPage.js"></script>
     <script src="scripts/searchPage/gpaController.js"></script>
 
+
 </head>
-<body>
-        <div id="header" header></div>
-        <!-- Modify header and move css to css file -->
-        <div id="container">
-            <div id="subheader">
-                <div class="layer">
-                <span class="mainTextTitle">
-                <br />Find the right school!
-                </span>
-                <span class="mainTextSubText">
-                <br />Our goal is to match you and your preferences to the perfect college.<br /><br />Using information from over 8,000 institutions in the United States,<br /> we use <span style="font-weight:bold;">your</span> academic performance and personal preferences<br /> to deliver you a list of schools that you'll fit right into.<br />
-                <br />Fill in as much information as you can, hit search, and favorite any institutions that interest you!
-                </span>
-                </div>
 
-            </div>
-            <div ng-controller="searchController as parameter" layout="column" ng-cloak id="additionalInfo" style="background-color:#424242">
+    <div id="header" header></div>
 
-                <br>
 
-                    <form name="CollegeInfo">
-                        <center>
-                            <div layout="row" layout-align="center center" class="searchLabel searchHeader" style="text-decoration:underline;">
-                               Academic Information
-                            </div>
-                            <br>
-                            <br>
-                        <div id="search" flex="80"search></div>
-                            <md-button class="md-raised md-warn searchButton" id="searchBtn" style='text-align:center;' ng-disabled="CollegeInfo.$invalid" ng-click="performSearch()">
-                                Search
-                            </md-button>
-                        </center>
-                    </form>
-            </div>
-        </div>
-</body>
 </html>
