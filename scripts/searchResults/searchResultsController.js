@@ -8,12 +8,21 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
         loading: false,
     };
     $scope.results.loading = false;
+    $scope.pageNumber=1;
     $scope.parameter = {};
-    fillResults = function(pageSize, pageNumber) {
+    fillResults = function() {
         
-        searchService.searchWithPagination($scope.loadResults, pageNumber, pageSize);
+        searchService.searchWithPagination($scope.loadResults, $scope.pageNumber, $scope.pageSize);
 
     };
+    pageSizeChange = function(size) {
+        $scope.pageSize=size;
+        fillResults();
+    }
+    updatePage = function(pageNumber) {
+        $scope.pageNumber=pageNumber;
+        fillResults();
+    }
 loadDropdowns = function() {
 
 
@@ -184,5 +193,5 @@ loadDropdowns = function() {
 
     $scope.autoFillSearch();
     loadDropdowns();
-    fillResults($scope.pageSize,1);
+    fillResults();
 });
