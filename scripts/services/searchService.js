@@ -61,7 +61,26 @@ app.factory('searchService', function($localStorage, apiCall) {
      * This function performs a search
      * @param callback - the function to be called after a search is performed
      */
-    function search(callback) {
+    function fullSearch(callback) {
+        search(callback);
+    }
+
+    function setApiCall(apiCall) {
+        this.apiCall = apiCall;
+    }
+    function searchWithPagination(callback, pageNumber, resultsPerPage) {
+        var jsonString = setupSearch();
+
+        var parameters = jsonString + "page=" + pageNumber + "&pageSize=" + resultsPerPage;
+        apiCall.setParameters(parameters);
+        search(callback);
+    }
+    function searchWithoutPagination(callback) {
+        var parameters = setupSearch();
+        apiCall.setParameters(parameters);
+        search(callback);
+    }
+    function setupSearch() {
         var jsonString = "";
         params = $localStorage.params;
         if (params) {     // if they exist make call
@@ -69,22 +88,23 @@ app.factory('searchService', function($localStorage, apiCall) {
             jsonString = formatSearch(params);
             jsonString = jsonString.replace(/\"/g, "");
         }
+
         apiCall.setApiDestination("search.php?");
-        apiCall.setParameters(jsonString);
+        return jsonString;
 
-        apiCall.callCollegeSearchAPI(callback);
     }
-
-    function setApiCall(apiCall) {
-        this.apiCall = apiCall;
+    function search(callback) {
+        apiCall.callCollegeSearchAPI(callback);
     }
 
     return {
         set: set,
         get: get,
-        search: search,
+        fullSearch: fullSearch,
         setGPA: setGPA,
         getGPA: getGPA,
+        searchWithoutPagination: searchWithoutPagination,
+        searchWithPagination: searchWithPagination,
         fillStates: fillStates,
         fillPopulation: fillPopulation,
         fillPercentages: fillPercentages,

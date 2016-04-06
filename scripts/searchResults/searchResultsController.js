@@ -9,9 +9,9 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
     };
     $scope.results.loading = false;
     $scope.parameter = {};
-    fillResults = function() {
+    fillResults = function(pageNumber) {
 
-        searchService.search($scope.loadResults);
+        searchService.searchWithPagination($scope.loadResults, pageNumber, $scope.pageSize);
 
     };
 loadDropdowns = function() {
@@ -184,5 +184,5 @@ loadDropdowns = function() {
 
     $scope.autoFillSearch();
     loadDropdowns();
-    fillResults();
+    fillResults(1);
 });
