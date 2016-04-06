@@ -17,7 +17,7 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
     getResults = function () {
         $scope.results.loading=true;
         $scope.results.focusLoading=true;
-        apiCall.setApiDestination("getInstDetails.php");
+        apiCall.setApiDestination("getInstDetails.php?");
         apiCall.callCollegeSearchAPI(function () {
             $scope.loading=false;
             $log.debug("college data retrieved");
