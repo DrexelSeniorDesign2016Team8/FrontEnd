@@ -25,7 +25,7 @@ loadDropdowns = function() {
 
     $scope.parameter.classSize = searchService.fillClassSize();
 
-    $scope.pageSize=20;
+    $scope.pageSize=10;
     $scope.parameter.pageSizes = ('10, 20, 50, 100'
     ).split(',').map(function (pageSize) {
         return {pageSize: pageSize};
