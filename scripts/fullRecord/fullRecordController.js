@@ -4,8 +4,10 @@
 function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userService, apiCall) {
 
     $scope.items = items;
+    $scope.college = {};
     $scope.college.name=$scope.items.name;
     $scope.ID = $scope.items.instID;
+
 
     getResults = function () {
         apiCall.setApiDestination("getInstDetails.php");
