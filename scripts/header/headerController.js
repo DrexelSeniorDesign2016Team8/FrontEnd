@@ -66,5 +66,7 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
 
     $scope.logout = function() {
         authService.logout();
+        $scope.user.loggedIn=false;
+        $scope.userName="";
     }
 });

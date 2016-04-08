@@ -69,7 +69,7 @@ app.factory('authService', function(userService, $http) {
      * This function logs a user out, and sets all the corresponding values to their default values
      */
     function logout() {
-       userService.user.destroy();
+       userService.logout();
 
     }
     return {

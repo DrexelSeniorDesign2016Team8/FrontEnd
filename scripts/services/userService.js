@@ -112,7 +112,11 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         preferences.favoritedInstitutions = 1;
         searchService.set(preferences);
     }
+    function logout() {
+        user.username =null;
+            user.sessionId= '';
 
+    }
     function saveSearchPreferences(callback) {
         var params = searchService.get();
 
@@ -150,6 +154,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         getSessionId:getSessionId,
         set: set,
         setUserName: setUserName,
+        logout: logout,
         restoreLocalStorage: restoreLocalStorage,
         setSessionId : setSessionId,
         setSearchPreferences: setSearchPreferences,
