@@ -15,12 +15,12 @@
      Click to view Help
  </md-tooltip><md-icon md-svg-icon="help-circle" style="width:40px; height:40px; margin-top:5px"></md-icon>
  </md-button>
- <md-button class="md-raised accountCreation"  ng-hide='headerController.isLoggedIn' ng-click="showLoginPage($event)">Create Account/Login
+ <md-button class="md-raised accountCreation"  ng-hide='isLoggedIn' ng-click="showLoginPage($event)">Create Account/Login
  </md-button>
 <div class="accountCreation">
     <md-menu>
          {{userName}}
-        <md-button aria-label="Open Login Options" id="accountButton"  ng-show='headerController.isLoggedin' ng-click="openMenu($mdOpenMenu, $event)">
+        <md-button aria-label="Open Login Options" id="accountButton"  ng-show='isLoggedIn' ng-click="openMenu($mdOpenMenu, $event)">
 
             <md-icon  md-svg-icon="account-location" style="width:40px; height:40px;" class="md-icon-button"></md-icon>
         </md-button>
