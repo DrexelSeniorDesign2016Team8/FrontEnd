@@ -63,7 +63,7 @@ function signInController ($scope, $mdDialog, $log, authService) {
             }
             if (success) {
                 //TODO adjust page so logged in information is now shown
-                $mdDialog.hide();
+                $mdDialog.hide(authService);
 
                 if ($scope.signIn.rememberMe == true) {
                     $scope.rememberMe = true;
@@ -78,7 +78,7 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 $scope.currentUserLoggedin = false;
                 $scope.login.loading = false;
             }
-            return authService;
+
         }));
     };
     $scope.resetPassword = function() {
