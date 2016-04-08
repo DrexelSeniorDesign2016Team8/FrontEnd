@@ -3,7 +3,7 @@ This is the controller for the preferences screen
 The delete content dialog is generated here
 100% coded by Ian Shinbrot
  */
-app.controller('userPreferencesController', function ($scope, $mdDialog, $log, userService, $mdToast,navigationService) {
+app.controller('userPreferencesController', function ($scope, $mdDialog, $log, userService, authService, $mdToast,navigationService) {
     $scope.userService = userService;
     $scope.pageTitle="User Preferences Page";
    var searchService = userService.getSearchService();
@@ -120,7 +120,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
     }
     function deleteAccount() {
 
-    userService.deleteAccount();
+    authService.deleteAccount();
     }
     function sendEmail() {
         userService.emailFavorites(function() {
