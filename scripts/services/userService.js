@@ -12,6 +12,9 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         return searchService;
     }
 
+    function getSessionId() {
+        return user.sessionId;
+    }
     function setSessionId(sessionId) {
         user.sessionId=sessionId;
         apiCall.setSessionId(sessionId);
@@ -79,7 +82,6 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
             $localStorage.username = username;
 
         setUserName(username);
-        setAuthenticationKey(authenticationKey);
 
     }
     function setUserName(username) {
@@ -159,6 +161,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         removeFavorite: removeFavorite,
         setFavorite: setFavorite,
         searchFavorites: searchFavorites,
-        getSearchPreferences: getSearchPreferences
+        getSearchPreferences: getSearchPreferences,
+        getSessionId:getSessionId,
     };
 });
