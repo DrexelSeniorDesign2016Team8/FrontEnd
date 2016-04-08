@@ -73,6 +73,7 @@ app.factory('authService', function(userService, $http) {
         login: login,
         createAccount : createAccount,
         logout : logout,
+        deleteAccount: deleteAccount,
 
 
     };
