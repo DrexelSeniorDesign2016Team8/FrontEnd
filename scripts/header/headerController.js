@@ -2,8 +2,11 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
 
     $scope.status = '  ';
     $scope.authService = authService;
+    $scope.user = {
+        loggedIn: false,
+    };
+
     $scope.userName = "";
-    $scope.isLoggedin=false;
     $scope.showLoginPage = function(ev) {
 
         $mdDialog.show({
@@ -18,7 +21,7 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
                 $scope.userName=$scope.authService.getUserName();
                 $scope.sessionId=$scope.authService.getSessionId();
                 if ($scope.sessionId) {
-                    $scope.isLoggedin = true;
+                    $scope.user.loggedIn=true;
 
                     var toast = $mdToast.simple()
                         .textContent($scope.authService.getUserName() + " successfully logged in")
@@ -30,6 +33,7 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
                     });
                 }
                 else {
+                    $scope.user.loggedIn=false;
                     var toast = $mdToast.simple()
                         .textContent("Error logging in")
                         .highlightAction(false)
