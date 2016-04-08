@@ -10,6 +10,9 @@ app.factory('authService', function(userService, $http) {
     function isLoggedIn() {
         return userService.getUserName()!= null;
     }
+    function getUserName() {
+        return userService.getUserName();
+    }
     function signinPreReq(userInfo) {
         url = "login.php?";
         parameters = "email=" + userInfo.userName + "&";
