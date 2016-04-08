@@ -1,8 +1,8 @@
 app.factory('authService', function(userService, $http) {
 
-    var endPoint = "http://mid.searchcollege.me";
-    var url;
-    var parameters;
+    this.endPoint = "http://mid.searchcollege.me";
+    this.url = "";
+    this.parameters = "";
     function isLoggedIn() {
         return userService.getUserName()!= null;
     }
@@ -21,7 +21,7 @@ app.factory('authService', function(userService, $http) {
             .then(function(response) {
                 userService.setSessionId(response.session_id)
                 userService.setUserName("userName");
-                callback();
+                callback(response);
             });
     };
 
@@ -43,7 +43,7 @@ app.factory('authService', function(userService, $http) {
             .then(function(response) {
                 userService.setSessionId(response.session_id)
                 userService.setUserName("userName");
-                callback();
+                callback(response);
             });
     }
     function deleteAccount() {
