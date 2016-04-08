@@ -1,4 +1,4 @@
-app.controller('headerController' , function($scope, $mdDialog, $mdMedia,authService, navigationService) {
+app.controller('headerController' , function($scope, $mdDialog, $mdMedia,authService) {
 
     $scope.status = '  ';
     $scope.authService = authService;
@@ -14,8 +14,10 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,authSer
                 targetEvent: ev,
                 clickOutsideToClose:true,
             })
-            .then(function() {
+            .then(function(service) {
+            authService=service;
             }, function() {
+
             });
 
     };

@@ -42,24 +42,24 @@ function signInController ($scope, $mdDialog, $log, authService) {
         userInfo.userName = signinForm.emailAddressSignIn.value;
         userInfo.password = signinForm.passwordSignIn.value;
 
-      authService.login(userInfo, (function (response) {
-    var success;
-            if (response.status=="error") {
+        authService.login(userInfo, (function (response) {
+            var success;
+            if (response.status == "error") {
 
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
                 $scope.login.attempts--;
-                $scope.login.loading=false;
+                $scope.login.loading = false;
                 success = false;
                 signinForm.emailAddressSignIn.value = "";
-                signinForm.passwordSignIn.value ="";
-                if ($scope.login.attempts==0) {
+                signinForm.passwordSignIn.value = "";
+                if ($scope.login.attempts == 0) {
                     $mdDialog.hide();
                 }
             }
-            else if (response.status=="success"){
-                success=true;
-                $scope.login.failed=false;
+            else if (response.status == "success") {
+                success = true;
+                $scope.login.failed = false;
             }
             if (success) {
                 //TODO adjust page so logged in information is now shown
@@ -73,12 +73,12 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 }
 
             }
-            else
-                {
-                    //TODO show error message saying invalid credentials
-                    $scope.currentUserLoggedin = false;
-                    $scope.login.loading=false;
-                }
+            else {
+                //TODO show error message saying invalid credentials
+                $scope.currentUserLoggedin = false;
+                $scope.login.loading = false;
+            }
+            return authService;
         }));
     };
     $scope.resetPassword = function() {
