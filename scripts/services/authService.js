@@ -3,7 +3,7 @@
  */
 app.factory('authService', function(userService, $http) {
 
-    var endPoint = "http://mid.searchcollege.me";
+    var endPoint = "http://mid.searchcollege.me/";
     var url = "";
     var parameters = "";
     function isLoggedIn() {
