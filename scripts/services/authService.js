@@ -1,15 +1,15 @@
 app.factory('authService', function(userService, $http) {
 
-    this.endPoint = "http://mid.searchcollege.me";
-    this.url = "";
-    this.parameters = "";
+    var endPoint = "http://mid.searchcollege.me";
+    var url = "";
+    var parameters = "";
     function isLoggedIn() {
         return userService.getUserName()!= null;
     }
     function signinPreReq(userInfo) {
-        this.url = "login.php?";
-        this.parameters = "email=" + userInfo.userName + "&";
-        this.parameters += "pass=" + userInfo.password;
+        url = "login.php?";
+        parameters = "email=" + userInfo.userName + "&";
+        parameters += "pass=" + userInfo.password;
 
     }
     function login(userInfo, callback) {
@@ -30,13 +30,13 @@ app.factory('authService', function(userService, $http) {
      * @returns {string}
      */
     function createAccountPreReq(userInfo) {
-        this.url =  "create.php?";
-        this.parameters = "email=" + userInfo.userName + "&";
-        this.parameters += "pass=" + userInfo.password;
+        url =  "create.php?";
+        parameters = "email=" + userInfo.userName + "&";
+        parameters += "pass=" + userInfo.password;
     }
     function createAccount(userInfo,callback) {
       createAccountPreReq(userInfo);
-        var Call = this.endPoint + this.url + this.parameters;
+        var Call = endPoint + url + parameters;
 
         return $http
             .get(Call)
