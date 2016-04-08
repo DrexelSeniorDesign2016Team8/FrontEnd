@@ -1,7 +1,6 @@
 app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMedia, navigationService) {
 
     $scope.status = '  ';
-    $scope.authService = authService;
     $scope.user = {
         loggedIn: false,
     };
