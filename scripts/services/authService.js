@@ -75,6 +75,7 @@ app.factory('authService', function(userService, $http) {
     return {
         login: login,
         createAccount : createAccount,
+        getSessionId: getSessionId,
         logout : logout,
         deleteAccount: deleteAccount,
         getUserName: getUserName
