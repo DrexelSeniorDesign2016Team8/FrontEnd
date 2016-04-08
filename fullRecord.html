@@ -1,4 +1,4 @@
-<md-content><div id="fullRecord">
+<md-dialog aria-label="Sign in/Create Account">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>{{college.name}}</h2>
@@ -7,6 +7,7 @@
             </md-button>
             </div>
         </md-toolbar>
+    <md-dialog-content>
     <md-progress-circular show-focus="results.loading" class="md-hue-2 md-busy " md-diameter="100" ng-show="results.loading" md-mode="indeterminate" style="margin:auto"></md-progress-circular>
             <span flex></span>
             <div ng-if='college.address!==undefined'><p> <a target="_blank" href={{college.googleMapsAddress}}>{{college.address}} </a></p></div>
@@ -35,6 +36,5 @@
     <div class="favoriteButton" >
         <md-button class="md-raised"  ng-show="college.favorited&& userService.isLoggedin()" ng-click="removeFavorite(college.instIDs, $index)">UNFAVORITE</md-button>
     </div>
-</div>
-
-    </md-content>
+</md-dialog-content>
+    </md-dialog>
