@@ -1,7 +1,7 @@
-app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userService, navigationService) {
+app.controller('headerController' , function($scope, $mdDialog, $mdMedia,authService, navigationService) {
 
     $scope.status = '  ';
-    $scope.userService = userService;
+    $scope.authService = authService;
     $scope.showLoginPage = function(ev) {
 
         $mdDialog.show({
@@ -33,6 +33,6 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,userSer
     }
 
     $scope.logout = function() {
-        userService.logout();
+        authService.logout();
     }
 });
