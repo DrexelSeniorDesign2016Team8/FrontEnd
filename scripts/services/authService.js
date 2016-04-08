@@ -52,8 +52,8 @@ app.factory('authService', function(userService, $http) {
             });
     }
     function deleteAccount() {
-        this.url="deleteAccount.php?";
-        Call = this.endPoint + this.url;
+        url="deleteAccount.php?";
+        var Call = endPoint + url;
 
         return $http
             .get(Call)
