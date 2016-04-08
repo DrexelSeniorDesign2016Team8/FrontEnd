@@ -1,4 +1,4 @@
-app.controller('headerController' , function($scope, $mdDialog, $mdMedia,authService) {
+app.controller('headerController' , function($scope, $mdToat, $mdDialog, $mdMedia,authService) {
 
     $scope.status = '  ';
     $scope.authService = authService;
@@ -18,7 +18,7 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,authSer
             $scope.authService=answer;
 
                     var toast = $mdToast.simple()
-                        .textContent($scope.authService.getUserName())
+                        .textContent($scope.authService.getUserName() + " successfully logged in")
                         .highlightAction(false)
                         .hideDelay(2000)
                         .position('top right')
