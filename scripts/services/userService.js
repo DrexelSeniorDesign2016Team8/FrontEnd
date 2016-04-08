@@ -93,7 +93,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
      * @returns {boolean}
      */
     function restoreLocalStorage() {
-        if ($localStorage.username && $localStorage.loggedIn) {
+        if ($localStorage.username) {
             setUserName($localStorage.username);
             setSessionId($localStorage.sessionId);
             if ($localStorage.rememberMe==false && $localStorage.username==null) {      // if remember me is not selected remove local storage
