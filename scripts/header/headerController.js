@@ -1,4 +1,4 @@
-app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMedia,authService) {
+app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMedia, navigationService) {
 
     $scope.status = '  ';
     $scope.authService = authService;
@@ -16,15 +16,14 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
                 targetEvent: ev,
                 clickOutsideToClose:true,
             })
-            .then(function(answer) {
-            $scope.authService=answer;
-                $scope.userName=$scope.authService.getUserName();
-                $scope.sessionId=$scope.authService.getSessionId();
+            .then(function(authService) {
+                $scope.userName=authService.getUserName();
+                $scope.sessionId=authService.getSessionId();
                 if ($scope.sessionId) {
                     $scope.user.loggedIn=true;
 
                     var toast = $mdToast.simple()
-                        .textContent($scope.authService.getUserName() + " successfully logged in")
+                        .textContent($scope.userName+ " successfully logged in")
                         .highlightAction(false)
                         .hideDelay(2000)
                         .position('top right')
@@ -55,13 +54,13 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
     };
 
     $scope.logoClick = function(url) {
-        window.location.href=url;
+        navigationService.leavePage(url);
     }
     $scope.helpPage = function(url) {
-        window.location.href=url;
+        navigationService.leavePage(url);
     }
     $scope.userPreferences = function(url) {
-       window.location.href=url;
+        navigationService.leavePage(url);
     }
 
     $scope.logout = function() {
