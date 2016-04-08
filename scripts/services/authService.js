@@ -8,7 +8,7 @@ app.factory('authService', function(userService, $http) {
     }
     function signinPreReq(userInfo) {
         this.url = "login.php?";
-        this.parameters += "email=" + userInfo.userName + "&";
+        this.parameters = "email=" + userInfo.userName + "&";
         this.parameters += "pass=" + userInfo.password;
 
     }
@@ -31,7 +31,7 @@ app.factory('authService', function(userService, $http) {
      */
     function createAccountPreReq(userInfo) {
         this.url =  "create.php?";
-        this.parameters += "email=" + userInfo.userName + "&";
+        this.parameters = "email=" + userInfo.userName + "&";
         this.parameters += "pass=" + userInfo.password;
     }
     function createAccount(userInfo,callback) {
