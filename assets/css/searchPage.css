@@ -55,6 +55,9 @@
 	max-width:50px;
 	color:white
 }
+.md-select-value.md-select-placeholder  {
+	color: white !important;
+}
 .mainTextTitle {
 	font-size:20px;
 	text-align:center;

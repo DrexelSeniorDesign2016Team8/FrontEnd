@@ -21,7 +21,7 @@ function gpaController ($scope, $mdDialog, searchService) {
 
     function convertGPA(num, outOf) {
         var temp = (num)/(eval(outOf));
-         return temp * 4 ;
+         return parseFloat((temp * 4).toFixed(2)) ;
 
     }
 }

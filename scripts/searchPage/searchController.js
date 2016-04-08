@@ -106,18 +106,14 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
             "</md-toolbar>"+
             "<md-content layout-wrap>" +
                 "<md-input-container> <label>GPA Scale</label>" +
-                   "<input ng-model='gpa.number' style='width:100px'>"+
+                   "<input type='number' ng-model='gpa.number' style='width:100px'>"+
                         "</md-input-container>" +
 
                        "<md-input-container>" +
                 "<label>Out of</label>" +
-            "<md-select ng-model='gpa.gpaOutof' style='float:right'>" +
-            "<md-option value='3'>3</md-option>"+
-            "<md-option value='4'>4</md-option>"+
-            "<md-option value='5'>5</md-option>"+
-            "<md-option value='6'>6</md-option>"+
-            "<md-option value='100'>100</md-option>" +
-        "</md-select></md-input-container><br>" +
+
+            "<input type='number' ng-model='gpa.gpaOutof' style='width:100px'>" +
+        "</md-input-container><br>" +
             "<md-button ng-click='submit()' style='float:right'>Submit</md-button>"+
 
             "</md-content>";
