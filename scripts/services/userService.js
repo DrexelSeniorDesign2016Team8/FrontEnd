@@ -1,6 +1,5 @@
 app.factory('userService', function($localStorage, searchService, apiCall) {
     var user = {
-        loggedIn: false,
         username: null,
         sessionId: '',
         rememberMe: false,
