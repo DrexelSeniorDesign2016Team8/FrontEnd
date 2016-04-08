@@ -17,7 +17,7 @@ app.factory('authService', function(userService, $http) {
     }
     function login(userInfo, callback) {
         signinPreReq(userInfo);
-        var Call = this.endPoint + this.url + this.parameters;
+        var Call = endPoint + url + parameters;
 
         return $http
             .get(Call)
