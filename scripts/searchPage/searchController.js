@@ -134,7 +134,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                 params = searchService.get();
                 if (gpa) {
                     $scope.parameter = {
-                        gpa: gpa
+                        GPAvalue: gpa
                     }
                 }
             }, function() {

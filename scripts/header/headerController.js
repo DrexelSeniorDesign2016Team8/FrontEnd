@@ -2,6 +2,9 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,authSer
 
     $scope.status = '  ';
     $scope.authService = authService;
+    $scope.isLoggedin=function() {
+        return authService.isLoggedIn();
+    };
     $scope.showLoginPage = function(ev) {
 
         $mdDialog.show({
