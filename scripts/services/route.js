@@ -1,18 +1,37 @@
-app.config(function ($routeProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
 
+    $urlRouterProvider.otherwise('/login');
 
-    $routeProvider
-        .when('/', {
+    $stateProvider
+        .state('home', {
+            url: '/',
+
             templateUrl: 'searchPage.html',
-            controller: searchController
+            controller: 'searchController',
+            data : {
+                requireLogin : false
+            }
+        })
+        .state('about', {
+            url: '/collegeSearchHelp',
+            templateUrl: 'collegeSearchHelp.html',
+            controller: 'collegeSearchHelpController.js',
+            data : {
+                requireLogin : false
+            }
+        })
+        .state('login', {
+            url : 'signIn',
+            templateUrl: 'signIn.html',
+            controller: 'signInController.js',
+            authenticate: false,
+        })
+        .state('preferences' ,{
+            url : '/preferences',
+            templateUrl: 'userPreferences.html',
+            controller: 'userPreferencesController.js',
+            authenticate: true,
         })
 
-        .when('/searchResults.html', {
-            templateUrl: 'searchResults.html',
-            controller: searchResultsController
 
-        })
-        .when('/userPreferences.html', {
-        templateUrl: userPreferencesController,
-    })
 });

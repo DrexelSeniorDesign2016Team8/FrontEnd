@@ -5,6 +5,7 @@ The delete content dialog is generated here
  */
 app.controller('userPreferencesController', function ($scope, $mdDialog, $log, userService, $mdToast,navigationService) {
     $scope.userService = userService;
+    $scope.pageTitle="User Preferences Page";
    var searchService = userService.getSearchService();
     $scope.deleteConfirmation = function (ev) {
 

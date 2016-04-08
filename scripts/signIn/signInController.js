@@ -1,6 +1,5 @@
-function signInController ($scope, $mdDialog, $log, userService, apiCall) {
+function signInController ($scope, $mdDialog, $log, authService) {
 
-    var userService = userService;
     $scope.login = {
         loading: false,
         password: '',
@@ -18,29 +17,18 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
             var userInfo = {}
                 userInfo.userName =createAccountForm.emailAddressCreateAccount.value;
                 userInfo.password = createAccountForm.passwordCreateAccount.value;
-        var parameters = userService.generateCreateAccountParameters(userInfo)
-            var createAccountUrl =  userService.getCreateAccountURL();
-            apiCall.setApiDestination(createAccountUrl);
-             apiCall.setParameters(parameters);
-        apiCall.callCollegeSearchAPI(function(response) {
+          authService.createAccount(userInfo, function(response) {
             if (response.status=="error") {
                 $log.debug("account  creation failed");
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
                 $scope.login.loading=false;
-                userService.setLoggedIn(false);
                 success = false;
             }
             else {
                 $log.debug("account creation successful");
                 createAccountForm.passwordCreateAccount.value = "";
                 var success = true;
-                userService.setEmailAddress(createAccountForm.emailAddressCreateAccount.value)
-                userService.setUserName(createAccountForm.emailAddressCreateAccount.value);
-                userService.setLoggedIn(true);
-                if (response && response.response.session_id) {
-                    userService.setSessionId(response.response.session_id);
-                }
                 $scope.login.loading=true;
                 $mdDialog.hide();
             }
@@ -54,13 +42,7 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
         userInfo.userName = signinForm.emailAddressSignIn.value;
         userInfo.password = signinForm.passwordSignIn.value;
 
-        var url = userService.getSignInURL();
-        var destination = userService.generateSignInUParameters(userInfo);
-        apiCall.setApiDestination(url);
-        apiCall.setParameters(destination)
-
-        // TODO: login call service with a callback
-        apiCall.callCollegeSearchAPI(function (response) {
+      authService.login(userInfo, (function (response) {
     var success;
             if (response.status=="error") {
 
@@ -80,21 +62,15 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                 $scope.login.failed=false;
             }
             if (success) {
-                if (response && response.response.session_id) {
-                    userService.setSessionId(response.response.session_id);
-                }
                 //TODO adjust page so logged in information is now shown
                 $mdDialog.hide();
-                userService.setLoggedIn(true);
 
-                userService.setUserName(signinForm.emailAddressSignIn.value);
                 if ($scope.signIn.rememberMe == true) {
                     $scope.rememberMe = true;
                 }
                 else {
                     $scope.rememberMe = false;
                 }
-                userService.setRememberMe($scope.rememberMe);
 
             }
             else
@@ -103,7 +79,7 @@ function signInController ($scope, $mdDialog, $log, userService, apiCall) {
                     $scope.currentUserLoggedin = false;
                     $scope.login.loading=false;
                 }
-        });
+        }));
     };
     $scope.resetPassword = function() {
         window.location.href="resetPassword.html";

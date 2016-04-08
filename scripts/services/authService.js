@@ -1,29 +1,74 @@
-app.factory('authService', function (apiCall, session) {
-    var authService = {};
+app.factory('authService', function(userService, $http) {
 
-    authService.login = function (credentials) {
+    var endPoint = "http://mid.searchcollege.me";
+    var url;
+    var parameters;
+    function isLoggedIn() {
+        return userService.getUserName()!= null;
+    }
+    function signinPreReq(userInfo) {
+        this.url = "login.php?";
+        this.parameters += "email=" + userInfo.userName + "&";
+        this.parameters += "pass=" + userInfo.password;
 
-        //TODO: determine credentials format
-        apiCall.setApiDestination("login/" + credentials);;
+    }
+    function login(userInfo, callback) {
+        signinPreReq(userInfo);
+        var Call = this.endPoint + this.url + this.parameters;
 
-        apiCall.callCollegeSearchAPI(function(response) {
-
-            session.create(response.data.id, response.data.user.id, response.data.user.role);
-        });
+        return $http
+            .get(Call)
+            .then(function(response) {
+                userService.setSessionId(response.session_id)
+                userService.setUserName("userName");
+                callback();
+            });
     };
 
-    authService.isAuthenticated = function () {
-        return !!session.userId;
-    };
+    /**
+     * This generates an account url with the full name and userName of the user
+     * @returns {string}
+     */
+    function createAccountPreReq(userInfo) {
+        this.url =  "create.php?";
+        this.parameters += "email=" + userInfo.userName + "&";
+        this.parameters += "pass=" + userInfo.password;
+    }
+    function createAccount(userInfo,callback) {
+      createAccountPreReq(userInfo);
+        var Call = this.endPoint + this.url + this.parameters;
 
-    authService.isAuthorized = function (authorizedRoles) {
-        if (!angular.isArray(authorizedRoles)) {
-            authorizedRoles = [authorizedRoles];
-        }
-        return (authService.isAuthenticated() &&
-        authorizedRoles.indexOf(session.userRole) !== -1);
-    };
+        return $http
+            .get(Call)
+            .then(function(response) {
+                userService.setSessionId(response.session_id)
+                userService.setUserName("userName");
+                callback();
+            });
+    }
+    function deleteAccount() {
+        this.url="deleteAccount.php?";
+        Call = this.endPoint + this.url;
 
-    return authService;
+        return $http
+            .get(Call)
+            .then(function(respones) {
+                // insert response here
+            })
+    };
+    /**
+     * This function logs a user out, and sets all the corresponding values to their default values
+     */
+    function logout() {
+       userService.user.destroy();
+
+    }
+    return {
+    isLoggedIn : isLoggedIn,
+        login: login,
+        createAccount : createAccount,
+        logout : logout,
+
+
+    };
 });
-

@@ -3,12 +3,12 @@ This controller is used for the search page
 100% coded by  Ian Shinbrot
 TODO move more information over to searchService and away from controller
  */
-app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService, userService) {
+app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService, authService, userService) {
     $scope.searchService = searchService;
     pageSetup = function () {
         $scope.parameter.stateName = '';
 
-        if (userService.isLoggedin()) {
+        if (authService.isLoggedIn()) {
             userService.getSearchPreferences(function (response) {
                 //TODO fix this based on the response
 
@@ -108,9 +108,10 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                 "<md-input-container> <label>GPA Scale</label>" +
                    "<input ng-model='gpa.number' style='width:100px'>"+
                         "</md-input-container>" +
+
                        "<md-input-container>" +
                 "<label>Out of</label>" +
-            "<md-select ng-model='gpa.gpaOutof'>" +
+            "<md-select ng-model='gpa.gpaOutof' style='float:right'>" +
             "<md-option value='3'>3</md-option>"+
             "<md-option value='4'>4</md-option>"+
             "<md-option value='5'>5</md-option>"+

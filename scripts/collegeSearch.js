@@ -1,16 +1,22 @@
 //var loggedIn = false;
 
-var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','ngStorage', 'ngRoute', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
+var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','ngStorage', 'ui.router', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
 
 
-	app.run(function ($rootScope, userService, navigationService, searchService, apiCall, $localStorage) {
+	app.run(function ($rootScope, $state, userService, navigationService, searchService, apiCall, $localStorage) {
 
 		// first retrieve data from local storage
 		var authenticate = userService.restoreLocalStorage();
 
 		var version = $localStorage.version;
 		userService.setApiSearch();
-
+		$rootScope.$on("$stateChangeStart",
+			function(event, toState, toParams, fromState, fromParams){
+			if (toState.authenticate && !userService.isAuthenticated()){
+				// User isn’t authenticated
+				$state.go("login");
+				event.preventDefault();
+			}});
 
 		var searchPreferences = userService.getSearchParameters();
 		//if (version!=".6")

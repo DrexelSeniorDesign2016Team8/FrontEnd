@@ -1,7 +1,7 @@
 app.factory('userService', function($localStorage, searchService, apiCall) {
     var user = {
         loggedIn: false,
-        username: '',
+        username: null,
         sessionId: '',
         rememberMe: false,
         preferencesUpdated: false,
@@ -11,7 +11,6 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function getSearchService() {
         return searchService;
     }
-
 
     function setSessionId(sessionId) {
         user.sessionId=sessionId;
@@ -28,18 +27,6 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
 
     function getSearchParameters() {
         return user.searchService.get();
-    }
-
-    function isLoggedin() {
-        if (user.loggedIn==true) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    function arePreferencesUpdated() {
-        return user.preferencesUpdated;
     }
     function getSearchPreferences(callback) {
 
@@ -79,25 +66,8 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         });
     }
 
-    /**
-     * This function logs a user out, and sets all the corresponding values to their default values
-     */
-    function logout() {
-        user.loggedIn=false;
-        user.username="";
-        user.authenticationKey='';
-        user.rememberMe=false;
-        $localStorage.loggedIn=false;
-        $localStorage.username='';
-        $localStorage.authenticationKey='';
-        $localStorage.rememberMe=false;
-        $localStorage.sessionId="";
 
-    }
 
-    function updatePreferences() {
-        user.preferencesUpdated=true;
-    }
     function set(loggedIn, username, authenticationKey) {
         var info = {
             authInfo: {
@@ -108,26 +78,13 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         }
             $localStorage.username = username;
 
-        setLoggedIn(loggedIn);
         setUserName(username);
         setAuthenticationKey(authenticationKey);
 
     }
-
-    function setLoggedIn(loggedIn) {
-        user.loggedIn = loggedIn;
-        $localStorage.loggedIn = loggedIn;
-    }
     function setUserName(username) {
         user.username = username;
         $localStorage.username = username
-    }
-    function setAuthenticationKey(authenticationKey) {
-        user.authenticationKey = authenticationKey;
-    }
-    function setRememberMe(rememberMe) {
-        user.rememberMe=rememberMe;
-        $localStorage.rememberMe=rememberMe;
     }
 
     /**
@@ -137,10 +94,8 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function restoreLocalStorage() {
         if ($localStorage.username && $localStorage.loggedIn) {
             setUserName($localStorage.username);
-            setLoggedIn($localStorage.loggedIn);
             setSessionId($localStorage.sessionId);
             if ($localStorage.rememberMe==false && $localStorage.username=="") {      // if remember me is not selected remove local storage
-                $localStorage.loggedIn=false;
                 $localStorage.username='';
             }
 
@@ -150,47 +105,15 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         else return false;
     }
 
-    /**
-     * This generates a sign in url with a username and password of the user
-     * @returns {string}
-     */
-    function getSignInURL() {
-        return  "login.php?";
-    }
-    function generateSignInUParameters(userInfo) {
-        var paramters = '';
-        paramters += "email=" + userInfo.userName + "&";
-        paramters += "pass=" + userInfo.password;
-
-            return paramters;
-    }
-
-    /**
-     * This generates an account url with the full name and userName of the user
-     * @returns {string}
-     */
-    function getCreateAccountURL() {
-        var creationString = "create.php?";
-        return creationString;
-    }
-    function generateCreateAccountParameters(userInfo) {
-        var parameters ='';
-        parameters += "email=" + userInfo.userName +"&";
-        parameters += "pass=" + userInfo.password ;
-        return parameters;
-    }
-    function setLoginStatus(status) {
-        user.loginFailed = status;
-    }
     function searchFavorites() {
-        preferences = {};
+        var preferences = {};
         preferences.favoritedInstitutions = {}
         preferences.favoritedInstitutions = 1;
         searchService.set(preferences);
     }
 
     function saveSearchPreferences(callback) {
-        params = searchService.get();
+        var params = searchService.get();
 
         if (params) {     // if they exist make call
 
@@ -202,16 +125,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
 
         apiCall.callCollegeSearchAPI(callback);
     }
-    function deleteAccount() {
-        apiCall.setApiDestination("deleteAccount.php?");
-        apiCall.callCollegeSearchAPI(function () {
-            window.location.href = ("searchPage.html")
 
-            logout();
-
-
-        })
-    };
     function emailFavorites(callback) {
         apiCall.setApiDestination("sendMail.php?");
         apiCall.callCollegeSearchAPI(callback);
@@ -233,24 +147,11 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
 
         getUserName: getUserName,
         set: set,
-        setLoggedIn: setLoggedIn,
         setUserName: setUserName,
-        setRememberMe :setRememberMe,
-        setAuthenticationKey: setAuthenticationKey,
         restoreLocalStorage: restoreLocalStorage,
-        isLoggedin : isLoggedin,
-        updatePreferences: updatePreferences,
-        arePreferencesUpdated : arePreferencesUpdated,
         setSessionId : setSessionId,
-        getSignInURL:getSignInURL,
-        generateSignInUParameters: generateSignInUParameters,
-        generateCreateAccountParameters: generateCreateAccountParameters,
-        getCreateAccountURL: getCreateAccountURL,
-        logout: logout,
-        setLoginStatus: setLoginStatus,
         setSearchPreferences: setSearchPreferences,
         getSearchParameters: getSearchParameters,
-        deleteAccount: deleteAccount,
         emailFavorites: emailFavorites,
         saveSearchPreferences: saveSearchPreferences,
         getSearchService: getSearchService,
