@@ -10,12 +10,11 @@
  <a href ng-click="logoClick('searchPage.html')"><img id="collegeSearchicon"  ng-Src="assets/icon/collegeSearch.png" atl="CollegeSearch" ></a>
 
 
-<div class="helpBox">
- <md-button class="accountCreation" ng-click="helpPage('collegeSearchHelp.html')"><md-tooltip md-direction="bottom">
+
+ <md-button class="accountCreation helpBox" ng-click="helpPage('collegeSearchHelp.html')"><md-tooltip md-direction="bottom">
      Click to view Help
  </md-tooltip><md-icon md-svg-icon="help-circle" style="width:40px; height:40px; margin-top:5px"></md-icon>
  </md-button>
-    </div>
  <md-button class="md-raised accountCreation"  ng-hide='headerController.isLoggedIn()' ng-click="showLoginPage($event)">Create Account/Login
  </md-button>
 <div class="accountCreation">
