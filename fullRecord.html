@@ -1,13 +1,15 @@
-<md-dialog aria-label="Sign in/Create Account">
+<md-dialog aria-label={{college.name}} ng-cloak>
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>{{college.name}}</h2>
+            <span flex></span>
             <md-button class="md-icon-button" ng-click="hide()">
                 <md-icon md-svg-icon="close-box" aria-label="Close dialog"></md-icon>
             </md-button>
             </div>
         </md-toolbar>
     <md-dialog-content>
+        <div class="md-dialog-content">
     <md-progress-circular show-focus="results.loading" class="md-hue-2 md-busy " md-diameter="100" ng-show="results.loading" md-mode="indeterminate" style="margin:auto"></md-progress-circular>
             <span flex></span>
             <div ng-if='college.address!==undefined'><p> <a target="_blank" href={{college.googleMapsAddress}}>{{college.address}} </a></p></div>
@@ -36,5 +38,19 @@
     <div class="favoriteButton" >
         <md-button class="md-raised"  ng-show="college.favorited&& userService.isLoggedin()" ng-click="removeFavorite(college.instIDs, $index)">UNFAVORITE</md-button>
     </div>
+            </div>
 </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+            Website
+        </md-button>
+        <span flex></span>
+        <md-button ng-click="answer('not useful')">
+
+        </md-button>
+        <md-button class="md-raised favoriteButton" ng-show="college.favorited==false && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)" style="margin-right:20px;">
+            FAVORITE
+</md-button>
+
+    </md-dialog-actions>
     </md-dialog>
