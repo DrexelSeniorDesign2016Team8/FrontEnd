@@ -14,7 +14,13 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
 
                 userService.setSearchPreferences(response);
                 // this converts the fields to int
-                $scope.parameter = response[0];
+                if (response.length != 0) {
+                    $scope.parameter = response[0];
+                }
+                else
+            {
+                $scope.parameter = {};
+            }
                 $scope.parameter.states = searchService.fillStates();
                 $scope.parameter.states = searchService.fillStates();
                 $scope.parameter.population = searchService.fillPercentages();
@@ -23,6 +29,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                 $scope.parameter.population = searchService.fillPopulation();
 
                 $scope.parameter.classSize = searchService.fillClassSize();
+
             });
         }
         else {
