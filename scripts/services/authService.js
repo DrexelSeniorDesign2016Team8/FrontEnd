@@ -7,11 +7,11 @@ app.factory('authService', function(userService, $http) {
     var url = "";
     var parameters = "";
     var sessionId;
-    function isLoggedIn() {
-        return userService.getUserName()!= null;
-    }
     function getUserName() {
         return userService.getUserName();
+    }
+    function getSessionId() {
+        return userService.getSessionId;
     }
     function signinPreReq(userInfo) {
         url = "login.php?";
@@ -73,7 +73,6 @@ app.factory('authService', function(userService, $http) {
 
     }
     return {
-    isLoggedIn : isLoggedIn,
         login: login,
         createAccount : createAccount,
         logout : logout,

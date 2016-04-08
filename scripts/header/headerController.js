@@ -3,9 +3,7 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
     $scope.status = '  ';
     $scope.authService = authService;
     $scope.userName = "";
-    $scope.isLoggedin=function() {
-        return authService.isLoggedIn();
-    };
+    $scope.isLoggedin=false;
     $scope.showLoginPage = function(ev) {
 
         $mdDialog.show({
@@ -18,6 +16,9 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
             .then(function(answer) {
             $scope.authService=answer;
                 $scope.userName=$scope.authService.getUserName();
+                $scope.sessionId=$scope.authService.getSessionId();
+                if ($scope.sessionId) {
+                    $scope.isLoggedin = true;
 
                     var toast = $mdToast.simple()
                         .textContent($scope.authService.getUserName() + " successfully logged in")
@@ -25,11 +26,19 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
                         .hideDelay(2000)
                         .position('top right')
                     $mdToast.show(toast).then(function (response) {
-                        if (response == 'ok') {
-                            $log.debug('ok clicked');
                             $mdToast.hide();
-                        }
                     });
+                }
+                else {
+                    var toast = $mdToast.simple()
+                        .textContent("Error logging in")
+                        .highlightAction(false)
+                        .hideDelay(2000)
+                        .position('top right')
+                    $mdToast.show(toast).then(function (response) {
+                            $mdToast.hide();
+                    });
+                }
             }, function() {
 
             });

@@ -147,6 +147,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     return {
 
         getUserName: getUserName,
+        getSessionId:getSessionId,
         set: set,
         setUserName: setUserName,
         restoreLocalStorage: restoreLocalStorage,
@@ -161,6 +162,5 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         setFavorite: setFavorite,
         searchFavorites: searchFavorites,
         getSearchPreferences: getSearchPreferences,
-        getSessionId:getSessionId,
     };
 });
