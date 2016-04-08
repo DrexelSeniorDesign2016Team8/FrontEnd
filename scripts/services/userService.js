@@ -96,8 +96,8 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         if ($localStorage.username && $localStorage.loggedIn) {
             setUserName($localStorage.username);
             setSessionId($localStorage.sessionId);
-            if ($localStorage.rememberMe==false && $localStorage.username=="") {      // if remember me is not selected remove local storage
-                $localStorage.username='';
+            if ($localStorage.rememberMe==false && $localStorage.username==null) {      // if remember me is not selected remove local storage
+                $localStorage.username=null;
             }
 
 
