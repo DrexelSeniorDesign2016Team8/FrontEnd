@@ -19,6 +19,7 @@
  </md-button>
 <div class="accountCreation">
     <md-menu>
+        {{authService.isLoggedIn()}}
          {{userService.getUserName()}}
         <md-button aria-label="Open Login Options" id="accountButton"  ng-show='authService.isLoggedIn()' ng-click="openMenu($mdOpenMenu, $event)">
 
