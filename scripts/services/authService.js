@@ -23,7 +23,7 @@ app.factory('authService', function(userService, $http) {
             .get(Call)
             .then(function(response) {
                 var data = response.data
-                userService.setSessionId(data.session_id)
+                userService.setSessionId(data.response.session_id)
                 userService.setUserName("userName");
                 callback(data);
             });
@@ -46,7 +46,7 @@ app.factory('authService', function(userService, $http) {
             .get(Call)
             .then(function(response) {
                 var data = response.data
-                userService.setSessionId(data.session_id)
+                userService.setSessionId(data.response.session_id)
                 userService.setUserName("userName");
                 callback(data);
             });
