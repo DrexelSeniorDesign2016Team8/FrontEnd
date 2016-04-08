@@ -10,6 +10,9 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function getSearchService() {
         return searchService;
     }
+    function isLoggedin() {
+        return user.username!=null;
+    }
 
     function getSessionId() {
         return user.sessionId;
@@ -70,12 +73,10 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
 
 
 
-    function set(loggedIn, username, authenticationKey) {
+    function set(username) {
         var info = {
             authInfo: {
-                'loggedIn': data.loggedIn,
                 'username': data.username,
-                'authenticationKey': data.authenticationKey,
             }
         }
             $localStorage.username = username;
@@ -153,6 +154,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         getUserName: getUserName,
         getSessionId:getSessionId,
         set: set,
+        isLoggedin: isLoggedin,
         setUserName: setUserName,
         logout: logout,
         restoreLocalStorage: restoreLocalStorage,
