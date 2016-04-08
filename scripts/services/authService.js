@@ -54,7 +54,7 @@ app.factory('authService', function(userService, $http) {
     }
     function deleteAccount() {
         url="deleteAccount.php?";
-        var Call = endPoint + "sid="+userService.getSessionId()+"&" +url;
+        var Call = endPoint + url+"sid="+userService.getSessionId()+"&";
 
         return $http
             .get(Call)
