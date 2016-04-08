@@ -14,8 +14,8 @@ app.controller('headerController' , function($scope, $mdDialog, $mdMedia,authSer
                 targetEvent: ev,
                 clickOutsideToClose:true,
             })
-            .then(function(service) {
-            authService=service;
+            .then(function(answer) {
+            authService=answer;
             }, function() {
 
             });
