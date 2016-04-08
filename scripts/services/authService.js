@@ -22,9 +22,10 @@ app.factory('authService', function(userService, $http) {
         return $http
             .get(Call)
             .then(function(response) {
-                userService.setSessionId(response.session_id)
+                var data = response.data
+                userService.setSessionId(data.session_id)
                 userService.setUserName("userName");
-                callback(response);
+                callback(data);
             });
     };
 
@@ -44,9 +45,10 @@ app.factory('authService', function(userService, $http) {
         return $http
             .get(Call)
             .then(function(response) {
-                userService.setSessionId(response.session_id)
+                var data = response.data
+                userService.setSessionId(data.session_id)
                 userService.setUserName("userName");
-                callback(response);
+                callback(data);
             });
     }
     function deleteAccount() {
