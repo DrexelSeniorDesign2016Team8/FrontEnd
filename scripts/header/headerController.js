@@ -68,5 +68,13 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
         authService.logout();
         $scope.user.loggedIn=false;
         $scope.userName="";
+        var toast = $mdToast.simple()
+            .textContent("Successfully logged out")
+            .highlightAction(false)
+            .hideDelay(2000)
+            .position('top right')
+        $mdToast.show(toast).then(function (response) {
+            $mdToast.hide();
+        });
     }
 });
