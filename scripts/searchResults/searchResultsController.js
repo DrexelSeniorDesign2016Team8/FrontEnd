@@ -4,6 +4,7 @@
  */
 app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $mdToast, $log, searchService, userService)
 {
+    $scope.pageTitle="Search Results";
     $scope.results = {
         loading: false,
     };

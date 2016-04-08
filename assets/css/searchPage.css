@@ -43,9 +43,7 @@
 .md-select span {
 	color: white !important;
 }
-.md-select-value.md-select-placeholder {
-	color: white !important;
-}
+
 .gpaConverter {
 	background-color:blue !important;
 	color:white !important;;
@@ -70,7 +68,7 @@
 	background-color:#424242;
 }
 #subheader {
-	background-image:url("assets/icon/searchBackground.png");
+	background-image:url("../icon/searchBackground.png");
 	background-repeat: no-repeat;
 	text-align:center;
 	background-position:center;

@@ -37,6 +37,16 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
         deleteCookie("searchParameters");
     };
 
+    $scope.clearParameters = function() {
+        $scope.parameter = {};
+        $scope.parameter.states = searchService.fillStates();
+        $scope.parameter.population = searchService.fillPercentages();
+
+        $scope.parameter.percentages = searchService.fillPercentages();
+        $scope.parameter.population = searchService.fillPopulation();
+
+        $scope.parameter.classSize = searchService.fillClassSize();
+    }
     $scope.performSearch = function() {
         if (!$scope.CollegeInfo.$valid) {
             //TODO add message saying some values are invalid
@@ -99,7 +109,8 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
                    "<input ng-model='gpa.number' style='width:100px'>"+
                         "</md-input-container>" +
                        "<md-input-container>" +
-            "<md-select ng-model='gpa.gpaOutof' placeholder='Out of' style='float:right'>" +
+                "<label>Out of</label>" +
+            "<md-select ng-model='gpa.gpaOutof'>" +
             "<md-option value='3'>3</md-option>"+
             "<md-option value='4'>4</md-option>"+
             "<md-option value='5'>5</md-option>"+

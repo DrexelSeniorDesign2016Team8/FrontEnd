@@ -73,6 +73,10 @@
                             <br>
                             <br>
                         <div id="search" flex="80"search></div>
+                            <md-button class="md-raised" ng-click="clearParameters()"><md-tooltip md-direction="top">
+                                Click to clear parameters
+                            </md-tooltip><md-icon md-svg-icon="delete" style="width:40px; height:40px; margin-top:5px"></md-icon>
+                            </md-button>
                             <md-button class="md-raised md-warn searchButton" id="searchBtn" style='text-align:center;' ng-disabled="CollegeInfo.$invalid" ng-click="performSearch()">
                                 Search
                             </md-button>

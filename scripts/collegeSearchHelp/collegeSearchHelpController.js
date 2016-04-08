@@ -1,3 +1,6 @@
+/**
+ * Ian Shinbrot
+ */
 app.controller('collegeSearchHelpController', function($scope) {
         var imagePath = 'img/list/60.jpeg';
 
