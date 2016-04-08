@@ -20,7 +20,7 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
         apiCall.setApiDestination("getInstDetails.php?");
         apiCall.setParameters("instID="+$scope.ID);
         apiCall.callCollegeSearchAPI(function () {
-            $scope.loading=false;
+            $scope.results.loading=false;
             $log.debug("college data retrieved");
         });
     };
