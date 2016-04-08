@@ -6,6 +6,7 @@ app.factory('authService', function(userService, $http) {
     var endPoint = "http://mid.searchcollege.me/";
     var url = "";
     var parameters = "";
+    var sessionId;
     function isLoggedIn() {
         return userService.getUserName()!= null;
     }
@@ -53,7 +54,7 @@ app.factory('authService', function(userService, $http) {
     }
     function deleteAccount() {
         url="deleteAccount.php?";
-        var Call = endPoint + url;
+        var Call = endPoint + "sid="+sessionId+"&" +url;
 
         return $http
             .get(Call)
