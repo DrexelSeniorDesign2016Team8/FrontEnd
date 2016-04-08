@@ -1,3 +1,6 @@
+/**
+ * Ian Shinbrot
+ */
 app.factory('authService', function(userService, $http) {
 
     var endPoint = "http://mid.searchcollege.me";
