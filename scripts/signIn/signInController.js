@@ -1,3 +1,10 @@
+/**
+ * Ian Shinbrot
+ * @param $scope - scope of the current application
+ * @param $mdDialog
+ * @param $log
+ * @param authService
+ */
 function signInController ($scope, $mdDialog, $log, authService) {
 
     $scope.login = {
@@ -7,10 +14,15 @@ function signInController ($scope, $mdDialog, $log, authService) {
         rememberMe: false,
         failed: '',
         attempts: 3,
-
     };
+    $scope.createAccount = {
+        loading: false,
+        password: '',
+        user: '',
+        failed: '',
+    }
     $scope.createAccount = function() {
-        $scope.login.loading = true;
+        $scope.createAccount.loading = true;
 
             createCookie("loggedIn", "false");
             $scope.currentUserLoggedin = true;
@@ -20,16 +32,16 @@ function signInController ($scope, $mdDialog, $log, authService) {
           authService.createAccount(userInfo, function(response) {
             if (response.status=="error") {
                 $log.debug("account  creation failed");
-                $scope.login.failed = true;
+                $scope.createAccount.failed = true;
                 $scope.login.message = response.error;
-                $scope.login.loading=false;
+                $scope.createAccount.loading=false;
                 success = false;
             }
             else {
                 $log.debug("account creation successful");
                 createAccountForm.passwordCreateAccount.value = "";
                 var success = true;
-                $scope.login.loading=true;
+                $scope.createAccount.loading=true;
                 $mdDialog.hide();
             }
         })
