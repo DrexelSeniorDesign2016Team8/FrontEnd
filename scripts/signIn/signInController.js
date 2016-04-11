@@ -55,8 +55,21 @@ function signInController ($scope, $mdDialog, $log, authService) {
         userInfo.password = signinForm.passwordSignIn.value;
 
         authService.login(userInfo, (function (response) {
-            var success;
-            if (response.status == "error") {
+
+
+
+                $scope.login.failed = false;
+                //TODO adjust page so logged in information is now shown
+                $mdDialog.hide(authService);
+
+                if ($scope.signIn.rememberMe == true) {
+                    $scope.rememberMe = true;
+                }
+                else {
+                    $scope.rememberMe = false;
+                }
+
+            }, (function( response) {
 
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
@@ -68,30 +81,9 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 if ($scope.login.attempts == 0) {
                     $mdDialog.hide();
                 }
-            }
-            else if (response.status == "success") {
-                success = true;
-                $scope.login.failed = false;
-            }
-            if (success) {
-                //TODO adjust page so logged in information is now shown
-                $mdDialog.hide(authService);
 
-                if ($scope.signIn.rememberMe == true) {
-                    $scope.rememberMe = true;
-                }
-                else {
-                    $scope.rememberMe = false;
-                }
-
-            }
-            else {
-                //TODO show error message saying invalid credentials
-                $scope.currentUserLoggedin = false;
-                $scope.login.loading = false;
-            }
-
-        }));
+        }
+        )));
     };
     $scope.resetPassword = function() {
         window.location.href="resetPassword.html";

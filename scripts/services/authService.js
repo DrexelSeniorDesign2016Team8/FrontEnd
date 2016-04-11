@@ -42,7 +42,7 @@ app.factory('authService', function(userService, $http) {
         parameters = "email=" + userInfo.userName + "&";
         parameters += "pass=" + userInfo.password;
     }
-    function createAccount(userInfo,callback) {
+    function createAccount(userInfo,success, error) {
       createAccountPreReq(userInfo);
         var Call = endPoint + url + parameters;
 
@@ -50,9 +50,13 @@ app.factory('authService', function(userService, $http) {
             .get(Call)
             .then(function(response) {
                 var data = response.data
-                userService.setSessionId(data.response.session_id)
-                userService.setUserName("userName");
-                callback(data);
+                if (data.status=="success") {
+                    userService.setSessionId(data.response.session_id)
+                    userService.setUserName("userName");
+                    success(data);
+                }
+                if (data.status="error")
+                error(data);
             });
     }
     function deleteAccount() {
