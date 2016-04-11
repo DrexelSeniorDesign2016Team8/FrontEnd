@@ -29,12 +29,12 @@ function signInController ($scope, $mdDialog, $log, authService) {
         var userInfo = {}
         userInfo.userName = createAccountForm.emailAddressCreateAccount.value;
         userInfo.password = createAccountForm.passwordCreateAccount.value;
-        authService.createAccount(userInfo, function (response) {
+        authService.createAccount(userInfo, function () {
 
                 $log.debug("account creation successful");
                 createAccountForm.passwordCreateAccount.value = "";
                 $scope.createAccount.loading = true;
-                $scope.createAccount.failed=false;
+                $scope.createAccount.failed = false;
                 $mdDialog.hide();
 
             }, (function (response) {
@@ -42,10 +42,12 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 $scope.createAccount.failed = true;
                 $scope.login.message = response.error;
                 $scope.createAccount.loading = false;
-                success = false;
+                createAccountForm.emailAddressCreateAccount.value = "";
+                createAccountForm.passwordCreateAccount.value = "";
+                createAccountForm.verifyPasswordCreateAccount.value = "";
             })
         )
-    }
+    };
     $scope.signIn = function () {
         $scope.login.loading = true;
         var userInfo = {};
