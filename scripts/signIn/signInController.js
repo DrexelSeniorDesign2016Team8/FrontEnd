@@ -21,32 +21,29 @@ function signInController ($scope, $mdDialog, $log, authService) {
         user: '',
         failed: '',
     }
-    $scope.createAccount = function() {
+    $scope.createAccount = function () {
         $scope.createAccount.loading = true;
 
-            createCookie("loggedIn", "false");
-            $scope.currentUserLoggedin = true;
-            var userInfo = {}
-                userInfo.userName =createAccountForm.emailAddressCreateAccount.value;
-                userInfo.password = createAccountForm.passwordCreateAccount.value;
-          authService.createAccount(userInfo, function(response) {
-            if (response.status=="error") {
+        createCookie("loggedIn", "false");
+        $scope.currentUserLoggedin = true;
+        var userInfo = {}
+        userInfo.userName = createAccountForm.emailAddressCreateAccount.value;
+        userInfo.password = createAccountForm.passwordCreateAccount.value;
+        authService.createAccount(userInfo, function (response) {
+
+                $log.debug("account creation successful");
+                createAccountForm.passwordCreateAccount.value = "";
+                $scope.createAccount.loading = true;
+                $mdDialog.hide();
+
+            }, (function (response) {
                 $log.debug("account  creation failed");
                 $scope.createAccount.failed = true;
                 $scope.login.message = response.error;
-                $scope.createAccount.loading=false;
+                $scope.createAccount.loading = false;
                 success = false;
-            }
-            else {
-                $log.debug("account creation successful");
-                createAccountForm.passwordCreateAccount.value = "";
-                var success = true;
-                $scope.createAccount.loading=true;
-                $mdDialog.hide();
-            }
-        })
-
-
+            })
+        )
     }
     $scope.signIn = function () {
         $scope.login.loading = true;

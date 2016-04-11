@@ -19,7 +19,7 @@ app.factory('authService', function(userService, $http) {
         parameters += "pass=" + userInfo.password;
 
     }
-    function login(userInfo, callback) {
+    function login(userInfo, success, error) {
         signinPreReq(userInfo);
         var Call = endPoint + url + parameters;
 
@@ -27,9 +27,13 @@ app.factory('authService', function(userService, $http) {
             .get(Call)
             .then(function(response) {
                 var data = response.data
-                userService.setSessionId(data.response.session_id)
-                userService.setUserName("userName");
-                callback(data);
+                if (data.status=="success") {
+                    userService.setSessionId(data.response.session_id)
+                    userService.setUserName("userName");
+                    success(data);
+                }
+                if (data.status="error")
+                    error(data);
             });
     };
 
