@@ -51,9 +51,7 @@ function signInController ($scope, $mdDialog, $log, authService) {
         userInfo.userName = signinForm.emailAddressSignIn.value;
         userInfo.password = signinForm.passwordSignIn.value;
 
-        authService.login(userInfo, (function (response) {
-
-
+        authService.login(userInfo, (function() {
 
                 $scope.login.failed = false;
                 //TODO adjust page so logged in information is now shown
@@ -66,13 +64,12 @@ function signInController ($scope, $mdDialog, $log, authService) {
                     $scope.rememberMe = false;
                 }
 
-            }, (function( response) {
+            }), function( response) {
 
                 $scope.login.failed = true;
                 $scope.login.message = response.error;
                 $scope.login.attempts--;
                 $scope.login.loading = false;
-                success = false;
                 signinForm.emailAddressSignIn.value = "";
                 signinForm.passwordSignIn.value = "";
                 if ($scope.login.attempts == 0) {
@@ -80,7 +77,7 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 }
 
         }
-        )));
+        );
     };
     $scope.resetPassword = function() {
         window.location.href="resetPassword.html";
