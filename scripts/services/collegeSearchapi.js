@@ -1,3 +1,6 @@
+/**
+ * Ian Shinbrot
+ */
 app.factory('apiCall', function($http, $log) {
 
     var endPoint = "http://mid.searchcollege.me";

@@ -1,7 +1,7 @@
 /**
- * Created by ianshinbro on 2/23/2016.
+ * Ian Shinbrot
  */
-function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userService, apiCall) {
+function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userService, searchService ) {
 
     $scope.items = items;
     $scope.college = {};
@@ -17,11 +17,16 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
     getResults = function () {
         $scope.results.loading=true;
         $scope.results.focusLoading=true;
-        apiCall.setApiDestination("getInstDetails.php?");
-        apiCall.setParameters("instID="+$scope.ID);
-        apiCall.callCollegeSearchAPI(function () {
+        var id = $scope.ID;
+        searchService.fullRecordSearch(id, function(response) {
+            // success
             $scope.results.loading=false;
             $log.debug("college data retrieved");
+        }
+        ,function(response) {
+            // failure
+                $scope.results.loading=false;
+                $log.debug("failure retrieving results");
         });
     };
 

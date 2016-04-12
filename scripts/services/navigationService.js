@@ -1,3 +1,6 @@
+/**
+ * Ian Shinbrot
+ */
 app.factory('navigationService', function($localStorage, userService) {
 
 

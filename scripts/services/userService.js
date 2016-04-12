@@ -1,3 +1,6 @@
+/**
+ * Ian Shinbrot
+ */
 app.factory('userService', function($localStorage, searchService, apiCall) {
     var user = {
         username: null,

@@ -1,3 +1,6 @@
+/**
+ * Ian Shinbrot
+ */
 app.factory('searchService', function($localStorage, apiCall) {
     var searchOptions = {};
 
@@ -96,6 +99,18 @@ app.factory('searchService', function($localStorage, apiCall) {
     function search(callback) {
         apiCall.callCollegeSearchAPI(callback);
     }
+    function fullRecordSearch(id, success, error) {
+        apiCall.setApiDestination("getInstDetails.php?");
+        apiCall.setParameters("instID="+id);
+        apiCall.callCollegeSearchAPI(function (response) {
+            if (response.status=="success") {
+                success(response);
+            }
+            else if (response.status=="error") {
+                error(response);
+            }
+        });
+    }
 
     return {
         set: set,
@@ -110,6 +125,7 @@ app.factory('searchService', function($localStorage, apiCall) {
         fillPercentages: fillPercentages,
         setApiCall: setApiCall,
         fillClassSize: fillClassSize,
+        fullRecordSearch: fullRecordSearch
     }
 
 });
