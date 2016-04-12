@@ -79,7 +79,7 @@ app.factory('authService', function(userService, $http) {
             });
     }
 
-    function deleteAccount() {
+    function deleteAccount(callback) {
         url = "deleteAccount.php?";
         var Call = endPoint + url + "sid=" + userService.getSessionId() + "&";
 
@@ -87,6 +87,7 @@ app.factory('authService', function(userService, $http) {
             .get(Call)
             .then(function (response) {
                 userService.deleteAccount();
+                callback();
                 // insert response here
             })
     };
