@@ -6,7 +6,7 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
     $scope.page = {};
     $scope.page.Title="Change Password";
     $scope.page.Message="Enter a password below";
-    var password = $scope.changePassword.passwordChangePassword.$viewValue;
+    var password = $scope.changePasswordForm.passwordChangePassword.$viewValue;
     $scope.changePassword = function () {
 
         authService.changePassword(password, function(response) {
