@@ -156,6 +156,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function deleteAccount() {
         $localStorage.userName=null;
         $localStorage.sessionId="";
+        user.username=null;
     }
     return {
 
