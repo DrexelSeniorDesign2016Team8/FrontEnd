@@ -117,9 +117,10 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         searchService.set(preferences);
     }
     function logout() {
-        user.username =null;
-            user.sessionId= '';
-
+        user.username = null;
+        user.sessionId = '';
+        $localStorage.username=null;
+        $localStorage.sessionId='';
     }
     function saveSearchPreferences(callback) {
         var params = searchService.get();
