@@ -1,20 +1,26 @@
-app.controller('resetPasswordController', function ($scope, userService, apiCall, $timeout, $log, $mdToast) {
+app.controller('resetPasswordController', function ($scope, authService, $timeout, $log, $mdToast) {
     $scope.showConfirmation = false;
-    $scope.userService = userService;
         $scope.sendEmailResetPassword = function () {
-            apiCall.setApiDestination("resetPassword.php?");
-            apiCall.setParameters("email="+$scope.resetPasswordform.emailAddress.$viewValue);
-            apiCall.callCollegeSearchAPI(function () {
+            var emailAddress = $scope.resetPasswordform.emailAddress.$viewValue;
 
-                $scope.showConfirmation();
-                // $scope.showConfirmation = true;
+            authService.resetPassword(emailAddress, function(response) {
+                // success
+                var message = "Rocovery Email Sent";
+                showMessage(message);
+            },
+            function(response) {
+                //failure at retrieval
+
             });
+           var message = 'Something went wrong';
+                showMessage(message);
+
         }
 
-    $scope.showConfirmation = function() {
+    showMessage = function(message) {
 
         var toast = $mdToast.simple()
-            .textContent('Recovery Email Sent')
+            .textContent(message)
             .action('OK')
             .highlightAction(false)
             .position('top right')

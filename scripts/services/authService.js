@@ -46,6 +46,11 @@ app.factory('authService', function(userService, $http) {
         parameters = "email=" + userInfo.userName + "&";
         parameters += "pass=" + userInfo.password;
     }
+    function resetPasswordPreReq(emailAddress) {
+        url = "resetPassword.php?";
+        parameters = "email=" + emailAddress;
+        parameters += "emailAddress";
+    }
     function createAccount(userInfo,success, error) {
       createAccountPreReq(userInfo);
         var Call = endPoint + url + parameters;
@@ -69,7 +74,7 @@ app.factory('authService', function(userService, $http) {
 
         return $http
             .get(Call)
-            .then(function(respones) {
+            .then(function(response) {
                 // insert response here
             })
     };
@@ -78,15 +83,33 @@ app.factory('authService', function(userService, $http) {
      */
     function logout() {
        userService.logout();
-
     }
-    return {
+    function resetPassword(emailAddress, success, error) {
+        resetPasswordPreReq(emailAddress);
+        var Call = endPoint + url + parameters;
+        return $http
+            .get(Call)
+            .then(function (response) {
+                if (response.status=="success") {
+                    // succeeded
+                    success(response);
+                }
+                else if (response.status="error") {
+                    // failed
+                    error(response);
+                    //TODO add better server error checking
+                }
+
+            })
+    };
+           return {
         login: login,
         createAccount : createAccount,
         getSessionId: getSessionId,
         logout : logout,
         deleteAccount: deleteAccount,
-        getUserName: getUserName
+        getUserName: getUserName,
+        resetPassword: resetPassword
 
 
     };
