@@ -6,11 +6,12 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
     $scope.page = {};
     $scope.page.Title="Change Password";
     $scope.page.Message="Enter a password below";
-    $scope.sendEmailResetPassword = function () {
+    var password = $scope.changePassword.passwordChangePassword.$viewValue;
+    $scope.changePassword = function () {
 
-        authService.changePassword(emailAddress, function(response) {
+        authService.changePassword(password, function(response) {
                 // success
-                var message = "Rocovery Email Sent";
+                var message = "Password Successfully changed";
                 showMessage(message);
             },
             function(response) {

@@ -7,32 +7,36 @@ app.factory('authService', function(userService, $http) {
     var url = "";
     var parameters = "";
     var sessionId;
+
     function getUserName() {
         return userService.getUserName();
     }
+
     function getSessionId() {
         return userService.getSessionId;
     }
+
     function signinPreReq(userInfo) {
         url = "login.php?";
         parameters = "email=" + userInfo.userName + "&";
         parameters += "pass=" + userInfo.password;
 
     }
+
     function login(userInfo, success, error) {
         signinPreReq(userInfo);
         var Call = endPoint + url + parameters;
 
         return $http
             .get(Call)
-            .then(function(response) {
+            .then(function (response) {
                 var data = response.data
-                if (data.status=="success") {
+                if (data.status == "success") {
                     userService.setSessionId(data.response.session_id)
                     userService.setUserName("userName");
                     success(data);
                 }
-                if (data.status="error")
+                if (data.status = "error")
                     error(data);
             });
     };
@@ -42,39 +46,47 @@ app.factory('authService', function(userService, $http) {
      * @returns {string}
      */
     function createAccountPreReq(userInfo) {
-        url =  "create.php?";
+        url = "create.php?";
         parameters = "email=" + userInfo.userName + "&";
         parameters += "pass=" + userInfo.password;
     }
+
     function resetPasswordPreReq(emailAddress) {
         url = "resetPassword.php?";
-        parameters = "email=" + emailAddress;
-        parameters += "emailAddress";
+        parameters = "email=";
+        parameters += emailAddress;
     }
-    function createAccount(userInfo,success, error) {
-      createAccountPreReq(userInfo);
+    function changePasswordPreReq(password) {
+        url = "changePassword.php?";
+        parameters = "password=";
+        parameters += password;
+    }
+
+    function createAccount(userInfo, success, error) {
+        createAccountPreReq(userInfo);
         var Call = endPoint + url + parameters;
 
         return $http
             .get(Call)
-            .then(function(response) {
+            .then(function (response) {
                 var data = response.data
-                if (data.status=="success") {
+                if (data.status == "success") {
                     userService.setSessionId(data.response.session_id)
                     userService.setUserName("userName");
                     success(data);
                 }
-                if (data.status="error")
-                error(data);
+                if (data.status = "error")
+                    error(data);
             });
     }
+
     function deleteAccount() {
-        url="deleteAccount.php?";
-        var Call = endPoint + url+"sid="+userService.getSessionId()+"&";
+        url = "deleteAccount.php?";
+        var Call = endPoint + url + "sid=" + userService.getSessionId() + "&";
 
         return $http
             .get(Call)
-            .then(function(response) {
+            .then(function (response) {
                 // insert response here
             })
     };
@@ -82,19 +94,20 @@ app.factory('authService', function(userService, $http) {
      * This function logs a user out, and sets all the corresponding values to their default values
      */
     function logout() {
-       userService.logout();
+        userService.logout();
     }
+
     function resetPassword(emailAddress, success, error) {
         resetPasswordPreReq(emailAddress);
         var Call = endPoint + url + parameters;
         return $http
             .get(Call)
             .then(function (response) {
-                if (response.status=="success") {
+                if (response.status == "success") {
                     // succeeded
                     success(response);
                 }
-                else if (response.status="error") {
+                else if (response.status = "error") {
                     // failed
                     error(response);
                     //TODO add better server error checking
@@ -102,14 +115,32 @@ app.factory('authService', function(userService, $http) {
 
             })
     };
-           return {
+    function changePassword(password, success, error) {
+        changePasswordPreReq(password);
+        var Call = endPoint + url + parameters;
+        return $http
+            .get(Call)
+            .then(function (response) {
+                if (response.status == "success") {
+                    // succeeded
+                    success(response);
+                }
+                else if (response.status == "error") {
+                    //failed
+                    error(response);
+                }
+            })
+    }
+
+    return {
         login: login,
-        createAccount : createAccount,
+        createAccount: createAccount,
         getSessionId: getSessionId,
-        logout : logout,
+        logout: logout,
         deleteAccount: deleteAccount,
         getUserName: getUserName,
-        resetPassword: resetPassword
+        resetPassword: resetPassword,
+        changePassword: changePassword
 
 
     };

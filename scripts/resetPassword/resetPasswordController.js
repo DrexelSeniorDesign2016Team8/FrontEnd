@@ -1,3 +1,6 @@
+/**
+ * Ian Shinbrot
+ */
 app.controller('resetPasswordController', function ($scope, authService, $timeout, $log, $mdToast) {
     $scope.showConfirmation = false;
     $scope.page = {};
