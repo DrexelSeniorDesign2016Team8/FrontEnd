@@ -153,6 +153,10 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         apiCall.setParameters("college_id="+collegeId);
         apiCall.callCollegeSearchAPI(callback);
     }
+    function deleteAccount() {
+        $localStorage.userName=null;
+        $localStorage.sessionId="";
+    }
     return {
 
         getUserName: getUserName,
@@ -173,5 +177,6 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         setFavorite: setFavorite,
         searchFavorites: searchFavorites,
         getSearchPreferences: getSearchPreferences,
+        deleteAccount:deleteAccount
     };
 });

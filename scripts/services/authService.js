@@ -58,8 +58,7 @@ app.factory('authService', function(userService, $http) {
     }
     function changePasswordPreReq(password) {
         url = "changePassword.php?";
-        parameters = "password=";
-        parameters += password;
+        parameters = "password="
     }
 
     function createAccount(userInfo, success, error) {
@@ -87,6 +86,7 @@ app.factory('authService', function(userService, $http) {
         return $http
             .get(Call)
             .then(function (response) {
+                userService.deleteAccount();
                 // insert response here
             })
     };
