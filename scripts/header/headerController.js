@@ -1,8 +1,10 @@
-app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMedia, navigationService) {
+app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMedia, navigationService, authService) {
 
     $scope.status = '  ';
     $scope.user = {
         loggedIn: false,
+        userName: "",
+        sessionId: ""
     };
 
     $scope.userName = "";
@@ -16,13 +18,13 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
                 clickOutsideToClose:true,
             })
             .then(function(authService) {
-                $scope.userName=authService.getUserName();
-                $scope.sessionId=authService.getSessionId();
-                if ($scope.sessionId) {
+                $scope.user.userName=authService.getUserName();
+                $scope.user.sessionId=authService.getSessionId();
+                if ($scope.user.sessionId) {
                     $scope.user.loggedIn=true;
 
                     var toast = $mdToast.simple()
-                        .textContent($scope.userName+ " successfully logged in")
+                        .textContent($scope.user.userName+ " successfully logged in")
                         .highlightAction(false)
                         .hideDelay(2000)
                         .position('top right')
@@ -62,10 +64,11 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
         navigationService.leavePage(url);
     }
 
+
     $scope.logout = function() {
         authService.logout();
         $scope.user.loggedIn=false;
-        $scope.userName="";
+        $scope.user.userName="";
         var toast = $mdToast.simple()
             .textContent("Successfully logged out")
             .highlightAction(false)
@@ -75,4 +78,14 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
             $mdToast.hide();
         });
     }
+    var isLoggedIn = function() {
+        if (authService.getUserName()!=null) {
+            $scope.user.userName=authService.getUserName();
+            $scope.user.sessionId=authService.getSessionId();
+            if ($scope.user.sessionId) {
+                $scope.user.loggedIn=true;
+            }
+        }
+    }
+    isLoggedIn();
 });

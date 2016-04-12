@@ -100,6 +100,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
     function deleteAccount() {
 
     authService.deleteAccount();
+        navigationService.leavePage("searchPage.html");
     }
     function sendEmail() {
         userService.emailFavorites(function() {

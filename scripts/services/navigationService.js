@@ -10,7 +10,6 @@ app.factory('navigationService', function($localStorage, userService) {
             $localStorage.username=userService.getUserName();
             $localStorage.loggedIn=true;
             $localStorage.params=userService.getSearchParameters().get();
-            $localStorage.userName=userService.getUserName();
         }
         window.location.href=url;
 

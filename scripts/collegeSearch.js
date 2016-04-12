@@ -3,7 +3,7 @@
 var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','ngStorage', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
 
 
-	app.run(function ($rootScope, userService, navigationService, searchService, apiCall, $localStorage) {
+	app.run(function ($rootScope, userService, $localStorage) {
 
 		// first retrieve data from local storage
 		var authenticate = userService.restoreLocalStorage();
