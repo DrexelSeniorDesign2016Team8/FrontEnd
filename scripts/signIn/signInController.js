@@ -35,7 +35,7 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 createAccountForm.passwordCreateAccount.value = "";
                 $scope.createAccount.loading = true;
                 $scope.createAccount.failed = false;
-                $mdDialog.hide();
+                $mdDialog.hide(authService);
 
             }, (function (response) {
                 $log.debug("account  creation failed");
