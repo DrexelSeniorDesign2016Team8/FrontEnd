@@ -154,9 +154,9 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         apiCall.callCollegeSearchAPI(callback);
     }
     function deleteAccount() {
-        $localStorage.userName=null;
-        $localStorage.sessionId="";
-        user.username=null;
+
+        setSessionId("");
+        setUserName(null);
     }
     return {
 
