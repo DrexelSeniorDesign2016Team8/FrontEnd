@@ -30,21 +30,21 @@ app.directive('header', function() {
         addDependency("rel", "stylesheet", "assets/css/header.css");
         return {
             controller: 'headerController',
-            templateUrl: 'header.html'
+            templateUrl: 'html_partialPages/header.html'
 
         };
     });
 
     app.directive('search', function () {
         return {
-            templateUrl: 'fullSearch.html'
+            templateUrl: 'html_partialPages/fullSearch.html'
         }
         
     });
 
     app.directive('preferences' ,function() {
         return {
-            templateUrl: 'searchPreferences.html'
+            templateUrl: 'html_partialPages/searchPreferences.html'
         }
     });
 app.directive('passwordMatch', [function () {
