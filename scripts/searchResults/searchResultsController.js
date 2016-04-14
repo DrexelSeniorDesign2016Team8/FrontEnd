@@ -11,6 +11,7 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
     $scope.results.loading = false;
     $scope.pageNumber=1;
     $scope.parameter = {};
+
     fillResults = function() {
         
         searchService.searchWithPagination($scope.loadResults, $scope.pageNumber, $scope.pageSize);
@@ -46,7 +47,7 @@ loadDropdowns = function() {
     $scope.parameter.classSize = searchService.fillClassSize();
 
     $scope.pageSize=10;
-    $scope.parameter.pageSizes = ('10, 20, 50, 100'
+    $scope.parameter.pageSizes = ('10,20,50,100'
     ).split(',').map(function (pageSize) {
         return {pageSize: pageSize};
     });
@@ -85,29 +86,31 @@ loadDropdowns = function() {
      */
     $scope.loadResults = function(response) {
 
-        $scope.results.loading=false;
-        $scope.results.focusLoading=false;
 
-        if (response.length==0) {
+        $scope.results.loading = false;
+        $scope.results.focusLoading = false;
+        $scope.total = response.totalRows;
+       
+        if (response.length == 0) {
             alert("No results available. Please refine results");
             $scope.toggleSearch("CollegeInfo");
         }
         // Put the response in the colleges variable to be used on the html page
 
         // add the google maps address
-       for (var i=0; i<response.length; i++) {
-           if (response[i].URL && response[i].address)    // only if website exists
-            response[i].googleMapsAddress = "http://www.maps.google.com/maps?q=" +((response[i].address));
-           // determine if college is faovirited and make boolean
-           if (response[i].favorited=="1") {
-               response[i].favorited=true;
-           }
-           else if (response[i].favorited=="0") {
-               response[i].favorited=false;
-           }
+        for (var i = 0; i < response.length; i++) {
+            if (response[i].URL && response[i].address)    // only if website exists
+                response[i].googleMapsAddress = "http://www.maps.google.com/maps?q=" + ((response[i].address));
+            // determine if college is faovirited and make boolean
+            if (response[i].favorited == "1") {
+                response[i].favorited = true;
+            }
+            else if (response[i].favorited == "0") {
+                response[i].favorited = false;
+            }
         }
         // $scope.totalResults=totalResults needs to be implemented for pagination to be proper
-        $scope.colleges=response;
+        $scope.colleges = response;
 
     };
 
