@@ -89,8 +89,7 @@ loadDropdowns = function() {
 
         $scope.results.loading = false;
         $scope.results.focusLoading = false;
-        $scope.total = response.totalRows;
-       
+
         if (response.length == 0) {
             alert("No results available. Please refine results");
             $scope.toggleSearch("CollegeInfo");
@@ -109,6 +108,7 @@ loadDropdowns = function() {
                 response[i].favorited = false;
             }
         }
+        $scope.totalResults=response.totalRows;
         // $scope.totalResults=totalResults needs to be implemented for pagination to be proper
         $scope.colleges = response;
 
