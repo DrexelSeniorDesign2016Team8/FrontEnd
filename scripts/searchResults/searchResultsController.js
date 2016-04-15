@@ -31,6 +31,8 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
     }
     $scope.updatePage = function(pageNumber) {
         $scope.results.focusLoading=true;
+        $scope.colleges=null;
+        $scope.results.loading=true;
         $scope.loading=true;
         $scope.pageNumber=pageNumber;
         fillResults();
