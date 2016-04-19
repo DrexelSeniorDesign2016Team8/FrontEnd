@@ -132,14 +132,14 @@ loadDropdowns = function() {
         return $mdSidenav('searchBar').isOpen();
 
     };
-    $scope.openMoreInfo = function(college, index) {
+    $scope.openMoreInfo = function(ev, college, index) {
 
 
         $mdDialog.show({
                 controller: fullRecordController,
                 templateUrl: 'fullRecord.html',
                 parent: angular.element(document.body),
-                targetEvent: college,
+                targetEvent: ev,
             locals: {
                 items: college,
             },
