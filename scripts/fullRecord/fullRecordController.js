@@ -7,12 +7,21 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
     $scope.college = {};
     $scope.college.name=$scope.items.name;
     $scope.ID = $scope.items.instID;
-
+    $scope.user = {
+        loggedIn: false,
+        userName: "",
+        sessionId: ""
+    };
     $scope.results = {
         loading: false,
     };
     $scope.results.loading = false;
 
+    if (userService.isLoggedin) {
+        $scope.userName=userService.getUserName();
+        $scope.loggedIn=true;
+        $scope.sessionId=userService.getSessionId();
+    }
 
     getResults = function () {
         $scope.results.loading=true;

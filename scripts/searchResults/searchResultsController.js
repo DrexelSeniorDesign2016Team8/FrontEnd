@@ -4,6 +4,11 @@
  */
 app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $mdToast, $log, searchService, userService)
 {
+    $scope.user = {
+        loggedIn: false,
+        userName: "",
+        sessionId: ""
+    };
     $scope.pageTitle="Search Results";
     $scope.results = {
         loading: false,
@@ -12,6 +17,11 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
     $scope.pageNumber=1;
     $scope.parameter = {};
 
+    if (userService.isLoggedin) {
+        $scope.userName=userService.getUserName();
+        $scope.loggedIn=true;
+        $scope.sessionId=userService.getSessionId();
+    }
     fillResults = function() {
         
         searchService.searchWithPagination($scope.loadResults, $scope.pageNumber, $scope.pageSize);

@@ -40,15 +40,18 @@
     </div>
             </div>
 </md-dialog-content>
+
     <md-dialog-actions layout="row">
-        <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+        <div ng-if='college.URL!="N/A"'>
+        <md-button href="{{college.collegeURL}}" target="_blank" md-autofocus>
             Website
         </md-button>
+            </div>
         <span flex></span>
         <md-button ng-click="answer('not useful')">
 
         </md-button>
-        <md-button class="md-raised favoriteButton" ng-show="college.favorited==false && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)" style="margin-right:20px;">
+        <md-button class="md-raised favoriteButton" ng-show="college.favorited==false && user.loggedIn" ng-click="addFavorite(college.instIDs, $index)" style="margin-right:20px;">
             FAVORITE
 </md-button>
 
