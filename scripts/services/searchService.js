@@ -109,6 +109,10 @@ app.factory('searchService', function($localStorage, apiCall) {
             else if (response.status=="error") {
                 error(response);
             }
+                // for some reason it got here
+            else  {
+                error(response);
+            }
         });
     }
 

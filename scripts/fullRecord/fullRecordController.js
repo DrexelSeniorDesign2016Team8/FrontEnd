@@ -21,6 +21,7 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
         searchService.fullRecordSearch(id, function(response) {
             // success
             $scope.results.loading=false;
+            $scope.college=response.data;
             $log.debug("college data retrieved");
         }
         ,function(response) {
