@@ -24,13 +24,13 @@
             <div ng-if="college.GPA!=undefined">GPA: {{college.GPA}}</div>
             <div ng-if="college.GPA==undefined">GPA not available</div>
             <div ng-if="college.SATWriting==0">SAT Writing Score Unavailable</div>
-            <div ng="if=college.SATWriting!=0">SAT Writing Score: {{college.SATWriting}}</div>
+            <div ng-if="college.SATWriting!=0">SAT Writing Score: {{college.SATWriting}}</div>
     <div ng-if="college.SATReading==0">SAT Reading Score Unavailable</div>
-    <div ng="if=college.SATReading!=0">SAT Math Score: {{college.SATReading}}</div>
+    <div ng-if="college.SATReading!=0">SAT Math Score: {{college.SATReading}}</div>
     <div ng-if="college.SATMath==0">SAT Math Score Unavailable</div>
-    <div ng="if=college.SATMath!=0">Sat Math Score: {{college.SATMath}}</div>
+    <div ng-if="college.SATMath!=0">Sat Math Score: {{college.SATMath}}</div>
     <div ng-if="college.ACT==0">ACT Score Unavailable</div>
-    <div ng="if=college.ACT!=0">ACT Score: {{college.ACT}}</div>
+    <div ng-if="college.ACT!=0">ACT Score: {{college.ACT}}</div>
             <div ng-if='college.CommonApp==1'><a target="_blank" href="https://www.commonapp.org/">Common Application</a></div>
     <div class="favoriteButton" >
         <md-button class="md-raised" ng-show="college.favorited==false && userService.isLoggedin()" ng-click="addFavorite(college.instIDs, $index)">FAVORITE</md-button>
