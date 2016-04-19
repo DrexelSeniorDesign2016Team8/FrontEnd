@@ -66,9 +66,9 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
                 }
             });
         };
-        $scope.addFavorite = function (instIds, index) {
+        $scope.addFavorite = function () {
             $scope.results.loading = true;
-            collegeId = instIds;
+            var collegeId = $scope.ID;
             userService.setFavorite(collegeId, function () {
                 $scope.showToast("College Unfavorited", "college unfavorited");
                 //TODO determine based on success
@@ -76,9 +76,9 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
                 $scope.results.loading = false;
             });
         }
-        $scope.removeFavorite = function (instIds) {
+        $scope.removeFavorite = function () {
             $scope.results.loading = true;
-            collegeId = instIds;
+            var collegeId = $scope.ID;
             userService.removeFavorite(collegeId, function () {
                 $scope.showToast("College Unfavorited", "college unfavorited")
                 $scope.results.loading = false;
