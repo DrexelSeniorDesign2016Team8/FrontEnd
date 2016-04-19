@@ -30,12 +30,13 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
         searchService.fullRecordSearch(id, function(response) {
             // success
             $scope.results.loading=false;
-            $scope.college=response.data;
+            $scope.college=response.response[0];
             $log.debug("college data retrieved");
         }
         ,function(response) {
             // failure
                 $scope.results.loading=false;
+                $scope.college=response.response[0];
                 $log.debug("failure retrieving results");
         });
     };
