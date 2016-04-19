@@ -132,23 +132,27 @@ loadDropdowns = function() {
         return $mdSidenav('searchBar').isOpen();
 
     };
-    $scope.openMoreInfo = function(ev, college) {
+    $scope.openMoreInfo = function(college, index) {
 
 
         $mdDialog.show({
                 controller: fullRecordController,
                 templateUrl: 'fullRecord.html',
                 parent: angular.element(document.body),
-                targetEvent: ev,
+                targetEvent: college,
             locals: {
-                items: ev,
+                items: college,
             },
                 clickOutsideToClose:true,
 
             })
-            .then(function() {
+            .then(function(college ) {
+                // i will be index of college
+                $scope.colleges[index].favorited=college.favorited;
+
+            })
             }, function() {
-            });
+
     };
     $scope.openMenu = function($mdOpenMenu, ev) {
         $mdOpenMenu(ev);
