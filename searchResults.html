@@ -65,7 +65,7 @@
                         Change Parameters
                     </md-button>
                     <md-input-container>
-                        <md-select ng-model="filterOptions" style="float:right" md-on-close="changeFilter(filterOption)">
+                        <md-select ng-model="filterOption" style="float:right" md-on-close="changeFilter(filterOption)">
                             <md-option ng-repeat="filterOption in parameter.filterOptions"  value="{{filterOption.filterOption}}">
                                 {{filterOption.filterOption}}
                             </md-option>
