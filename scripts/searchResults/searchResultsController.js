@@ -132,7 +132,7 @@ loadDropdowns = function() {
                 response[i].favorited = false;
             }
         }
-        $scope.totalResults=response[response.length-1].totalRows;
+        $scope.totalResults=response.response[response.response.length-1].totalRows;
         // $scope.totalResults=totalResults needs to be implemented for pagination to be proper
         $scope.colleges = response;
 
