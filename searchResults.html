@@ -56,14 +56,36 @@
         <div ng-controller="resultsController" class="listdemoBasicUsage">
             <md-toolbar layout="row" class="md-hue-3" class="">
                 <div class="md-toolbar-tools">
-                    <span>{{pageTitle}}</span>
-                </div>
+                    <md-button class="md-raised" ng-click="backtoSearchPage('searchPage.html')"
+                               class="md-primary">
+                        Restart Search
+                    </md-button>
+                    <md-button class="refine button searchButton md-raised searchButton" id="refineSearchButton" ng-click="toggleSearch(CollegeInfo)"
+                               class="md-primary">
+                        Change Parameters
+                    </md-button>
+                    <md-input-container>
+                        <md-select ng-model="filterOptions" style="float:right" md-on-close="changeFilter(filterOption)">
+                            <md-option ng-repeat="filterOption in parameter.filterOptions"  value="{{filterOption.filterOption}}">
+                                {{filterOption.filterOption}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                        <md-input-container>
+                            <md-select ng-model="pageSize" style="float:right" md-on-close="pageSizeChange(pageSize)">
+                                <md-option ng-repeat="pageSize in parameter.pageSizes"  value="{{pageSize.pageSize}}">
+                                    {{pageSize.pageSize}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <dir-pagination-controls boundary-links="true" on-page-change="updatePage(newPageNumber)" template-url="html_partialPages/navigation.html">
+
+                        </dir-pagination-controls>
+                    </div>
             </md-toolbar>
             <md-progress-circular show-focus="results.loading" class="md-hue-2 md-busy " md-diameter="100" ng-show="results.loading" md-mode="indeterminate" style="margin:auto"></md-progress-circular>
-                            <md-button class="refine button searchButton" id="refineSearchButton" ng-click="toggleSearch(CollegeInfo)"
-                                       class="md-primary">
-                                Refine Search
-                            </md-button>
+
 
                             <md-sidenav class="md-sidenav-left md-whiteframe-z2 sideNavResult" md-component-id="searchBar">
                                 <form name="CollegeInfo" id="additionalinfo">
@@ -75,20 +97,7 @@
                                     </form>
                                 </md-sidenav>
 
-            <div class="gridOptons">
 
-                <md-input-container>
-                    <label>Size</label>
-                    <md-select ng-model="pageSize" md-on-close="pageSizeChange(pageSize)">
-                        <md-option ng-repeat="pageSize in parameter.pageSizes"  value="{{pageSize.pageSize}}">
-                            {{pageSize.pageSize}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <dir-pagination-controls boundary-links="true" on-page-change="updatePage(newPageNumber)" template-url="html_partialPages/navigation.html">
-
-                </dir-pagination-controls>
-            </div>
             <br>
             <br>
             <br>

@@ -2,7 +2,7 @@
  * Controller for search results page
  * 100% coded by Ian Shinbrot
  */
-app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $mdToast, $log, searchService, userService)
+app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $mdToast, $log, searchService, userService, navigationService)
 {
     $scope.user = {
         loggedIn: false,
@@ -24,12 +24,19 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
     }
     fillResults = function() {
         
-        searchService.searchWithPagination($scope.loadResults, $scope.pageNumber, $scope.pageSize);
+        searchService.searchWithPagination($scope.loadResults, $scope.pageNumber, $scope.pageSize, $scope.filterOption);
 
     };
     fillResultsonPageLoad = function() {
         $scope.results.loading=true;
         $scope.results.focusLoading=true;
+        fillResults();
+    }
+    $scope.changeFilter = function(filterOption) {
+        $scope.filterOption=filterOption;
+        $scope.results.focusLoading=true;
+        $scope.loading=true;
+        $scope.colleges=null;
         fillResults();
     }
     $scope.pageSizeChange = function(size) {
@@ -63,6 +70,11 @@ loadDropdowns = function() {
     ).split(',').map(function (pageSize) {
         return {pageSize: pageSize};
     });
+    $scope.parameter.filterOptions = ('Alphabetical Name,Student Population'
+    ).split(',').map(function (filterOption) {
+        return {filterOption: filterOption};
+    });
+    $scope.filterOption="Alphabetical Name";
     $scope.results.loading = true;
     $scope.currentPage=1;
 
@@ -132,6 +144,9 @@ loadDropdowns = function() {
         return $mdSidenav('searchBar').isOpen();
 
     };
+    $scope.backtoSearchPage = function(url) {
+        navigationService.leavePage(url);
+    }
     $scope.openMoreInfo = function(ev, college, index) {
 
 

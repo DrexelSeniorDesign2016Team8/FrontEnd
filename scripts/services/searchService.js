@@ -71,10 +71,11 @@ app.factory('searchService', function($localStorage, apiCall) {
     function setApiCall(apiCall) {
         this.apiCall = apiCall;
     }
-    function searchWithPagination(callback, pageNumber, resultsPerPage) {
+    function searchWithPagination(callback, pageNumber, resultsPerPage, filterOptions) {
         var jsonString = setupSearch();
 
-        var parameters = jsonString + "page=" + pageNumber + "&pageSize=" + resultsPerPage;
+        filterOptions = filterOptions.replace(" ","");
+        var parameters = jsonString + "page=" + pageNumber + "&pageSize=" + resultsPerPage +"&filterOptions=" + filterOptions.trim();
         apiCall.setParameters(parameters);
         search(callback);
     }
