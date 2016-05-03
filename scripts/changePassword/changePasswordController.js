@@ -9,7 +9,8 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
 
     $scope.changePassword = function () {
         var password = changePasswordForm.passwordChangePassword.value;
-        authService.changePassword(password, function(response) {
+        var oldPassword = changePasswordForm.oldPassword.value;
+        authService.changePassword(oldPassword, password, function(response) {
                 // success
                 var message = "Password Successfully changed";
                 showMessage(message);

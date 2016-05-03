@@ -56,9 +56,10 @@ app.factory('authService', function(userService, $http) {
         parameters = "email=";
         parameters += emailAddress;
     }
-    function changePasswordPreReq(password) {
+    function changePasswordPreReq(oldPassword, password) {
         url = "changePassword.php?";
         parameters += "email=" + userService.getUserName()+"&";
+        parameters += "oldpass=" + oldPassword;
         parameters += "pass=" + password;
     }
 
@@ -118,8 +119,8 @@ app.factory('authService', function(userService, $http) {
 
             })
     };
-    function changePassword(password, success, error) {
-        changePasswordPreReq(password);
+    function changePassword(oldPassword, password, success, error) {
+        changePasswordPreReq(oldPassword, password);
         var Call = endPoint + url + parameters;
         return $http
             .get(Call)
