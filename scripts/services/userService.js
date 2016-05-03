@@ -171,7 +171,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
     function getUserNameCall() {
         apiCall.setApiDestination("getUser.php?");
         apiCall.callCollegeSearchAPI(function() {
-            user.username=response;
+            user.username=response.userName;
         });
     }
 
