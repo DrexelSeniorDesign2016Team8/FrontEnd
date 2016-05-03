@@ -60,7 +60,6 @@ function signInController ($scope, $mdDialog, $log, authService) {
 
                 //TODO adjust page so logged in information is now shown
                 $mdDialog.hide(authService);
-                userService.getUserNameCall();
                 if ($scope.signIn.rememberMe == true) {
                     $scope.rememberMe = true;
                 }
