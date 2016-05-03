@@ -120,7 +120,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         apiCall.setApiDestination("search.php?");
         apiCall.setParameters("favoritedInstitutions=1");
         apiCall.callCollegeSearchAPI(function(response) {
-            if (response.response.size()>0) {
+            if (response.response[response.response.length].totalRows>0) {
             return true;
         }
             else return false;
