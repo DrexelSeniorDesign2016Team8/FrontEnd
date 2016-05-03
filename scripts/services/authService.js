@@ -58,7 +58,7 @@ app.factory('authService', function(userService, $http) {
     }
     function changePasswordPreReq(password) {
         url = "changePassword.php?";
-        parameters += "email=" + "ianshinbro@gmail.com&";//userService.getUserName()+"&";
+        parameters += "email=" + userService.getUserName()+"&";
         parameters += "pass=" + password;
     }
 
@@ -105,6 +105,7 @@ app.factory('authService', function(userService, $http) {
         return $http
             .get(Call)
             .then(function (response) {
+                var response=response.data;
                 if (response.status == "success") {
                     // succeeded
                     success(response);
