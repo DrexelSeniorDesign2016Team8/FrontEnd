@@ -59,7 +59,7 @@ app.factory('authService', function(userService, $http) {
     function changePasswordPreReq(oldPassword, password) {
         url = "changePassword.php?";
         parameters += "email=" + userService.getUserName()+"&";
-        parameters += "oldpass=" + oldPassword;
+        parameters += "oldpass=" + oldPassword+"&";
         parameters += "pass=" + password;
     }
 
