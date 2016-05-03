@@ -166,6 +166,13 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         setSessionId("");
         setUserName(null);
     }
+    function getUserNameCall() {
+        apiCall.setApiDestination("getUser.php?");
+        apiCall.callCollegeSearchAPI(function() {
+            user.username=response;
+        });
+    }
+
     return {
 
         getUserName: getUserName,
@@ -188,5 +195,6 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         getSearchPreferences: getSearchPreferences,
         deleteAccount:deleteAccount,
         determineFavoriteCount: determineFavoriteCount,
+        getUserNameCall: getUserNameCall
     };
 });
