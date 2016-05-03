@@ -121,6 +121,7 @@ app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, s
 
             "<input type='number' ng-model='gpa.gpaOutof' style='width:100px'>" +
         "</md-input-container><br>" +
+                "example 10 out of 20" +
             "<md-button ng-click='submit()' style='float:right'>Submit</md-button>"+
 
             "</md-content>";
