@@ -116,6 +116,14 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         preferences.favoritedInstitutions = 1;
         searchService.set(preferences);
     }
+    function  determineFavoriteCount() {
+        apiCall.callCollegeSearchAPI(function(response) {
+            if (response.response.size()>0) {
+            return true;
+        }
+            else return false;
+        });
+    }
     function logout() {
         user.username = null;
         user.sessionId = '';
@@ -178,6 +186,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         setFavorite: setFavorite,
         searchFavorites: searchFavorites,
         getSearchPreferences: getSearchPreferences,
-        deleteAccount:deleteAccount
+        deleteAccount:deleteAccount,
+        determineFavoriteCount: determineFavoriteCount,
     };
 });
