@@ -117,6 +117,8 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         searchService.set(preferences);
     }
     function  determineFavoriteCount() {
+        apiCall.setApiDestination("search.php?");
+        apiCall.setParameters("favoritedInstitutions=1");
         apiCall.callCollegeSearchAPI(function(response) {
             if (response.response.size()>0) {
             return true;
