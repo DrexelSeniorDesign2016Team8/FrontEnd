@@ -1,7 +1,7 @@
 /**
  * Ian Shinbrot
  */
-app.controller('changePasswordController', function ($scope, authService, $timeout, $log, $mdToast) {
+app.controller('changePasswordController', function ($scope, authService, $timeout, $log, $mdToast,navigationService) {
     $scope.showConfirmation = false;
     $scope.page = {};
     $scope.page.Title="Change Password";
@@ -13,6 +13,7 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
         authService.changePassword(oldPassword, password, function(response) {
                 // success
                 var message = "Password Successfully changed";
+            navigationService.loadPage("searchPage.html");
                 showMessage(message);
             },
             function(response) {
