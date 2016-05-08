@@ -6,7 +6,7 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
     $scope.items = items;
     $scope.college = {};
     $scope.college.name=$scope.items.name;
-    $scope.ID = $scope.items.instID;
+    $scope.ID = $scope.items.ID;
     $scope.user = {
         loggedIn: false,
         userName: "",
