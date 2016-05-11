@@ -10,11 +10,11 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
        if (favoritesShow == 1) {
            // don't disable buttons
-           $scope.favoriteCount=true;
+           $scope.parameter.favoriteCount=true;
        }
        else if (favoritesShow == 0) {
            // disable button
-           $scope.favoriteCount=false;
+           $scope.parameter.favoriteCount=false;
        }
        onPageLoad();
    });
