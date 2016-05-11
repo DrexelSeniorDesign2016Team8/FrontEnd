@@ -135,11 +135,11 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
                 if (favoritesShow == 1) {
                     // don't disable buttons
-                    $scope.parameter.favoritesAvaiable = true;
+                    $scope.parameter.favoritesAvaiable = false;
                 }
                 else if (favoritesShow == 0) {
                     // disable button
-                    $scope.parameter.favoritesAvaiable = false;
+                    $scope.parameter.favoritesAvaiable = true;
                 }
             });
         });
