@@ -6,14 +6,18 @@ The delete content dialog is generated here
 app.controller('userPreferencesController', function ($scope, $mdDialog, $log, userService, authService, $mdToast,navigationService) {
     $scope.userService = userService;
     $scope.pageTitle="User Preferences Page";
-   var favoritesShow =  userService.determineFavoriteCount();
+   userService.determineFavoriteCount(function(favoritesShow) {
 
-    if (favoritesShow==1) {
-        // don't disable buttons
-    }
-    else if (favoritesShow==0) {
-        // disable button
-    }
+       if (favoritesShow == 1) {
+           // don't disable buttons
+           $scope.favoriteCount=true;
+       }
+       else if (favoritesShow == 0) {
+           // disable button
+           $scope.favoriteCount=false;
+       }
+       onPageLoad();
+   });
     
    var searchService = userService.getSearchService();
     $scope.deleteConfirmation = function (ev) {
@@ -144,7 +148,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
     $scope.cancel = function () {
         $mdDialog.hide();
     }
-    onPageLoad();
+
 
 });
 

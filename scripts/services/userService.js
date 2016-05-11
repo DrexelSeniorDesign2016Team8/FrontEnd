@@ -116,14 +116,14 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         preferences.favoritedInstitutions = 1;
         searchService.set(preferences);
     }
-    function  determineFavoriteCount() {
+    function  determineFavoriteCount(callback) {
         apiCall.setApiDestination("search.php?");
         apiCall.setParameters("favoritedInstitutions=1");
         apiCall.callCollegeSearchAPI(function(response) {
             if (response.response[response.response.length-1].totalRows>0) {
-            return true;
+            callback(true);
         }
-            else return false;
+            else callback(false);
         });
     }
     function logout() {

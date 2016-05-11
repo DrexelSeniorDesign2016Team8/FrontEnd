@@ -82,7 +82,7 @@
         <hr class="preferencesHeader">
             <br>
             <br>
-        <a href="" ng-click="getFavorites()">Click to view favorites</a>
+        <a href="" ng-disabled="parameter.favoriteCount" ng-click="getFavorites()">Click to view favorites</a>
         <br>
         </div>
         <div>
@@ -94,7 +94,7 @@
             <br>
                 Email a list of your favorite institutions to your email address on file.
             <br>
-            <md-button class="md-raised" ng-click="emailFavorites()">Email</md-button>
+            <md-button class="md-raised" ng-disabled="parameter.favoriteCount" ng-click="emailFavorites()">Email</md-button>
         </div>
         <br>
         <div>
