@@ -10,8 +10,6 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         favoritesAvaiable: false,
     };
 
-       onPageLoad();
-
     
    var searchService = userService.getSearchService();
     $scope.deleteConfirmation = function (ev) {
@@ -121,7 +119,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
         userService.saveSearchPreferences(callback);
     }
-    onPageLoad = function() {
+    var onPageLoad = function() {
         userService.getSearchPreferences(function(response) {
             //TODO fix this based on the response
             userService.setSearchPreferences(response);
@@ -146,17 +144,11 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
             });
         });
 
-
-
-    }
+    };
 
     $scope.cancel = function () {
         $mdDialog.hide();
     }
 
-
+    onPageLoad();
 });
-
-
-
-
