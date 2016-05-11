@@ -7,7 +7,7 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
     $scope.userService = userService;
     $scope.pageTitle="User Preferences Page";
     $scope.parameter = {
-        favoritesAvaiable: false,
+        favoritesAvailable: false,
     };
 
     
@@ -135,11 +135,11 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
 
                 if (favoritesShow == 1) {
                     // don't disable buttons
-                    $scope.parameter.favoritesAvaiable = false;
+                    $scope.parameter.favoritesAvailable = false;
                 }
                 else if (favoritesShow == 0) {
                     // disable button
-                    $scope.parameter.favoritesAvaiable = true;
+                    $scope.parameter.favoritesAvailable = true;
                 }
             });
         });
