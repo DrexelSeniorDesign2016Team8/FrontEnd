@@ -9,18 +9,9 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
     $scope.parameter = {
         favoritesAvaiable: false,
     };
-   userService.determineFavoriteCount(function(favoritesShow) {
 
-       if (favoritesShow == 1) {
-           // don't disable buttons
-           $scope.parameter.favoritesAvaiable=true;
-       }
-       else if (favoritesShow == 0) {
-           // disable button
-           $scope.parameter.favoritesAvaiable=false;
-       }
        onPageLoad();
-   });
+
     
    var searchService = userService.getSearchService();
     $scope.deleteConfirmation = function (ev) {
@@ -142,6 +133,17 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
                 $scope.parameter.stateName = response[0].stateName;
                 searchService.set(response[0])
             }
+            userService.determineFavoriteCount(function(favoritesShow) {
+
+                if (favoritesShow == 1) {
+                    // don't disable buttons
+                    $scope.parameter.favoritesAvaiable = true;
+                }
+                else if (favoritesShow == 0) {
+                    // disable button
+                    $scope.parameter.favoritesAvaiable = false;
+                }
+            });
         });
 
 
