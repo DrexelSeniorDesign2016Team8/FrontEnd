@@ -5,6 +5,7 @@ TODO move more information over to searchService and away from controller
  */
 app.controller('searchController', function ($scope, $mdDialog,$mdMedia, $log, searchService, navigationService, userService) {
     $scope.searchService = searchService;
+    $scope.user = {};
     $scope.user.loggedIn = false;
     pageSetup = function () {
         $scope.parameter.stateName = '';
