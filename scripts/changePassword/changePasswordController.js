@@ -14,15 +14,17 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
         authService.changePassword(oldPassword, password, function(response) {
                 // success
                  message = "Password Successfully changed";
-            navigationService.loadPage("searchPage.html");
                 showMessage(message);
+            navigationService.loadPage("searchPage.html");
+
             },
             function(response) {
                 //failure at retrieval
-                 message = 'Something went wrong';
+                 message = 'Old password is incorrect';
+                showMessage(message);
             });
 
-        showMessage(message);
+
 
     }
 
