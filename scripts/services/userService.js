@@ -168,10 +168,11 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         setSessionId("");
         setUserName(null);
     }
-    function getUserNameCall() {
+    function getUserNameCall(callback) {
         apiCall.setApiDestination("getUser.php?");
         apiCall.callCollegeSearchAPI(function(response) {
             setUserName(response.response.userName);
+            callback();
         });
     }
 
