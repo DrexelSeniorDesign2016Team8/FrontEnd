@@ -7,14 +7,7 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
     $scope.page.Title = "Change Password";
     $scope.page.Message = "Enter a password below";
 
-    if (authService.isLoggedin()) {
-        // stay on page
-    }
-    else {
-        var message = "Not logged in. Redirecting to home page";
-        showMessage(message);
-        navigationService.loadPage('searchPage.html')
-    }
+
 
     $scope.changePassword = function () {
         var password = changePasswordForm.passwordChangePassword.value;
@@ -37,7 +30,7 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
 
     }
 
-    showMessage = function(message) {
+   var showMessage = function(message) {
 
         var toast = $mdToast.simple()
             .textContent(message)
@@ -51,4 +44,13 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
             }
         });
     };
+
+    if (authService.isLoggedin()) {
+        // stay on page
+    }
+    else {
+        var message = "Not logged in. Redirecting to home page";
+        showMessage(message);
+        navigationService.loadPage('searchPage.html')
+    }
 });
