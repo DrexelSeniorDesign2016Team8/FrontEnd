@@ -16,11 +16,12 @@ app.controller('resetPasswordController', function ($scope, authService, $timeou
                 showMessage(message);
             },
             function(response) {
+                var message = 'Something went wrong';
+                showMessage(message);
                 //failure at retrieval
 
             });
-           var message = 'Something went wrong';
-                showMessage(message);
+
 
         }
 
