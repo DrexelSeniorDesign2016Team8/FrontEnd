@@ -17,7 +17,7 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
     };
     $scope.results.loading = false;
 
-    if (userService.isLoggedin) {
+    if (userService.isLoggedin()) {
         $scope.user.userName=userService.getUserName();
         $scope.user.loggedIn=true;
         $scope.user.sessionId=userService.getSessionId();
