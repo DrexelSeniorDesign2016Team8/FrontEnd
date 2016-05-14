@@ -66,6 +66,10 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
     $scope.changePassword = function(url) {
         navigationService.leavePage(url);
     }
+    $scope.searchResults = function(url) {
+        navigationService.leavePage(url);
+    }
+
 
 
     $scope.logout = function() {
