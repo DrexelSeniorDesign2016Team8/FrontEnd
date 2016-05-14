@@ -33,8 +33,10 @@ app.factory('authService', function(userService, $http) {
                 var data = response.data
                 if (data.status == "success") {
                     userService.setSessionId(data.response.session_id);
-                    userService.getUserNameCall();
-                    success(data);
+                    userService.getUserNameCall(function() {
+
+                        success(data);
+                    });
                 }
                 if (data.status = "error")
                     error(data);
