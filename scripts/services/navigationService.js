@@ -7,8 +7,8 @@ app.factory('navigationService', function($localStorage, userService) {
     function leavePage(url) {
             $localStorage.username=userService.getUserName();
             $localStorage.loggedIn=true;
-            $localStorage.params=userService.getSearchParameters().get();
-        
+            $localStorage.params=userService.getSearchParameters();
+
         window.location.href=url;
 
     }
@@ -24,7 +24,7 @@ app.factory('navigationService', function($localStorage, userService) {
         // check to see if rememberMe is selected in local storage
             $localStorage.username=userService.getUserName();
             $localStorage.loggedIn=true;
-            $localStorage.params=userService.getSearchParameters().get();
+            $localStorage.params=userService.getSearchParameters();
         window.location.reload();
     }
     return {
