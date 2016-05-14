@@ -17,7 +17,7 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
                 // success
                  message = "Password Successfully changed";
                 showMessage(message);
-            navigationService.loadPage("searchPage.html");
+            navigationService.leavePage("searchPage.html");
 
             },
             function(response) {
@@ -51,6 +51,6 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
     else {
         var message = "Not logged in. Redirecting to home page";
         showMessage(message);
-        navigationService.loadPage('searchPage.html')
+        navigationService.leavePage('searchPage.html')
     }
 });
