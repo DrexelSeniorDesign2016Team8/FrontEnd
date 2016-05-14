@@ -30,7 +30,12 @@ function fullRecordController ($scope, items, $mdDialog, $mdToast, $log, userSer
         searchService.fullRecordSearch(id, function(response) {
             // success
             $scope.results.loading=false;
-            $scope.college=response.response[0];
+            var college = response.response[0];
+                if (college.URL && college.address)    // only if website exists
+                    college.googleMapsAddress = "http://www.maps.google.com/maps?q=" + ((college.address));
+                // determine if college is favorites and make boolean
+            $scope.college=college;
+
             $log.debug("college data retrieved");
         }
         ,function(response) {
