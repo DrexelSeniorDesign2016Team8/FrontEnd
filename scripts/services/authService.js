@@ -127,14 +127,15 @@ app.factory('authService', function(userService, $http) {
         return $http
             .get(Call)
             .then(function (response) {
-                if (response.data.status == "success") {
-                    // succeeded
-                    success(response);
-                }
-                else if (response.data.status == "error") {
+                if (response.data.error) {
                     //failed
                     error(response);
                 }
+               else {
+                    // succeeded
+                    success(response);
+                }
+
             })
     }
 
