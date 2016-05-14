@@ -67,7 +67,7 @@ function signInController ($scope, $mdDialog, $log, authService, navigationServi
                 else {
                     $scope.rememberMe = false;
                 }
-            window.location.reload();
+            navigationService.reload();
 
             }), function( response) {
 
