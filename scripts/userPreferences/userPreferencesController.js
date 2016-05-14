@@ -10,8 +10,17 @@ app.controller('userPreferencesController', function ($scope, $mdDialog, $log, u
         favoritesAvailable: false,
     };
 
+    if (authService.isLoggedin()) {
+        // stay on page
+    }
+    else {
+        var message = "Not logged in. Redirecting to home page";
+        showMessage(message);
+        navigationService.loadPage('searchPage.html')
+    }
+
     
-   var searchService = userService.getSearchService();
+    var searchService = userService.getSearchService();
     $scope.deleteConfirmation = function (ev) {
 
         options = {};

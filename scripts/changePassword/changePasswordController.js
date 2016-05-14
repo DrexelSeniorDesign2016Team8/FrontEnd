@@ -4,8 +4,17 @@
 app.controller('changePasswordController', function ($scope, authService, $timeout, $log, $mdToast,navigationService) {
     $scope.showConfirmation = false;
     $scope.page = {};
-    $scope.page.Title="Change Password";
-    $scope.page.Message="Enter a password below";
+    $scope.page.Title = "Change Password";
+    $scope.page.Message = "Enter a password below";
+
+    if (authService.isLoggedin()) {
+        // stay on page
+    }
+    else {
+        var message = "Not logged in. Redirecting to home page";
+        showMessage(message);
+        navigationService.loadPage('searchPage.html')
+    }
 
     $scope.changePassword = function () {
         var password = changePasswordForm.passwordChangePassword.value;

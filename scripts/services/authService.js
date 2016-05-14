@@ -11,7 +11,9 @@ app.factory('authService', function(userService, $http) {
     function getUserName() {
         return userService.getUserName();
     }
-
+    function isLoggedin() {
+        return userService.isLoggedin();
+    }
     function getSessionId() {
         return userService.getSessionId;
     }
@@ -147,7 +149,8 @@ app.factory('authService', function(userService, $http) {
         deleteAccount: deleteAccount,
         getUserName: getUserName,
         resetPassword: resetPassword,
-        changePassword: changePassword
+        changePassword: changePassword,
+        isLoggedin: isLoggedin
 
 
     };
