@@ -10,17 +10,18 @@ app.controller('changePasswordController', function ($scope, authService, $timeo
     $scope.changePassword = function () {
         var password = changePasswordForm.passwordChangePassword.value;
         var oldPassword = changePasswordForm.oldPassword.value;
+        var message = "";
         authService.changePassword(oldPassword, password, function(response) {
                 // success
-                var message = "Password Successfully changed";
+                 message = "Password Successfully changed";
             navigationService.loadPage("searchPage.html");
                 showMessage(message);
             },
             function(response) {
                 //failure at retrieval
-
+                 message = 'Something went wrong';
             });
-        var message = 'Something went wrong';
+
         showMessage(message);
 
     }
