@@ -14,8 +14,6 @@ app.factory('navigationService', function($localStorage, userService) {
     }
     function  loadPage() {
         $localStorage.rememberMe=false;
-        $localStorage.username='';
-        $localStorage.loggedIn='';
         $localStorage.params=userService.getSearchParameters();
         userService.setUserName($localStorage.userName);
     }
