@@ -5,12 +5,10 @@ app.factory('navigationService', function($localStorage, userService) {
 
 
     function leavePage(url) {
-        // check to see if rememberMe is selected in local storage
-        if (userService.rememberMe==true) {
             $localStorage.username=userService.getUserName();
             $localStorage.loggedIn=true;
             $localStorage.params=userService.getSearchParameters().get();
-        }
+        
         window.location.href=url;
 
     }
@@ -24,11 +22,9 @@ app.factory('navigationService', function($localStorage, userService) {
 
     function reload() {
         // check to see if rememberMe is selected in local storage
-        if (userService.rememberMe==true) {
             $localStorage.username=userService.getUserName();
             $localStorage.loggedIn=true;
             $localStorage.params=userService.getSearchParameters().get();
-        }
         window.location.reload();
     }
     return {
