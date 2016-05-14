@@ -22,9 +22,19 @@ app.factory('navigationService', function($localStorage, userService) {
         userService.setUserName($localStorage.userName);
     }
 
+    function reload() {
+        // check to see if rememberMe is selected in local storage
+        if (userService.rememberMe==true) {
+            $localStorage.username=userService.getUserName();
+            $localStorage.loggedIn=true;
+            $localStorage.params=userService.getSearchParameters().get();
+        }
+        window.location.reload();
+    }
     return {
         leavePage: leavePage,
-        loadPage: loadPage
+        loadPage: loadPage,
+        reload: reload
     }
 
 });

@@ -5,7 +5,7 @@
  * @param $log
  * @param authService
  */
-function signInController ($scope, $mdDialog, $log, authService) {
+function signInController ($scope, $mdDialog, $log, authService, navigationService) {
 
     $scope.login = {
         loading: false,
@@ -36,7 +36,7 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 $scope.createAccount.loading = true;
                 $scope.createAccount.failed = false;
                 $mdDialog.hide(authService);
-                window.location.reload();
+                navigationService.reload();
 
             }, (function (response) {
                 $log.debug("account  creation failed");
