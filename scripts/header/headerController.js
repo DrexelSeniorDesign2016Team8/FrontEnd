@@ -80,7 +80,7 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
         $mdToast.show(toast).then(function (response) {
             $mdToast.hide();
         });
-        navigationService('searchPage.html');
+        navigationService.loadPage('searchPage.html');
     };
     var isLoggedIn = function() {
         if (authService.getUserName()!=null) {
