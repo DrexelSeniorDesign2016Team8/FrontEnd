@@ -17,7 +17,7 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
     $scope.pageNumber=1;
     $scope.parameter = {};
 
-    if (userService.isLoggedin) {
+    if (userService.isLoggedin()) {
         $scope.user.userName=userService.getUserName();
         $scope.user.loggedIn=true;
         $scope.user.sessionId=userService.getSessionId();
