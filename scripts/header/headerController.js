@@ -73,14 +73,15 @@ app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMed
         $scope.user.loggedIn=false;
         $scope.user.userName="";
         var toast = $mdToast.simple()
-            .textContent("Successfully logged out")
+            .textContent("Successfully logged out. Redirecting to home page")
             .highlightAction(false)
             .hideDelay(2000)
             .position('top right')
         $mdToast.show(toast).then(function (response) {
             $mdToast.hide();
         });
-    }
+        navigationService('searchPage.html');
+    };
     var isLoggedIn = function() {
         if (authService.getUserName()!=null) {
             $scope.user.userName=authService.getUserName();

@@ -36,6 +36,7 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 $scope.createAccount.loading = true;
                 $scope.createAccount.failed = false;
                 $mdDialog.hide(authService);
+                window.location.reload();
 
             }, (function (response) {
                 $log.debug("account  creation failed");
@@ -66,6 +67,7 @@ function signInController ($scope, $mdDialog, $log, authService) {
                 else {
                     $scope.rememberMe = false;
                 }
+            window.location.reload();
 
             }), function( response) {
 
