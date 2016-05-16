@@ -24,7 +24,7 @@ app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $md
     }
     fillResults = function() {
         
-        searchService.searchWithPagination($scope.loadResults, $scope.pageNumber, $scope.pageSize, $scope.filterOption);
+        searchService.searchWithPagination($scope.loadResults, $scope.pageNumber-1, $scope.pageSize, $scope.filterOption);
 
     };
     fillResultsonPageLoad = function() {
