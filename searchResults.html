@@ -113,7 +113,7 @@
                         <span dir-paginate="college in colleges|itemsPerPage:pageSize" total-items=totalResults current-page="currentPage" ng-bind-html-unsafe="college.Name" class="searchResults" searchResults  >
 
                             <div class="collegeInfo">
-                                <h2> <a ng-href="#" ng-click="openMoreInfo($event, college, $index)">{{college.name}}</a></h2>
+                                <h2> <a ng-href="#" ng-click="openMoreInfo($event, college, $index)">{{college.Name}}</a></h2>
 
                             <div class="favoriteButton" >
                                 <md-button class="md-raised" ng-show="college.favorited==false && user.loggedIn" ng-click="addFavorite(college.instIDs, $index)">FAVORITE</md-button>
