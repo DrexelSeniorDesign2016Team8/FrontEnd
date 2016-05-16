@@ -133,6 +133,8 @@ loadDropdowns = function() {
         $scope.totalResults=response.response[response.response.length-1].totalRows-1;
         // $scope.totalResults=totalResults needs to be implemented for pagination to be proper
         $scope.colleges = response.response;
+        $scope.colleges.pop();
+
 
     };
 
