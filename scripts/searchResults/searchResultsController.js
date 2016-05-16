@@ -125,12 +125,6 @@ loadDropdowns = function() {
             if (response[i].URL && response[i].address)    // only if website exists
                 response[i].googleMapsAddress = "http://www.maps.google.com/maps?q=" + ((response[i].address));
             // determine if college is faovirited and make boolean
-            if (response[i].favorited == "1") {
-                response[i].favorited = true;
-            }
-            else if (response[i].favorited == "null") {
-                response[i].favorited = false;
-            }
         }
         $scope.totalResults=response.response[response.response.length-1].totalRows-1;
         // $scope.totalResults=totalResults needs to be implemented for pagination to be proper
