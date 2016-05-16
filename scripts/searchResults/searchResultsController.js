@@ -209,7 +209,7 @@ loadDropdowns = function() {
             $scope.showToast("College Unfavorited", "college unfavorited")
             $scope.results.loading=false;
             //TODO determine based on success
-            $scope.colleges[index].favorited=false;
+            $scope.colleges[index].favorited=null;
         })
     };
     $scope.showToast = function(message, action) {

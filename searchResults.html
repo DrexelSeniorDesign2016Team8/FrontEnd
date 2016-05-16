@@ -115,11 +115,11 @@
                             <div class="collegeInfo">
                                 <h2> <a ng-href="#" ng-click="openMoreInfo($event, college, $index)">{{college.Name}}</a></h2>
 
-                            <div class="favoriteButton" ng-if="college.Name!='N/A'" >
+                            <div class="favoriteButton" >
 
                                 <md-button class="md-raised" ng-show="college.favorited==null && user.loggedIn" ng-click="addFavorite(college.ID, $index)">FAVORITE</md-button>
                             </div>
-                                <div class="favoriteButton" ng-if="college.Name!='N/A'" >
+                                <div class="favoriteButton" >
                                     <md-button class="md-raised"  ng-show="college.favorited==true && user.loggedIn" ng-click="removeFavorite(college.ID, $index)">UNFAVORITE</md-button>
                                 </div>
 
