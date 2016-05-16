@@ -111,9 +111,8 @@
                         ng-if determines if specific parameters exist and what to display
                      -->
                         <span dir-paginate="college in colleges|itemsPerPage:pageSize" total-items=totalResults current-page="currentPage" ng-bind-html-unsafe="college.Name" class="searchResults" searchResults  >
-                            <div>
+
                             <div class="collegeInfo">
-                                <h2>{{college.Name}}</h2>
                                 <h2> <a ng-href="#" ng-click="openMoreInfo($event, college, $index)">{{college.name}}</a></h2>
 
                             <div class="favoriteButton" >
@@ -125,7 +124,7 @@
 
 
                                 </div>
-                            <hr></div>
+                            <hr>
                         </span>
 
 
