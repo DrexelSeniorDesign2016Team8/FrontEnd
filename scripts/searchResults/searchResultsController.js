@@ -128,7 +128,7 @@ loadDropdowns = function() {
             if (response[i].favorited == "1") {
                 response[i].favorited = true;
             }
-            else if (response[i].favorited == "0") {
+            else if (response[i].favorited == "null") {
                 response[i].favorited = false;
             }
         }
