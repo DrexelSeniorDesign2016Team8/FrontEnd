@@ -100,8 +100,8 @@ loadDropdowns = function() {
                 averageClassSize: params.averageClassSize,
             }
         }
-        if (params.favoritedInstitions) {
-            $scope.parameter.favoritedInstitions=true;
+        if (params.favoritedInstitutions) {
+            $scope.parameter.favoritedInstitutions=true;
         }
         if (params.commonApplication) {
             $scope.parameter.commonApplication=true;
