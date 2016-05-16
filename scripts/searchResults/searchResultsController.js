@@ -98,9 +98,13 @@ loadDropdowns = function() {
                 institutionType: params.institutionType,
                 studentPopulation: params.studentPopulation,
                 averageClassSize: params.averageClassSize,
-                commonApplication: params.CommonApplication,
-                favoritedInstitutions: params.favoritedInstitutions,
             }
+        }
+        if (params.favoritedInstitions) {
+            $scope.parameter.favoritedInstitions=true;
+        }
+        if (params.commonApplication) {
+            $scope.parameter.commonApplication=true;
         }
     };
     /*
