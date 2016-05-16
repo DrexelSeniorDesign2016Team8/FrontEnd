@@ -67,10 +67,10 @@ function formatSearch(searchParameters) {
         parameters += "minClass=" + classSize[0]+"&" + "maxClass=" + classSize[1];
     }
     if (searchParameters.favoritedInstitutions) {
-        parameters += "favoritedInstitutions=" + searchParameters.favoritedInstitutions +"&";
+        parameters += "favoritedInstitutions=" + 1 +"&";
     }
     if (searchParameters.commonApplication) {
-        parameters += "commonApplication=" + searchParameters.CommonApplication;
+        parameters += "commonApplication=" + 1;
     }
 
     return parameters;

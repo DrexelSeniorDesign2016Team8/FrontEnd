@@ -80,7 +80,7 @@ loadDropdowns = function() {
 
 };
     $scope.autoFillSearch = function() {
-        params = searchService.get();
+       var params = searchService.get();
         if (params) {
             $scope.parameter = {
                 GPAvalue: params.GPAvalue,

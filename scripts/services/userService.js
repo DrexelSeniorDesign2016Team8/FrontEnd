@@ -114,6 +114,7 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
         var preferences = {};
         preferences.favoritedInstitutions = {}
         preferences.favoritedInstitutions = 1;
+        var param = formatSearch(preferences);
         searchService.set(preferences);
     }
     function  determineFavoriteCount(callback) {
