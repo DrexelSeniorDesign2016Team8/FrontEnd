@@ -112,9 +112,9 @@ app.factory('userService', function($localStorage, searchService, apiCall) {
 
     function searchFavorites() {
         var preferences = {};
-        preferences.searchOptions = {
-            favoritedInstitutions :  1}
-        formatSearch(preferences);
+        preferences.favoritedInstitutions = {}
+        preferences.favoritedInstitutions = 1;
+        var param = formatSearch(preferences);
         searchService.set(preferences);
     }
     function  determineFavoriteCount(callback) {
