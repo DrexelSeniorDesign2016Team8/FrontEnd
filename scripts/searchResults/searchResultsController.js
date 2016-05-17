@@ -91,7 +91,7 @@ loadDropdowns = function() {
                 ReadingScore: params.ReadingScore,
                 stateName: params.stateName,
                 InstitutionName: params.InstitutionName,
-                zipcode: params.zipCode,
+                zipCode: params.zipCode,
                 fullAddress: params.fullAddress,
                 acceptanceRate: params.acceptanceRate,
                 retentionRate: params.retentionRate,
