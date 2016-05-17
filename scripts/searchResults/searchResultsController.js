@@ -118,7 +118,7 @@ loadDropdowns = function() {
         $scope.results.loading = false;
         $scope.results.focusLoading = false;
 
-        if (response.length == 0) {
+        if (response.response[response.response.length-1].totalRows== 0) {
             alert("No results available. Please refine results");
             $scope.toggleSearch("CollegeInfo");
         }
@@ -130,7 +130,7 @@ loadDropdowns = function() {
                 response[i].googleMapsAddress = "http://www.maps.google.com/maps?q=" + ((response[i].address));
             // determine if college is faovirited and make boolean
         }
-        $scope.totalResults=response.response[response.response.length-1].totalRows-1;
+        $scope.totalResults=response.response[response.response.length-1].totalRows;
         // $scope.totalResults=totalResults needs to be implemented for pagination to be proper
         $scope.colleges = response.response;
         $scope.colleges.pop();
