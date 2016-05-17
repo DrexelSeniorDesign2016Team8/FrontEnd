@@ -1,7 +1,7 @@
 /*
 This is the controller for the preferences screen
 The delete content dialog is generated here
-100% coded by Ian Shinbrot
+Ian Shinbrot
  */
 app.controller('userPreferencesController', function ($scope, $mdDialog, $log, userService, authService, $mdToast,navigationService) {
     $scope.userService = userService;

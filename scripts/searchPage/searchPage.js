@@ -1,6 +1,5 @@
 /**
- * Created by ianshinbrot on 11/19/15.
- * 100% coded by Ian Shinbrot
+ * Ian Shinbrot
  */
 
 

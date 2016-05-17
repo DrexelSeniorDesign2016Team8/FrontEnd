@@ -1,6 +1,6 @@
 /*
 GPA controller to be used for dialog
-100% coded by Ian Shinbrot
+Ian Shinbrot
  */
 function gpaController ($scope, $mdDialog, searchService) {
 

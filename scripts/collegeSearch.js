@@ -1,4 +1,7 @@
-//var loggedIn = false;
+/**
+ * Ian Shinbrot
+ * @type {module|angular.Module}
+ */
 
 var app = angular.module( 'CollegeSearch', [ 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','ngStorage', 'angularUtils.directives.dirPagination']);		// initialize the app for all classes
 

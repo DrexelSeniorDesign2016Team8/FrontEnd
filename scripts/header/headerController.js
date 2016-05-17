@@ -1,3 +1,6 @@
+/**
+ * Ian Shinbrot
+ */
 app.controller('headerController' , function($scope, $mdToast, $mdDialog, $mdMedia, navigationService, authService) {
 
     $scope.status = '  ';

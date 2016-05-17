@@ -1,6 +1,6 @@
 /**
  * Controller for search results page
- * 100% coded by Ian Shinbrot
+ * Ian Shinbrot
  */
 app.controller('resultsController', function ($scope, $mdSidenav, $mdDialog, $mdToast, $log, searchService, userService, navigationService)
 {
